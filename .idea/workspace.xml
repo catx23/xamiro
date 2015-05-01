@@ -2,8 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8b415080-f0ca-4803-a89e-1b9e53daea7e" name="Default" comment="">
+      <change type="DELETED" beforePath="$PROJECT_DIR$/docs/docFiles/01_Installation/01_One_File.md" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/docs/docFiles/00_Getting_Started.md" afterPath="$PROJECT_DIR$/docs/docFiles/00_Getting_Started.md" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/docs/docFiles/01_Installation/00_Overview.md" afterPath="$PROJECT_DIR$/docs/docFiles/01_Installation/00_Overview.md" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/docs/docFiles/01_Installation/01_FTP.md" afterPath="$PROJECT_DIR$/docs/docFiles/01_Installation/01_FTP.md" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/docs/docFiles/01_Installation/01_Github.md" afterPath="$PROJECT_DIR$/docs/docFiles/01_Installation/01_Github.md" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/docs/docFiles/01_Installation/01_SSH.md" afterPath="$PROJECT_DIR$/docs/docFiles/01_Installation/01_SSH.md" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="xamiro.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -33,21 +38,73 @@
             <state />
           </provider>
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-2.25" vertical-offset="0" max-vertical-offset="342">
-              <caret line="4" column="27" selection-start-line="4" selection-start-column="27" selection-end-line="4" selection-end-column="27" />
+            <state vertical-scroll-proportion="-2.25" vertical-offset="0" max-vertical-offset="324">
+              <caret line="4" column="27" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="27" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="01_FTP.md" pinned="false" current-in-tab="true">
+      <file leaf-file-name="00_Getting_Started.md" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/docs/docFiles/00_Getting_Started.md">
+          <provider editor-type-id="MarkdownPreviewEditor">
+            <state />
+          </provider>
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.06185567" vertical-offset="0" max-vertical-offset="582">
+              <caret line="2" column="38" selection-start-line="2" selection-start-column="38" selection-end-line="2" selection-end-column="38" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="01_FTP.md" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/docs/docFiles/01_Installation/01_FTP.md">
           <provider editor-type-id="MarkdownPreviewEditor">
             <state />
           </provider>
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.4329897" vertical-offset="0" max-vertical-offset="582">
-              <caret line="14" column="98" selection-start-line="14" selection-start-column="98" selection-end-line="14" selection-end-column="98" />
+            <state vertical-scroll-proportion="-7.3125" vertical-offset="0" max-vertical-offset="504">
+              <caret line="13" column="0" selection-start-line="13" selection-start-column="0" selection-end-line="13" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="01_Github.md" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/docs/docFiles/01_Installation/01_Github.md">
+          <provider editor-type-id="MarkdownPreviewEditor">
+            <state />
+          </provider>
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-3.375" vertical-offset="0" max-vertical-offset="216">
+              <caret line="6" column="0" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="01_SSH.md" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/docs/docFiles/01_Installation/01_SSH.md">
+          <provider editor-type-id="MarkdownPreviewEditor">
+            <state />
+          </provider>
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-5.0625" vertical-offset="0" max-vertical-offset="270">
+              <caret line="9" column="0" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="01_Button_Group.md" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/docs/docFiles/03_Interface_Designer/03_Examples/01_Button_Group.md">
+          <provider editor-type-id="MarkdownPreviewEditor">
+            <state />
+          </provider>
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-8.4375" vertical-offset="576" max-vertical-offset="2862">
+              <caret line="47" column="6" selection-start-line="44" selection-start-column="0" selection-end-line="47" selection-end-column="6" />
               <folding />
             </state>
           </provider>
@@ -68,10 +125,12 @@
       <list>
         <option value="$PROJECT_DIR$/.gitignore" />
         <option value="$PROJECT_DIR$/docs/docFiles/config.json" />
-        <option value="$PROJECT_DIR$/docs/docFiles/00_Getting_Started.md" />
         <option value="$PROJECT_DIR$/docs/docFiles/01_Installation/_index.md" />
+        <option value="$PROJECT_DIR$/docs/docFiles/01_Installation/01_Github.md" />
         <option value="$PROJECT_DIR$/docs/docFiles/01_Installation/00_Overview.md" />
         <option value="$PROJECT_DIR$/docs/docFiles/01_Installation/01_FTP.md" />
+        <option value="$PROJECT_DIR$/docs/docFiles/01_Installation/01_SSH.md" />
+        <option value="$PROJECT_DIR$/docs/docFiles/00_Getting_Started.md" />
       </list>
     </option>
   </component>
@@ -157,28 +216,6 @@
               <option name="myItemId" value="docs" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="docFiles" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="01_Installation" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="xamiro" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="xamiro" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="docs" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
           </PATH>
         </subPane>
       </pane>
@@ -233,7 +270,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="47" y="-4" width="1873" height="1084" extended-state="6" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32916668" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
@@ -332,17 +369,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/docs/docFiles/01_Installation/01_Github.md">
-      <provider editor-type-id="MarkdownPreviewEditor">
-        <state />
-      </provider>
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-2.8125" vertical-offset="0" max-vertical-offset="594">
-          <caret line="5" column="43" selection-start-line="5" selection-start-column="43" selection-end-line="5" selection-end-column="43" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/docs/daux/templates/default/default.tpl">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.36759582" vertical-offset="2957" max-vertical-offset="5634">
@@ -359,24 +385,35 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/docs/docFiles/00_Getting_Started.md">
+    <entry file="file://$PROJECT_DIR$/docs/docFiles/03_Interface_Designer/03_Examples/01_Button_Group.md">
       <provider editor-type-id="MarkdownPreviewEditor">
         <state />
       </provider>
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-1.125" vertical-offset="0" max-vertical-offset="144">
-          <caret line="2" column="0" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
+        <state vertical-scroll-proportion="-8.4375" vertical-offset="576" max-vertical-offset="2862">
+          <caret line="47" column="6" selection-start-line="44" selection-start-column="0" selection-end-line="47" selection-end-column="6" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/docs/docFiles/01_Installation/00_Overview.md">
+    <entry file="file://$PROJECT_DIR$/docs/docFiles/01_Installation/01_SSH.md">
       <provider editor-type-id="MarkdownPreviewEditor">
         <state />
       </provider>
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-2.25" vertical-offset="0" max-vertical-offset="342">
-          <caret line="4" column="27" selection-start-line="4" selection-start-column="27" selection-end-line="4" selection-end-column="27" />
+        <state vertical-scroll-proportion="-5.0625" vertical-offset="0" max-vertical-offset="270">
+          <caret line="9" column="0" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/docs/docFiles/01_Installation/01_Github.md">
+      <provider editor-type-id="MarkdownPreviewEditor">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-3.375" vertical-offset="0" max-vertical-offset="216">
+          <caret line="6" column="0" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="0" />
           <folding />
         </state>
       </provider>
@@ -386,8 +423,30 @@
         <state />
       </provider>
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.4329897" vertical-offset="0" max-vertical-offset="582">
-          <caret line="14" column="98" selection-start-line="14" selection-start-column="98" selection-end-line="14" selection-end-column="98" />
+        <state vertical-scroll-proportion="-7.3125" vertical-offset="0" max-vertical-offset="504">
+          <caret line="13" column="0" selection-start-line="13" selection-start-column="0" selection-end-line="13" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/docs/docFiles/01_Installation/00_Overview.md">
+      <provider editor-type-id="MarkdownPreviewEditor">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-2.25" vertical-offset="0" max-vertical-offset="324">
+          <caret line="4" column="27" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="27" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/docs/docFiles/00_Getting_Started.md">
+      <provider editor-type-id="MarkdownPreviewEditor">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.06185567" vertical-offset="0" max-vertical-offset="582">
+          <caret line="2" column="38" selection-start-line="2" selection-start-column="38" selection-end-line="2" selection-end-column="38" />
           <folding />
         </state>
       </provider>

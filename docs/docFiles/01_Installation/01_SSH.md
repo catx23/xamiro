@@ -1,28 +1,9 @@
-## <a name="Widgets"></a>Widgets Guide
+### SSH Installation Guide
+<hr/>
 
+#### Option 1: Download latest zip file and extract into xamiro:
+  
+        wget https://raw.githubusercontent.com/mc007/xbox-app/master/DIST/xbox.zip
+        mkdir xamiro; mv xbox.zip xamiro; cd xamiro;unzip xbox.zip;rm xbox.zip;
 
-### Animations
-
-For animations the 'Velocity Engine has been choosen':
-
-- 30+ preset animations
-- animations of multiple properties: 'opacity', anything which is a valid CSS property
-
-[Online Documentation of 'Velocity'](http://www.velocityjs.org)
-
-[Tutorials for 'Velocity'](http://www.smashingmagazine.com/2014/06/18/faster-ui-animations-with-velocity-js/)
-
-#### Examples
-
-```javascript
-
-    //make the element bounce
-    $(this).velocity('callout.bounce',100);
-
-```
-
-### Widgets
-
-[Widget documentation](./Widgets)
-
-[Tutorial for making a 'Button Group'](./Examples/Button_Group)
+  
