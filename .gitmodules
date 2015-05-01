@@ -1,0 +1,3 @@
+[submodule "docs/daux"]
+	path = docs/daux
+	url = https://github.com/mc007/daux.io.git

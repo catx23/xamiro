@@ -1,0 +1,28 @@
+{
+    "title": "xamiro - Guide",
+    "tagline": "",
+    "author": "",
+    "image": "<base_url>img/app.png",
+    "theme": "daux-red",
+    "template": "default",
+    "clean_urls": true,
+    "toggle_code": false,
+    "breadcrumbs": true,
+    "breadcrumb_separator": "Chevrons",
+    "date_modified": true,
+    "float": false,
+    "file_editor": false,
+    "repo": "",
+    "ignore": {
+            "files": ["Work_In_Progress.md"],
+            "folders": ["99_Not_Ready"]
+    },
+    "_google_analytics": "",
+    "links":{},
+    "_links": {
+        "Download": "",
+        "GitHub Repo": "",
+        "Help/Support/Bugs": "",
+        "Made by Todaymade": ""
+    }
+}
