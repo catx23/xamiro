@@ -2,12 +2,105 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8b415080-f0ca-4803-a89e-1b9e53daea7e" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/docs/docFiles/01_Installation/01_One_File.md" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/docs/docFiles/00_Getting_Started.md" afterPath="$PROJECT_DIR$/docs/docFiles/00_Getting_Started.md" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/docs/docFiles/01_Installation/00_Overview.md" afterPath="$PROJECT_DIR$/docs/docFiles/01_Installation/00_Overview.md" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/docs/docFiles/01_Installation/01_FTP.md" afterPath="$PROJECT_DIR$/docs/docFiles/01_Installation/01_FTP.md" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/docs/docFiles/01_Installation/01_Github.md" afterPath="$PROJECT_DIR$/docs/docFiles/01_Installation/01_Github.md" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/docs/docFiles/01_Installation/01_SSH.md" afterPath="$PROJECT_DIR$/docs/docFiles/01_Installation/01_SSH.md" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/docs/docFiles/03_Interface_Designer/02_Guide.md" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/docs/docFiles/03_Interface_Designer/03_Examples/01_Button_Group.md" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/docs/docFiles/03_Interface_Designer/Widgets/Button.md" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/docs/docFiles/03_Interface_Designer/Widgets/Checkbox.md" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/docs/docFiles/03_Interface_Designer/Widgets/Combobox.md" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/docs/docFiles/03_Interface_Designer/Widgets/LinearLayout.md" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/docs/docFiles/03_Interface_Designer/Widgets/ProgressBar.md" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/docs/docFiles/03_Interface_Designer/Widgets/ProgressIndicator.md" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/docs/docFiles/03_Interface_Designer/Widgets/RadioButton.md" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/docs/docFiles/03_Interface_Designer/Widgets/ResponsiveColumns.md" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/docs/docFiles/03_Interface_Designer/Widgets/ScrollableContainer.md" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/docs/docFiles/03_Interface_Designer/Widgets/Select.md" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/docs/docFiles/03_Interface_Designer/Widgets/SidePane.md" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/docs/docFiles/03_Interface_Designer/Widgets/Slider.md" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/docs/docFiles/03_Interface_Designer/Widgets/StarRating.md" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/docs/docFiles/03_Interface_Designer/Widgets/Store.md" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/docs/docFiles/03_Interface_Designer/Widgets/SwapView.md" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/docs/docFiles/03_Interface_Designer/Widgets/Switch.md" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/docs/docFiles/03_Interface_Designer/Widgets/Toaster.md" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/docs/docFiles/03_Interface_Designer/Widgets/ToggleButton.md" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/docs/docFiles/03_Interface_Designer/Widgets/ViewIndicator.md" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/docs/docFiles/03_Interface_Designer/Widgets/ViewStack.md" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/docs/docFiles/03_Interface_Designer/Widgets/channelBreakpoints.md" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/docs/docFiles/03_Interface_Designer/Widgets/features.md" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/docs/docFiles/03_Interface_Designer/Widgets/images/Button.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/docs/docFiles/03_Interface_Designer/Widgets/images/Checkbox1.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/docs/docFiles/03_Interface_Designer/Widgets/images/Combobox-multiple.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/docs/docFiles/03_Interface_Designer/Widgets/images/Combobox-single.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/docs/docFiles/03_Interface_Designer/Widgets/images/LinearLayout.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/docs/docFiles/03_Interface_Designer/Widgets/images/ProgressBar1.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/docs/docFiles/03_Interface_Designer/Widgets/images/ProgressBar2.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/docs/docFiles/03_Interface_Designer/Widgets/images/ProgressBar3.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/docs/docFiles/03_Interface_Designer/Widgets/images/ProgressBar4.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/docs/docFiles/03_Interface_Designer/Widgets/images/ProgressBar5.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/docs/docFiles/03_Interface_Designer/Widgets/images/ProgressBar6.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/docs/docFiles/03_Interface_Designer/Widgets/images/ProgressIndicator1.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/docs/docFiles/03_Interface_Designer/Widgets/images/ProgressIndicator2.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/docs/docFiles/03_Interface_Designer/Widgets/images/ProgressIndicator3.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/docs/docFiles/03_Interface_Designer/Widgets/images/ProgressIndicator4.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/docs/docFiles/03_Interface_Designer/Widgets/images/ProgressIndicator5.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/docs/docFiles/03_Interface_Designer/Widgets/images/ProgressIndicator6.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/docs/docFiles/03_Interface_Designer/Widgets/images/RadioButton1.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/docs/docFiles/03_Interface_Designer/Widgets/images/ScrollableContainer-desktop.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/docs/docFiles/03_Interface_Designer/Widgets/images/ScrollableContainer-mobile.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/docs/docFiles/03_Interface_Designer/Widgets/images/Select-multiple.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/docs/docFiles/03_Interface_Designer/Widgets/images/Select-single.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/docs/docFiles/03_Interface_Designer/Widgets/images/SidePane.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/docs/docFiles/03_Interface_Designer/Widgets/images/Slider1.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/docs/docFiles/03_Interface_Designer/Widgets/images/StarRating.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/docs/docFiles/03_Interface_Designer/Widgets/images/StarRatingHovered.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/docs/docFiles/03_Interface_Designer/Widgets/images/SwapView.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/docs/docFiles/03_Interface_Designer/Widgets/images/Switch1.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/docs/docFiles/03_Interface_Designer/Widgets/images/ToggleButton1.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/docs/docFiles/03_Interface_Designer/Widgets/images/ViewIndicator.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/docs/docFiles/03_Interface_Designer/Widgets/images/ViewStack.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/docs/docFiles/03_Interface_Designer/Widgets/index.md" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/docs/docFiles/03_Interface_Designer/Widgets/list/List.md" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/docs/docFiles/03_Interface_Designer/Widgets/list/PageableList.md" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/docs/docFiles/03_Interface_Designer/Widgets/list/images/CategorizedList.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/docs/docFiles/03_Interface_Designer/Widgets/list/images/CustomRenderer.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/docs/docFiles/03_Interface_Designer/Widgets/list/images/List.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/docs/docFiles/03_Interface_Designer/Widgets/list/images/PageLoaded.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/docs/docFiles/03_Interface_Designer/Widgets/list/images/PageLoader.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/docs/docFiles/03_Interface_Designer/Widgets/list/images/PageLoading.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/docs/docFiles/03_Interface_Designer/Widgets/list/images/PreviousPageLoader.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/docs/docFiles/03_Interface_Designer/Widgets/list/images/Selectable.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/docs/docFiles/03_Interface_Designer/Widgets/setup.md" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/docs/docFiles/03_Interface_Designer/Widgets/styling.md" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/docs/docFiles/03_Interface_Designer/Widgets/tutorial/Part1GettingStarted.md" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/docs/docFiles/03_Interface_Designer/Widgets/tutorial/Part2QuickLook.md" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/docs/docFiles/03_Interface_Designer/Widgets/tutorial/Part3PhotoFeedApp.md" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/docs/docFiles/03_Interface_Designer/Widgets/tutorial/Part4ListView.md" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/docs/docFiles/03_Interface_Designer/Widgets/tutorial/Part5CustomRenderer.md" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/docs/docFiles/03_Interface_Designer/Widgets/tutorial/Part6DetailsView.md" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/docs/docFiles/03_Interface_Designer/Widgets/tutorial/Part7SettingsView.md" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/docs/docFiles/03_Interface_Designer/Widgets/tutorial/Part8Build.md" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/docs/docFiles/03_Interface_Designer/Widgets/tutorial/images/detailsketch.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/docs/docFiles/03_Interface_Designer/Widgets/tutorial/images/detailsview1.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/docs/docFiles/03_Interface_Designer/Widgets/tutorial/images/detailsview2.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/docs/docFiles/03_Interface_Designer/Widgets/tutorial/images/final.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/docs/docFiles/03_Interface_Designer/Widgets/tutorial/images/initial.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/docs/docFiles/03_Interface_Designer/Widgets/tutorial/images/itemrenderer1.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/docs/docFiles/03_Interface_Designer/Widgets/tutorial/images/itemrenderer2.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/docs/docFiles/03_Interface_Designer/Widgets/tutorial/images/itemsketch.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/docs/docFiles/03_Interface_Designer/Widgets/tutorial/images/listheader.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/docs/docFiles/03_Interface_Designer/Widgets/tutorial/images/listview1.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/docs/docFiles/03_Interface_Designer/Widgets/tutorial/images/listview2.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/docs/docFiles/03_Interface_Designer/Widgets/tutorial/images/progressindicator.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/docs/docFiles/03_Interface_Designer/Widgets/tutorial/images/secondview.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/docs/docFiles/03_Interface_Designer/Widgets/tutorial/images/settingssketch.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/docs/docFiles/03_Interface_Designer/Widgets/tutorial/images/settingsview.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/docs/docFiles/03_Interface_Designer/Widgets/tutorial/images/sidepane.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/docs/docFiles/03_Interface_Designer/Widgets/tutorial/images/sketch.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/docs/docFiles/03_Interface_Designer/Widgets/tutorial/images/thirdview.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/docs/docFiles/03_Interface_Designer/Widgets/tutorial/index.md" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/docs/docFiles/03_Utils_API/01_Arrays_Strings_Numbers.md" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/docs/docFiles/03_Utils_API/02_Time_Dates.md" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/docs/docFiles/02_Configuration/01_Overview.md" afterPath="$PROJECT_DIR$/docs/docFiles/02_Configuration/01_Overview.md" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/docs/docFiles/config.json" afterPath="$PROJECT_DIR$/docs/docFiles/config.json" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="xamiro.iws" />
@@ -45,14 +138,37 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="00_Getting_Started.md" pinned="false" current-in-tab="true">
+      <file leaf-file-name="00_Getting_Started.md" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/docs/docFiles/00_Getting_Started.md">
           <provider editor-type-id="MarkdownPreviewEditor">
             <state />
           </provider>
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.06185567" vertical-offset="0" max-vertical-offset="582">
+            <state vertical-scroll-proportion="-1.125" vertical-offset="0" max-vertical-offset="144">
               <caret line="2" column="38" selection-start-line="2" selection-start-column="38" selection-end-line="2" selection-end-column="38" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="config.json" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/docs/docFiles/config.json">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-3.3333333" vertical-offset="0" max-vertical-offset="612">
+              <caret line="5" column="24" selection-start-line="5" selection-start-column="24" selection-end-line="5" selection-end-column="24" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="01_Overview.md" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/docs/docFiles/02_Configuration/01_Overview.md">
+          <provider editor-type-id="MarkdownPreviewEditor">
+            <state />
+          </provider>
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.22048998" vertical-offset="0" max-vertical-offset="898">
+              <caret line="11" column="0" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -97,19 +213,6 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="01_Button_Group.md" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/docs/docFiles/03_Interface_Designer/03_Examples/01_Button_Group.md">
-          <provider editor-type-id="MarkdownPreviewEditor">
-            <state />
-          </provider>
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-8.4375" vertical-offset="576" max-vertical-offset="2862">
-              <caret line="47" column="6" selection-start-line="44" selection-start-column="0" selection-end-line="47" selection-end-column="6" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
     </leaf>
   </component>
   <component name="FindManager">
@@ -124,13 +227,14 @@
     <option name="changedFiles">
       <list>
         <option value="$PROJECT_DIR$/.gitignore" />
-        <option value="$PROJECT_DIR$/docs/docFiles/config.json" />
         <option value="$PROJECT_DIR$/docs/docFiles/01_Installation/_index.md" />
         <option value="$PROJECT_DIR$/docs/docFiles/01_Installation/01_Github.md" />
         <option value="$PROJECT_DIR$/docs/docFiles/01_Installation/00_Overview.md" />
         <option value="$PROJECT_DIR$/docs/docFiles/01_Installation/01_FTP.md" />
         <option value="$PROJECT_DIR$/docs/docFiles/01_Installation/01_SSH.md" />
         <option value="$PROJECT_DIR$/docs/docFiles/00_Getting_Started.md" />
+        <option value="$PROJECT_DIR$/docs/docFiles/config.json" />
+        <option value="$PROJECT_DIR$/docs/docFiles/02_Configuration/01_Overview.md" />
       </list>
     </option>
   </component>
@@ -216,6 +320,28 @@
               <option name="myItemId" value="docs" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="docFiles" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="02_Configuration" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="xamiro" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="xamiro" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="docs" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
           </PATH>
         </subPane>
       </pane>
@@ -270,10 +396,10 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="47" y="-4" width="1873" height="1084" extended-state="6" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32916668" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32916668" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Code Outline" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
@@ -331,14 +457,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/docs/docFiles/config.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-6.6666665" vertical-offset="0" max-vertical-offset="612">
-          <caret line="10" column="39" selection-start-line="10" selection-start-column="39" selection-end-line="10" selection-end-column="39" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/docs/daux/backup/docs/config.json">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="614">
@@ -381,17 +499,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="614">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/docs/docFiles/03_Interface_Designer/03_Examples/01_Button_Group.md">
-      <provider editor-type-id="MarkdownPreviewEditor">
-        <state />
-      </provider>
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-8.4375" vertical-offset="576" max-vertical-offset="2862">
-          <caret line="47" column="6" selection-start-line="44" selection-start-column="0" selection-end-line="47" selection-end-column="6" />
           <folding />
         </state>
       </provider>
@@ -445,8 +552,27 @@
         <state />
       </provider>
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.06185567" vertical-offset="0" max-vertical-offset="582">
+        <state vertical-scroll-proportion="-1.125" vertical-offset="0" max-vertical-offset="144">
           <caret line="2" column="38" selection-start-line="2" selection-start-column="38" selection-end-line="2" selection-end-column="38" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/docs/docFiles/config.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-3.3333333" vertical-offset="0" max-vertical-offset="612">
+          <caret line="5" column="24" selection-start-line="5" selection-start-column="24" selection-end-line="5" selection-end-column="24" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/docs/docFiles/02_Configuration/01_Overview.md">
+      <provider editor-type-id="MarkdownPreviewEditor">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.22048998" vertical-offset="0" max-vertical-offset="898">
+          <caret line="11" column="0" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
           <folding />
         </state>
       </provider>
