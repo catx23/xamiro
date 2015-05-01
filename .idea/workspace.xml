@@ -2,122 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8b415080-f0ca-4803-a89e-1b9e53daea7e" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/docFiles/03_Interface_Designer/Widgets/images/Button.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/docFiles/03_Interface_Designer/Widgets/list/images/CategorizedList.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/docFiles/03_Interface_Designer/Widgets/images/Checkbox1.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/docFiles/03_Interface_Designer/Widgets/images/Combobox-multiple.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/docFiles/03_Interface_Designer/Widgets/images/Combobox-single.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/docFiles/03_Interface_Designer/Widgets/list/images/CustomRenderer.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/docFiles/03_Interface_Designer/Widgets/images/LinearLayout.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/docFiles/03_Interface_Designer/Widgets/list/images/List.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/docFiles/03_Interface_Designer/Widgets/list/images/PageLoaded.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/docFiles/03_Interface_Designer/Widgets/list/images/PageLoader.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/docFiles/03_Interface_Designer/Widgets/list/images/PageLoading.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/docFiles/03_Interface_Designer/Widgets/list/images/PreviousPageLoader.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/docFiles/03_Interface_Designer/Widgets/images/ProgressBar1.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/docFiles/03_Interface_Designer/Widgets/images/ProgressBar2.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/docFiles/03_Interface_Designer/Widgets/images/ProgressBar3.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/docFiles/03_Interface_Designer/Widgets/images/ProgressBar4.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/docFiles/03_Interface_Designer/Widgets/images/ProgressBar5.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/docFiles/03_Interface_Designer/Widgets/images/ProgressBar6.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/docFiles/03_Interface_Designer/Widgets/images/ProgressIndicator1.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/docFiles/03_Interface_Designer/Widgets/images/ProgressIndicator2.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/docFiles/03_Interface_Designer/Widgets/images/ProgressIndicator3.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/docFiles/03_Interface_Designer/Widgets/images/ProgressIndicator4.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/docFiles/03_Interface_Designer/Widgets/images/ProgressIndicator5.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/docFiles/03_Interface_Designer/Widgets/images/ProgressIndicator6.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/docFiles/03_Interface_Designer/Widgets/images/RadioButton1.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/docFiles/03_Interface_Designer/Widgets/images/ScrollableContainer-desktop.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/docFiles/03_Interface_Designer/Widgets/images/ScrollableContainer-mobile.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/docFiles/03_Interface_Designer/Widgets/images/Select-multiple.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/docFiles/03_Interface_Designer/Widgets/images/Select-single.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/docFiles/03_Interface_Designer/Widgets/list/images/Selectable.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/docFiles/03_Interface_Designer/Widgets/images/SidePane.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/docFiles/03_Interface_Designer/Widgets/images/Slider1.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/docFiles/03_Interface_Designer/Widgets/images/StarRating.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/docFiles/03_Interface_Designer/Widgets/images/StarRatingHovered.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/docFiles/03_Interface_Designer/Widgets/images/SwapView.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/docFiles/03_Interface_Designer/Widgets/images/Switch1.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/docFiles/03_Interface_Designer/Widgets/images/ToggleButton1.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/docFiles/03_Interface_Designer/Widgets/images/ViewIndicator.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/docFiles/03_Interface_Designer/Widgets/images/ViewStack.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/daux" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/docFiles/03_Interface_Designer/Widgets/tutorial/images/detailsketch.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/docFiles/03_Interface_Designer/Widgets/tutorial/images/detailsview1.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/docFiles/03_Interface_Designer/Widgets/tutorial/images/detailsview2.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/docFiles/03_Interface_Designer/Widgets/tutorial/images/final.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/docFiles/03_Interface_Designer/Widgets/tutorial/images/initial.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/docFiles/03_Interface_Designer/Widgets/tutorial/images/itemrenderer1.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/docFiles/03_Interface_Designer/Widgets/tutorial/images/itemrenderer2.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/docFiles/03_Interface_Designer/Widgets/tutorial/images/itemsketch.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/docFiles/03_Interface_Designer/Widgets/tutorial/images/listheader.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/docFiles/03_Interface_Designer/Widgets/tutorial/images/listview1.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/docFiles/03_Interface_Designer/Widgets/tutorial/images/listview2.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/docFiles/03_Interface_Designer/Widgets/tutorial/images/progressindicator.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/docFiles/03_Interface_Designer/Widgets/tutorial/images/secondview.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/docFiles/03_Interface_Designer/Widgets/tutorial/images/settingssketch.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/docFiles/03_Interface_Designer/Widgets/tutorial/images/settingsview.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/docFiles/03_Interface_Designer/Widgets/tutorial/images/sidepane.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/docFiles/03_Interface_Designer/Widgets/tutorial/images/sketch.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/docFiles/03_Interface_Designer/Widgets/tutorial/images/thirdview.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.gitmodules" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/docFiles/00_Getting_Started.md" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/docFiles/01_Installation/00_Overview.md" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/docFiles/03_Utils_API/01_Arrays_Strings_Numbers.md" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/docFiles/03_Interface_Designer/03_Examples/01_Button_Group.md" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/docFiles/01_Installation/01_FTP.md" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/docFiles/01_Installation/01_Github.md" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/docFiles/01_Installation/01_One_File.md" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/docFiles/02_Driver/01_Overview.md" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/docFiles/01_Installation/01_SSH.md" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/docFiles/02_Driver/02_Guide.md" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/docFiles/03_Interface_Designer/02_Guide.md" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/docFiles/03_Utils_API/02_Time_Dates.md" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/docFiles/02_Driver/03_API.md" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/docFiles/02_Driver/04_Editors.md" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/docFiles/02_Driver/05_Debugging.md" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/docFiles/03_Interface_Designer/Widgets/Button.md" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/docFiles/03_Interface_Designer/Widgets/Checkbox.md" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/docFiles/03_Interface_Designer/Widgets/Combobox.md" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/docFiles/03_Interface_Designer/Widgets/LinearLayout.md" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/docFiles/03_Interface_Designer/Widgets/list/List.md" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/docFiles/03_Interface_Designer/Widgets/list/PageableList.md" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/docFiles/03_Interface_Designer/Widgets/tutorial/Part1GettingStarted.md" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/docFiles/03_Interface_Designer/Widgets/tutorial/Part2QuickLook.md" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/docFiles/03_Interface_Designer/Widgets/tutorial/Part3PhotoFeedApp.md" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/docFiles/03_Interface_Designer/Widgets/tutorial/Part4ListView.md" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/docFiles/03_Interface_Designer/Widgets/tutorial/Part5CustomRenderer.md" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/docFiles/03_Interface_Designer/Widgets/tutorial/Part6DetailsView.md" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/docFiles/03_Interface_Designer/Widgets/tutorial/Part7SettingsView.md" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/docFiles/03_Interface_Designer/Widgets/tutorial/Part8Build.md" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/docFiles/03_Interface_Designer/Widgets/ProgressBar.md" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/docFiles/03_Interface_Designer/Widgets/ProgressIndicator.md" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/docFiles/03_Interface_Designer/Widgets/RadioButton.md" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/docFiles/03_Interface_Designer/Widgets/ResponsiveColumns.md" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/docFiles/03_Interface_Designer/Widgets/ScrollableContainer.md" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/docFiles/03_Interface_Designer/Widgets/Select.md" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/docFiles/03_Interface_Designer/Widgets/SidePane.md" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/docFiles/03_Interface_Designer/Widgets/Slider.md" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/docFiles/03_Interface_Designer/Widgets/StarRating.md" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/docFiles/03_Interface_Designer/Widgets/Store.md" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/docFiles/03_Interface_Designer/Widgets/SwapView.md" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/docFiles/03_Interface_Designer/Widgets/Switch.md" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/docFiles/03_Interface_Designer/Widgets/Toaster.md" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/docFiles/03_Interface_Designer/Widgets/ToggleButton.md" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/docFiles/03_Interface_Designer/Widgets/ViewIndicator.md" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/docFiles/03_Interface_Designer/Widgets/ViewStack.md" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/docFiles/03_Interface_Designer/Widgets/channelBreakpoints.md" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/docFiles/config.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/docFiles/03_Interface_Designer/Widgets/features.md" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/docFiles/index.md" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/docFiles/03_Interface_Designer/Widgets/index.md" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/docFiles/03_Interface_Designer/Widgets/tutorial/index.md" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/docFiles/03_Interface_Designer/Widgets/setup.md" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/docFiles/03_Interface_Designer/Widgets/styling.md" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/docs/installation.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/docs/installation.md" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/install/remote/install.php" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/docs/docFiles/01_Installation/00_Overview.md" afterPath="$PROJECT_DIR$/docs/docFiles/01_Installation/00_Overview.md" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/docs/docFiles/01_Installation/01_FTP.md" afterPath="$PROJECT_DIR$/docs/docFiles/01_Installation/01_FTP.md" />
     </list>
     <ignored path="xamiro.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -141,14 +27,27 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="00_Overview.md" pinned="false" current-in-tab="true">
+      <file leaf-file-name="00_Overview.md" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/docs/docFiles/01_Installation/00_Overview.md">
           <provider editor-type-id="MarkdownPreviewEditor">
             <state />
           </provider>
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.06185567" vertical-offset="0" max-vertical-offset="582">
-              <caret line="2" column="18" selection-start-line="2" selection-start-column="18" selection-end-line="2" selection-end-column="18" />
+            <state vertical-scroll-proportion="-2.25" vertical-offset="0" max-vertical-offset="342">
+              <caret line="4" column="27" selection-start-line="4" selection-start-column="27" selection-end-line="4" selection-end-column="27" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="01_FTP.md" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/docs/docFiles/01_Installation/01_FTP.md">
+          <provider editor-type-id="MarkdownPreviewEditor">
+            <state />
+          </provider>
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.4329897" vertical-offset="0" max-vertical-offset="582">
+              <caret line="14" column="98" selection-start-line="14" selection-start-column="98" selection-end-line="14" selection-end-column="98" />
               <folding />
             </state>
           </provider>
@@ -172,6 +71,7 @@
         <option value="$PROJECT_DIR$/docs/docFiles/00_Getting_Started.md" />
         <option value="$PROJECT_DIR$/docs/docFiles/01_Installation/_index.md" />
         <option value="$PROJECT_DIR$/docs/docFiles/01_Installation/00_Overview.md" />
+        <option value="$PROJECT_DIR$/docs/docFiles/01_Installation/01_FTP.md" />
       </list>
     </option>
   </component>
@@ -470,24 +370,24 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/docs/docFiles/01_Installation/01_FTP.md">
-      <provider editor-type-id="MarkdownPreviewEditor">
-        <state />
-      </provider>
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.15463917" vertical-offset="0" max-vertical-offset="594">
-          <caret line="5" column="54" selection-start-line="5" selection-start-column="54" selection-end-line="5" selection-end-column="54" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/docs/docFiles/01_Installation/00_Overview.md">
       <provider editor-type-id="MarkdownPreviewEditor">
         <state />
       </provider>
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.06185567" vertical-offset="0" max-vertical-offset="582">
-          <caret line="2" column="18" selection-start-line="2" selection-start-column="18" selection-end-line="2" selection-end-column="18" />
+        <state vertical-scroll-proportion="-2.25" vertical-offset="0" max-vertical-offset="342">
+          <caret line="4" column="27" selection-start-line="4" selection-start-column="27" selection-end-line="4" selection-end-column="27" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/docs/docFiles/01_Installation/01_FTP.md">
+      <provider editor-type-id="MarkdownPreviewEditor">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.4329897" vertical-offset="0" max-vertical-offset="582">
+          <caret line="14" column="98" selection-start-line="14" selection-start-column="98" selection-end-line="14" selection-end-column="98" />
           <folding />
         </state>
       </provider>

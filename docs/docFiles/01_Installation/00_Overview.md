@@ -2,7 +2,12 @@
  
 1. With [FTP](FTP)
 
-2. With [Github](Github)
+2. With [git clone](Github)
 
-2. With [Github](Github)
+3. One file upload [One_File](One_File)
+
+4. With [SSH](SSH)
+
+4. Coming: with Composer
+
 
