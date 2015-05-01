@@ -2,11 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8b415080-f0ca-4803-a89e-1b9e53daea7e" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/docFiles/02_Configuration/02_Options.md" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/docFiles/02_Configuration/03_Profiles.md" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/docs/docFiles/02_Configuration/02_Guide.md" afterPath="$PROJECT_DIR$/docs/docFiles/02_Configuration/02_Url_Parameters.md" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/docs/docFiles/02_Configuration/01_Overview.md" afterPath="$PROJECT_DIR$/docs/docFiles/02_Configuration/01_Overview.md" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/conf/_custom.php" afterPath="$PROJECT_DIR$/conf/_custom.php" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/docs/docFiles/02_Configuration/04_Editors.md" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/docs/docFiles/02_Configuration/05_Debugging.md" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/docs/docFiles/02_Configuration/02_Options.md" afterPath="$PROJECT_DIR$/docs/docFiles/02_Configuration/02_Options.md" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="xamiro.iws" />
@@ -34,8 +32,8 @@
       <file leaf-file-name="01_Overview.md" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/docs/docFiles/02_Configuration/01_Overview.md">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-11.8125" vertical-offset="0" max-vertical-offset="594">
-              <caret line="21" column="47" selection-start-line="21" selection-start-column="47" selection-end-line="21" selection-end-column="47" />
+            <state vertical-scroll-proportion="-4.5" vertical-offset="0" max-vertical-offset="594">
+              <caret line="8" column="33" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="33" />
               <folding />
             </state>
           </provider>
@@ -47,8 +45,8 @@
       <file leaf-file-name="02_Options.md" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/docs/docFiles/02_Configuration/02_Options.md">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.38084632" vertical-offset="0" max-vertical-offset="898">
-              <caret line="19" column="0" selection-start-line="19" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.26057908" vertical-offset="0" max-vertical-offset="1098">
+              <caret line="13" column="30" selection-start-line="13" selection-start-column="30" selection-end-line="13" selection-end-column="30" />
               <folding />
             </state>
           </provider>
@@ -86,8 +84,8 @@
       <file leaf-file-name="index.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/index.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-22.0" vertical-offset="702" max-vertical-offset="6876">
-              <caret line="77" column="8" selection-start-line="77" selection-start-column="0" selection-end-line="77" selection-end-column="8" />
+            <state vertical-scroll-proportion="-20.666666" vertical-offset="2106" max-vertical-offset="6876">
+              <caret line="153" column="92" selection-start-line="153" selection-start-column="30" selection-end-line="153" selection-end-column="92" />
               <folding />
             </state>
           </provider>
@@ -546,10 +544,18 @@
         <state />
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/conf/default.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-2.4179776" vertical-offset="2152" max-vertical-offset="3042">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/docs/docFiles/02_Configuration/01_Overview.md">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-11.8125" vertical-offset="0" max-vertical-offset="594">
-          <caret line="21" column="47" selection-start-line="21" selection-start-column="47" selection-end-line="21" selection-end-column="47" />
+        <state vertical-scroll-proportion="-4.5" vertical-offset="0" max-vertical-offset="594">
+          <caret line="8" column="33" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="33" />
           <folding />
         </state>
       </provider>
@@ -559,16 +565,16 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/index.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-22.0" vertical-offset="702" max-vertical-offset="6876">
-          <caret line="77" column="8" selection-start-line="77" selection-start-column="0" selection-end-line="77" selection-end-column="8" />
+        <state vertical-scroll-proportion="-20.666666" vertical-offset="2106" max-vertical-offset="6876">
+          <caret line="153" column="92" selection-start-line="153" selection-start-column="30" selection-end-line="153" selection-end-column="92" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/docs/docFiles/02_Configuration/02_Options.md">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.38084632" vertical-offset="0" max-vertical-offset="898">
-          <caret line="19" column="0" selection-start-line="19" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.26057908" vertical-offset="0" max-vertical-offset="1098">
+          <caret line="13" column="30" selection-start-line="13" selection-start-column="30" selection-end-line="13" selection-end-column="30" />
           <folding />
         </state>
       </provider>
