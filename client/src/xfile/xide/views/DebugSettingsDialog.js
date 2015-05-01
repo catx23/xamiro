@@ -1,0 +1,4 @@
+//>>built
+define("xide/views/DebugSettingsDialog",["dojo/_base/declare","dojo/dom-style","./DebugSettingsView","xide/views/ActionDialog"],function(a,c,d,e){return a("xide.views.DebugSettingsDialog",[e],{view:null,item:null,onResized:function(){this._resizeToContent();this.resize()},_createView:function(b){this.view=new d({className:"debugSettingsView",delegate:this,ctx:this.ctx,settings:b},dojo.doc.createElement("div"));this.containerNode.appendChild(this.view.domNode);this.view.startup()},initWithSettings:function(b){try{this._createView(b)}catch(a){console.error(a)}this.addActionButtons();
+c.set(this.containerNode,{height:"inherit"});this.fixHeight();this.resize()},startup:function(){this.inherited(arguments);this.didLoad||(this.didLoad=!0)}})});
+//# sourceMappingURL=DebugSettingsDialog.js.map

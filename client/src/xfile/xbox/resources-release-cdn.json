@@ -1,0 +1,75 @@
+{
+    "class":"cmx.types.Resources",
+    "includes":[
+
+    ],
+    "items":[
+        {
+            "class":"cmx.types.Resource",
+            "type":"JS-HEADER-INCLUDE",
+            "url":"%CDN_URL%/client/src/xfile/ext/xfileExternals.js",
+            "enabled":true
+        },
+        {
+            "class":"cmx.types.Resource",
+            "type":"CSS",
+            "url":"%XASWEB%/xfile/xbox/css/elusive-icons/elusive-webfont.css",
+            "enabled":false
+        },
+        {
+            "class":"cmx.types.Resource",
+            "type":"CSS",
+            "url":"%XASWEB%/xfile/xbox/resources/app.css",
+            "enabled":true
+        },
+        {
+            "class":"cmx.types.Resource",
+            "type":"JS-HEADER-SCRIPT-TAG",
+            "url":"%XASWEB%/xfile/xbox/Header.js",
+            "enabled":true
+        },
+        {
+            "class":"cmx.types.Resource",
+            "type":"CSS",
+            "url":"%XASWEB%/themes/jQuery/%JQUERY_THEME%/jquery-ui.css",
+            "enabled":true
+        },
+        {
+            "class":"cmx.types.Resource",
+            "type":"JS-HEADER-INCLUDE",
+            "enabled": true,
+            "url":"%CDN_URL%/client/src/xfile/ext/ace/ace.js"
+        },
+        {
+            "class":"cmx.types.Resource",
+            "type":"JS-HEADER-INCLUDE",
+            "enabled": false,
+            "url":"%CDN_URL%/client/src/xfile/ext/ace/mode-html_completions.js"
+        },
+        {
+            "class":"cmx.types.Resource",
+            "type":"JS-HEADER-INCLUDE",
+            "enabled": true,
+            "url":"%CDN_URL%/client/src/xfile/ext/ace/ext-language_tools.js"
+        },
+        {
+            "class":"cmx.types.Resource",
+            "type":"HTML",
+            "url":"%XASWEB%/xfile/xbox/index_cdn.html",
+            "enabled":true
+        },
+        {
+            "class":"cmx.types.Resource",
+            "type":"LOGIN",
+            "url":"%XASWEB%/xfile/xbox/login.html",
+            "enabled":true
+        },
+        {
+            "class":"cmx.types.Resource",
+            "type":"CSS",
+            "enabled": false,
+            "url":"%XASWEB%/xfile/xbox/css/font-awesome/css/font-awesome.css"
+        }
+
+    ]
+}

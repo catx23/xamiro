@@ -1,0 +1,61 @@
+@charset "utf-8";
+*{
+	margin: 0px;
+	padding: 0px;	
+}
+
+/* CSS Document */
+/* ----------------- thumbnails label  -------------------- */
+.largeLabel{
+	font-family:Arial, Helvetica, sans-serif !important;
+	margin: 0px !important;
+	padding: 0px !important;
+	margin-right: 10px !important;
+	margin-left: 10px !important;
+	font-size:16px !important;
+	font-weight:400 !important;
+	line-height:20px !important;
+	color:#000000 !important;
+	text-align:center !important;
+	font-weight:100 !important;
+}
+
+.smallLabel{
+	font-family:Arial, Helvetica, sans-serif !important;
+	margin: 0px !important;
+	padding: 0px !important;
+	margin: 6px !important;
+	margin-bottom:0px !important;
+	margin-right: 10px !important;
+	margin-left: 10px !important;
+	font-size:13px !important;
+	line-height:16px !important;
+	color:#AAAAAA !important;
+	text-align:center !important;
+	font-weight:100 !important;
+}
+
+/* -------- lightbox description window  ---------- */
+.mediaDescriptionHeader{
+	font-family:Arial, Helvetica, sans-serif !important;
+	margin: 0px !important;
+	padding: 0px !important;
+	margin: 6px !important;
+	margin-right: 10px !important;
+	font-size:22px !important;
+	line-height:22px !important;
+	color:#000000 !important;
+	font-weight:100 !important;
+}
+
+.mediaDescriptionText{
+	font-family:Arial, Helvetica, sans-serif !important;
+	margin: 0px !important;
+	padding: 0px !important;
+	margin: 6px !important;
+	margin-right: 10px !important;
+	font-size:13px !important;
+	line-height:18px !important;
+	color:#000000 !important;
+	font-weight:100 !important;
+}

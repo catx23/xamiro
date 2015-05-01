@@ -1,0 +1,9 @@
+.urlParameterDialog{
+    min-height: 115px;
+}
+.xSandbox{
+    height: inherit;
+}
+.xSandbox .layoutCenter{
+    padding: 0px;
+}

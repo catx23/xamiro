@@ -1,0 +1,12 @@
+.iconStatusOff {
+  color: red;
+}
+.iconStatusOn {
+  color: #008000;
+}
+.iconStatusBusy {
+  background-image: url("images/console_spinner_proc.gif");
+  background-size: 100% 100%;
+  height: 15px;
+  width: 15px;
+}

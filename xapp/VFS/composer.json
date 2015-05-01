@@ -1,0 +1,29 @@
+{
+    "name": "xapp/VFS",
+    "type": "xapp-module",
+    "keywords": ["xapp", "rpc"],
+    "homepage": "http://xapp-php.com",
+    "license": "GPL",
+    "support":{
+        "issues": "https://bugs.xapp-php.com:8888",
+        "wiki": "http://www.xapp-php.com/docs/html/"
+    },
+    "config": {
+        "vendor-dir": "vendor"
+    },
+    "require": {
+        "php": ">=5.3.0",
+        "xapp/xflysystem": "dev-master",
+        "aws/aws-sdk-php": "~2.5",
+        "predis/predis": "~0.8.4",
+        "dropbox/dropbox-sdk": "~1.1.1",
+        "rackspace/php-opencloud": "~1.9.1",
+        "sabre/dav": "~1.8.7",
+        "phpseclib/phpseclib": "~0.3.5"
+
+    },
+    "autoload": {
+
+    },
+    "minimum-stability": "dev"
+}

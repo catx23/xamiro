@@ -1,0 +1,75 @@
+define(
+    ({
+        previous:"Previo",
+        done:"Hecho",
+        publish:"Publicar",
+        preview:"Visualización Previa",
+        colors:"Colores",
+        create_category:"Crear Categoria",
+        create_content:"Crear Contenido",
+        create_venue:"Crear Lugar",
+        create_new_section_tab:"Crea Nueva Subpestaña",
+        create_app:"Crear Aplicación",
+        delete_application:"Cancelar Aplicación",
+        select_source:"Seleccionar un origen",
+        external_link:"Enlace Externo",
+        rss:"RSS",
+        file:"Archivo",
+        radio_stream:"Radio Stream",
+        upload:"Subir",
+        register_joomla:"Registrar Joomla",
+        register_wordpress:"Registrar Wordpress",
+        register_google_service:"Registrar Google Service",
+        events:"Eventos",
+        general:"General",
+        music:"Música",
+        blog:"Blog",
+        new_application:"Nueva Aplicación",
+        primary_application_platform:"Plataforma de Aplicación Principal",
+        application_template:"Plantilla de Aplicación",
+        create:"Crear",
+        my_uploads:"Mis Cargas",
+        upload_file:"Subir Archivo",
+        mono_dark:"Mono Negro",
+        mono_white:"Mono Blanco",
+        blue_buttons:"Botones Azules",
+        content:"Contenido",
+        articles:"Artículos",
+        locations:"Ubicaciones",
+        xapp_cms:"XApp CMS",
+        one_year:"un año",
+        monthly:"mensual",
+        buy:"comprar",
+        discount:"descuento",
+        billed_monthly:"facturado mensualmente",
+        billed_annually:"facturado anualmente",
+        learn_more:"Saber más",
+        purchased:"Comprado",
+        select_an_icon:"Selecciona un Icono",
+        until:"hasta",
+        /***
+         * Merged from Widget Base
+         */
+        title: "Title",
+        apple_launch_screen:'Apple Launch Screen',
+        background:'Background',
+        /***
+         * Merged from App Tab Links View
+         */
+        disabled: "Disabled",
+        pictures: "Pictures",
+        news: "News",
+        places: "Places",
+        radio: "Radio",
+        web: "Web",
+        podcasts: "Podcasts",
+        videos: "Videos",
+        quick:"Rápido",
+        advanced:"Avanzado",
+        /***
+         * Merged from App Settings Tab View
+         */
+        facebook:"Facebook",
+        twitter:"Twitter"
+    })
+);

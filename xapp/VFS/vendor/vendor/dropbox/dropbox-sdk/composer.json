@@ -1,0 +1,29 @@
+{
+    "name": "dropbox/dropbox-sdk",
+    "description": "Dropbox SDK for PHP",
+    "keywords" : [ "dropbox" ],
+
+    "license": "MIT",
+
+    "autoload": {
+        "psr-0": { "Dropbox": "lib/" }
+    },
+
+    "require": {
+        "php": ">= 5.3",
+        "ext-curl": "*"
+    },
+
+    "require-dev": {
+        "phpunit/phpunit": "3.7.*",
+        "apigen/apigen": "2.8.1"
+    },
+
+    "repositories": [
+        {
+            "type": "vcs",
+            "url": "https://github.com/cakoose/apigen",
+            "comment": "Workaround for bug in ApiGen mainline."
+        }
+    ]
+}

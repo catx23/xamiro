@@ -1,0 +1,3 @@
+//>>built
+define("xide/form/Select",["dojo/_base/declare","dojo/dom-class","dojo/aspect","dijit/form/Select"],function(a,b,c,d){return a("xide.form.Select",[d],{_patchMenu:function(a){c.after(a,"onOpen",function(){var a=this._popupWrapper;a&&b.add(a,"ui-widget ui-widget-content")})},_fillContent:function(){this.inherited(arguments);this.dropDown&&this._patchMenu(this.dropDown)}})});
+//# sourceMappingURL=Select.js.map

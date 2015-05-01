@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="../ext/easyXDM.js"></script>
+
+    <script type="text/javascript" src="http://feather.aviary.com/js/feather.js"></script>
+
+    <style type="text/css">
+        html, body { margin: 0; padding: 0; width: 100% ; height: 100%; }
+
+        .loadingWrapper{
+            height: 100%;
+            position: absolute;
+            z-index: 999999;
+            width: 100%;
+            top:36%;
+            display: inline-block;
+
+        }
+        .loading {
+            position: relative;
+            width: 72px;    /* diameter */
+            height: 72px;    /* diameter */
+            margin: 0 auto;
+        }
+        .outer, .inner, .loading:after {
+            position: absolute;
+            left: 0;
+            top: 0;
+            right: 0;
+            bottom: 0;
+        }
+        /* Mask */
+        .loading:after {
+            margin: 10%;    /* stroke width */
+            border-radius: 100%;
+            background: #888;    /* container background */
+            color: #FFFFFF;
+            content: "Loading";
+            font-size: 10px;
+            padding-top: 21px;
+            text-align: center;
+        }
+        /* Spinning gradients */
+        .outer, .inner {
+            animation-duration: 5s;    /* speed */
+            -webkit-animation-duration: 5s;    /* speed */
+            animation-iteration-count: infinite;
+            -webkit-animation-iteration-count: infinite;
+            animation-timing-function: linear;
+            -webkit-animation-timing-function: linear;
+        }
+        .outer {
+            animation-name: rotate-outer;
+            -webkit-animation-name: rotate-outer;
+        }
+        .inner {
+            animation-name: rotate-inner;
+            -webkit-animation-name: rotate-inner;
+        }
+        /* Halfs */
+        .outer:before, .inner:before, .outer:after, .inner:after {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            content:" ";
+        }
+        /* Left half */
+        .outer:before, .inner:before {
+            left: 0;
+            right: 50%;
+            border-radius: 72px 0 0 72px;    /* diameter */
+        }
+        /* Right half */
+        .outer:after, .inner:after {
+            left: 50%;
+            right: 0;
+            border-radius: 0 72px 72px 0;    /* diameter */
+        }
+        /* Half gradients */
+        .outer:before {
+            background-image: -webkit-linear-gradient(top, hsla(0, 0%, 100%, 0.0), hsla(0, 0%, 100%, 0.5));
+            background-image: -moz-linear-gradient(top, hsla(0, 0%, 100%, 0.0), hsla(0, 0%, 100%, 0.5));
+            background-image: linear-gradient(to bottom, hsla(0, 0%, 100%, 0.0), hsla(0, 0%, 100%, 0.5));
+        }
+        .outer:after {
+            background-image: -webkit-linear-gradient(top, hsla(0, 0%, 100%, 1.0), hsla(0, 0%, 100%, 0.5));
+            background-image: -moz-linear-gradient(top, hsla(0, 0%, 100%, 1.0), hsla(0, 0%, 100%, 0.5));
+            background-image: linear-gradient(to bottom, hsla(0, 0%, 100%, 1.0), hsla(0, 0%, 100%, 0.5));
+        }
+        .inner:before {
+            background-image: -webkit-linear-gradient(top, hsla(0, 0%, 100%, 0.5), hsla(0, 0%, 75%, 0.5));
+            background-image: -moz-linear-gradient(top, hsla(0, 0%, 100%, 0.5), hsla(0, 0%, 75%, 0.5));
+            background-image: linear-gradient(to bottom, hsla(0, 0%, 100%, 0.5), hsla(0, 0%, 75%, 0.5));
+        }
+        .inner:after {
+            background-image: -webkit-linear-gradient(top, hsla(0, 0%, 50%, 0.5), hsla(0, 0%, 75%, 0.5));
+            background-image: -moz-linear-gradient(top, hsla(0, 0%, 50%, 0.5), hsla(0, 0%, 75%, 0.5));
+            background-image: linear-gradient(to bottom, hsla(0, 0%, 50%, 0.5), hsla(0, 0%, 75%, 0.5));
+        }
+        /* Spinning animations */
+        @keyframes rotate-outer {
+            0% {
+                transform: rotate(0deg);
+                -moz-transform: rotate(0deg);
+                -webkit-transform: rotate(0deg);
+            }
+            100% {
+                transform: rotate(1080deg);
+                -moz-transform: rotate(1080deg);
+                -webkit-transform: rotate(1080deg);
+            }
+        }
+        @-webkit-keyframes rotate-outer {
+            0% {
+                -webkit-transform: rotate(0deg);
+            }
+            100% {
+                -webkit-transform: rotate(1080deg);
+            }
+        }
+        @keyframes rotate-inner {
+            0% {
+                transform: rotate(720deg);
+                -moz-transform: rotate(720deg);
+                -webkit-transform: rotate(720deg);
+            }
+            100% {
+                transform: rotate(0deg);
+                -moz-transform: rotate(0deg);
+                -webkit-transform: rotate(0deg);
+            }
+        }
+        @-webkit-keyframes rotate-inner {
+            0% {
+                -webkit-transform: rotate(720deg);
+            }
+            100% {
+                -webkit-transform: rotate(0deg);
+            }
+        }
+    </style>
+
+    <script type="text/javascript">
+
+        var featherEditor = null;
+        var xdmSocket = null;
+        var editorImage=null;
+        var imageUrl=null;
+        var editorArgs=null;
+
+        function urlDecode (string, overwrite) {
+            if (!string || !string.length) {
+                return{}
+            }
+            var obj = {};
+            var pairs = string.split("&");
+            var pair, name, value;
+            for (var i = 0, len = pairs.length; i < len; i++) {
+                pair = pairs[i].split("=");
+                name = decodeURIComponent(pair[0]);
+                value = decodeURIComponent(pair[1]);
+                if(value!=null && value==='true'){
+                    value=true;
+                }else if(value==='false'){
+                    value=false;
+                }
+                if (overwrite !== true) {
+                    if (typeof obj[name] == "undefined") {
+                        obj[name] = value
+                    } else {
+                        if (typeof obj[name] == "string") {
+                            obj[name] = [obj[name]];
+                            obj[name].push(value)
+                        } else {
+                            obj[name].push(value)
+                        }
+                    }
+                } else {
+                    obj[name] = value
+                }
+            }
+            return obj;
+        }
+        function resize(w,h){
+
+        }
+        function img_create(src, alt, title) {
+            var img= document.createElement('img');
+            img.src= src;
+            img.id='theImage';
+            img.style.display='none';
+            if (alt!=null) img.alt= alt;
+            if (title!=null) img.title= title;
+            editorImage = img;
+            document.getElementsByTagName('body')[0].appendChild(img);
+            return img;
+        }
+        function onEditorReady(){
+            launchEditor('theImage', imageUrl);
+        }
+        function onMessage(message){
+            var result  = JSON.parse(message);
+
+            if(result && result.command && result.command==='edit')
+            {
+                if(editorImage==null){
+                    img_create(result.url,'','');
+                }
+                createEditor('theImage',result.url);
+                imageUrl = result.url;
+            }
+        }
+        function sendMessage(message)
+        {
+            xdmSocket.postMessage(JSON.stringify(message));
+        }
+        function init (){
+            var inUrl = '' + window.location.href;
+            var parameterString = '' ;
+            if(inUrl.lastIndexOf('?')){
+                parameterString = inUrl.substring(inUrl.lastIndexOf('?')+1,inUrl.length);
+                var urlParameters=urlDecode(parameterString);
+                var target =urlParameters.xdmTarget;
+                target=decodeURIComponent(target);
+                xdmSocket = new easyXDM.Socket({
+                    remote: "" + target,
+                    onMessage:function (message, origin)
+                    {
+                        onMessage(message);
+                    }
+                });
+            }
+        }
+
+        function launchEditor(id,src){
+            featherEditor.launch({
+                image: id,
+                url: src
+            });
+        }
+        function createEditor(id, src) {
+
+            featherEditor = new Aviary.Feather({
+                apiKey: 'c80d393515acf618',
+                apiVersion: 3,
+                appendTo:"body",
+                noCloseButton:true,
+                minimumStyling:false,
+                displayImageSize:true,
+                theme:'dark',
+                onReady:function(){
+                    var splash = document.getElementById('loadingWrapper');
+                    if(splash){
+                        splash.style.display='none';
+                    }
+                },
+                onError:function (errorObject){
+                },
+                onLoad:function (errorObject){
+
+                    launchEditor('theImage',imageUrl);
+                },
+                onClose:function()
+                {
+
+                },
+                onSave:function (imageID, newURL)
+                {
+                    sendMessage({
+                        command:'save',
+                        url:newURL
+                    })
+                }
+            });
+        }
+
+        document.onreadystatechange = function () {
+            var state = document.readyState;
+            if (state == 'interactive') {
+            } else if (state == 'complete') {
+                init();
+            }
+        }
+    </script>
+</head>
+<body style="height: 100%;width: 100%;" id="body">
+
+<div id="loadingWrapper" class="loadingWrapper">
+    <div class="loading">
+        <div class="outer"></div>
+        <div class="inner"></div>
+    </div>
+</div>
+
+</body>
+</html>

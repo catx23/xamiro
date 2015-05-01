@@ -1,0 +1,39 @@
+<h1>End-User-Manual</h1>
+<h2>Installation</h2>
+<ol>
+<li>Download from https://raw.githubusercontent.com/mc007/xbox-app/master/DIST/xbox.zip</li>
+<li>extract the zip on your in any folder</li>
+<li>Adjust permissions to 755 if needed</li>
+<li>Open http://localhost/xbox/</li>
+</ol>
+<h2>Installation via Bash-Shell (Putty,...). This needs wget to be installed !</h2>
+<p><code>bash
+   mkdir xbox-app;cd xbox-app; wget --no-check-certificate "https://raw.githubusercontent.com/mc007/xbox-app/master/DIST/xbox.zip" -O temp.zip; unzip temp.zip; rm temp.zip; chmod -R 755 .</code></p>
+<p>The above downloads a zip into a new directory 'xbox-app' and un-compresses it and adjusts the permissions and deletes the zip!</p>
+<h2>Configuration</h2>
+<h3>Permissions</h3>
+<p>All allowed user actions can adjusted in xbox-app/index.php in the static array "ALLOWED_ACTIONS"</p>
+<p>Allowed plugins can be adjusted in xbox-app/index.php in the variable "$XF_PROHIBITED_PLUGINS"</p>
+<h3>Adjusting the folder location</h3>
+<p>In xbox-app/index.php adjust variable "$XF_PATH" : This must be an absolute path with a trailing slash! Notice that this path can be outside of your web-server folder.</p>
+<h3>Configuration through URL parameters</h3>
+<p>Open the file manaager in different layout modes, append the entry URL by: </p>
+<p>index.php?<strong>layout=single</strong>: Single panel</p>
+<p>index.php?<strong>layout=dual</strong>: Dual panel</p>
+<p>index.php?<strong>layout=preview</strong>:  Preview layout (split view with media preview)</p>
+<p>index.php?<strong>layout=preview&amp;theme=dot-luv</strong>: Preview layout in dark theme (split view with media preview)</p>
+<p>index.php?<strong>layout=preview&amp;open=Pictures</strong>: Auto open picture folder in preview mode (split view with media preview)</p>
+<p>index.php?<strong>layout=gallery&amp;open=BurningMan&amp;minimal=true&amp;theme=dot-luv</strong>: Auto open picture folder in gallery mode (split view with cover flow view)</p>
+<p>index.php?<strong>layout=browser&amp;open=Pictures</strong>: Auto open picture folder in browser mode (Dual view with tree for navigation, classics!)</p>
+<h3>Users</h3>
+<p>The file manager has an ACL &amp; user system but it is not fully implemented. At the moment you can only adjust the password in xbox-app/xapp/Commander/Users.php:
+search for the segment "value": "asdasd" and change it to your needs!</p>
+<h3>Remote servers</h3>
+<ol>
+<li>You can add remote servers to the file manager in the interface, or you </li>
+<li>edit the file xbox-xapp/commander/vfs.php (must be writeable for the interface). See also xbox-xapp/commander/vfs_example.php. In any case it needs the special mount "root"</li>
+</ol>
+<h3>More information</h3>
+<ol>
+<li>Check the development repository at https://github.com/mc007/xbox-app/</li>
+</ol>

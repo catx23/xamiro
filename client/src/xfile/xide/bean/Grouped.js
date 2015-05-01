@@ -1,0 +1,3 @@
+//>>built
+define("xide/bean/Grouped",["dojo/_base/declare","xide/bean/Action","xide/types"],function(a,b,c){return a("xide/bean/Grouped",null,{_currentGroup:null,setCurrentGroup:function(a){this._currentGroup=a},getItemActions:function(){return this._getGroupActions()},_getGroupActions:function(){return[b.create("Block Group","el-icon-folder","File/New/Block Group",!0,null,c.ITEM_TYPE.BLOCK,"newBlocks",null,!0,null)]}})});
+//# sourceMappingURL=Grouped.js.map

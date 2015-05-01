@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="./ext/easyXDM.js"></script>
+
+    <!-- Ideally before closing body tag -->
+
+
+    <style type="text/css">
+
+    </style>
+
+    <script type="text/javascript">
+
+
+
+
+    </script>
+</head>
+<body style="height: 100%;width: 100%;" id="body">
+
+<img id="edit-me" class="img-responsive" src="http://192.168.1.37/projects/xbox-app/index.php?view=smdCall&theme=blitzer&rtConfig=debug&pConfig=run-release-debug&service=XCOM_Directory_Service.get&path=cm9vdCUzQSUyRiUyRnRlc3QlMkZJTUctMjAxNDA5MjMtV0EwMDAwLmpwZw==&callback=asdf&raw=html&attachment=0&send=1&user=21232f297a57a5a743894a0e4a801fc3&sig=f947867d481447f244df31b62eb30d38f9739446" alt=""/>
+
+
+
+
+
+</body>
+<script src="pixie/pixie-integrate.js"></script>
+<script>
+
+
+    var myPixie = Pixie.setOptions({
+        replaceOriginal: true
+    });
+    myPixie.open({
+        url:"http://192.168.1.37/projects/xbox-app/index.php?view=smdCall&theme=blitzer&rtConfig=debug&pConfig=run-release-debug&service=XCOM_Directory_Service.get&path=cm9vdCUzQSUyRiUyRnRlc3QlMkZJTUctMjAxNDA5MjMtV0EwMDAwLmpwZw==&callback=asdf&raw=html&attachment=0&send=1&user=21232f297a57a5a743894a0e4a801fc3&sig=f947867d481447f244df31b62eb30d38f9739446",
+        image: document.getElementById('edit-me')
+    });
+
+    /*
+     myPixie.enableInteractiveMode();
+
+     $('#edit-me').on('click', function(e) {
+     myPixie.open({
+     url: e.target.src,
+     image: e.target
+     });
+     });
+     */
+</script>
+
+</html>

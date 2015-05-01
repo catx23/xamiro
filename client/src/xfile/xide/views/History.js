@@ -1,0 +1,3 @@
+//>>built
+define("xide/views/History",["dojo/_base/declare"],function(b){return b("xide.views.History",null,{_history:[""],_index:0,push:function(a){this._history.push(a);this._index=this.length()},length:function(){return this._history.length},getNext:function(){this._index+=1;var a=this._history[this._index]||"";this._index=Math.min(this.length(),this._index);return a},getPrev:function(){this._index=Math.max(0,this._index-1);return this._history[this._index]}})});
+//# sourceMappingURL=History.js.map

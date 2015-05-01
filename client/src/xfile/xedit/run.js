@@ -1,0 +1,4 @@
+//>>built
+require({packages:["dojo","dijit","dojox",{name:"xapp",location:"xapp",packageMap:{}},{name:"xedit",location:"xedit",packageMap:{}},{name:"xas",location:"xas",packageMap:{}},{name:"xbox",location:"xbox",packageMap:{}},{name:"cbtree",location:"cbtree",packageMap:{}},{name:"xappconnect",location:"xappconnect",packageMap:{}},{name:"xide",location:"xide",packageMap:{}},{name:"dgrid",location:"dgrid",packageMap:{}},{name:"put-selector",location:"put-selector",packageMap:{}},{name:"xstyle",location:"xstyle",
+packageMap:{}},{name:"xfile",location:"xfile",packageMap:{}},{name:"xlog",location:"xlog",packageMap:{}},{name:"dcl",location:"dcl",packageMap:{}},{name:"xideve",location:"xideve",packageMap:{}},{name:"xdojo",location:"compat/xdojo",packageMap:{}},"xbox"],cache:{}},["xedit"]);
+//# sourceMappingURL=run.js.map
