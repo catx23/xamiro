@@ -347,6 +347,7 @@ class XApp_UserManager implements XApp_Security_IAuthenticator {
 
         xapp_import('xapp.Security.SimpleAuthorizator');
         xapp_import('xapp.Security.IIdentity');
+
         $session = XApp_Http_Session::factory();
 
         $this->session = $session;

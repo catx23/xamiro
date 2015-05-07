@@ -1440,6 +1440,10 @@ class XApp_Bootstrap
 		}
 	}
 
+	public function testFlag($what,$where){
+		return in_array($what, $where) && !in_array(-$what, $where);
+	}
+
 	/**
 	 * @return null|XApp_UserManager
 	 */
@@ -1447,9 +1451,8 @@ class XApp_Bootstrap
 	{
 		$flags = xapp_get_option(self::FLAGS);
 
-		if (in_array(XAPP_BOOTSTRAP_NEEDS_AUTHENTICATION, $flags) &&
-			xo_get(self::USER_CONF)
-		) {
+		if ($this->testFlag(XAPP_BOOTSTRAP_NEEDS_AUTHENTICATION,$flags) && xo_get(self::USER_CONF))
+		{
 			self::loadJSONTools();
 			self::loadXAppJSONStoreClasses();
 			xapp_import('xapp.Store.Json.Json');
@@ -1518,9 +1521,8 @@ class XApp_Bootstrap
 	{
 		$flags = xapp_get_option(self::FLAGS);
 
-		if (in_array(XAPP_BOOTSTRAP_NEEDS_AUTHENTICATION, $flags) &&
-			xo_get(self::USER_CONF)
-		) {
+		if ($this->testFlag(XAPP_BOOTSTRAP_NEEDS_AUTHENTICATION,$flags) && xo_get(self::USER_CONF)){
+
 			self::loadJSONTools();
 			self::loadXAppJSONStoreClasses();
 			xapp_import('xapp.Store.Json.Json');
@@ -1552,9 +1554,9 @@ class XApp_Bootstrap
 	public function isLoggedIn()
 	{
 		$flags = xapp_get_option(self::FLAGS);
-		if (in_array(XAPP_BOOTSTRAP_NEEDS_AUTHENTICATION, $flags) &&
-			xapp_get_option(self::USER_CONF, $this)
-		) {
+
+		if ($this->testFlag(XAPP_BOOTSTRAP_NEEDS_AUTHENTICATION,$flags) &&  xapp_get_option(self::USER_CONF, $this)){
+
 			self::loadJSONTools();
 			self::loadXAppJSONStoreClasses();
 			xapp_import('xapp.Store.Json.Json');

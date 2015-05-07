@@ -498,7 +498,7 @@ class XApp_Commander_Bootstrap extends XApp_Bootstrap implements Xapp_Singleton_
 
 	/***
 	 * run xapp to init your application and make use of all in build features such as
-	 * debuging, autoloading, error logging. xapp can only be initialized with this method
+	 * debugging, auto-loader, error logging. xapp can only be initialized with this method
 	 * expecting the optional xapp conf array which can also be set outside of xapp with
 	 * the generic function xapp_conf.
 	 */
@@ -523,23 +523,7 @@ class XApp_Commander_Bootstrap extends XApp_Bootstrap implements Xapp_Singleton_
 				XAPP_CONF_HANDLE_EXCEPTION => true,
 			);
 		}
-		/*
-				$conf = array
-				(
-					XAPP_CONF_DEBUG_MODE => true,
-					XAPP_CONF_AUTOLOAD => false,
-					XAPP_CONF_DEV_MODE => true,
-					XAPP_CONF_HANDLE_BUFFER => true,
-					XAPP_CONF_HANDLE_SHUTDOWN => false,
-					XAPP_CONF_HTTP_GZIP => true,
-					XAPP_CONF_CONSOLE => 'firephp',
-					XAPP_CONF_HANDLE_ERROR => null,
-					XAPP_CONF_HANDLE_EXCEPTION => true,
-					XAPP_CONF_EXECUTION_TIME => null,
-					XAPP_CONF_LOG_ERROR => $log,
-					XAPP_CONF_PROFILER_MODE=>null
-				);
-				*/
+
 		Xapp::run($conf);
 		xapp_import('xapp.Rpc.*');
 		xapp_import('xapp.Log.*');
@@ -980,8 +964,6 @@ class XApp_Commander_Bootstrap extends XApp_Bootstrap implements Xapp_Singleton_
 			$XAPP_RESOURCE_CONFIG_PATH = '' . xapp_get_option(self::APPDIR, $this) . DIRECTORY_SEPARATOR;
 			$XAPP_RESOURCE_CONFIG  =  xapp_get_option(self::XAPP_RESOURCE_CONFIG, $this);
 
-			error_log('$XAPP_RESOURCE_CONFIG ' . $XAPP_RESOURCE_CONFIG);
-
 
 			if(strlen($XAPP_RESOURCE_CONFIG)){
 
@@ -1038,8 +1020,6 @@ class XApp_Commander_Bootstrap extends XApp_Bootstrap implements Xapp_Singleton_
 					xapp_get_option(self::PLUGIN_MASK, $this)
 				);
 			}
-		}else{
-			//error_log('plugins disabled');
 		}
 
 		/***
@@ -1300,7 +1280,6 @@ class XApp_Commander_Bootstrap extends XApp_Bootstrap implements Xapp_Singleton_
 
 
 				$rpcServer = xapp_get_option(self::RPC_SERVER, $this);
-				//xapp_dump($rpcServer);
 				/***
 				 * Create the gateway
 				 */

@@ -73,7 +73,8 @@ function xapp_commander_render_app(
 	$RELATIVE_VARIABLES,
 	$_DEBUG,
 	$XAPP_COMPONENTS,
-	$XAPP_RESOURCE_CONFIG
+	$XAPP_RESOURCE_CONFIG,
+	$XAPP_BOOTSTRAP_OVERRIDE
 ) {
 
 	$_REQUEST_TYPE = XApp_Service_Entry_Utils::getServiceType();
@@ -426,9 +427,16 @@ function xapp_commander_render_app(
 					XApp_Commander_Bootstrap::USER_CONF => $XAPP_USER_CONFIG_PATH
 				);
 
+
+				if($XAPP_BOOTSTRAP_OVERRIDE){
+					$opt = array_merge_recursive((array)$opt,(array)$XAPP_BOOTSTRAP_OVERRIDE);
+				}
+
+
 				$xappBootrapper = XApp_Commander_Bootstrap::instance($opt);
 
 				$xappBootrapper->setupService();//tear down here
+
 
 				break;//over and out
 
@@ -476,7 +484,7 @@ function xapp_commander_render_app(
 	/***
 	 * Setup xapp commander bootstrap
 	 */
-	$xappBootrapperOptions = array(
+	$options = array(
 		XApp_Commander_Bootstrap::RESOURCE_RENDERER_PREFIX => $RESOURCE_PREFIX,
 		XApp_Commander_Bootstrap::RESOURCE_CONFIG_SUFFIX => $RESOURCE_CONFIG_PREFIX,
 		XApp_Commander_Bootstrap::BASEDIR => XAPP_BASEDIR,
@@ -504,8 +512,12 @@ function xapp_commander_render_app(
 	);
 
 
+	if($XAPP_BOOTSTRAP_OVERRIDE){
+		$options = array_merge_recursive((array)$options,(array)$XAPP_BOOTSTRAP_OVERRIDE);
+	}
+
 	//create bootstrap
-	$xappBootrapper = new XApp_Commander_Bootstrap($xappBootrapperOptions);
+	$xappBootrapper = new XApp_Commander_Bootstrap($options);
 
 	//do the bootstrap
 	$xappCommanderRenderer = $xappBootrapper->setup();
@@ -522,10 +534,8 @@ function xapp_commander_render_app(
 	return $result;
 }
 
+
 /**
- *
- * Main entry
- *
  * @param $XAPP_BASE_DIRECTORY
  * @param $XAPP_APP_NAME
  * @param $XAPP_CLIENT_DIRECTORY
@@ -534,12 +544,18 @@ function xapp_commander_render_app(
  * @param $UPLOAD_EXTENSIONS
  * @param $XFILE_CONFIG
  * @param string $XAPP_JQUERY_THEME
- * @param $SERVICE_DIRECTORY
  * @param $LOG_DIRECTORY
  * @param $CONF_FILE
- * @return array|bool|string
+ * @param $XAPP_SALT_KEY
+ * @param $XF_PROHIBITED_PLUGINS
+ * @param $RELATIVE_VARIABLES
+ * @param $XAPP_COMPONENTS
+ * @param $XAPP_RESOURCE_CONFIG
+ * @param null $XAPP_BOOTSTRAP_OVERRIDE
+ *
+ * @return array
  */
-function xapp_commander_render_standalone(
+function createApp(
 	$XAPP_BASE_DIRECTORY,
 	$XAPP_APP_NAME,
 	$XAPP_CLIENT_DIRECTORY,
@@ -554,7 +570,8 @@ function xapp_commander_render_standalone(
 	$XF_PROHIBITED_PLUGINS,
 	$RELATIVE_VARIABLES,
 	$XAPP_COMPONENTS,
-	$XAPP_RESOURCE_CONFIG
+	$XAPP_RESOURCE_CONFIG,
+	$XAPP_BOOTSTRAP_OVERRIDE=null
 ) {
 	/***
 	 * prepare and adjust bootstrapper for stand-alone
@@ -572,8 +589,9 @@ function xapp_commander_render_standalone(
 
 	XApp_App_Commander::loadDependencies();
 	xapp_setup_language_standalone();
-
 	xapp_import('xapp.Utils.Strings');
+	xapp_import('xapp.Utils.Debugging');
+
 
 	$urlParams = array();
 
@@ -713,7 +731,8 @@ function xapp_commander_render_standalone(
 		$RELATIVE_VARIABLES,
 		XApp_Service_Entry_Utils::isDebug() === true,
 		$XAPP_COMPONENTS,
-		$XAPP_RESOURCE_CONFIG
+		$XAPP_RESOURCE_CONFIG,
+		$XAPP_BOOTSTRAP_OVERRIDE
 	);
 
 

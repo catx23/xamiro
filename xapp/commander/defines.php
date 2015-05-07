@@ -133,7 +133,6 @@ if(!function_exists('xcom_event')){
     }
 }
 if(!function_exists('xcom_subscribe')){
-
     /**
      * @param $operation
      * @param $mixed

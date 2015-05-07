@@ -859,6 +859,7 @@ class XApp_VFS_Local extends XApp_VFS_Base implements Xapp_VFS_Interface_Access
 			return $retlist;
 		} else {            // Call getFilteredDirList from XApp_Directory_Utils
 			$pathResolved = $this->toRealPath($path);
+
 			if (!file_exists($pathResolved)) {
 				throw new Exception('path doesn exists');
 			}
@@ -923,8 +924,8 @@ class XApp_VFS_Local extends XApp_VFS_Base implements Xapp_VFS_Interface_Access
 		if ($resource) {
 			$resource = $this->resolveResource($resource);
 		} else {
-			/*xapp_dump($this);*/
 			error_log('couldnt resolve resource : ' . $name);
+			xapp_clog('couldnt resolve resource : ' . $name);
 			return null;
 		}
 

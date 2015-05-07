@@ -332,6 +332,20 @@ $XF_CONFIG = array(
 );
 
 
+
+/**
+ * Include main files
+ */
+require_once(XAPP_BASEDIR . 'commander/Bootstrap.php');
+require_once(XAPP_BASEDIR . 'commander/App.php');
+
+
+/**
+ * Bootstrap override
+ */
+$XAPP_BOOTSTRAP_OVERRIDE = array();
+
+
 /////////////////////////////////////////////////////////////////
 //
 //  3. First pass, override config with CONF_DIRECTORY/default.php
@@ -352,30 +366,37 @@ if(file_exists($XF_CUSTOM_PROFILE)){
 	require_once($XF_CUSTOM_PROFILE);
 }
 
-/**
- * Run xfile with config above
- */
 
-require_once(XAPP_BASEDIR . 'commander/App.php');
-
-$commanderStruct = xapp_commander_render_standalone(
-    $XAPP_SITE_DIRECTORY.DIRECTORY_SEPARATOR.'xapp'.DIRECTORY_SEPARATOR,//xapp php directory
+$app = createApp(
+	//xapp php directory
+    $XAPP_SITE_DIRECTORY.DIRECTORY_SEPARATOR.'xapp'.DIRECTORY_SEPARATOR,
+    //name of the client app
     'xbox',
-    $XAPP_SITE_DIRECTORY.DIRECTORY_SEPARATOR.'client'.DIRECTORY_SEPARATOR .'src' . DIRECTORY_SEPARATOR,//client abs directory
-    $XF_PATH,//the root folder to use
-    '',//additional folder suffix (important to split it from above)
+    //client absolute directory
+    $XAPP_SITE_DIRECTORY.DIRECTORY_SEPARATOR.'client'.DIRECTORY_SEPARATOR .'src' . DIRECTORY_SEPARATOR,
+    //the root file folder to use
+    $XF_PATH,
+    //additional folder suffix (important to split it from above)
+    '',
+    //upload extensions
 	$XF_ALLOWED_UPLOAD_EXTENSIONS,
+    //xf config
 	json_encode($XF_CONFIG),
-    $XF_THEME,//see client/themes/jQuery and pick the folder name
+    //jQuery theme see client/themes/jQuery and pick the folder name
+    $XF_THEME,
+    //logging directory
     $ROOT_DIRECTORY_ABSOLUTE . DIRECTORY_SEPARATOR . 'log' . DIRECTORY_SEPARATOR,
+    //settings file
     $ROOT_DIRECTORY_ABSOLUTE . DIRECTORY_SEPARATOR . 'conf' . DIRECTORY_SEPARATOR . 'settings.json',
+    //salt key
     $XAPP_SALT_KEY,
     $XF_PROHIBITED_PLUGINS,
     $XF_RESOURCE_VARIABLES,
     $XAPP_COMPONENTS,
-	$XAPP_RESOURCE_CONFIG
+	$XAPP_RESOURCE_CONFIG,
+    $XAPP_BOOTSTRAP_OVERRIDE
 );
 /**
- * Punch it Scotty!
+ * now punch it Scotty!
  */
-$commanderStruct['bootstrap']->handleRequest();
+$app['bootstrap']->handleRequest();

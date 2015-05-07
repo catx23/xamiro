@@ -100,6 +100,10 @@ define([
                 item = evt.item,
                 thiz = this;
 
+            if(!item || !item.path || !item._S){
+                return;
+            }
+
             if(item){
 
                 var mimes = [

@@ -182,4 +182,6 @@ $XF_CONFIG = array(
 
 $XF_THEME = XApp_Service_Utils::_getKey('theme','minimal');
 
-
+$XAPP_BOOTSTRAP_OVERRIDE = array(
+	XApp_Commander_Bootstrap::FLAGS=>array(-XAPP_BOOTSTRAP_NEEDS_AUTHENTICATION)
+);
