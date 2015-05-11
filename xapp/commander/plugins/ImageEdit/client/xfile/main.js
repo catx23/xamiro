@@ -17,7 +17,7 @@ define([
      * @class xfile.component
      * @inheritDoc
      */
-    var _d = declare([Component], {
+    return declare([Component], {
 
         run: function () {
 
@@ -44,5 +44,4 @@ define([
             return _res;
         }
     });
-    return _d;
 });

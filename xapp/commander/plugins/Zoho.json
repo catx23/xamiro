@@ -34,7 +34,7 @@
              "items": [
                  {
                      "class": "cmx.types.Resource",
-                     "enabled": true,
+                     "enabled": false,
                      "name": "Zoho",
                      "path": "Zoho/xfile/main",
                      "type": "JS-PLUGIN",
@@ -50,7 +50,7 @@
              "items": [
                  {
                      "class": "cmx.types.Resource",
-                     "enabled": true,
+                     "enabled": false,
                      "name": "Zoho",
                      "path": "Zoho/xfile/main",
                      "type": "JS-PLUGIN",
