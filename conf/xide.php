@@ -58,6 +58,7 @@ $XAPP_COMPONENTS = array(
 //  Define extra variables for client rendering. This array will override existing variables (see xapp/commander/App near '$XAPP_RELATIVE_VARIABLES')
 //  The resource variables go into the the client side resource manager 'xide.manager.ResourceManager'
 //
+
 $XF_RESOURCE_VARIABLES                  = array(
 	//
 	//  This is the user name automatically filled into the login form(client/xfile/xbox/login.html) , you may set this to ''

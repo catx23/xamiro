@@ -213,23 +213,23 @@ $XF_RESOURCE_VARIABLES                  = array(
 	 *
 	 */
 	'FILLED_USER_NAME'          => 'admin',
-	
+
 	/**
 	 * this is the password automatically filled into the login form(client/xfile/xbox/login.html), you may set this to ''
 	 * Notice: this isn't setting the user password in the user database (xapp/commander/Users.php)
 	 */
 	'FILLED_PASSWORD'           => 'asdasd',
-	
+
 	/**
 	 * Pass the enabled components
 	 */
 	'COMPONENTS'                => json_encode($XAPP_COMPONENTS),
-	
+
 	/**
 	 *  Adjust global font size
 	 */
 	'GLOBAL_FONT_SIZE'          => XApp_Service_Entry_Utils::isMobile() ? '1.1em' : '0.88em',
-	
+
 	/**
 	 *  Adjust action button icon size
 	 */

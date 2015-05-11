@@ -1,1 +1,15 @@
-{"admin":{"settings":[{"id":"splitter","data":[{"region":"right","state":"full"},{"region":"bottom","state":"full"}],"name":"Splitter States"}]}}
+{
+  "admin": {
+    "settings": [{
+      "id": "splitter",
+      "data": [{
+        "region": "right",
+        "state": "closed"
+      }, {
+        "region": "bottom",
+        "state": "full"
+      }],
+      "name": "Splitter States"
+    }]
+  }
+}

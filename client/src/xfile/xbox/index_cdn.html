@@ -141,9 +141,7 @@
             /* diameter */
             margin: 0 auto;
         }
-        .outer,
-        .inner,
-        .loading:after {
+        .loadingWrapper .outer, .inner, .loading:after {
             position: absolute;
             left: 0;
             top: 0;
@@ -151,7 +149,7 @@
             bottom: 0;
         }
         /* Mask */
-        .loading:after {
+        .loadingWrapper .loading:after {
             margin: 10%;
             /* stroke width */
             border-radius: 100%;
@@ -164,8 +162,7 @@
             text-align: center;
         }
         /* Spinning gradients */
-        .outer,
-        .inner {
+        .loadingWrapper .outer, .inner {
             animation-duration: 5s;
             /* speed */
             -webkit-animation-duration: 5s;
@@ -175,57 +172,52 @@
             animation-timing-function: linear;
             -webkit-animation-timing-function: linear;
         }
-        .outer {
+        .loadingWrapper .outer {
             animation-name: rotate-outer;
             -webkit-animation-name: rotate-outer;
         }
-        .inner {
+        .loadingWrapper .inner {
             animation-name: rotate-inner;
             -webkit-animation-name: rotate-inner;
         }
         /* Halfs */
-        .outer:before,
-        .inner:before,
-        .outer:after,
-        .inner:after {
+        .loadingWrapper .outer:before, .inner:before, .outer:after, .inner:after {
             position: absolute;
             top: 0;
             bottom: 0;
             content: " ";
         }
         /* Left half */
-        .outer:before,
-        .inner:before {
+        .loadingWrapper .outer:before, .inner:before {
             left: 0;
             right: 50%;
             border-radius: 72px 0 0 72px;
             /* diameter */
         }
         /* Right half */
-        .outer:after,
-        .inner:after {
+        .loadingWrapper .outer:after, .inner:after {
             left: 50%;
             right: 0;
             border-radius: 0 72px 72px 0;
             /* diameter */
         }
         /* Half gradients */
-        .outer:before {
+        .loadingWrapper .outer:before {
             background-image: -webkit-linear-gradient(top, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.5));
             background-image: -moz-linear-gradient(top, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.5));
             background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.5));
         }
-        .outer:after {
+        .loadingWrapper .outer:after {
             background-image: -webkit-linear-gradient(top, #ffffff, rgba(255, 255, 255, 0.5));
             background-image: -moz-linear-gradient(top, #ffffff, rgba(255, 255, 255, 0.5));
             background-image: linear-gradient(to bottom, #ffffff, rgba(255, 255, 255, 0.5));
         }
-        .inner:before {
+        .loadingWrapper .inner:before {
             background-image: -webkit-linear-gradient(top, rgba(255, 255, 255, 0.5), rgba(191, 191, 191, 0.5));
             background-image: -moz-linear-gradient(top, rgba(255, 255, 255, 0.5), rgba(191, 191, 191, 0.5));
             background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.5), rgba(191, 191, 191, 0.5));
         }
-        .inner:after {
+        .loadingWrapper .inner:after {
             background-image: -webkit-linear-gradient(top, rgba(128, 128, 128, 0.5), rgba(191, 191, 191, 0.5));
             background-image: -moz-linear-gradient(top, rgba(128, 128, 128, 0.5), rgba(191, 191, 191, 0.5));
             background-image: linear-gradient(to bottom, rgba(128, 128, 128, 0.5), rgba(191, 191, 191, 0.5));
