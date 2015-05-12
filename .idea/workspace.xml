@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8b415080-f0ca-4803-a89e-1b9e53daea7e" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/xapp/commander/plugins/JSONEditor/client/xfile/jsoneditor.css" />
     </list>
     <ignored path="xamiro.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -29,7 +29,7 @@
       <file leaf-file-name="01_Overview.md" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/docs/docFiles/02_Configuration/01_Overview.md">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-0.0" vertical-offset="144" max-vertical-offset="594">
+            <state vertical-scroll-proportion="0.0" vertical-offset="144" max-vertical-offset="594">
               <caret line="8" column="33" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="33" />
               <folding />
             </state>
@@ -42,7 +42,7 @@
       <file leaf-file-name="02_Options.md" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/docs/docFiles/02_Configuration/02_Options.md">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-0.0" vertical-offset="0" max-vertical-offset="1098">
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1098">
               <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
               <folding />
             </state>
@@ -81,9 +81,32 @@
       <file leaf-file-name="index.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/index.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="2484" max-vertical-offset="7254">
-              <caret line="174" column="0" selection-start-line="153" selection-start-column="30" selection-end-line="153" selection-end-column="92" />
-              <folding />
+            <state vertical-scroll-proportion="0.0" vertical-offset="2466" max-vertical-offset="7254">
+              <caret line="173" column="0" selection-start-line="153" selection-start-column="30" selection-end-line="153" selection-end-column="92" />
+              <folding>
+                <marker date="1431379305340" expanded="true" signature="8652:9759" placeholder="..." />
+                <marker date="1431379305340" expanded="true" signature="9435:9474" placeholder="  Adjust action button icon size ..." />
+                <marker date="1431379305340" expanded="true" signature="9572:9615" placeholder=" Package config (Dojo-Package paths) ..." />
+                <marker date="1431379305340" expanded="true" signature="9676:9692" placeholder=" CDN Host ..." />
+                <marker date="1431379305340" expanded="true" signature="9766:9799" placeholder=" Compose XFile configuration ..." />
+                <marker date="1431379305340" expanded="true" signature="9821:12040" placeholder="..." />
+                <marker date="1431379305340" expanded="true" signature="9827:9886" placeholder=" Default store options masks the directory iterator. ..." />
+                <marker date="1431379305340" expanded="true" signature="9923:10060" placeholder="..." />
+                <marker date="1431379305340" expanded="true" signature="10136:10669" placeholder="..." />
+                <marker date="1431379305340" expanded="true" signature="10677:10791" placeholder=" Allowed actions in UI and the server. Please check xapp/commander/App.php in the auth-delegate::authorize! ..." />
+                <marker date="1431379305340" expanded="true" signature="10822:11619" placeholder="..." />
+                <marker date="1431379305340" expanded="true" signature="11658:11784" placeholder="..." />
+                <marker date="1431379305340" expanded="true" signature="11823:11896" placeholder="..." />
+                <marker date="1431379305340" expanded="true" signature="11936:12038" placeholder="..." />
+                <marker date="1431379305340" expanded="true" signature="12049:12073" placeholder=" Include main files ..." />
+                <marker date="1431379305340" expanded="true" signature="12187:12211" placeholder=" Bootstrap override ..." />
+                <marker date="1431379305340" expanded="true" signature="12252:12456" placeholder="//..." />
+                <marker date="1431379305340" expanded="true" signature="12596:12633" placeholder="..." />
+                <marker date="1431379305340" expanded="true" signature="12636:12840" placeholder="//..." />
+                <marker date="1431379305340" expanded="true" signature="12981:13017" placeholder="..." />
+                <marker date="1431379305340" expanded="true" signature="13038:14008" placeholder="..." />
+                <marker date="1431379305340" expanded="true" signature="14014:14040" placeholder=" now punch it Scotty! ..." />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -91,7 +114,7 @@
       <file leaf-file-name="_custom.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/conf/_custom.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-9.259259" vertical-offset="2360" max-vertical-offset="2934">
+            <state vertical-scroll-proportion="0.0" vertical-offset="2360" max-vertical-offset="2934">
               <caret line="145" column="46" selection-start-line="145" selection-start-column="46" selection-end-line="145" selection-end-column="46" />
               <folding />
             </state>
@@ -101,9 +124,23 @@
       <file leaf-file-name="xide.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/conf/xide.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-5.3333335" vertical-offset="1134" max-vertical-offset="3456">
-              <caret line="71" column="44" selection-start-line="71" selection-start-column="44" selection-end-line="71" selection-end-column="44" />
-              <folding />
+            <state vertical-scroll-proportion="0.0" vertical-offset="1152" max-vertical-offset="3474">
+              <caret line="72" column="44" selection-start-line="72" selection-start-column="44" selection-end-line="72" selection-end-column="44" />
+              <folding>
+                <marker date="1431379305012" expanded="true" signature="2116:3057" placeholder="..." />
+                <marker date="1431379305012" expanded="true" signature="2118:2345" placeholder="//..." />
+                <marker date="1431379305012" expanded="true" signature="2388:2613" placeholder="//..." />
+                <marker date="1431379305012" expanded="true" signature="2979:2995" placeholder=" CDN Host ..." />
+                <marker date="1431379305012" expanded="true" signature="3064:3097" placeholder=" Compose XFile configuration ..." />
+                <marker date="1431379305012" expanded="true" signature="3120:5131" placeholder="..." />
+                <marker date="1431379305012" expanded="true" signature="3156:3272" placeholder="..." />
+                <marker date="1431379305012" expanded="true" signature="3348:3818" placeholder="..." />
+                <marker date="1431379305012" expanded="true" signature="3972:4710" placeholder="..." />
+                <marker date="1431379305012" expanded="true" signature="4749:4875" placeholder="..." />
+                <marker date="1431379305012" expanded="true" signature="4914:4987" placeholder="..." />
+                <marker date="1431379305012" expanded="true" signature="5027:5129" placeholder="..." />
+                <marker date="1431379305012" expanded="true" signature="5229:5308" placeholder="..." />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -210,6 +247,102 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="xapp" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="xamiro" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="xamiro" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="xapp" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="commander" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="xamiro" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="xamiro" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="xapp" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="commander" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="plugins" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="xamiro" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="xamiro" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="xapp" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="commander" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="plugins" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="JSONEditor" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="xamiro" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="xamiro" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="xapp" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="commander" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="plugins" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="JSONEditor" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="client" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -224,33 +357,27 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="client" />
+              <option name="myItemId" value="xapp" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
+              <option name="myItemId" value="commander" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="plugins" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="JSONEditor" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="client" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="xfile" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="xamiro" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="xamiro" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="client" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -288,15 +415,15 @@
     <configuration default="true" type="NodeJSConfigurationType" factoryName="Node.js" working-dir="">
       <method />
     </configuration>
+    <configuration default="true" type="PhpUnitRemoteRunConfigurationType" factoryName="PHPUnit on Server">
+      <method />
+    </configuration>
     <configuration default="true" type="js.build_tools.gulp" factoryName="Gulp.js">
       <node-options />
       <gulpfile />
       <tasks />
       <pass-parent-env-vars>false</pass-parent-env-vars>
       <envs />
-      <method />
-    </configuration>
-    <configuration default="true" type="PhpUnitRemoteRunConfigurationType" factoryName="PHPUnit on Server">
       <method />
     </configuration>
     <list size="0" />
@@ -316,16 +443,16 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="47" y="-4" width="1873" height="1084" extended-state="6" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.33854166" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.33854166" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Code Outline" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Remote Host" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.25068417" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.25013682" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -374,6 +501,119 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/docs/docFiles/02_Configuration/02_Options.md">
       <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1098">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+      <provider editor-type-id="MarkdownPreviewEditor">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/docs/docFiles/02_Configuration/02_Url_Parameters.md">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="1962" max-vertical-offset="2412">
+          <caret line="109" column="0" selection-start-line="109" selection-start-column="0" selection-end-line="109" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+      <provider editor-type-id="MarkdownPreviewEditor">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/docs/docFiles/02_Configuration/03_Profiles.md">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="18" max-vertical-offset="162">
+          <caret line="1" column="0" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+      <provider editor-type-id="MarkdownPreviewEditor">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/index.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="2484" max-vertical-offset="7254">
+          <caret line="174" column="0" selection-start-line="153" selection-start-column="30" selection-end-line="153" selection-end-column="92" />
+          <folding>
+            <marker date="1431379305340" expanded="true" signature="8652:9759" placeholder="..." />
+            <marker date="1431379305340" expanded="true" signature="9435:9474" placeholder="  Adjust action button icon size ..." />
+            <marker date="1431379305340" expanded="true" signature="9572:9615" placeholder=" Package config (Dojo-Package paths) ..." />
+            <marker date="1431379305340" expanded="true" signature="9676:9692" placeholder=" CDN Host ..." />
+            <marker date="1431379305340" expanded="true" signature="9766:9799" placeholder=" Compose XFile configuration ..." />
+            <marker date="1431379305340" expanded="true" signature="9821:12040" placeholder="..." />
+            <marker date="1431379305340" expanded="true" signature="9827:9886" placeholder=" Default store options masks the directory iterator. ..." />
+            <marker date="1431379305340" expanded="true" signature="9923:10060" placeholder="..." />
+            <marker date="1431379305340" expanded="true" signature="10136:10669" placeholder="..." />
+            <marker date="1431379305340" expanded="true" signature="10677:10791" placeholder=" Allowed actions in UI and the server. Please check xapp/commander/App.php in the auth-delegate::authorize! ..." />
+            <marker date="1431379305340" expanded="true" signature="10822:11619" placeholder="..." />
+            <marker date="1431379305340" expanded="true" signature="11658:11784" placeholder="..." />
+            <marker date="1431379305340" expanded="true" signature="11823:11896" placeholder="..." />
+            <marker date="1431379305340" expanded="true" signature="11936:12038" placeholder="..." />
+            <marker date="1431379305340" expanded="true" signature="12049:12073" placeholder=" Include main files ..." />
+            <marker date="1431379305340" expanded="true" signature="12187:12211" placeholder=" Bootstrap override ..." />
+            <marker date="1431379305340" expanded="true" signature="12252:12456" placeholder="//..." />
+            <marker date="1431379305340" expanded="true" signature="12596:12633" placeholder="..." />
+            <marker date="1431379305340" expanded="true" signature="12636:12840" placeholder="//..." />
+            <marker date="1431379305340" expanded="true" signature="12981:13017" placeholder="..." />
+            <marker date="1431379305340" expanded="true" signature="13038:14008" placeholder="..." />
+            <marker date="1431379305340" expanded="true" signature="14014:14040" placeholder=" now punch it Scotty! ..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/conf/_custom.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="2360" max-vertical-offset="2934">
+          <caret line="145" column="46" selection-start-line="145" selection-start-column="46" selection-end-line="145" selection-end-column="46" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/conf/xide.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="1134" max-vertical-offset="3456">
+          <caret line="71" column="44" selection-start-line="71" selection-start-column="44" selection-end-line="71" selection-end-column="44" />
+          <folding>
+            <marker date="1431379305012" expanded="true" signature="2116:3057" placeholder="..." />
+            <marker date="1431379305012" expanded="true" signature="2118:2345" placeholder="//..." />
+            <marker date="1431379305012" expanded="true" signature="2388:2613" placeholder="//..." />
+            <marker date="1431379305012" expanded="true" signature="2979:2995" placeholder=" CDN Host ..." />
+            <marker date="1431379305012" expanded="true" signature="3064:3097" placeholder=" Compose XFile configuration ..." />
+            <marker date="1431379305012" expanded="true" signature="3120:5131" placeholder="..." />
+            <marker date="1431379305012" expanded="true" signature="3156:3272" placeholder="..." />
+            <marker date="1431379305012" expanded="true" signature="3348:3818" placeholder="..." />
+            <marker date="1431379305012" expanded="true" signature="3972:4710" placeholder="..." />
+            <marker date="1431379305012" expanded="true" signature="4749:4875" placeholder="..." />
+            <marker date="1431379305012" expanded="true" signature="4914:4987" placeholder="..." />
+            <marker date="1431379305012" expanded="true" signature="5027:5129" placeholder="..." />
+            <marker date="1431379305012" expanded="true" signature="5229:5308" placeholder="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/src/xfile/xide/templates/MainMenu2.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="198">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/docs/docFiles/02_Configuration/01_Overview.md">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="144" max-vertical-offset="594">
+          <caret line="8" column="33" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="33" />
+          <folding />
+        </state>
+      </provider>
+      <provider editor-type-id="MarkdownPreviewEditor">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/docs/docFiles/02_Configuration/02_Options.md">
+      <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="100">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
@@ -409,7 +649,30 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="2106" max-vertical-offset="6876">
           <caret line="153" column="92" selection-start-line="153" selection-start-column="30" selection-end-line="153" selection-end-column="92" />
-          <folding />
+          <folding>
+            <marker date="1431379305340" expanded="true" signature="8652:9759" placeholder="..." />
+            <marker date="1431379305340" expanded="true" signature="9435:9474" placeholder="  Adjust action button icon size ..." />
+            <marker date="1431379305340" expanded="true" signature="9572:9615" placeholder=" Package config (Dojo-Package paths) ..." />
+            <marker date="1431379305340" expanded="true" signature="9676:9692" placeholder=" CDN Host ..." />
+            <marker date="1431379305340" expanded="true" signature="9766:9799" placeholder=" Compose XFile configuration ..." />
+            <marker date="1431379305340" expanded="true" signature="9821:12040" placeholder="..." />
+            <marker date="1431379305340" expanded="true" signature="9827:9886" placeholder=" Default store options masks the directory iterator. ..." />
+            <marker date="1431379305340" expanded="true" signature="9923:10060" placeholder="..." />
+            <marker date="1431379305340" expanded="true" signature="10136:10669" placeholder="..." />
+            <marker date="1431379305340" expanded="true" signature="10677:10791" placeholder=" Allowed actions in UI and the server. Please check xapp/commander/App.php in the auth-delegate::authorize! ..." />
+            <marker date="1431379305340" expanded="true" signature="10822:11619" placeholder="..." />
+            <marker date="1431379305340" expanded="true" signature="11658:11784" placeholder="..." />
+            <marker date="1431379305340" expanded="true" signature="11823:11896" placeholder="..." />
+            <marker date="1431379305340" expanded="true" signature="11936:12038" placeholder="..." />
+            <marker date="1431379305340" expanded="true" signature="12049:12073" placeholder=" Include main files ..." />
+            <marker date="1431379305340" expanded="true" signature="12187:12211" placeholder=" Bootstrap override ..." />
+            <marker date="1431379305340" expanded="true" signature="12252:12456" placeholder="//..." />
+            <marker date="1431379305340" expanded="true" signature="12596:12633" placeholder="..." />
+            <marker date="1431379305340" expanded="true" signature="12636:12840" placeholder="//..." />
+            <marker date="1431379305340" expanded="true" signature="12981:13017" placeholder="..." />
+            <marker date="1431379305340" expanded="true" signature="13038:14008" placeholder="..." />
+            <marker date="1431379305340" expanded="true" signature="14014:14040" placeholder=" now punch it Scotty! ..." />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -469,7 +732,30 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="2106" max-vertical-offset="6876">
           <caret line="153" column="92" selection-start-line="153" selection-start-column="30" selection-end-line="153" selection-end-column="92" />
-          <folding />
+          <folding>
+            <marker date="1431379305340" expanded="true" signature="8652:9759" placeholder="..." />
+            <marker date="1431379305340" expanded="true" signature="9435:9474" placeholder="  Adjust action button icon size ..." />
+            <marker date="1431379305340" expanded="true" signature="9572:9615" placeholder=" Package config (Dojo-Package paths) ..." />
+            <marker date="1431379305340" expanded="true" signature="9676:9692" placeholder=" CDN Host ..." />
+            <marker date="1431379305340" expanded="true" signature="9766:9799" placeholder=" Compose XFile configuration ..." />
+            <marker date="1431379305340" expanded="true" signature="9821:12040" placeholder="..." />
+            <marker date="1431379305340" expanded="true" signature="9827:9886" placeholder=" Default store options masks the directory iterator. ..." />
+            <marker date="1431379305340" expanded="true" signature="9923:10060" placeholder="..." />
+            <marker date="1431379305340" expanded="true" signature="10136:10669" placeholder="..." />
+            <marker date="1431379305340" expanded="true" signature="10677:10791" placeholder=" Allowed actions in UI and the server. Please check xapp/commander/App.php in the auth-delegate::authorize! ..." />
+            <marker date="1431379305340" expanded="true" signature="10822:11619" placeholder="..." />
+            <marker date="1431379305340" expanded="true" signature="11658:11784" placeholder="..." />
+            <marker date="1431379305340" expanded="true" signature="11823:11896" placeholder="..." />
+            <marker date="1431379305340" expanded="true" signature="11936:12038" placeholder="..." />
+            <marker date="1431379305340" expanded="true" signature="12049:12073" placeholder=" Include main files ..." />
+            <marker date="1431379305340" expanded="true" signature="12187:12211" placeholder=" Bootstrap override ..." />
+            <marker date="1431379305340" expanded="true" signature="12252:12456" placeholder="//..." />
+            <marker date="1431379305340" expanded="true" signature="12596:12633" placeholder="..." />
+            <marker date="1431379305340" expanded="true" signature="12636:12840" placeholder="//..." />
+            <marker date="1431379305340" expanded="true" signature="12981:13017" placeholder="..." />
+            <marker date="1431379305340" expanded="true" signature="13038:14008" placeholder="..." />
+            <marker date="1431379305340" expanded="true" signature="14014:14040" placeholder=" now punch it Scotty! ..." />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -518,7 +804,30 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="2700" max-vertical-offset="6876">
           <caret line="180" column="49" selection-start-line="176" selection-start-column="1" selection-end-line="180" selection-end-column="49" />
-          <folding />
+          <folding>
+            <marker date="1431379305340" expanded="true" signature="8652:9759" placeholder="..." />
+            <marker date="1431379305340" expanded="true" signature="9435:9474" placeholder="  Adjust action button icon size ..." />
+            <marker date="1431379305340" expanded="true" signature="9572:9615" placeholder=" Package config (Dojo-Package paths) ..." />
+            <marker date="1431379305340" expanded="true" signature="9676:9692" placeholder=" CDN Host ..." />
+            <marker date="1431379305340" expanded="true" signature="9766:9799" placeholder=" Compose XFile configuration ..." />
+            <marker date="1431379305340" expanded="true" signature="9821:12040" placeholder="..." />
+            <marker date="1431379305340" expanded="true" signature="9827:9886" placeholder=" Default store options masks the directory iterator. ..." />
+            <marker date="1431379305340" expanded="true" signature="9923:10060" placeholder="..." />
+            <marker date="1431379305340" expanded="true" signature="10136:10669" placeholder="..." />
+            <marker date="1431379305340" expanded="true" signature="10677:10791" placeholder=" Allowed actions in UI and the server. Please check xapp/commander/App.php in the auth-delegate::authorize! ..." />
+            <marker date="1431379305340" expanded="true" signature="10822:11619" placeholder="..." />
+            <marker date="1431379305340" expanded="true" signature="11658:11784" placeholder="..." />
+            <marker date="1431379305340" expanded="true" signature="11823:11896" placeholder="..." />
+            <marker date="1431379305340" expanded="true" signature="11936:12038" placeholder="..." />
+            <marker date="1431379305340" expanded="true" signature="12049:12073" placeholder=" Include main files ..." />
+            <marker date="1431379305340" expanded="true" signature="12187:12211" placeholder=" Bootstrap override ..." />
+            <marker date="1431379305340" expanded="true" signature="12252:12456" placeholder="//..." />
+            <marker date="1431379305340" expanded="true" signature="12596:12633" placeholder="..." />
+            <marker date="1431379305340" expanded="true" signature="12636:12840" placeholder="//..." />
+            <marker date="1431379305340" expanded="true" signature="12981:13017" placeholder="..." />
+            <marker date="1431379305340" expanded="true" signature="13038:14008" placeholder="..." />
+            <marker date="1431379305340" expanded="true" signature="14014:14040" placeholder=" now punch it Scotty! ..." />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -684,9 +993,32 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/index.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="2484" max-vertical-offset="7254">
-          <caret line="174" column="0" selection-start-line="153" selection-start-column="30" selection-end-line="153" selection-end-column="92" />
-          <folding />
+        <state vertical-scroll-proportion="0.0" vertical-offset="2466" max-vertical-offset="7254">
+          <caret line="173" column="0" selection-start-line="153" selection-start-column="30" selection-end-line="153" selection-end-column="92" />
+          <folding>
+            <marker date="1431379305340" expanded="true" signature="8652:9759" placeholder="..." />
+            <marker date="1431379305340" expanded="true" signature="9435:9474" placeholder="  Adjust action button icon size ..." />
+            <marker date="1431379305340" expanded="true" signature="9572:9615" placeholder=" Package config (Dojo-Package paths) ..." />
+            <marker date="1431379305340" expanded="true" signature="9676:9692" placeholder=" CDN Host ..." />
+            <marker date="1431379305340" expanded="true" signature="9766:9799" placeholder=" Compose XFile configuration ..." />
+            <marker date="1431379305340" expanded="true" signature="9821:12040" placeholder="..." />
+            <marker date="1431379305340" expanded="true" signature="9827:9886" placeholder=" Default store options masks the directory iterator. ..." />
+            <marker date="1431379305340" expanded="true" signature="9923:10060" placeholder="..." />
+            <marker date="1431379305340" expanded="true" signature="10136:10669" placeholder="..." />
+            <marker date="1431379305340" expanded="true" signature="10677:10791" placeholder=" Allowed actions in UI and the server. Please check xapp/commander/App.php in the auth-delegate::authorize! ..." />
+            <marker date="1431379305340" expanded="true" signature="10822:11619" placeholder="..." />
+            <marker date="1431379305340" expanded="true" signature="11658:11784" placeholder="..." />
+            <marker date="1431379305340" expanded="true" signature="11823:11896" placeholder="..." />
+            <marker date="1431379305340" expanded="true" signature="11936:12038" placeholder="..." />
+            <marker date="1431379305340" expanded="true" signature="12049:12073" placeholder=" Include main files ..." />
+            <marker date="1431379305340" expanded="true" signature="12187:12211" placeholder=" Bootstrap override ..." />
+            <marker date="1431379305340" expanded="true" signature="12252:12456" placeholder="//..." />
+            <marker date="1431379305340" expanded="true" signature="12596:12633" placeholder="..." />
+            <marker date="1431379305340" expanded="true" signature="12636:12840" placeholder="//..." />
+            <marker date="1431379305340" expanded="true" signature="12981:13017" placeholder="..." />
+            <marker date="1431379305340" expanded="true" signature="13038:14008" placeholder="..." />
+            <marker date="1431379305340" expanded="true" signature="14014:14040" placeholder=" now punch it Scotty! ..." />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -703,7 +1035,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/conf/_custom.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-9.259259" vertical-offset="2360" max-vertical-offset="2934">
+        <state vertical-scroll-proportion="0.0" vertical-offset="2360" max-vertical-offset="2934">
           <caret line="145" column="46" selection-start-line="145" selection-start-column="46" selection-end-line="145" selection-end-column="46" />
           <folding />
         </state>
@@ -713,15 +1045,28 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="592">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/conf/xide.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-5.3333335" vertical-offset="1134" max-vertical-offset="3456">
-          <caret line="71" column="44" selection-start-line="71" selection-start-column="44" selection-end-line="71" selection-end-column="44" />
-          <folding />
+        <state vertical-scroll-proportion="0.0" vertical-offset="1152" max-vertical-offset="3474">
+          <caret line="72" column="44" selection-start-line="72" selection-start-column="44" selection-end-line="72" selection-end-column="44" />
+          <folding>
+            <marker date="1431379305012" expanded="true" signature="2116:3057" placeholder="..." />
+            <marker date="1431379305012" expanded="true" signature="2118:2345" placeholder="//..." />
+            <marker date="1431379305012" expanded="true" signature="2388:2613" placeholder="//..." />
+            <marker date="1431379305012" expanded="true" signature="2979:2995" placeholder=" CDN Host ..." />
+            <marker date="1431379305012" expanded="true" signature="3064:3097" placeholder=" Compose XFile configuration ..." />
+            <marker date="1431379305012" expanded="true" signature="3120:5131" placeholder="..." />
+            <marker date="1431379305012" expanded="true" signature="3156:3272" placeholder="..." />
+            <marker date="1431379305012" expanded="true" signature="3348:3818" placeholder="..." />
+            <marker date="1431379305012" expanded="true" signature="3972:4710" placeholder="..." />
+            <marker date="1431379305012" expanded="true" signature="4749:4875" placeholder="..." />
+            <marker date="1431379305012" expanded="true" signature="4914:4987" placeholder="..." />
+            <marker date="1431379305012" expanded="true" signature="5027:5129" placeholder="..." />
+            <marker date="1431379305012" expanded="true" signature="5229:5308" placeholder="..." />
+          </folding>
         </state>
       </provider>
     </entry>
