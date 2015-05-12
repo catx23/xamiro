@@ -1,3 +1,6 @@
+### [Please check the documentation & project homepage](http://mc007.github.io/xamiro-docs/Getting_Started.html)
+
+
 PHP/JS based and full featured file manager
 ===========================================
 
