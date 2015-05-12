@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="UTF-8">
+    <title>xamiro by mc007</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="stylesheets/normalize.css" media="screen">
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/github-light.css" media="screen">
+  </head>
+  <body>
+    <section class="page-header">
+      <h1 class="project-name">xamiro</h1>
+      <h2 class="project-tagline">Advanced File and Media Manager</h2>
+      <a href="https://github.com/mc007/xamiro" class="btn">View on GitHub</a>
+      <a href="https://github.com/mc007/xamiro/zipball/master" class="btn">Download .zip</a>
+      <a href="https://github.com/mc007/xamiro/tarball/master" class="btn">Download .tar.gz</a>
+    </section>
+
+    <section class="main-content">
+      <h1>
+<a id="phpjs-based-and-full-featured-file-manager" class="anchor" href="#phpjs-based-and-full-featured-file-manager" aria-hidden="true"><span class="octicon octicon-link"></span></a>PHP/JS based and full featured file manager</h1>
+
+<h2>
+<a id="features" class="anchor" href="#features" aria-hidden="true"><span class="octicon octicon-link"></span></a>Features</h2>
+
+<ul>
+<li>One page application &amp; full 'Ajax'</li>
+<li>Full keyboard support ala Midnight or Total-Commander </li>
+<li>Multi tab </li>
+<li>Code editor with auto-completion for CSS,PHP and Javascript </li>
+<li>Multi selection</li>
+<li>Advanced search</li>
+<li>Drag’n drop for copy, move and upload into any panel</li>
+<li>Standard actions : Edit, Move, Rename, Info, Delete,Compress and Download</li>
+<li>2 image editors : Pixlr and Aviary</li>
+<li>Javascript &amp; Bash Shell</li>
+<li>Built- in Javascript and Bash shell</li>
+<li>Basic support for SFTP, FTP, WEBDAV, DROPBOX</li>
+<li>6 display modes for file panels : thumbnails, tree, image cover flow (ala Mac Finder), list, preview, split horizontal and split vertical</li>
+<li>5 main layouts : Dual panel, single panel, preview (ideal for media browsing), gallery and browser (classic : tree and thumbs)<br>
+</li>
+<li>Supports folder locations outside of the Apache http docs folder</li>
+<li>Logging panel with filters</li>
+<li>Over 20 themes for the file manager and 20 editor themes</li>
+<li>Strong security using signed client call similar to oauth. You can limit the access to IP and domains</li>
+<li>Thumb resizing and caching for fast browsing large image folders</li>
+<li>quite some stuff which i am too lazy to write down</li>
+</ul>
+
+<h2>
+<a id="additional-components" class="anchor" href="#additional-components" aria-hidden="true"><span class="octicon octicon-link"></span></a>Additional components</h2>
+
+<ul>
+<li>
+<em>XBlox</em>, a Visual programming language for extending the file manager and other things easier. Open test/blox.xblox example file (this feature is pre alpha!). You need to open the file manager
+explicitly via url parameter: index.php?profile=xblox&amp;debug=true or index.php?profile=xode&amp;debug=true. Currently there is are release versions of it. </li>
+<li><p>Visual HTML editor for Dojo (aka Maqetta), currently support also <em>XBlox</em> for widget/node properties. Same as xblox: You need to open the file manager
+explicitly via url parameter: index.php?profile=xblox&amp;debug=true or index.php?profile=xode&amp;debug=true. Currently there is are release versions of it.</p></li>
+<li><p>Node.JS service management and shell. This feature is not activated yet. </p></li>
+<li>Hot-code replacement for AMD/Dojo apps. For those folks who know :-)</li>
+</ul>
+
+<h2>
+<a id="status" class="anchor" href="#status" aria-hidden="true"><span class="octicon octicon-link"></span></a>Status</h2>
+
+<p>File manager: little unstable! There is still a lot of old and rubbish code to be removed. However, this project is 
+under active development and not yet official released. </p>
+
+<h2>
+<a id="screenshots" class="anchor" href="#screenshots" aria-hidden="true"><span class="octicon octicon-link"></span></a>Screenshots</h2>
+
+<p><a href="misc/screenshots/SCREENSHOTS.md">See here</a></p>
+
+<h2>
+<a id="demos" class="anchor" href="#demos" aria-hidden="true"><span class="octicon octicon-link"></span></a>Demos</h2>
+
+<p><a href="http://pearls-media.com:89/demo">See here a dedicated demo page</a></p>
+
+<h2>
+<a id="boiler-plate-for-amd-applications" class="anchor" href="#boiler-plate-for-amd-applications" aria-hidden="true"><span class="octicon octicon-link"></span></a>Boiler-plate for AMD applications</h2>
+
+<p><a href="https://github.com/mc007/dojo-boilerplate">See here a dedicated repo</a></p>
+
+<h2>
+<a id="important" class="anchor" href="#important" aria-hidden="true"><span class="octicon octicon-link"></span></a>Important</h2>
+
+<p>This a development version. It has many sub modules and needs around 1 GB on the disc. You may download a pre-built version from <a href="https://github.com/mc007/xbox-app/releases">here</a> </p>
+
+<h2>
+<a id="requirements" class="anchor" href="#requirements" aria-hidden="true"><span class="octicon octicon-link"></span></a>Requirements</h2>
+
+<ul>
+<li>PHP 5.3+ (better 5.4!)</li>
+<li>PHP : MBString extension</li>
+<li>PHP : Curl/SSL when using SFTP/WebDav/Dropbox</li>
+</ul>
+
+<h2>
+<a id="installation" class="anchor" href="#installation" aria-hidden="true"><span class="octicon octicon-link"></span></a>Installation</h2>
+
+<h3>
+<a id="download-latest-stable-release-as-zip-file-uncompress-in-a-folder-adjust-all-in-indexphp-and-xappcommanderusersphp-here" class="anchor" href="#download-latest-stable-release-as-zip-file-uncompress-in-a-folder-adjust-all-in-indexphp-and-xappcommanderusersphp-here" aria-hidden="true"><span class="octicon octicon-link"></span></a>Download latest stable release as zip file (uncompress in a folder, adjust all in index.php and xapp/Commander/Users.php): <a href="https://github.com/mc007/xbox-app/releases/download/v0.6/xbox.zip">here</a>
+</h3>
+
+<h3>
+<a id="download-latest-version-as-zip-file-uncompress-in-a-folder-adjust-all-in-indexphp-and-xappcommanderusersphp-here" class="anchor" href="#download-latest-version-as-zip-file-uncompress-in-a-folder-adjust-all-in-indexphp-and-xappcommanderusersphp-here" aria-hidden="true"><span class="octicon octicon-link"></span></a>Download latest version as zip file (uncompress in a folder, adjust all in index.php and xapp/Commander/Users.php): <a href="https://raw.githubusercontent.com/mc007/xbox-app/master/DIST/xbox.zip">here</a>
+</h3>
+
+<h3>
+<a id="quick-installation-without-any-git" class="anchor" href="#quick-installation-without-any-git" aria-hidden="true"><span class="octicon octicon-link"></span></a>Quick installation without any Git</h3>
+
+<p><a href="docs/installation.md">See here</a></p>
+
+<h3>
+<a id="soft-checkout-uses-pre-compiled-javascript-version" class="anchor" href="#soft-checkout-uses-pre-compiled-javascript-version" aria-hidden="true"><span class="octicon octicon-link"></span></a>Soft Checkout (Uses pre-compiled Javascript version)</h3>
+
+<pre><code>$git clone https://github.com/mc007/xbox-app
+$cd xbox-app
+$git submodule init
+$git submodule update    
+</code></pre>
+
+<h3>
+<a id="soft-checkout-in-one-line" class="anchor" href="#soft-checkout-in-one-line" aria-hidden="true"><span class="octicon octicon-link"></span></a>Soft Checkout in one line</h3>
+
+<pre><code>$git clone https://github.com/mc007/xbox-app &amp;&amp; cd xbox-app &amp;&amp; git submodule init &amp;&amp; git submodule update
+</code></pre>
+
+<h3>
+<a id="full-checkout-checks-out-full-tree-1gb" class="anchor" href="#full-checkout-checks-out-full-tree-1gb" aria-hidden="true"><span class="octicon octicon-link"></span></a>Full Checkout (Checks out full tree: 1GB+)</h3>
+
+<pre><code>$git clone --recursive https://github.com/mc007/xbox-app
+$git submodule foreach --recursive git checkout master
+</code></pre>
+
+<h3>
+<a id="installation-via-one-click-installer-downloads-zip-and-un-compresses-it" class="anchor" href="#installation-via-one-click-installer-downloads-zip-and-un-compresses-it" aria-hidden="true"><span class="octicon octicon-link"></span></a>Installation via one-click installer (downloads zip and un-compresses it)</h3>
+
+<ol>
+<li>Upload via FTP this file into any directory on your server <a href="https://raw.githubusercontent.com/mc007/xbox-app/master/install/remote/install.php">https://raw.githubusercontent.com/mc007/xbox-app/master/install/remote/install.php</a>
+</li>
+<li>Make the parent directory writeable (755)!</li>
+<li>Open the url http://mysite/install.php in your browser!</li>
+<li>wait !</li>
+<li>The installer downloaded <a href="https://raw.githubusercontent.com/mc007/xbox-app/master/DIST/xbox.zip">https://raw.githubusercontent.com/mc007/xbox-app/master/DIST/xbox.zip</a> and unzipped it in http://mysite/xbox-app/ by default</li>
+<li>Open http://localhost/xbox-xapp/ </li>
+<li>Delete the install.php from your server!</li>
+</ol>
+
+<h3>
+<a id="usage" class="anchor" href="#usage" aria-hidden="true"><span class="octicon octicon-link"></span></a>Usage</h3>
+
+<p>Navigate on your web server to : <strong>http://localhost/xbox-app/index.php</strong></p>
+
+<p>Open in different layout modes, append the entry URL by: </p>
+
+<p>index.php?<strong>layout=single</strong>: Single panel</p>
+
+<p>index.php?<strong>layout=dual</strong>: Dual panel</p>
+
+<p>index.php?<strong>layout=preview</strong>:  Preview layout (split view with media preview)</p>
+
+<p>index.php?<strong>layout=preview&amp;theme=dot-luv</strong>: Preview layout in dark theme (split view with media preview)</p>
+
+<p>index.php?<strong>layout=preview&amp;open=Pictures</strong>: Auto open picture folder in preview mode (split view with media preview)</p>
+
+<p>index.php?<strong>layout=gallery&amp;open=BurningMan&amp;minimal=true&amp;theme=dot-luv</strong>: Auto open picture folder in gallery mode (split view with cover flow view)</p>
+
+<p>index.php?<strong>layout=browser&amp;open=Pictures</strong>: Auto open picture folder in browser mode (Dual view with tree for navigation, classics!)</p>
+
+<p>index.php?layout=gallery&amp;open=<a href="mailto:BurningMan@Art-of-Burning-Man-2014_6-640x266.jpg">BurningMan@Art-of-Burning-Man-2014_6-640x266.jpg</a>&amp;minimal=true&amp;theme=dot-luv**: Open in gallery mode and open folder BurningMan and open a picture</p>
+
+<h4>
+<a id="controls--keyboard" class="anchor" href="#controls--keyboard" aria-hidden="true"><span class="octicon octicon-link"></span></a>Controls : Keyboard</h4>
+
+<ul>
+<li>SPACE : Open Preview</li>
+<li>CTRL+F1 : Open Mounts</li>
+<li>F2 : Rename</li>
+<li>F4 : Edit file</li>
+<li>F5 : Copy (If main window is open, the destination is set automatically) </li>
+<li>F6 : Move</li>
+<li>F7 : Create directory</li>
+<li>F8 : Delete</li>
+<li><p>F9 : Create file</p></li>
+<li><p>CTRL/CMD + ENTER : Open selection in main window</p></li>
+<li><p>BACKSPACE (Firefox) : Go back in history</p></li>
+<li>SHIFT + BACKSPACE (Chrome) : Go back in history</li>
+<li>DEL : Delete selection</li>
+<li>CTRL+W (Firefox) : Close last window</li>
+<li>SHIFT+W (Chrome) : Close last window </li>
+<li>SHIFT+UP/DOWN : Multi-Selection </li>
+<li>CTRL+A : Select all</li>
+<li>CTRL+C : Copy selection to clipboard </li>
+<li>CTRL+X : Cut selection to clipboard </li>
+<li>CTRL+V : Paste selection</li>
+<li>CTRL+S : Save current editor's content </li>
+<li>CTRL+F : Open search</li>
+<li>CTRL-L : Reload current panel</li>
+</ul>
+
+<h4>
+<a id="controls-editor" class="anchor" href="#controls-editor" aria-hidden="true"><span class="octicon octicon-link"></span></a>Controls Editor</h4>
+
+<ul>
+<li>Ctrl-F / Cmd-F : Start searching </li>
+<li>Ctrl-G / Cmd-G : Find next </li>
+<li>Ctrl -/+ Change Font Size</li>
+<li>Shift-Ctrl-G / Shift-Cmd-G : Find previous </li>
+<li>Shift-Ctrl-F / Cmd-Option-F : Replace</li>
+<li>Shift-Ctrl-R / Shift-Cmd-Option-F : Replace all </li>
+</ul>
+
+<h4>
+<a id="controls--mouse" class="anchor" href="#controls--mouse" aria-hidden="true"><span class="octicon octicon-link"></span></a>Controls : Mouse</h4>
+
+<ul>
+<li>Right-Click : Open context menu</li>
+<li>CTRL : Enable copy mode for drag and drop </li>
+<li>Uploading : Simply drag files from your file manager into the file panel, you can also just drag an url into file panel for remote downloads</li>
+</ul>
+
+<h4>
+<a id="uploading" class="anchor" href="#uploading" aria-hidden="true"><span class="octicon octicon-link"></span></a>Uploading</h4>
+
+<ul>
+<li>Currently only supported via drag'n drop</li>
+</ul>
+
+<h3>
+<a id="open-debug-version" class="anchor" href="#open-debug-version" aria-hidden="true"><span class="octicon octicon-link"></span></a>Open debug version</h3>
+
+<p>http://localhost/xbox-app/index.php?debug=true</p>
+
+<h3>
+<a id="build-javascript-main-file" class="anchor" href="#build-javascript-main-file" aria-hidden="true"><span class="octicon octicon-link"></span></a>Build Javascript main file</h3>
+
+<pre><code>$cd client/src
+$sh buildstandalone.sh    
+</code></pre>
+
+<p>This will create single layer file which contains all Dojo based in src/xfile/dojo/xbox.js!</p>
+
+<h3>
+<a id="resources-javascriptcssfonts" class="anchor" href="#resources-javascriptcssfonts" aria-hidden="true"><span class="octicon octicon-link"></span></a>Resources (Javascript/CSS/Fonts,...)</h3>
+
+<ul>
+<li>Client-Debug version : see in client/src/lib/xbox/resources-debug.json</li>
+<li>Client-Release version : see in client/src/xfile/xbox/resources-release.json</li>
+</ul>
+
+<h4>
+<a id="footprint" class="anchor" href="#footprint" aria-hidden="true"><span class="octicon octicon-link"></span></a>Footprint</h4>
+
+<ul>
+<li>Javascript total: 2.8MB (1.4MB Core + 1MB plugins) unzipped or 0.6 MB when gzipped</li>
+<li>CSS total: 50KB</li>
+<li>Images: 20KB - 50KB. We do optimize it further</li>
+<li>XHR: 50KB for the initial load(gzipped)</li>
+<li>Total: 750kb gzipped</li>
+</ul>
+
+<p>There are further optimizations in progress but we don't think we can get the minimal version below 700KB!</p>
+
+<h3>
+<a id="the-indexhtml" class="anchor" href="#the-indexhtml" aria-hidden="true"><span class="octicon octicon-link"></span></a>The Index.html</h3>
+
+<p>There is no such thing! HTML related parts are pulled through the resource configuration mentioned in "Resources" above.
+This technique has been proven for us since many years in many projects as we develop authoring software and those resources
+needed to be managed in a more fashioned manner. However,</p>
+
+<p>the <strong>HEAD</strong> comes from:</p>
+
+<ul>
+<li>Client-Debug version : client/src/lib/xbox/Header.js</li>
+<li>Client-Release version : client/src/xfile/xbox/Header.js</li>
+</ul>
+
+<p>the <strong>BODY</strong> part comes from:</p>
+
+<ul>
+<li>Client-Debug version : client/src/lib/xbox/index.html</li>
+<li>Client-Release version : client/src/xfile/xbox/index.html</li>
+</ul>
+
+<h3>
+<a id="the-indexphp" class="anchor" href="#the-indexphp" aria-hidden="true"><span class="octicon octicon-link"></span></a>The index.php</h3>
+
+<ol>
+<li>Is more of interest to you, it basically does setup a 'xfile' configuration and fires the PHP framework</li>
+<li>Handles RPC and client rendering</li>
+</ol>
+
+<h3>
+<a id="update-all" class="anchor" href="#update-all" aria-hidden="true"><span class="octicon octicon-link"></span></a>Update all</h3>
+
+<pre><code>$bash
+$cd xbox-app
+$git submodule foreach git pull origin master
+</code></pre>
+
+<h3>
+<a id="contribute" class="anchor" href="#contribute" aria-hidden="true"><span class="octicon octicon-link"></span></a>Contribute</h3>
+
+<p>open a Github issue and let me know :-)</p>
+
+<h3>
+<a id="roadmap" class="anchor" href="#roadmap" aria-hidden="true"><span class="octicon octicon-link"></span></a>Roadmap</h3>
+
+<ol>
+<li>Update to ibm-js framework: in progress</li>
+<li>remove all Dijit stuff: postponed</li>
+<li>Code cleanup</li>
+<li>Create a Node.js server version</li>
+<li>Add proper test units </li>
+<li>...</li>
+</ol>
+
+      <footer class="site-footer">
+        <span class="site-footer-owner"><a href="https://github.com/mc007/xamiro">xamiro</a> is maintained by <a href="https://github.com/mc007">mc007</a>.</span>
+
+        <span class="site-footer-credits">This page was generated by <a href="https://pages.github.com">GitHub Pages</a> using the <a href="https://github.com/jasonlong/cayman-theme">Cayman theme</a> by <a href="https://twitter.com/jasonlong">Jason Long</a>.</span>
+      </footer>
+
+    </section>
+
+  
+  </body>
+</html>
+
