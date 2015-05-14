@@ -1,9 +1,7 @@
 Attention
 =========
 
-This project **moved** to [here](https://github.com/mc007/xamiro) and is called **xamiro** from now on!
-
-'xamiro' has more complete and documentation' and is also the official version!
+Please check [here](http://mc007.github.io/xamiro-docs/Getting_Started.html) for the official project page.
 
 
 PHP/JS based and full featured file manager
