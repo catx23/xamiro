@@ -1,5 +1,6 @@
 define([
     'dojo/_base/declare',
+    'dojo/_base/lang',
     'xide/utils',
     'xide/types',
     'xide/factory',
@@ -8,135 +9,123 @@ define([
     'xide/views/SplitEditor',
     './JSONEditor'
 
-], function (declare,
-             utils,
-             types,
-             factory,
-             ManagerBase,
-             ContentPane,
-             SplitEditor,
-             JSONEditor)
-{
-    return declare("JSONEditor.JSONEditorManager", [ManagerBase],
-        {
-            mainView:null,
-            ctx:null,
-            config:null,
-            panelManager:null,
-            fileManager:null,
-            currentItem:null,
-            didRegister:false,
-            getMainView:function(){
-              return this.mainView || this.panelManager.rootView;
-            },
-            onItemSelected:function(eventData){
-                if(!eventData || !eventData.item || !eventData.item._S){
-                    return;
-                }
-                this.currentItem = eventData.item;
-            },
-            /**
-             * Open Aviary instance
-             * @param item
-             */
+], function (declare, lang, utils, types, factory, ManagerBase, ContentPane, SplitEditor, JSONEditor) {
+    return declare("JSONEditor.JSONEditorManager", [ManagerBase], {
+        mainView: null,
+        ctx: null,
+        config: null,
+        panelManager: null,
+        fileManager: null,
+        didRegister: false,
+        registerEditor: function () {
 
-            registerEditor:function(){
+            if (this.didRegister) {
+                return;
+            }
+            var thiz = this;
 
-                if(this.didRegister){
-                    return;
-                }
-                var thiz=this;
+            this.didRegister = true;
 
-                this.didRegister=true;
+            this.ctx.registerEditorExtension('JSON Editor', 'json', 'fa-code', this, false, null, SplitEditor, {
+                updateOnSelection: false,
+                leftLayoutContainer: this.ctx.mainView.leftLayoutContainer,
+                ctx: this.ctx,
+                rightEditorArgs:null,
+                leftEditorArgs:null
+            }, {
+                subscribers:[
 
-                this.ctx.registerEditorExtension('JSON Editor', 'json', 'fa-code', this, false, null, SplitEditor, {
-                    updateOnSelection: false,
-                    leftLayoutContainer: this.ctx.mainView.leftLayoutContainer,
-                    ctx: this.ctx
-                }, {
-                    /**
-                     * this goes into _designCP
-                     * @param where
-                     * @param who
-                     * @param item
-                     * @returns {widgetProto|*|*}
-                     */
-                    createLeftView: function (where, who, item) {
+                ],
+                /**
+                 * this goes into _designCP
+                 * @param where
+                 * @param who
+                 * @param item
+                 * @returns {widgetProto|*|*}
+                 */
+                createLeftView: function (where, who, item) {
 
 
-                        var pane = factory.createPane('', '', where, {}, null);
-                        var editor = pane.editor = utils.addWidget(JSONEditor,{},this,pane.containerNode,true);
+                    var pane = factory.createPane('', '', where, {}, null);
 
-                        pane.getItemActions = function(){
-                            return editor.getItemActions();
-                        };
-                        pane.setValue = function (value) {
-                            var _json = dojo.fromJson(value);
-                            editor.setData(_json);
-                        };
-                        pane.getValue = function () {
-                            return JSON.stringify(editor.getData(), null, 2);
-                        };
+                    var editor = pane.editor = utils.addWidget(JSONEditor, this.leftEditorArgs, this, pane.containerNode, true);
 
-                        return pane;
+                    pane.getItemActions = function () {
+                        return editor.getItemActions();
+                    };
+                    pane.setValue = function (value) {
+                        var _json = dojo.fromJson(value);
+                        editor.setData(_json);
+                    };
+                    pane.getValue = function () {
+                        return JSON.stringify(editor.getData(), null, 2);
+                    };
 
-                    },
-                    /**
-                     * this goes into _srcCP
-                     * @param where
-                     * @param who
-                     * @param item
-                     * @returns {widgetProto|*|*}
-                     */
-                    createRightView: function (where, who, item) {
+                    return pane;
 
-
-                        var editor = this.ctx.getScriptManager().onFileClicked(item, where, {
-                            region: 'bottom',
-                            splitter: true,
-                            style: "height:40%;padding:0px;overflow:hidden;",
-                            emits: {
-                                'onViewShow': false,
-                                'onItemSelected': false
-                            },
-                            autoSelect: false
-                        }, false);
+                },
+                /**
+                 * this goes into _srcCP
+                 * @param where
+                 * @param who
+                 * @param item
+                 * @returns {widgetProto|*|*}
+                 */
+                createRightView: function (where, who, item) {
 
 
-                        var thiz = this;
+                    var editorArgs = {
+                        region: 'bottom',
+                        splitter: true,
+                        style: "height:40%;padding:0px;overflow:hidden;",
+                        emits: {
+                            'onViewShow': false,
+                            'onItemSelected': false
+                        },
+                        autoSelect: false
+                    };
 
-                        editor._on('setFirstContent', function (evt) {
-                            thiz.setLeftValue(evt.value);
-                        });
 
-                        return editor;
-
-                    },
-                    startup: function () {
-                        this.inherited(arguments);
+                    if (this.rightEditorArgs) {
+                        lang.mixin(editorArgs, this.rightEditorArgs);
                     }
 
-                });
+                    var editor = this.ctx.getScriptManager().onFileClicked(item, where, editorArgs, false);
 
 
+                    var thiz = this;
 
-            },
-            _registerListeners:function () {
-                this.inherited(arguments);
-                this.subscribe([types.EVENTS.ITEM_SELECTED,types.EVENTS.ON_MAIN_VIEW_READY]);
-            },
-            _constructor:function () {
-                this.id=utils.createUUID();
-                this._registerListeners();
+                    editor._on('setFirstContent', function (evt) {
+                        thiz.setLeftValue(evt.value);
+                    });
 
-            },
-            init:function(){
+                    return editor;
 
-                try {
-                    this.registerEditor();
-                }catch(e){
-                    console.error('error in json-editor : ' + e , e);
+                },
+                startup: function () {
+                    this.inherited(arguments);
                 }
+
+            });
+
+
+        },
+        _registerListeners: function () {
+            this.inherited(arguments);
+            this.subscribe([types.EVENTS.ITEM_SELECTED, types.EVENTS.ON_MAIN_VIEW_READY]);
+        },
+        _constructor: function () {
+            this.id = utils.createUUID();
+            this._registerListeners();
+
+        },
+        init: function () {
+
+            try {
+                this.registerEditor();
+            } catch (e) {
+                console.error('error in json-editor : ' + e, e);
             }
-        });
+        }
+    });
 });

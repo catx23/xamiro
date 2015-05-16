@@ -458,7 +458,7 @@ define([
                     var b = this.hasTemplate(node.parent);*/
                     var _node = node.parent ? node.parent : node;
                     if(this.getRenderTemplates(_node.path())){
-                        this.onRenderNode(_node,true,evt.params.newValue);
+                        //this.onRenderNode(_node,true,evt.params.newValue);
                     }
                     break;
                 }
@@ -665,7 +665,11 @@ define([
             this._visitedNodes = {};
             this._expanded = {};
 
-            this.renderTemplates = [
+            if(!this.insertTemplates){
+                this.insertTemplates = [];
+            }
+
+            this.__renderTemplates = [
                 {
                     //
                     //  This segment is used to replace something in the node's dom structure
@@ -703,19 +707,10 @@ define([
                     insertIfMatch:{}
                 }
 
+
             ];
-
             this.__create(this.domNode, options, this.data);
-
             this.initReload();
-
-            /*
-             this._on('setSelection',function(selection){
-             console.log('change selection : ',selection);
-             });
-             */
-
-            //this.renderTemplates = {};
 
         }
     });
