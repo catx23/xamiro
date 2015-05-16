@@ -1,0 +1,3 @@
+//>>built
+define("Markdown/main",["dojo/_base/lang","dojo/_base/declare","./MarkdownManager","xide/types","xide/model/Component"],function(c,a,d,b,e){return a([e],{run:function(){var a=this.inherited(arguments);this.subscribe(b.EVENTS.ON_PLUGIN_READY,function(a){if("Markdown"===a.name){var b={};c.mixin(b,a);(new d(b)).init()}});this.publish(b.EVENTS.ON_PLUGIN_LOADED,{name:"Markdown"});return a}})});
+//# sourceMappingURL=main.js.map
