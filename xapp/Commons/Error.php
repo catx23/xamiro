@@ -1,8 +1,8 @@
 <?php
 
-if(!class_exists('XApp_Error')) {
+if(!class_exists('XApp_Error_Base')) {
 
-	class XApp_Error
+	class XApp_Error_Base
 	{
 		/**
 		 * Stores the list of errors.

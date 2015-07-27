@@ -16,7 +16,7 @@ class XApp_Download
 	 * @return string the response code. Empty string on incorrect parameter given.
 	 */
 	private  static function remote_retrieve_response_code( $response ) {
-		if ( XApp_Error::is_error($response) || ! isset($response['response']) || ! is_array($response['response']))
+		if ( XApp_Error_Base::is_error($response) || ! isset($response['response']) || ! is_array($response['response']))
 			return '';
 
 		return $response['response']['code'];
@@ -31,7 +31,7 @@ class XApp_Download
 	 * @return string The response message. Empty string on incorrect parameter given.
 	 */
 	private static function remote_retrieve_response_message( $response ) {
-		if ( XApp_Error::is_error($response) || ! isset($response['response']) || ! is_array($response['response']))
+		if ( XApp_Error_Base::is_error($response) || ! isset($response['response']) || ! is_array($response['response']))
 			return '';
 
 		return $response['response']['message'];
@@ -45,7 +45,7 @@ class XApp_Download
 	 * @return string The header value. Empty string on if incorrect parameter given, or if the header doesn't exist.
 	 */
 	private static function remote_retrieve_header( $response, $header ) {
-		if ( XApp_Error::is_error($response) || ! isset($response['headers']) || ! is_array($response['headers']))
+		if ( XApp_Error_Base::is_error($response) || ! isset($response['headers']) || ! is_array($response['headers']))
 			return '';
 
 		if ( array_key_exists($header, $response['headers']) )
@@ -54,7 +54,8 @@ class XApp_Download
 		return '';
 	}
 
-	public static function  download($url, $timeout = 300){
+	public static function  download($url, $timeout = 3000){
+
 
 		xapp_import('xapp.Commons.Error');
 		xapp_import('xapp.Utils.Strings');
@@ -62,26 +63,29 @@ class XApp_Download
 		xapp_import('xapp.Directory.Utils');
 		xapp_import('xapp.File.Utils');
 
-		//WARNING: The file is not automatically deleted, The script must unlink() the file.
 		if ( ! $url )
 			return new XApp_Error('http_no_url', ('Invalid URL Provided.'));
 
 		$tmpfname = XApp_Directory_Utils::tempname($url);
 		if ( ! $tmpfname )
-			return new XApp_Error('http_no_file', ('Could not create Temporary file.'));
+			return new XApp_Error_Base('http_no_file', ('Could not create Temporary file.'));
 
 		$http = new XApp_Http();
-		$response = $http->request( $url, array( 'timeout' => $timeout, 'stream' => true, 'filename' => $tmpfname ) );
 
-		if ( XApp_Error::is_error( $response ) ) {
+		$response = $http->request( $url, array( 'timeout' => $timeout, 'stream' => true, 'filename' => $tmpfname ) );
+		/*xapp_clog($response);*/
+
+		if ( XApp_Error_Base::is_error( $response ) ) {
 			unlink( $tmpfname );
 			return $response;
 		}
 
+
+		/*
 		if ( 200 != self::remote_retrieve_response_code( $response ) ){
 			unlink( $tmpfname );
-			return new XApp_Error( 'http_404', trim( xapp_remote_retrieve_response_message( $response ) ) );
-		}
+			return self::remote_retrieve_response_message( $response );
+		}*/
 
 		$content_md5 = self::remote_retrieve_header( $response, 'content-md5' );
 		if ( $content_md5 ) {

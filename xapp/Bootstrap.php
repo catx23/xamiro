@@ -555,7 +555,7 @@ class XApp_Bootstrap
 		echo('DOC ROOT : ' . xapp_get_option(self::DOC_ROOT, $this) . '<br/><br/>');
 	}
 
-	public function getPluginResources($plugins, $runtTimeConfiguration)
+	public function getPluginResources($plugins, $runtTimeConfiguration,$resourceConfig)
 	{
 		$result = array();
 		foreach ($plugins as $plugin) {

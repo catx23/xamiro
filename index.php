@@ -114,6 +114,8 @@ const XF_LAYOUT_PRESET_SINGLE           =2;     //Single View only
 const XF_LAYOUT_PRESET_BROWSER          =3;     //Classic Explorer like layout : left: tree, center : thumbs
 const XF_LAYOUT_PRESET_PREVIEW          =4;     //Split view : top : preview window, bottom : thumbs
 const XF_LAYOUT_PRESET_GALLERY          =5;     //Split view : top : image cover flow window, bottom : thumbs
+const XF_LAYOUT_PRESET_EDITOR           =6;     //Split view : left : browser, center: editor
+
 
 const XF_DIR_OPTION_SHOW_ISREADONLY     =1601;
 const XF_DIR_OPTION_SHOW_ISDIR          =1602;  //required!
@@ -133,7 +135,8 @@ const XF_DIR_OPTION_SHOW_FOLDER_SIZE    =1634;  //only for Linux with popen and 
 $XAPP_SALT_KEY       =  'k?Ur$0aE#9j1+7ui';     //Salt key to sign and verify client calls
 
 // allowed upload extensions. this is also used when renaming files
-$XF_ALLOWED_UPLOAD_EXTENSIONS = 'sh,php,js,css,less,bmp,csv,doc,gif,ico,jpg,jpeg,odg,odp,ods,odt,pdf,png,ppt,swf,txt,xcf,xls,mp3,xblox,cfhtml,tar,zip';
+$XF_ALLOWED_UPLOAD_EXTENSIONS = 'sh,php,js,css,less,bmp,csv,doc,gif,ico,jpg,jpeg,odg,odp,ods,odt,pdf,png,ppt,swf,txt,xcf,xls,mp3,xblox,cfhtml,tar,zip,md,json';
+
 
 
 /***************************************************************************

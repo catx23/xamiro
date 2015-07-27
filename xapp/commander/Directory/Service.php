@@ -872,6 +872,8 @@ class XCOM_Directory_Service extends XIDE_Directory_Service
 
 		xapp_import('xapp.Path.Utils');
 		xapp_import('xapp.File.Utils');
+		xapp_import('xapp.Commons.ErrorHandler');
+		xapp_import('xapp.Utils.Download');
 		xapp_import('xapp.Utils.SystemTextEncoding');
 		$success = array();
 		$error = array();
@@ -879,6 +881,9 @@ class XCOM_Directory_Service extends XIDE_Directory_Service
 		$vfs = $this->getFileSystem($mount);
 
 		$realSrcFile = '' . $url;
+
+
+		XApp_ErrorHandler::start();
 
 		if ($this->isLocal($mount, $this->getFSResources())) {
 
@@ -909,8 +914,14 @@ class XCOM_Directory_Service extends XIDE_Directory_Service
 				touch($destFile);
 			}
 			try {
-				$src = fopen($realSrcFile, "r");
+
+				$srcPath = XApp_Download::download($realSrcFile);
+				if(!file_exists($srcPath)){
+					return self::toRPCError(1,'Error downloading ' . $srcPath. ' Error : ' . $srcPath);
+				}
+				$src = fopen($srcPath, "r");
 				$dest = fopen($destFile, "w");
+
 				if ($dest !== false) {
 					while (!feof($src)) {
 						stream_copy_to_stream($src, $dest, 4096);
@@ -918,8 +929,10 @@ class XCOM_Directory_Service extends XIDE_Directory_Service
 					fclose($dest);
 				}
 				fclose($src);
+				@unlink($srcPath);
+
 			} catch (Exception $e) {
-				return self::toRPCError($e->getMessage());
+				return self::toRPCError(1,$e->getMessage());
 			}
 		} else {
 			$mountManager = $vfs->getMountManager();
@@ -933,10 +946,18 @@ class XCOM_Directory_Service extends XIDE_Directory_Service
 				}
 				fclose($src);
 			} catch (Exception $e) {
-				error_log('error uploading stream : ' . $e->getMessage());
-				return self::toRPCError($e->getMessage());
+				return self::toRPCError(1,$e->getMessage());
 			}
 		}
+
+		/*
+		$errors = XApp_ErrorHandler::stop();
+		if($errors){
+			xapp_clog($errors);
+			$this->logger->log(json_encode($errors));
+		}
+		*/
+		/*xapp_clog($errors);*/
 		return true;
 	}
 

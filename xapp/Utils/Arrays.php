@@ -172,7 +172,7 @@ class XApp_Utils_Array
 	 */
 	public static function parse_args( $args, $defaults = '' ) {
 
-		xapp_import('xapp.Utils.String');
+		xapp_import('xapp.Utils.Strings');
 
 		if ( is_object( $args ) )
 			$r = get_object_vars( $args );

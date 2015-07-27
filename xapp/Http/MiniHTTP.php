@@ -52,7 +52,6 @@ class XApp_Http_Curl {
 	 * Send a HTTP request to a URI using cURL extension.
 	 *
 	 * @access public
-	 * @since 2.7.0
 	 *
 	 * @param string $url The request URL.
 	 * @param string|array $args Optional. Override the defaults.
@@ -66,7 +65,7 @@ class XApp_Http_Curl {
 			'headers' => array(), 'body' => null, 'cookies' => array()
 		);
 
-		$r = xapp_parse_args( $args, $defaults );
+		$r =    XApp_Utils_Array::parse_args( $args, $defaults );
 
 		if ( isset($r['headers']['User-Agent']) ) {
 			$r['user-agent'] = $r['headers']['User-Agent'];
@@ -203,7 +202,7 @@ class XApp_Http_Curl {
 		}
 
 		curl_exec( $handle );
-		$theHeaders = XAppHttp::processHeaders( $this->headers, $url );
+		$theHeaders = XApp_Http::processHeaders( $this->headers, $url );
 		$theBody = $this->body;
 
 		$this->headers = '';
@@ -361,6 +360,7 @@ class XApp_Http{
 			$headers = preg_replace('/\n[ \t]/', ' ', $headers);
 			// Create the headers array.
 			$headers = explode("\n", $headers);
+
 		}
 
 		$response = array('code' => 0, 'message' => '');
@@ -482,7 +482,7 @@ class XApp_Http{
 
 	public function request($url, $args = array())
 	{
-		xapp_import('xapp.Utils.String');
+		xapp_import('xapp.Utils.Strings');
 		xapp_import('xapp.Utils.Arrays');
 		xapp_import('xapp.Commons.Error');
 		xapp_import('xapp.Directory.Utils');
@@ -593,7 +593,7 @@ class XApp_Http{
 		 */
 		if ($r['stream']) {
 			$r['blocking'] = true;
-			if (!xapp_is_writable(dirname($r['filename']))) {
+			if (! XApp_Directory_Utils::is_writable(dirname($r['filename']))) {
 				return new XApp_Error(
 					'http_request_failed',
 					('Destination directory for file streaming does not exist or is not writable.')

@@ -157,7 +157,7 @@ define([
                 if (utils.isImage(item.path) || $.inArray(item.mime, mimes) !== -1) {
 
                     //share action:
-                    var _share = Action.create('Share', 'fa-share-alt', 'File/Share', false, null, types.ITEM_TYPE.FILE, 'fileAction', null, true, function(){
+                    var _share = Action.create('Share', 'fa-share-alt-square', 'File/Share', false, null, types.ITEM_TYPE.FILE, 'fileAction', null, true, function(){
                         thiz.openShare(item);
                     });
                     _share.accelKey = '';

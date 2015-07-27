@@ -742,7 +742,7 @@ class XApp_Utils_Strings
 	 * @since 3.7.0
 	 */
 	public static function reset_mbstring_encoding() {
-		mbstring_binary_safe_encoding( true );
+		self::mbstring_binary_safe_encoding( true );
 	}
 
 	/**
