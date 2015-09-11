@@ -75,7 +75,7 @@ $CONF_DIRECTORY     =   $ROOT_DIRECTORY_ABSOLUTE . DIRECTORY_SEPARATOR . 'conf' 
 /**
  * XF_PATH, the folder to browse; must be absolute and must have a trailing slash. This path can be outside of the web-server's httpdoc directory:
  */
-$XF_PATH = realpath(dirname(__FILE__) . DIRECTORY_SEPARATOR);
+$XF_PATH = realpath(dirname(__FILE__) . DIRECTORY_SEPARATOR.'../docs/docFiles');
 
 
 /**
