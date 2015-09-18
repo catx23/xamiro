@@ -70,6 +70,9 @@ require_once(XAPP_BASEDIR . '/Service/Utils.php');
  * CONF_DIRECTORY points to the configuration directory which contains our profile
  */
 $CONF_DIRECTORY     =   $ROOT_DIRECTORY_ABSOLUTE . DIRECTORY_SEPARATOR . 'conf' . DIRECTORY_SEPARATOR;
+if(file_exists(realpath($CONF_DIRECTORY.'../../conf/custom.php'))){
+	$CONF_DIRECTORY     =   $ROOT_DIRECTORY_ABSOLUTE . DIRECTORY_SEPARATOR . 'conf' . DIRECTORY_SEPARATOR .'../../conf/';
+}
 
 
 /**
