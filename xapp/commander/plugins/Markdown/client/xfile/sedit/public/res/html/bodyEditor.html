@@ -1,0 +1,445 @@
+<div class="layout-wrapper-l1">
+	<div class="layout-wrapper-l2">
+		<div class="navbar navbar-default">
+			<div class="navbar-inner">
+				<div class="nav left-space"></div>
+				<div class="nav right-space pull-right"></div>
+				<div class="buttons-dropdown dropdown">
+		    		<div class="nav">
+		        		<button class="btn btn-success" data-toggle="dropdown"
+		            		title="Show buttons">
+		            		<i class="icon-th-large"></i>
+		            	</button>
+		    		    <div class="dropdown-menu">
+		        		</div>
+		        	</div>
+				</div>
+				<ul class="nav left-buttons">
+					<li class="wmd-button-group1 btn-group"></li>
+				</ul>
+				<ul class="nav left-buttons">
+					<li class="wmd-button-group2 btn-group"></li>
+				</ul>
+				<ul class="nav left-buttons">
+					<li class="wmd-button-group3 btn-group"></li>
+				</ul>
+				<ul class="nav left-buttons">
+					<li class="wmd-button-group5 btn-group"></li>
+				</ul>
+				<ul class="nav left-buttons">
+					<li class="wmd-button-group4 btn-group">
+						<a class="btn btn-success button-open-discussion" title="Comments Ctrl/Cmd+M"><i class="icon-comment-alt"></i></a>
+					</li>
+				</ul>
+				<ul class="nav pull-right right-buttons">
+					<li class="offline-status hide">
+					    <div class="text-danger">
+					        <i class="icon-attention-circled"></i>offline
+					    </div>
+					</li>
+					<li class="extension-buttons"></li>
+				</ul>
+				<ul class="nav pull-right title-container">
+					<li><div class="working-indicator"></div></li>
+					<li><a class="btn btn-success file-title-navbar" href="#"
+						title="Rename document"> </a></li>
+					<li><div class="input-file-title-container"><input type="text"
+						class="col-sm-4 form-control hide input-file-title"
+						placeholder="Document title" /></div></li>
+				</ul>
+			</div>
+		</div>
+		<div class="layout-wrapper-l3">
+			<pre id="wmd-input" class="form-control"><div class="editor-content" contenteditable=true></div><div class="editor-margin"></div></pre>
+			<div class="preview-panel">
+				<div class="layout-resizer layout-resizer-preview"></div>
+				<div class="layout-toggler layout-toggler-navbar btn btn-info" title="Toggle navigation bar"><i class="icon-th"></i></div>
+				<div class="layout-toggler layout-toggler-preview btn btn-info" title="Toggle preview"><i class="icon-none"></i></div>
+				<div class="preview-container">
+					<div id="preview-contents">
+						<div id="wmd-preview" class="preview-content"></div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="extension-preview-buttons">
+			<div class="btn-group drag-me" title="Drag me!">
+				<i class="icon-ellipsis-vert"></i>
+			</div>
+		</div>
+	</div>
+	<div id="wmd-button-bar" class="hide"></div>
+
+	<div class="menu-panel">
+		<button class="btn toggle-button" title="Menu">
+			<img
+				data-stackedit-src="menu-icon.png" width="24" height="24" />
+		</button>
+		<div class="panel-content">
+			<div class="list-group">
+
+				<a href="viewer" title="StackEdit Viewer"
+					class="list-group-item">
+					<i class="icon-resize-full"></i> StackEdit Viewer
+				</a>
+
+			</div>
+			<div class="list-group">
+
+				<a href="#" data-toggle="collapse" data-target=".collapse-synchronize"
+					class="list-group-item">
+					<div><i class="icon-refresh"></i> Synchronize</div>
+					<small>Open, save, collaborate in the Cloud</small>
+				</a>
+				<div class="sub-menu collapse collapse-synchronize clearfix">
+					<ul class="nav alert alert-danger show-already-synchronized">
+						<li><div>"<span class="file-title"></span>" is already synchronized.</div></li>
+						<li><a href="#" class="action-force-synchronization"><i class="icon-refresh"></i>
+							Force synchronization</a></li>
+	                </ul>
+				</div>
+				<a href="#" data-toggle="collapse" data-target=".collapse-publish-on"
+					class="list-group-item">
+					<div><i class="icon-upload"></i>Publish</div>
+					<small>Export to the web</small>
+				</a>
+				<div class="sub-menu collapse collapse-publish-on clearfix">
+					<ul class="nav alert alert-danger show-already-published">
+	                    <li><div>"<span class="file-title"></span>" is already published.</div></li>
+	                    <li><a href="#" class="action-update-publication"><i class="icon-upload"></i>
+	                        Update publication</a></li>
+					</ul>
+					<ul class="nav publish-on-provider-list">
+					</ul>
+				</div>
+			</div>
+			<div class="list-group">
+
+				<a href="#" data-toggle="collapse" data-target=".collapse-save-as"
+					class="list-group-item"><i class="icon-hdd"></i> Export to disk</a>
+				<div class="sub-menu collapse collapse-save-as clearfix">
+					<ul class="nav">
+						<li><a class="action-download-md" href="#"><i
+					        class="icon-download"></i> As Markdown</a></li>
+						<li><a class="action-download-html" href="#"><i
+					        class="icon-download"></i> As HTML</a></li>
+						<li><a class="action-download-template" href="#"><i
+					        class="icon-download"></i> Using template</a></li>
+					</ul>
+				</div>
+
+	            <a data-toggle="modal" data-target=".modal-import-url"
+	                class="list-group-item action-reset-input" href="#"><i
+					class="icon-globe"></i> Import from URL</a>
+			</div>
+			<ul class="nav">
+				<li><a href="#" data-toggle="modal" data-target=".modal-about"><i
+						class="icon-help-circled"></i> About</a></li>
+			</ul>
+
+		</div>
+	</div>
+
+
+	<div class="document-panel">
+		<button class="btn toggle-button" title="Select document Ctrl+[ Ctrl+]">
+			<i class="icon-folder-open"></i>
+		</button>
+		<div class="search-bar clearfix">
+			<ul class="nav">
+				<li><a href="#" class="action-create-file"><i
+						class="icon-file"></i> New document</a></li>
+				<li><a href="#" class="action-remove-file-confirm"><i
+						class="icon-trash"></i> Delete document</a></li>
+				<li><a href="#" data-toggle="modal" data-target=".modal-document-manager"><i
+						class="icon-layers"></i> Manage documents</a></li>
+	        </ul>
+			<div class="input-group">
+				<span class="input-group-addon"><i class="icon-search"></i></span><input
+					type="text" class="form-control" placeholder="Find document" />
+			</div>
+		</div>
+		<div class="panel-content">
+			<div class="list-group document-list"></div>
+			<div class="list-group document-list-filtered hide"></div>
+		</div>
+	</div>
+</div>
+
+<div class="modal fade modal-document-manager">
+	<div class="modal-dialog">
+		<div class="modal-content">
+
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal"
+					aria-hidden="true">&times;</button>
+				<h2 class="modal-title">Manage documents</h2>
+			</div>
+			<div class="modal-body">
+				<div></div>
+				<ul class="nav nav-pills document-list">
+					<li class="pull-right dropdown"><a href="#"
+						data-toggle="dropdown"><i class="icon-check"></i> Selection <b
+							class="caret"></b></a>
+						<ul class="dropdown-menu">
+							<li><a href="#" class="action-select-all"><i
+									class="icon-check"></i> Select all</a></li>
+							<li><a href="#" class="action-unselect-all"><i
+									class="icon-check-empty"></i> Unselect all</a></li>
+							<li class="divider"></li>
+							<li><a href="#" class="action-move-items"><i
+									class="icon-forward"></i> Move to folder</a></li>
+							<li><a href="#" class="action-delete-items"><i
+									class="icon-trash"></i> Delete</a></li>
+						</ul></li>
+					<li class="pull-right"><a href="#"
+						class="action-create-folder"> <i class="icon-folder"></i>
+							Create folder
+					</a></li>
+					<li class="disabled"><a><i class="icon-file"></i> <span
+							class="document-count"></span></a></li>
+					<li class="disabled"><a><i class="icon-folder"></i> <span
+							class="folder-count"></span></a></li>
+				</ul>
+				<div class="list-group document-list"></div>
+				<p class="confirm-delete hide">The following documents will be
+					deleted locally:</p>
+				<p class="choose-folder hide">Please choose a destination
+					folder:</p>
+				<div class="list-group selected-document-list hide"></div>
+				<div class="list-group select-folder-list hide"></div>
+			</div>
+			<div class="modal-footer">
+				<a href="#"
+					class="btn btn-default confirm-delete choose-folder action-cancel hide">Cancel</a>
+				<a href="#"
+					class="btn btn-primary confirm-delete action-delete-items-confirm hide">OK</a>
+				<a href="#" class="btn btn-primary document-list"
+					data-dismiss="modal">Close</a>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+<div class="modal fade modal-insert-link">
+	<div class="modal-dialog">
+		<div class="modal-content">
+
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal"
+					aria-hidden="true">&times;</button>
+				<h2 class="modal-title">Hyperlink</h2>
+			</div>
+			<div class="modal-body">
+				<p>Please provide the link URL and an optional title:</p>
+				<div class="input-group">
+					<span class="input-group-addon"><i class="icon-globe"></i></span><input
+						id="input-insert-link" type="text" class="col-sm-5 form-control"
+						placeholder='http://example.com/ "optional title"' />
+				</div>
+			</div>
+			<div class="modal-footer">
+				<a href="#" class="btn btn-default" data-dismiss="modal">Cancel</a>
+				<a href="#" class="btn btn-primary action-insert-link"
+					data-dismiss="modal">OK</a>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+<div class="modal fade modal-remove-file-confirm">
+	<div class="modal-dialog">
+		<div class="modal-content">
+
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal"
+					aria-hidden="true">&times;</button>
+				<h2 class="modal-title">Delete</h2>
+			</div>
+			<div class="modal-body">
+				<p>
+					Are you sure you want to delete "<span class="file-title"></span>"?
+				</p>
+				<blockquote>
+					<p><b>Note:</b> It won't delete the file on synchronized locations.</p>
+				</blockquote>
+			</div>
+			<div class="modal-footer">
+				<a href="#" class="btn btn-default" data-dismiss="modal">Cancel</a>
+				<a href="#" class="btn btn-primary action-remove-file"
+					data-dismiss="modal">Delete</a>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+<div class="modal fade modal-import-url">
+	<div class="modal-dialog">
+		<div class="modal-content">
+
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal"
+					aria-hidden="true">&times;</button>
+				<h2 class="modal-title">Import from URL</h2>
+			</div>
+			<div class="modal-body">
+				<p>Please provide a link to a Markdown document.</p>
+				<div class="form-horizontal">
+					<div class="form-group">
+						<label class="col-sm-3 control-label" for="input-import-url">URL</label>
+						<div class="col-sm-8">
+							<input type="text" id="input-import-url"
+								placeholder="http://www.abc.com/xyz.md" class="form-control">
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="modal-footer">
+				<a href="#" class="btn btn-default" data-dismiss="modal">Cancel</a>
+				<a href="#" data-dismiss="modal"
+					class="btn btn-primary action-import-url">OK</a>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+<div class="modal fade modal-publish">
+	<div class="modal-dialog">
+		<div class="modal-content">
+
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal"
+					aria-hidden="true">&times;</button>
+				<h2 class="modal-title">
+					Publish on <span class="publish-provider-name"></span>
+				</h2>
+			</div>
+			<div class="modal-body">
+				<div class="form-horizontal">
+
+					<div class="form-group">
+						<label class="col-sm-4 control-label">Format</label>
+						<div class="col-sm-7">
+							<div class="radio">
+								<label> <input type="radio" name="radio-publish-format"
+									value="markdown"> Markdown
+								</label>
+							</div>
+							<div class="radio">
+								<label> <input type="radio" name="radio-publish-format"
+									value="html"> HTML
+								</label>
+							</div>
+							<div class="radio">
+								<label> <input type="radio" name="radio-publish-format"
+									value="template"> Template
+								</label>
+							</div>
+						</div>
+					</div>
+					<div class="collapse publish-custom-template-collapse">
+						<div class="form-group">
+							<div class="col-sm-4"></div>
+							<div class="col-sm-7">
+								<div class="checkbox">
+									<label> <input type="checkbox"
+										id="checkbox-publish-custom-template"> Custom template
+									</label> <a href="#" class="tooltip-template">(?)</a>
+								</div>
+							</div>
+						</div>
+						<div class="form-group">
+							<div class="col-sm-4"></div>
+							<div class="col-sm-7">
+								<textarea class="form-control"
+									id="textarea-publish-custom-template"></textarea>
+							</div>
+						</div>
+					</div>
+				</div>
+				<blockquote class="front-matter-info">
+                    <p><b>Tip:</b> You can use a
+                    <a href="http://jekyllrb.com/docs/frontmatter/"
+                    target="_blank">YAML front matter</a> to specify the title and the tags/labels of your publication.</p>
+                    <p><b>Interpreted variables:</b> <code>title</code>, <code>tags</code>, <code>published</code>, <code>date</code>.</p>
+				</blockquote>
+			</div>
+			<div class="modal-footer">
+				<a href="#" class="btn btn-default" data-dismiss="modal">Cancel</a>
+				<a href="#" data-dismiss="modal"
+					class="btn btn-primary action-process-publish">OK</a>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+<div class="modal fade modal-non-unique">
+	<div class="modal-dialog">
+		<div class="modal-content">
+
+			<div class="modal-header">
+				<h2 class="modal-title">Ooops...</h2>
+			</div>
+			<div class="modal-body">
+				<p>StackEdit has stopped because another instance was running in
+					the same browser.</p>
+				<blockquote>
+                    <p>If you want to reopen StackEdit, click on
+					"Reload".</p>
+                </blockquote>
+			</div>
+			<div class="modal-footer">
+				<a href="javascript:window.location.reload();"
+					class="btn btn-primary">Reload</a>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+<div class="modal fade modal-redirect-confirm">
+	<div class="modal-dialog">
+		<div class="modal-content">
+
+			<div class="modal-header">
+				<h2 class="modal-title">Redirection</h2>
+			</div>
+			<div class="modal-body">
+			    <p class="redirect-msg"></p>
+				<blockquote>
+                    <p>Please click <b>OK</b> to proceed.</p>
+                </blockquote>
+			</div>
+			<div class="modal-footer">
+				<a class="btn btn-default" data-dismiss="modal">Cancel</a>
+				<a class="btn btn-primary action-redirect-confirm" data-dismiss="modal">OK</a>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+<div class="modal fade modal-app-reset">
+	<div class="modal-dialog">
+		<div class="modal-content">
+
+			<div class="modal-header">
+				<h2 class="modal-title">Reset application</h2>
+			</div>
+			<div class="modal-body">
+				<p>This will delete all your local documents.</p>
+				<blockquote><b>Are you sure?</b></blockquote>
+			</div>
+			<div class="modal-footer">
+				<a href="#" class="btn btn-default" data-dismiss="modal">Cancel</a>
+				<a href="#" class="btn btn-primary action-app-reset"
+					data-dismiss="modal">OK</a>
+			</div>
+		</div>
+	</div>
+</div>

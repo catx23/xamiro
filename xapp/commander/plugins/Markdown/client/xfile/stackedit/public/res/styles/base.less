@@ -1,0 +1,475 @@
+// Core variables and mixins
+@import "../bower-libs/bootstrap/less/variables.less";
+@import "../bower-libs/bootstrap/less/mixins.less";
+
+// Reset
+@import "../bower-libs/bootstrap/less/normalize.less";
+
+// Core CSS
+@import "../bower-libs/bootstrap/less/scaffolding.less";
+@import "../bower-libs/bootstrap/less/type.less";
+@import "../bower-libs/bootstrap/less/code.less";
+@import "../bower-libs/bootstrap/less/grid.less";
+@import "../bower-libs/bootstrap/less/tables.less";
+@import "../bower-libs/bootstrap/less/forms.less";
+@import "../bower-libs/bootstrap/less/buttons.less";
+
+// Components
+@import "../bower-libs/bootstrap/less/component-animations.less";
+@import "../bower-libs/bootstrap/less/glyphicons.less";
+@import "../bower-libs/bootstrap/less/dropdowns.less";
+@import "../bower-libs/bootstrap/less/button-groups.less";
+@import "../bower-libs/bootstrap/less/input-groups.less";
+@import "../bower-libs/bootstrap/less/navs.less";
+@import "../bower-libs/bootstrap/less/navbar.less";
+@import "../bower-libs/bootstrap/less/breadcrumbs.less";
+@import "../bower-libs/bootstrap/less/pagination.less";
+@import "../bower-libs/bootstrap/less/pager.less";
+@import "../bower-libs/bootstrap/less/labels.less";
+@import "../bower-libs/bootstrap/less/badges.less";
+@import "../bower-libs/bootstrap/less/jumbotron.less";
+@import "../bower-libs/bootstrap/less/thumbnails.less";
+@import "../bower-libs/bootstrap/less/alerts.less";
+@import "../bower-libs/bootstrap/less/progress-bars.less";
+@import "../bower-libs/bootstrap/less/media.less";
+@import "../bower-libs/bootstrap/less/list-group.less";
+@import "../bower-libs/bootstrap/less/panels.less";
+@import "../bower-libs/bootstrap/less/wells.less";
+@import "../bower-libs/bootstrap/less/close.less";
+
+// Components w/ JavaScript
+@import "../bower-libs/bootstrap/less/modals.less";
+@import "../bower-libs/bootstrap/less/tooltip.less";
+@import "../bower-libs/bootstrap/less/popovers.less";
+
+// Utility classes
+@import "../bower-libs/bootstrap/less/utilities.less";
+
+@import (less) "../libs/highlight/styles/default.css";
+@import (less) "../libs/fontello/css/fontello.css";
+
+/* Pretty printing styles. Used with prettify.js. */
+
+/* SPAN elements with the classes below are added by prettyprint. */
+.pln { color: #000 }  /* plain text */
+
+.str { color: #080 }  /* string content */
+.kwd { color: #008 }  /* a keyword */
+.com { color: #800 }  /* a comment */
+.typ { color: #606 }  /* a type name */
+.lit { color: #066 }  /* a literal value */
+/* punctuation, lisp open bracket, lisp close bracket */
+.pun, .opn, .clo { color: #660 }
+.tag { color: #008 }  /* a markup tag name */
+.atn { color: #606 }  /* a markup attribute name */
+.atv { color: #080 }  /* a markup attribute value */
+.dec, .var { color: #606 }  /* a declaration; a variable name */
+.fun { color: red }  /* a function name */
+
+/* Put a border around prettyprinted code snippets. */
+pre.prettyprint { padding: 2px; border: 1px solid #888 }
+
+/* Specify class=linenums on a pre to get line numbering */
+ol.linenums { margin-top: 0; margin-bottom: 0 } /* IE indents via margin-left */
+li.L0,
+li.L1,
+li.L2,
+li.L3,
+li.L5,
+li.L6,
+li.L7,
+li.L8 { list-style-type: none }
+/* Alternate shading for lines */
+li.L1,
+li.L3,
+li.L5,
+li.L7,
+li.L9 { background: #eee }
+
+
+@body-bg: #fff;
+@text-color: #000;
+@kbd-color: #333;
+@kbd-bg-color: #FFF;
+@kbd-border-color: fade(@text-color, 25%);
+@blockquote-border-color: #eee;
+@blockquote-bg: #f8f8f8;
+@title-base-size: 1em;
+@code-color: @text-color;
+@code-bg: fade(@text-color, 4%);
+@pre-bg: @blockquote-bg;
+@pre-border-color: @blockquote-border-color;
+@font-size-base: 15px;
+@line-height-base: 1.45;
+@p-margin: 1.1em;
+@headings-font-family: inherit;
+@headings-font-weight: 300;
+
+@font-face {
+  font-family: 'fontello';
+  src: url('../font/fontello.svg#fontello') format('svg'),
+       url('../font/fontello.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+    font-family: 'Source Sans Pro';
+    font-style: normal;
+    font-weight: 300;
+    src: local('Source Sans Pro Light'), local('SourceSansPro-Light'), url("../font/SourceSansPro-Light-webfont.woff") format('woff');
+}
+@font-face {
+    font-family: 'Source Sans Pro';
+    font-style: normal;
+    font-weight: 400;
+    src: local('Source Sans Pro'), local('SourceSansPro'), url("../font/SourceSansPro-Regular-webfont.woff") format('woff');
+}
+@font-face {
+    font-family: 'Source Sans Pro';
+    font-style: normal;
+    font-weight: 700;
+    src: local('Source Sans Pro Bold'), local('SourceSansPro-Bold'), url("../font/SourceSansPro-Bold-webfont.woff") format('woff');
+}
+@font-face {
+    font-family: 'Source Sans Pro';
+    font-style: italic;
+    font-weight: 300;
+    src: local('Source Sans Pro Light Italic'), local('SourceSansProLight-Italic'), url("../font/SourceSansPro-LightItalic-webfont.woff") format('woff');
+}
+@font-face {
+    font-family: 'Source Sans Pro';
+    font-style: italic;
+    font-weight: 400;
+    src: local('Source Sans Pro Italic'), local('SourceSansPro-Italic'), url("../font/SourceSansPro-Italic-webfont.woff") format('woff');
+}
+@font-face {
+    font-family: 'Source Sans Pro';
+    font-style: italic;
+    font-weight: 700;
+    src: local('Source Sans Pro Bold Italic'), local('SourceSansPro-BoldItalic'), url("../font/SourceSansPro-BoldItalic-webfont.woff") format('woff');
+}
+
+@font-face {
+    font-family: 'Source Code Pro';
+    font-style: normal;
+    font-weight: 400;
+    src: local('Source Code Pro'), local('SourceCodePro-Regular'), url("../font/SourceCodePro-Regular-webfont.woff") format('woff');
+}
+@font-face {
+    font-family: 'Source Code Pro';
+    font-style: normal;
+    font-weight: 700;
+    src: local('Source Code Pro Bold'), local('SourceCodePro-Bold'), url("../font/SourceCodePro-Bold-webfont.woff") format('woff');
+}
+
+@font-family-sans-serif: "Source Sans Pro", sans-serif;
+@font-family-monospace: "Source Code Pro", monospace;
+
+// Copied from Bootstrap in order to have correct urls
+.img-retina(@file-1x; @file-2x; @width-1x; @height-1x) {
+  background-image: url("@{file-1x}");
+
+  @media
+  only screen and (-webkit-min-device-pixel-ratio: 2),
+  only screen and (   min--moz-device-pixel-ratio: 2),
+  only screen and (     -o-min-device-pixel-ratio: 2/1),
+  only screen and (        min-device-pixel-ratio: 2),
+  only screen and (                min-resolution: 192dpi),
+  only screen and (                min-resolution: 2dppx) {
+    background-image: url("@{file-2x}");
+    background-size: @width-1x @height-1x;
+  }
+}
+
+.container {
+    margin-bottom: 180px;
+	text-align: justify;
+}
+
+a code {
+	color: inherit;
+}
+
+h1 { font-size: @title-base-size * 2.60; }
+h2 { font-size: @title-base-size * 2.15; }
+h3 { font-size: @title-base-size * 1.70; }
+h4 { font-size: @title-base-size * 1.25; }
+h5 { font-size: @title-base-size; }
+h6 { font-size: @title-base-size * 0.85; }
+
+h1, h2, h3, h4, h5, h6 {
+	margin: 1.5em 0;
+	text-align: start;
+}
+
+pre {
+    word-break: break-word;
+}
+
+p,
+pre,
+pre.prettyprint,
+blockquote {
+	margin: 0 0 @p-margin;
+}
+
+hr {
+	margin: 2em 0;
+}
+
+img {
+	max-width: 100%;
+}
+
+.sequence-diagram, .flow-chart {
+    text-align: center;
+	margin-bottom: @p-margin;
+    text {
+        font-size: 15px !important;
+        font-family: @font-family-sans-serif !important;
+    }
+    [fill="#ffffff"] {
+        fill: @body-bg;
+    }
+    [stroke="#000000"] {
+        stroke: @text-color;
+    }
+    text[stroke="#000000"] {
+        stroke: none;
+    }
+    [fill="#000"], [fill="#000000"], [fill="black"] {
+        fill: @text-color;
+    }
+}
+
+code, pre {
+	font-family: @font-family-monospace;
+    font-size: 0.9em;
+}
+
+code {
+    white-space: normal;
+}
+
+pre, pre.prettyprint {
+	text-align: start;
+	border: 0;
+	padding: 10px 20px;
+	border-radius: 5px;
+	code {
+	    background-color: transparent !important;
+	}
+}
+
+/* Definition list */
+dt,dd {
+	margin-top: 5px;
+	margin-bottom: 5px;
+}
+
+dd {
+	margin-left: 40px;
+}
+
+/* Table style */
+table {
+	margin-bottom: 20px;
+}
+
+table th,table td {
+	padding: 8px;
+	line-height: 20px;
+	vertical-align: top;
+	border-top: 1px solid #dddddd;
+}
+
+table th {
+	font-weight: bold;
+}
+
+table thead th {
+	vertical-align: bottom;
+}
+
+table caption+thead tr:first-child th,table caption+thead tr:first-child td,table colgroup+thead tr:first-child th,table colgroup+thead tr:first-child td,table thead:first-child tr:first-child th,table thead:first-child tr:first-child td
+	{
+	border-top: 0;
+}
+
+table tbody+tbody {
+	border-top: 2px solid #dddddd;
+}
+
+blockquote {
+	border-left-width: 10px;
+	background-color: @blockquote-bg;
+	border-top-right-radius: 5px;
+	border-bottom-right-radius: 5px;
+	padding: 15px 20px;
+	p {
+	    margin-bottom: @p-margin;
+	    font-size: 1em;
+	    line-height: @line-height-base;
+	}
+
+	ul:last-child,
+	ol:last-child {
+		margin-bottom: 0;
+	}
+}
+
+ul,ol {
+	margin-bottom: @p-margin;
+	ul,ol {
+		margin-bottom: @p-margin;
+	}
+}
+
+kbd {
+    padding: 0.1em 0.6em;
+    border: 1px solid @kbd-border-color;
+    .box-shadow(0 1px 0px @kbd-border-color);
+    font-size: 0.7em;
+    font-family: sans-serif;
+    background-color: @kbd-bg-color;
+    color: @kbd-color;
+    border-radius: 3px;
+    display: inline-block;
+    margin: 0 0.1em;
+    white-space: nowrap;
+}
+
+.toc ul {
+	list-style-type: none;
+	margin-bottom: 15px;
+}
+
+.footnote {
+	vertical-align: top;
+    position: relative;
+    top: -0.5em;
+    font-size: 0.8em;
+}
+
+/***********************
+ * Icons
+ ***********************/
+
+[class^="icon-"], [class*=" icon-"] {
+	display: inline-block;
+	line-height: 1.35em;
+	vertical-align: middle;
+	background-repeat: no-repeat;
+}
+
+// Custom icons (not from Font Awesome)
+.icon-code {
+	font-size: 83%;
+    line-height: 1.65em;
+	&:before {
+    	margin-left: 0.1em;
+    	margin-right: 0.6em;
+	}
+}
+
+.icon-trash {
+	line-height: 1.50em;
+}
+
+.icon-folder-open {
+	font-size: 80%;
+	&:before {
+    	margin-right: 0.6em;
+	}
+}
+
+.icon-chart-bar {
+	font-size: 95%;
+	&:before {
+    	margin-left: 0.3em;
+    	margin-right: 0.3em;
+	}
+}
+
+.icon-comment-alt, .icon-chat {
+	font-size: 92%;
+    &:before {
+        margin-left: 0.1em;
+        margin-right: 0.4em;
+    }
+}
+
+.icon-file {
+    font-size: 104%;
+	margin-left: 0;
+	margin-right: 0;
+}
+
+.icon-link {
+    font-size: 104%;
+}
+
+// Provider's icons (the colored ones)
+[class^="icon-provider-"], [class*=" icon-provider-"] {
+	.img-retina('../img/icons.png', '../img/icons2x.png', 256px, 16px);
+	width: 18px;
+	height: 16px;
+	margin-top: -2px;
+	margin-left: 2px;
+}
+
+.icon-provider-stackedit {
+	background-position: 0 0;
+}
+
+.icon-provider-gdrive, .icon-provider-gdrivesec, .icon-provider-gdriveter {
+	background-position: -18px 0;
+}
+
+.icon-provider-dropbox {
+	background-position: -37px 0;
+}
+
+.icon-provider-github,.icon-provider-gist {
+	background-position: -54px 0;
+}
+
+.icon-provider-blogger, .icon-provider-bloggerpage {
+	background-position: -72px 0;
+}
+
+.icon-provider-tumblr {
+	background-position: -90px 0;
+}
+
+.icon-provider-wordpress {
+	background-position: -108px 0;
+}
+
+.icon-provider-ssh {
+	background-position: -126px 0;
+}
+
+.icon-provider-gplus {
+	background-position: -144px 0;
+}
+
+.icon-provider-couchdb {
+	background-position: -162px 0;
+}
+
+/*******************
+ * RTL
+ *******************/
+body.rtl {
+    #wmd-input,
+    #preview-contents,
+    .input-file-title,
+    .search-bar input,
+    .modal-document-manager input,
+    .comments-popover,
+    .container {
+        direction: rtl;
+    }
+}
