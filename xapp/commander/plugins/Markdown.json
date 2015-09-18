@@ -67,7 +67,7 @@
                     "type": "JS-PLUGIN",
                     "url": "",
                     "urlOri": "",
-                    "packageSuffix":"xfile-release"
+                    "packageSuffix":"xfile"
                 },
                 {
                     "class": "cmx.types.Resource",
