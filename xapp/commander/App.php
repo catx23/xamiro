@@ -208,7 +208,7 @@ function xapp_commander_render_app(
 				}
 
 				$authDelegate = new $XAPP_AUTH_DELEGATE();
-				$SYSTEM_ROOT = realpath('/PMaster/') . DIRECTORY_SEPARATOR;
+				//$SYSTEM_ROOT = realpath('/PMaster/') . DIRECTORY_SEPARATOR;
 
 				Xapp_Rpc_Gateway::setSalt($XAPP_SALT_KEY);
 
@@ -264,8 +264,8 @@ function xapp_commander_render_app(
 								XApp_Directory_Service::VFS_CONFIG_PATH => $XAPP_VFS_CONFIG_PATH,
 								XApp_Directory_Service::FILE_SYSTEM_CONF => array(
 									XApp_VFS_Base::ABSOLUTE_VARIABLES => array(
-										'root' => $REPOSITORY_ROOT . DIRECTORY_SEPARATOR,
-										'system' => $SYSTEM_ROOT
+										'root' => $REPOSITORY_ROOT . DIRECTORY_SEPARATOR
+										/*'system' => $SYSTEM_ROOT*/
 									),
 									XApp_VFS_Base::RELATIVE_VARIABLES => array(),
 								),
@@ -288,8 +288,8 @@ function xapp_commander_render_app(
 								XApp_Directory_Service::FILE_SYSTEM_CONF => array(
 
 									XApp_VFS_Base::ABSOLUTE_VARIABLES => array(
-										'root' => $REPOSITORY_ROOT . DIRECTORY_SEPARATOR,
-										'system' => $SYSTEM_ROOT
+										'root' => $REPOSITORY_ROOT . DIRECTORY_SEPARATOR
+										/*'system' => $SYSTEM_ROOT*/
 									),
 									XApp_VFS_Base::RELATIVE_VARIABLES => array(),
 								),
