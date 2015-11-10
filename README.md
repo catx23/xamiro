@@ -1,9 +1,6 @@
-Attention
-=========
-
-This project **moved** to [here](https://github.com/mc007/xamiro) and is called **xamiro** from now on!
-
-a'xamiro' has more complete and documentation' and is also the official versiona!
+please see the .io page for details
 
 
+a new update is schedule for april or may, enabling you flawless experience:
 
+see pic <img src="https://cloud.githubusercontent.com/assets/1205100/11052210/5d0cb594-8756-11e5-8526-99f6057e941d.png"/>
