@@ -12,9 +12,9 @@
 
 ### Installation
 
-Dowload [this zip](https://github.com/gbaumgart/xamiro/archive/master.zip), or for the [new version release](https://github.com/gbaumgart/xamiro/releases/tag/2.0.3)
+Dowload [this zip](https://github.com/gbaumgart/xamiro/archive/master.zip) (or for the [new version release](https://github.com/gbaumgart/xamiro/releases/tag/2.0.3)) and extract it to somewhere, then open via web-browser your server-url (http://localhost/xamirio-2.0.3xxx), thats it. 
 
-[More Instructions for old the master branch](http://xamiro.com/documentation/)
+[More Instructions & Documenation for old the master branch](http://xamiro.com/documentation/)
 
 ### Keyboard & Mouse [here](http://xamiro.com/keyboard-mouse/)
 
@@ -25,7 +25,7 @@ otherwise it may can have hickups with certain FastCGI settings. The interface i
 
 ### Misc
 
-- this serves as file - manager/widget for the actual surrounding project[here](http://x4mm.net)
+- this serves as file - manager/widget for the actual surrounding project [here](http://x4mm.net)
 
 ### Screenshots [here](https://github.com/gbaumgart/xamiro/issues/3) 
 
