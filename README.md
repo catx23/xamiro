@@ -14,7 +14,7 @@
 
 Dowload [this zip](https://github.com/gbaumgart/xamiro/archive/master.zip) (or for the [new version release](https://github.com/gbaumgart/xamiro/releases/tag/2.0.3)) and extract it to somewhere, then open via web-browser your server-url (http://localhost/xamirio-2.0.3xxx), thats it. 
 
-[More Instructions & Documenation for old the master branch](http://xamiro.com/documentation/)
+[More Instructions & Documenation for old the master branch](http://xamiro.com/documentation/). Recommended: wget & unzip.
 
 ### Keyboard & Mouse [here](http://xamiro.com/keyboard-mouse/)
 
