@@ -31,10 +31,15 @@ otherwise it may can have hickups with certain FastCGI settings. The interface i
 
 ### License
 
-- Server-Side: **GPL-v2.0**
-- Client-Side: the main application and its libraries(client/src/lib: xide |xapp | xgrid | xfile |xwire |xace | xedit) under a dual license **BSD - Modified License & GPL-2.0**
+- Server-Side & Client-Side:  as dual license,  **BSD - Modified License & GPL-2.0***
+- Externals (2% mostly unimportant things) like jQuery/Bootstrap/CSS and friends: **MIT** or **BSD -2 **
 
-- Externals like jQuery/Bootstrap and friends: **MIT**
+- Server-Files : xapp/
+- Client-Files : client/src/xfile/xbox
+- Externals    : client/src/xfile/ext
+
+
+
 
 
 
