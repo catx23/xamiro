@@ -32,7 +32,8 @@ otherwise it may can have hickups with certain FastCGI settings. The interface i
 ### License
 
 - Server-Side: **GPL-v2.0**
-- Client-Side: the main framework under the **BSD - Modified License**
+- Client-Side: the main application and its libraries(client/src/lib: xide |xapp | xgrid | xfile |xwire |xace | xedit) under a dual license **BSD - Modified License & GPL-2.0**
+
 - Externals like jQuery/Bootstrap and friends: **MIT**
 
 
