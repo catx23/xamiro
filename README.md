@@ -1,5 +1,8 @@
 ## **IDE like file - manager in PHP and Javascript with minimal dependencies**
 
+Latest beta:
+<a href="https://cloud.githubusercontent.com/assets/1205100/13831032/fa7b8632-ebd0-11e5-83c2-6a817e21c578.png"><img src="https://cloud.githubusercontent.com/assets/1205100/13831032/fa7b8632-ebd0-11e5-83c2-6a817e21c578.png"/></a>
+
 **see [Home - Page](http://xamiro.com)**
 
 ### Dependencies / Requirements
@@ -12,16 +15,21 @@
 
 ### Installation
 
-Dowload [this zip](https://github.com/gbaumgart/xamiro/archive/master.zip) (or for the [new version release](https://github.com/gbaumgart/xamiro/releases/tag/2.0.3)) and extract it to somewhere, then open via web-browser your server-url (http://localhost/xamirio-2.0.3xxx), thats it. 
+- Dowload old 1.x version (master): [this zip](https://github.com/gbaumgart/xamiro/archive/master.zip) 
+
+- Download latest 2.x beta - version[release (branch 2.0.5)](https://github.com/gbaumgart/xamiro/releases/tag/2.0.5)) and extract it to somewhere, then open via web-browser your server-url (http://localhost/xamirio-2.0.x), thats it. 
 
 [More Instructions & Documenation for old the master branch](http://xamiro.com/documentation/). Recommended: wget & unzip.
 
 ### Keyboard & Mouse [here](http://xamiro.com/keyboard-mouse/)
 
 <hr/>
-### Status: Simple scenarios seem stable and realiable
+### Status: 
 
-otherwise it may can have hickups with certain FastCGI settings. The interface in it self: mostly stable and fast.
+- Version 1.x: simple scenarios seem stable and realiable
+- Version 2.x: buggy but as in 1.x
+
+It may can have hickups and problems with certain FastCGI & proxy settings.
 
 ### Misc
 
