@@ -1,3 +1,0 @@
-//>>built
-define("xide/views/BeanView",["dojo/_base/declare","xide/layout/ContentPane","xide/mixins/ItemActionMixin"],function(b,c,d){return b([c,d],{delegate:null,cssClass:"layoutContainer",singleton:!1,owner:null,getItemActions:function(){return this.delegate?this.delegate.getItemActions?this.delegate.getItemActions():null:null},onResize:function(){},startup:function(){this.inherited(arguments);var a=this;this.on("click",function(){if(a.onItemClear)a.onItemClear();if(a.onItemClick)a.onItemClick(null)})}})});
-//# sourceMappingURL=BeanView.js.map

@@ -1,4 +1,0 @@
-//>>built
-define("xide/views/KeyboardHandlerLight",["dojo/_base/declare","dojo/keys","dojo/has"],function(c,b,d){return c("xide.views.KeyboardHandlerLight",null,{ctlrKeyDown:!1,onKeyUp:function(a){switch(a.keyCode){case b.META:case b.ALT:case b.CTRL:this.ctlrKeyDown=!1}},onKey:function(a){if(a.type&&"keyup"==a.type)return this.onKeyUp(a);if(a.keyCode==b.ENTER){if(!a.target||!a.target.className||-1==a.target.className.indexOf("ace")&&-1==a.target.className.indexOf("jsoneditor-value")&&-1==a.target.className.indexOf("jsoneditor-value")&&
--1==a.target.className.indexOf("dgrid-cell")&&-1==a.target.className.indexOf("dgrid-row"))try{this.onOk&&(a.preventDefault(),this.onOk(null))}catch(c){console.error("maeh, onOK : triggered onOK on action-dialog enter!")}}else if(this.onNormalKey)this.onNormalKey()}})});
-//# sourceMappingURL=KeyboardHandlerLight.js.map

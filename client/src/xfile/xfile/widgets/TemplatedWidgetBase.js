@@ -1,5 +1,0 @@
-//>>built
-define("xfile/widgets/TemplatedWidgetBase","dojo/_base/array dojo/_base/declare dojo/_base/html dojo/on dijit/_Widget dijit/_WidgetBase dijit/_TemplatedMixin dijit/_WidgetsInTemplateMixin dojo/i18n dojo/i18n!./nls/TemplatedWidgetBase".split(" "),function(f,g,h,k,c,l,d,e){return dojo.declare("xide.widgets.TemplatedWidgetBase",[c,d,e],{data:null,delegate:null,didLoad:!1,templateString:null,translate:function(a){(null==this._messages||0==this._messages.length)&&this._setupTranslations();if(a){var b=a.toLocaleLowerCase();
-if((b=b.replace(/\s+/g,"_"))&&null!=this._messages)if((b=this._messages[b])&&0<b.length)return b}return a||""},_setupTranslations:function(){var a=sctx||mctx;this._messages=a&&a.getLocals?a.getLocals("xide.widgets","TemplatedWidgetBase"):[]},postMixInProperties:function(){this.inherited(arguments);this._setupTranslations()},startup:function(){this.inherited(arguments)},updateTitleNode:function(a){if(a&&this.titleNode&&(a=a.toLocaleLowerCase(),a=a.replace(/\s+/g,"_")))if(a=this._messages[a])this.titleNode.innerHTML=
-a}})});
-//@ sourceMappingURL=TemplatedWidgetBase.js.map
