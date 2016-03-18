@@ -577,8 +577,15 @@ class Xapp_Rpc_Gateway implements Xapp_Singleton_Interface
             throw new Xapp_Rpc_Gateway_Exception(_("passed hashing algorithm is not recognized"), 1401301);
         }
 
+/*
+        $_data = json_encode($data);
+        $_data = str_replace('[]','{}',$_data);
+        $_data = str_replace('\\/', '/',$_data);
+        error_log($_data);
+        */
 
-        /*
+/*
+ *
         $_data = json_encode($data);
         xapp_clog('sign ' . $_data .  ' with ' . $key . '  to ' . hash_hmac((string)$algo, $_data, (string)$key));
         //$_data = str_replace('\"params\":[]', '\"params\":{}',$_data);
@@ -587,6 +594,7 @@ class Xapp_Rpc_Gateway implements Xapp_Singleton_Interface
         xapp_clog('sign2 ' . $_data .  ' with ' . $key . '  to ' . hash_hmac((string)$algo, $_data, (string)$key));
         $_data = str_replace('\\/', '/',$_data);
         */
+
 
         //fecking PHP
         if(isset($data['params'])){
@@ -856,6 +864,7 @@ class Xapp_Rpc_Gateway implements Xapp_Singleton_Interface
                         }
 
                         $key = $this->getKey($user, null);
+
                         //xapp_clog('key ' . $key . ' user ' . $user);
                         $params = $this->request()->getParams();
 
@@ -892,6 +901,12 @@ class Xapp_Rpc_Gateway implements Xapp_Singleton_Interface
                         }
                         if(array_key_exists('width',$params)){
                             unset($params['width']);
+                        }
+                        if(array_key_exists('send',$params)){
+                            unset($params['send']);
+                        }
+                        if(array_key_exists('attachment',$params)){
+                            unset($params['attachment']);
                         }
 
                         if(xapp_is_option(self::SIGNED_REQUEST_CALLBACK, $this))
