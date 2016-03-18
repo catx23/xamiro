@@ -1,0 +1,80 @@
+ {
+     "name": "XShell",
+     "type": "XCOM",
+     "description": "Proxy",
+     "class":"jsontype.ComposerPackage",
+     "keywords": [],
+     "homepage": "http://xapp.com",
+     "showSMD" : true,
+     "location":"Shell/server/",
+     "license": "GPL",
+     "authors": [
+         {
+             "name": "mc007",
+             "email": "support@xapp-studio.com"
+         }
+     ],
+     "require": {
+         "xapp/Core": "1.0.x-dev",
+         "xapp/Log": "1.0.x-dev",
+         "xapp/Rpc": "1.0.x-dev",
+         "xapp/Xapp": "1.0.x-dev"
+     },
+     "repositories": [
+         {
+             "packagist": false,
+             "type": "composer",
+             "url": "http://www.xapp-php.com/packages/packages.json"
+         }
+     ],
+     "minimum-stability": "dev",
+     "resources":{
+         "class": "jsontype.ComposerResources",
+         "debug":{
+             "class": "cmx.types.Resources",
+             "includes": [
+             ],
+             "items": [
+                 {
+                     "class": "cmx.types.Resource",
+                     "enabled": false,
+                     "name": "Shell",
+                     "path": "Shell/xfile/main",
+                     "type": "JS-PLUGIN",
+                     "url": "",
+                     "urlOri": "",
+                     "packageSuffix":""
+                 },
+                 {
+                     "class": "cmx.types.Resource",
+                     "enabled": false,
+                     "type": "CSS",
+                     "url": "%XCOM_PLUGINS_WEB_URL%/Shell/client/xfile/css/ShellView.css"
+                 }
+             ]
+         },
+         "release":{
+             "class": "cmx.types.Resources",
+             "includes": [
+             ],
+             "items": [
+                 {
+                     "class": "cmx.types.Resource",
+                     "enabled": false,
+                     "name": "Shell",
+                     "path": "Shell/main",
+                     "type": "JS-PLUGIN",
+                     "url": "",
+                     "urlOri": "",
+                     "packageSuffix":"xfile-release"
+                 },
+                 {
+                     "class": "cmx.types.Resource",
+                     "enabled": false,
+                     "type": "CSS",
+                     "url": "%XCOM_PLUGINS_WEB_URL%/Shell/client/xfile/css/ShellView.css"
+                 }
+             ]
+         }
+     }
+ }

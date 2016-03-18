@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-gb" lang="en-gb" dir="ltr">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+
+    %HTML_HEADER%
+
+    <script type="text/javascript">
+        var isMaster = true;
+        var debug=true;
+        var device=null;
+        var sctx=null;
+        var ctx=null;
+        var cctx=null;
+        var mctx=null;
+        var rtConfig="debug";
+        var returnUrl= "";
+        var dataHost ="";
+        var dojoConfig = {
+                    async: true,
+                    parseOnLoad: false,
+                    isDebug: 0,
+                    baseUrl: '%CDN_URL%/client/src/xfile/',
+                    tlmSiblingOfDojo: 0,
+                    useCustomLogger:false,
+                    aliases:[['i18n', 'dojo/i18n']],
+                    map: {
+                        '*': {
+                            'xdojo/declare': 'xbox/declare'
+                        }
+                    },
+                    packages: %DOJOPACKAGES%,
+                    has:{
+                        'dojo-undef-api': true,
+                        'dojo-firebug': false,
+                        'xide-beans':true,
+                        'xlog':true
+                    },
+                    locale:'en'
+        };
+    </script>
+
+    <style>
+        .claro{
+            font-size: %GLOBAL_FONT_SIZE%;
+        }
+
+        .actionToolbarButtonElusive{
+            font-size: %ACTION_BUTTON_SIZE%;
+        }
+        BODY{
+            height: 100%;
+            left: 0;
+            overflow: hidden;
+            position: fixed;
+            top: 0;
+            width: 100%;
+        }
+
+        /****
+
+*/
+        #loader {
+            font-family: "Gill Sans", "Gill Sans MT", Calibri, sans-serif;
+            color: #5aacca;
+            font-size: 16px;
+            background-color: #ffffff;
+            padding: 0;
+            margin: 0;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: table;
+            /*opacity: 0.5;*/
+            /*max-height:750px;*/
+            text-align: center;
+            z-index: 999;
+            vertical-align: middle;
+        }
+        #loaderInner {
+            color: #5AACCA;
+            display: block;
+            /*left: 10%;*/
+            /*margin-top: 50% !important;*/
+            padding: 5px;
+            position: relative;
+            text-align: center;
+            width: 100%;
+            top: 76% !important;
+            /*padding:5px;
+            position:absolute;
+            left:10%;
+            top:76%;
+            width:275px;
+            */
+            font-size: 21px;
+            color: #5aacca;
+            /*display: table-cell;*/
+            /*vertical-align: middle;*/
+            /*margin: 0 auto;*/
+        }
+        #heading-inner {
+            width: 100%;
+        }
+        /**Loader new **/
+        .loaderProgContainer {
+            background-color: #000000;
+            border: 2px solid #000000;
+            border-radius: 5px;
+            color: rgba(45, 44, 44, 0.898);
+            height: 80px !important;
+            left: 50%;
+            top: 65%;
+            width: 80px !important;
+        }
+        .loaderProgContainer {
+            height: 100%;
+            position: absolute;
+            width: 100%;
+        }
+        /**  Loading indicator : new !  */
+        /* Loading indicator */
+        .loadingWrapper {
+            height: 100%;
+            position: absolute;
+            z-index: 999999;
+            width: 100%;
+            top: 36%;
+            display: inline-block;
+        }
+        .loading {
+            position: relative !important;
+            width: 72px !important;
+            /* diameter */
+            height: 72px !important;
+            /* diameter */
+            margin: 0 auto;
+        }
+        .loadingWrapper .outer, .inner, .loading:after {
+            position: absolute;
+            left: 0;
+            top: 0;
+            right: 0;
+            bottom: 0;
+        }
+        /* Mask */
+        .loadingWrapper .loading:after {
+            margin: 10%;
+            /* stroke width */
+            border-radius: 100%;
+            background: #888;
+            /* container background */
+            color: #FFFFFF;
+            content: "Loading";
+            font-size: 10px;
+            padding-top: 21px;
+            text-align: center;
+        }
+        /* Spinning gradients */
+        .loadingWrapper .outer, .inner {
+            animation-duration: 5s;
+            /* speed */
+            -webkit-animation-duration: 5s;
+            /* speed */
+            animation-iteration-count: infinite;
+            -webkit-animation-iteration-count: infinite;
+            animation-timing-function: linear;
+            -webkit-animation-timing-function: linear;
+        }
+        .loadingWrapper .outer {
+            animation-name: rotate-outer;
+            -webkit-animation-name: rotate-outer;
+        }
+        .loadingWrapper .inner {
+            animation-name: rotate-inner;
+            -webkit-animation-name: rotate-inner;
+        }
+        /* Halfs */
+        .loadingWrapper .outer:before, .inner:before, .outer:after, .inner:after {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            content: " ";
+        }
+        /* Left half */
+        .loadingWrapper .outer:before, .inner:before {
+            left: 0;
+            right: 50%;
+            border-radius: 72px 0 0 72px;
+            /* diameter */
+        }
+        /* Right half */
+        .loadingWrapper .outer:after, .inner:after {
+            left: 50%;
+            right: 0;
+            border-radius: 0 72px 72px 0;
+            /* diameter */
+        }
+        /* Half gradients */
+        .loadingWrapper .outer:before {
+            background-image: -webkit-linear-gradient(top, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.5));
+            background-image: -moz-linear-gradient(top, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.5));
+            background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.5));
+        }
+        .loadingWrapper .outer:after {
+            background-image: -webkit-linear-gradient(top, #ffffff, rgba(255, 255, 255, 0.5));
+            background-image: -moz-linear-gradient(top, #ffffff, rgba(255, 255, 255, 0.5));
+            background-image: linear-gradient(to bottom, #ffffff, rgba(255, 255, 255, 0.5));
+        }
+        .loadingWrapper .inner:before {
+            background-image: -webkit-linear-gradient(top, rgba(255, 255, 255, 0.5), rgba(191, 191, 191, 0.5));
+            background-image: -moz-linear-gradient(top, rgba(255, 255, 255, 0.5), rgba(191, 191, 191, 0.5));
+            background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.5), rgba(191, 191, 191, 0.5));
+        }
+        .loadingWrapper .inner:after {
+            background-image: -webkit-linear-gradient(top, rgba(128, 128, 128, 0.5), rgba(191, 191, 191, 0.5));
+            background-image: -moz-linear-gradient(top, rgba(128, 128, 128, 0.5), rgba(191, 191, 191, 0.5));
+            background-image: linear-gradient(to bottom, rgba(128, 128, 128, 0.5), rgba(191, 191, 191, 0.5));
+        }
+        /* Spinning animations */
+        @keyframes rotate-outer {
+            0% {
+                transform: rotate(0deg);
+                -moz-transform: rotate(0deg);
+                -webkit-transform: rotate(0deg);
+            }
+            100% {
+                transform: rotate(1080deg);
+                -moz-transform: rotate(1080deg);
+                -webkit-transform: rotate(1080deg);
+            }
+        }
+        @-webkit-keyframes rotate-outer {
+            0% {
+                -webkit-transform: rotate(0deg);
+            }
+            100% {
+                -webkit-transform: rotate(1080deg);
+            }
+        }
+        @keyframes rotate-inner {
+            0% {
+                transform: rotate(720deg);
+                -moz-transform: rotate(720deg);
+                -webkit-transform: rotate(720deg);
+            }
+            100% {
+                transform: rotate(0deg);
+                -moz-transform: rotate(0deg);
+                -webkit-transform: rotate(0deg);
+            }
+        }
+        @-webkit-keyframes rotate-inner {
+            0% {
+                -webkit-transform: rotate(720deg);
+            }
+            100% {
+                -webkit-transform: rotate(0deg);
+            }
+        }
+
+
+    </style>
+
+</head>
+<body class="">
+
+
+<div id="xapp"  class=""></div>
+
+<div class="loadingWrapper" id="loadingWrapper">
+    <div class="loading">
+        <div class="outer"></div>
+        <div class="inner"></div>
+    </div>
+</div>
+
+<div dojoType="xfile.widgets.Toaster" id="errorToast"
+     positionDirection="br-left" duration="0"
+     messageTopic="errorMessageTopic"></div>
+
+<div dojoType="xfile.widgets.Toaster" id="statusToast"
+     positionDirection="br-left" duration="0"
+     messageTopic="statusMessageTopic"></div>
+
+<script type="text/javascript" src="%CDN_URL%/client/src/xfile/dojo/xbox.js"></script>
+<!-- Run main-->
+<script type="text/javascript" src="%CDN_URL%/client/src/xfile/xbox/run.js"></script>
+</body>
+</html>
+

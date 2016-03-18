@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+ mm: the PHP media library
+ 
+ Copyright (c) 2007-2014 David Persson
+ 
+ Distributed under the terms of the MIT License.
+ Redistributions of files must retain the above copyright notice.
+-->
+<phpunit 
+	backupGlobals="false"
+	backupStaticAttributes="false"
+	bootstrap="bootstrap.php"
+>
+	<testsuites>
+		<testsuite name="Library">
+			<directory suffix="Test.php">tests/unit</directory>
+			<directory suffix="Test.php">tests/integration</directory>
+			<directory suffix="Test.php">tests/functional</directory> 
+		</testsuite>
+	</testsuites>
+	<php>
+		<const name="TEST_EXECUTION" value="true" />
+	</php>
+</phpunit>

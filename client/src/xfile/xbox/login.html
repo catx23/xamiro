@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-gb" lang="en-gb" dir="ltr">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+
+    %HTML_HEADER%
+
+    <style type="text/css">
+        .widget{
+            padding: 12px 18px !important;
+        }
+        .form-actions{
+            margin: 8px;
+        }
+
+        .login-widget .form-actions, .registration-widget .form-actions {
+            margin: initial;
+            padding: 20px 15px 15px 15px;
+        }
+
+        html, body {
+            margin: 4px;
+            padding: 4px;
+        }
+
+        BODY{
+            height: 100%;
+            left: 0;
+            overflow: hidden;
+            position: fixed;
+            top: 0;
+            width: 100%;
+        }
+        #mainBody {
+            /* kludge to avoid scrollbars.  using padding with absolute positioning seems to
+             * prevent mouse events from reaching the toolbar, for some reason */
+            height: 90%;
+        }
+
+        .sniff {
+            color: red;
+            font-style: bold;
+            font-size: 200%;
+            padding: 2em;
+        }
+    </style>
+
+    <script type="text/javascript">
+        var dojoConfig = {
+            async: true,
+            parseOnLoad: false,
+            isDebug: 0,
+            baseUrl: '%APP_URL%/xfile/',
+            tlmSiblingOfDojo: 0,
+            useCustomLogger:false,
+            locale:'en'
+
+        };
+    </script>
+    <script type="text/javascript" src="%APP_URL%/xfile/dojo/xbox.js"></script>
+    <script type="text/javascript">
+        require([
+            "dojo/ready",
+            "dijit/dijit",
+            "xide/manager/ServerActionBase"
+        ],function(ready, dijit,ServerActionBase){
+
+            var service = null;
+            var serviceClass='XApp_XIDE_Controller_UserService';
+
+            var btn = null;
+            $( document ).ready( function(){
+                btn = $('#loginBtn');
+                btn.click(function(){
+                    login();
+                });
+            } );
+
+
+
+
+            function initService(){
+                if(!service){
+                    service = new xide.manager.ServerActionBase({
+                        serviceClass:serviceClass,
+                        serviceUrl:'%RPC_TARGET%',
+                        sync:true
+                    });
+                    service.init();
+                }
+            }
+
+            function login(){
+
+                initService();
+
+                dojo.empty('error-holder');
+
+                var user = $('#username').val();
+                var password = $('#password').val();
+
+                if(!user || !password){
+                    location.reload();
+                    return;
+                }
+
+
+                var error = $('#error-holder');
+
+                var icon = $('#loginBtnIcon');
+                icon.removeClass('fa-caret-right');
+                icon.addClass('fa-spinner fa-spin');
+
+                error.empty();
+
+
+                service.serviceObject[serviceClass]['login'](user,password).then(
+                        function(result){
+
+                            icon.removeClass('fa-spinner fa-spin');
+                            if (result=="OK"){
+                                icon.removeClass('fa-caret-right');
+                                icon.addClass('fa-spinner fa-spin');
+                                location.reload();
+
+                            }else{
+
+                                error.html('Invalid userid or password');
+                                error.addClass('text-warning');
+                            }
+                        });
+
+            }
+            window['login']=login;
+
+            dojo.addOnLoad(function (){
+
+                initService();
+                if(!(dojo.isFF >= 4 || dojo.isChrome >= 5 || dojo.isSafari >= 5.1)){
+
+                    dojo.create("div", {innerHTML: "Firefox 4, Chrome 5, Safari 5.1 or greater is required", "class": "sniff"}, "loginpane", "first");
+                }
+
+                var loadDiv = dojo.byId('loadingWrapper');
+                if(loadDiv){
+                    dojo.destroy(loadDiv);
+                }
+            });
+        });
+
+    </script>
+
+</head>
+
+<body class="claro xTheme-default xTheme-%THEME%">
+
+<div class="loadingWrapper" id="loadingWrapper">
+    <div class="loading">
+        <div class="outer"></div>
+        <div class="inner"></div>
+    </div>
+</div>
+
+<div class="single-widget-container">
+
+    <section class="widget login-widget" style="padding: 12px 17px" >
+
+        <header class="text-align-center">
+            <h4>Login to your account</h4>
+        </header>
+
+        <div class="body">
+            <fieldset>
+                <div class="form-group">
+                    <label for="username" >User</label>
+                    <div class="input-group">
+                                    <span class="input-group-addon">
+                                        <i class="fa fa-user"></i>
+                                    </span>
+                        <input id="username" type="text" class="form-control input-lg input-transparent"
+                               placeholder="admin" value="admin">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="password" >Password</label>
+
+                    <div class="input-group input-group-lg">
+                                    <span class="input-group-addon">
+                                        <i class="fa fa-lock"></i>
+                                    </span>
+                        <input id="password" type="password" class="form-control input-lg input-transparent"
+                               placeholder="Password" value="admin">
+                    </div>
+                </div>
+            </fieldset>
+
+            <div class="form-actions">
+                <button id="loginBtn" type="submit" class="btn btn-block btn-lg btn-danger">
+                    <span id="loginBtnIcon" class="small-circle"><i class="fa fa-caret-right"></i></span>
+                    <small style="margin: 8px">Sign In</small>
+
+                </button>
+
+                <div id="error-holder"></div>
+            </div>
+        </div>
+
+
+    </section>
+</div>
+
+
+</body>
+
+</html>

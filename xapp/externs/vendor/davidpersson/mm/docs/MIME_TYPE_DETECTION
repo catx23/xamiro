@@ -1,0 +1,123 @@
+MIME type detection
+-------------------
+The detection class `\mm\Mime\Type` allows for detecting MIME types of files and
+streams by analyzing it's contents and/or extension. The class makes use of two
+adapters (`magic` and `glob`) which must be configured before using any of the
+methods and is thus "two-headed".
+
+Usage
+'''''
+`Type::guessType(...)`
+Guesses the MIME type of the file.
+
+```
+Type::guessType('example.png'); // returns 'image/png'
+Type::guessType('/path/to/example.png'); // returns 'image/png'
+Type::guessType($handle = fopen('/path/to/example.png', 'rb')); // returns 'image/png'
+```
+
+`Type::guessExtension(...)`
+Guesses the extension (suffix) for an existing file or a MIME type.
+
+```
+Type::guessExtension('application/pdf'); // returns 'pdf'
+Type::guessExtension('/path/to/example.png'); // returns 'png'
+Type::guessExtension($handle = fopen('/path/to/example.png', 'rb')); // returns 'png'
+```
+
+`Type::guessName(...)`
+Determine the common lowercase media name, with and without hints from a magic
+lookup.
+
+```
+Type::guessName('example.png'); // returns 'image'
+Type::guessName('example.webm'); // returns 'video'
+Type::guessName('application/pdf'); // returns 'document'
+Type::guessName('/path/to/example.png'); // returns 'image'
+Type::guessName($handle = fopen('/path/to/example.png', 'rb')); // returns 'image'
+```
+
+Note: Most methods have additional options which give you more control about
+      the output. Please consult the API documentation for more information
+      on these options.
+
+Available `Glob` Adapters
+''''''''''''''''''''''''''''''
+`Apache`
+This adapter supports files like the ones that come with the `mod_mime_magic`
+Apache Webserver module. Most often you'll find such a file containing MIME
+type to extension mappings within your apache2 configuration directory as
+`mime.types`.
+
+http://httpd.apache.org/docs/2.2/en/mod/mod_mime_magic.html
+
+`Freedesktop`
+This adapter supports glob database files compiled into the Freedesktop format.
+The implementation here doesn't strictly follow the spec when it comes to
+matching against patterns. A precompiled glob database file comes with this
+library and is located in `resources/glob.db`. You may also have a much more
+current version of such a file on your system. Most often those files are
+located below `/usr/share/mime`.
+
+http://standards.freedesktop.org/shared-mime-info-spec/shared-mime-info-spec-0.13.html
+
+- This is the recommended adapter when doing glob lookups. -
+
+`Memory`
+This is a very simplistic adapter and can be used for building up your own glob
+database in memory. It works solely in memory and doesn't need a database file.
+This adapter is good for caching and testing.
+
+`Php`
+Can parse files containing one huge PHP array. Files must look like this:
+```
+<?php return [
+    item0,
+    item1,
+    item2,
+    item3
+]; ?>
+```
+
+Available `Magic` Adapters
+'''''''''''''''''''''''''''''''
+`Apache`
+This adapter supports files like the ones that come with the `mod_mime_magic`
+Apache Webserver module. Most often you'll find such a file containing MIME
+type to extension mappings within your apache2 configuration directory as
+`magic`.
+
+http://httpd.apache.org/docs/2.2/en/mod/mod_mime_magic.html
+
+`Freedesktop`
+This adapter supports magic database files compiled into the Freedesktop
+format.  A precompiled glob database file comes with this library and is
+located in `resources/magic.db`. You may also have a much more current version
+of such a file on your system. Most often those files are located below
+`/usr/share/mime`.
+
+http://standards.freedesktop.org/shared-mime-info-spec/shared-mime-info-spec-0.13.html
+
+`Fileinfo`
+This adapter wraps the functions of the fileinfo extension. This is the
+recommended adapter for doing magic lookups.
+
+- This is the recommended adapter when doing magic lookups. -
+
+http://php.net/fileinfo
+
+`Memory`
+This is a very simplistic adapter and can be used for building up your own
+magic database in memory. It works solely in memory and doesn't need a database
+file. This adapter is good for caching and testing.
+
+`Php`
+Can parse files containing one huge PHP array. Files must look like this:
+```
+<?php return [
+    item0,
+    item1,
+    item2,
+    item3
+]; ?>
+`

@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-gb" lang="en-gb" dir="ltr">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+
+    %HTML_HEADER%
+
+    <style type="text/css">
+        html, body {
+            margin: 4px;
+            padding: 4px;
+        }
+
+        BODY{
+            height: 100%;
+            left: 0;
+            overflow: hidden;
+            position: fixed;
+            top: 0;
+            width: 100%;
+        }
+        #mainBody {
+            /* kludge to avoid scrollbars.  using padding with absolute positioning seems to
+             * prevent mouse events from reaching the toolbar, for some reason */
+            height: 90%;
+        }
+
+        #error-holder {
+            color: red;
+        }
+
+        .sniff {
+            color: red;
+            font-style: bold;
+            font-size: 200%;
+            padding: 2em;
+        }
+    </style>
+
+    <script type="text/javascript">
+        var dojoConfig = {
+            async: true,
+            parseOnLoad: true,
+            isDebug: 0,
+            baseUrl: '%APP_URL%/xfile/',
+            tlmSiblingOfDojo: 0,
+            useCustomLogger:false,
+            locale:'en'
+
+        };
+    </script>
+    <script type="text/javascript" src="%APP_URL%/xfile/dojo/xbox.js"></script>
+    <script type="text/javascript">
+        require([
+            "dojo/ready",
+            "dijit/dijit",
+            "dijit/form/TextBox",
+            "dijit/registry",
+            "dijit/form/Button",
+            "xide/manager/ServerActionBase"
+        ],function(ready, dijit,TextBox,registry,Button,ServerActionBase){
+
+
+            var service = null;
+
+            var serviceClass='XApp_XIDE_Controller_UserService';
+
+            function initService(){
+
+                if(!service){
+                    service = new xide.manager.ServerActionBase({
+                        serviceClass:serviceClass,
+                        serviceUrl:'%RPC_TARGET%',
+                        sync:true
+                    });
+                    service.init();
+                }
+            }
+
+            function login()
+            {
+                initService();
+                dojo.empty('error-holder');
+                var user = dijit.byId('username').get('value');
+                var password = dijit.byId('password').get('value');
+                var loadDiv = dojo.byId('loadingWrapper');
+                loadDiv.style.display='inherit';
+
+                service.serviceObject[serviceClass]['login'](user,password).then(
+                        function(result){
+                            if (result=="OK"){
+                                var loading = dojo.create("div",{
+                                    /*style:'float:left'*/
+                                }, dojo.body(), "first");
+
+                                loading.innerHTML='<span class="fa-spinner fa-spin"></span>Loading...';
+                                dojo.place(loading,dijit.byId('loginBtn').domNode,'after');
+                                location.reload();
+                            }else{
+                                dojo.attr("error-holder", "innerHTML", "Invalid userid or password");
+                                loadDiv.style.display='none';
+                            }
+                        });
+
+            }
+            window['login']=login;
+            dojo.addOnLoad(function (){
+                initService();
+                if(!(dojo.isFF >= 4 || dojo.isChrome >= 5 || dojo.isSafari >= 5.1)){
+                     dojo.create("div", {innerHTML: "Firefox 4, Chrome 5, Safari 5.1 or greater is required", "class": "sniff"}, "loginpane", "first");
+                }
+                var loadDiv = dojo.byId('loadingWrapper');
+                if(loadDiv){
+                    //dojo.destroy(loadDiv);
+                    loadDiv.style.display='none';
+                }
+             });
+        });
+
+    </script>
+
+</head>
+
+<body class="claro">
+<div id="davinci_top_bar"></div>
+
+<div class="loadingWrapper" id="loadingWrapper">
+    <div class="loading">
+        <div class="outer"></div>
+        <div class="inner"></div>
+    </div>
+</div>
+
+<div id="loginpane" class="ui-widget-content">
+    <div id="not_logged_in">
+
+        <label style="margin-left: 4px" for="username">Username: </label>
+        <input dojoType="dijit.form.TextBox" type="text" name="name" id="username" value="admin"/>
+        <label for="password">Password: </label>
+        <input dojoType="dijit.form.TextBox" type="password" name="name" id="password" value="asdasd"/>
+        <button id='loginBtn' dojoType="dijit.form.Button" onclick="login()">Login</button>
+        <div id="error-holder"></div>
+    </div>
+    <div id="mainBody"/>
+</div>
+
+</body>
+
+</html>

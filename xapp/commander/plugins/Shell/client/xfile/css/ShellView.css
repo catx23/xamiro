@@ -1,0 +1,58 @@
+.XShellView{
+    height: inherit;
+}
+.XShellView .layoutMain{
+    min-height: 10em;
+    height: inherit;
+}
+
+.XShellView .runPanel{
+    padding: 0px;
+    height: inherit;
+    position: relative;
+    overflow: hidden;
+}
+
+
+/***
+    Widget - Console
+*/
+
+/* The console input field itself */
+.XShellView .console{
+
+}
+
+.XShellView .console .dijitTextBox{
+    width: 100%;
+}
+
+/* The console label field, left side of the console*/
+.XShellView .console .labelNode{
+    float: left;
+}
+.XShellView .dijitTabContainerLeftChildWrapper{
+    height: inherit;
+}
+.logPane{
+    height: inherit;
+    padding-left: 10px;
+    overflow-y:auto;
+}
+.runPanelLogView{
+    overflow: auto;
+}
+.consoleWidget{
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    border: 1px solid #000000;
+    box-shadow: 0 2px 3px 0 rgba(0, 0, 0, 0.5) inset;
+    color: #202020;
+    font-size: 14px;
+    height: 35px;
+    line-height: 17px;
+    outline: medium none;
+    padding: 2px 4px 0;
+    text-overflow: ellipsis;
+}

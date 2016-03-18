@@ -1,0 +1,17 @@
+{
+    "class":"cmx.types.Resources",
+    "includes":[
+
+    ],
+    "items":[
+        {
+            "class":"cmx.types.Resource",
+            "type":"FILE_PROXY",
+            "name":"xapp",
+            "path":"%XAPP_ROOT%",
+            "url":"%XASWEB%/lib/external/ckeditorfull/ckeditor.js",
+            "enabled":true,
+            "readOnly":true
+        }
+    ]
+}

@@ -1,0 +1,64 @@
+{
+    "class":"cmx.types.Resources",
+    "includes":[
+
+    ],
+    "items":[
+        {
+            "class":"cmx.types.Resource",
+            "type":"JS-HEADER-INCLUDE",
+            "url":"%XASWEB%/xfile/ext/xamiro-externals.js",
+            "enabled":true
+        },
+        {
+            "class":"cmx.types.Resource",
+            "type":"JS-HEADER-SCRIPT-TAG",
+            "url":"%XASWEB%/xfile/xbox/Header.js",
+            "enabled":true
+        },
+        {
+            "class":"cmx.types.Resource",
+            "type":"CSS",
+            "url":"%XASWEB%/theme/html-%THEME%/dist/css/application.css",
+            "enabled":true
+        },
+        {
+            "class":"cmx.types.Resource",
+            "type":"CSS",
+            "url":"%XASWEB%/xfile/xbox/resources/app.css",
+            "enabled":true
+        },
+
+        {
+            "class":"cmx.types.Resource",
+            "type":"JS-HEADER-INCLUDE",
+            "enabled": true,
+            "url":"%XASWEB%/xfile/ext/ace/ace.js"
+        },
+        {
+            "class":"cmx.types.Resource",
+            "type":"JS-HEADER-INCLUDE",
+            "enabled": true,
+            "url":"%XASWEB%/xfile/ext/ace/ext-language_tools.js"
+        },
+        {
+            "class":"cmx.types.Resource",
+            "type":"HTML",
+            "url":"%XASWEB%/xfile/xbox/index.html",
+            "enabled":true
+        },
+        {
+            "class":"cmx.types.Resource",
+            "type":"LOGIN",
+            "url":"%XASWEB%/xfile/xbox/login.html",
+            "enabled":true
+        },
+        {
+            "class":"cmx.types.Resource",
+            "type":"JS-HEADER-INCLUDE",
+            "enabled": true,
+            "url":"%XASWEB%/xfile/ext/d3.v3.min.js"
+        }
+
+    ]
+}

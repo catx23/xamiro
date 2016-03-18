@@ -1,0 +1,155 @@
+.ace_editor {
+  /* Search dialog */
+}
+.ace_editor .ace_search,
+.ace_editor .ace_search.right {
+  right: 0px;
+  left: 0px;
+  max-width: none;
+  bottom: 0px;
+  top: auto;
+  border: 1px solid;
+  border-radius: 0px;
+  padding: 0px;
+  box-shadow: 2px 3px 5px rgba(0, 0, 0, 0.2);
+  font-smoothing: subpixel-antialiased;
+  -webkit-font-smoothing: subpixel-antialiased;
+}
+.ace_editor .ace_search .ace_searchbtn_close,
+.ace_editor .ace_search.right .ace_searchbtn_close {
+  margin: 9px 5px 0px 5px;
+}
+.ace_editor .ace_search .ace_search_form,
+.ace_editor .ace_search.right .ace_search_form,
+.ace_editor .ace_search .ace_replace_form,
+.ace_editor .ace_search.right .ace_replace_form {
+  border-radius: 0px;
+  margin: 4px;
+}
+.ace_editor .ace_search .ace_search_options,
+.ace_editor .ace_search.right .ace_search_options {
+  text-align: left;
+  display: inline-block;
+  float: right;
+  margin: 0px;
+  padding: 4px;
+  height: 24px;
+}
+.ace_editor .ace_search .ace_button,
+.ace_editor .ace_search.right .ace_button {
+  border-radius: 0px;
+  padding: 2px 4px;
+  margin: 0 3px 0 0;
+  display: inline-block;
+}
+.ace_editor .ace_search .ace_searchbtn,
+.ace_editor .ace_search.right .ace_searchbtn,
+.ace_editor .ace_search .ace_replacebtn,
+.ace_editor .ace_search.right .ace_replacebtn {
+  padding: 0px 5px;
+  border-radius: 0px;
+}
+.ace_editor.ace-tm {
+  background-color: #FFFFFF;
+  color: #4D4D4C;
+}
+.ace_editor.ace-tm .ace_gutter {
+  background: transparent;
+  color: #4d4d4c;
+}
+.ace_editor.ace-tm .ace_print-margin {
+  width: 1px;
+  background: #f6f6f6;
+}
+.ace_editor.ace-tm .ace_cursor {
+  color: #aeafad;
+}
+.ace_editor.ace-tm .ace_marker-layer .ace_selection {
+  background: #eaeaea;
+}
+.ace_editor.ace-tm.ace_multiselect .ace_selection.ace_start {
+  box-shadow: 0 0 3px 0px #FFFFFF;
+  border-radius: 2px;
+}
+.ace_editor.ace-tm .ace_marker-layer .ace_step {
+  background: #ffff00;
+}
+.ace_editor.ace-tm .ace_marker-layer .ace_bracket {
+  margin: -1px 0 0 -1px;
+  border: 1px solid #d1d1d1;
+}
+.ace_editor.ace-tm .ace_marker-layer .ace_active-line {
+  background: #efefef;
+}
+.ace_editor.ace-tm .ace_gutter-active-line {
+  background-color: transparent;
+}
+.ace_editor.ace-tm .ace_marker-layer .ace_selected-word {
+  border: 1px solid #d6d6d6;
+}
+.ace_editor.ace-tm .ace_invisible {
+  color: #d1d1d1;
+}
+.ace_editor.ace-tm .ace_keyword,
+.ace_editor.ace-tm .ace_meta,
+.ace_editor.ace-tm .ace_storage,
+.ace_editor.ace-tm .ace_storage.ace_type,
+.ace_editor.ace-tm .ace_support.ace_type {
+  color: #8959a8;
+}
+.ace_editor.ace-tm .ace_keyword.ace_operator {
+  color: #3e999f;
+}
+.ace_editor.ace-tm .ace_constant.ace_character,
+.ace_editor.ace-tm .ace_constant.ace_language,
+.ace_editor.ace-tm .ace_constant.ace_numeric,
+.ace_editor.ace-tm .ace_keyword.ace_other.ace_unit,
+.ace_editor.ace-tm .ace_support.ace_constant,
+.ace_editor.ace-tm .ace_variable.ace_parameter {
+  color: #f5871f;
+}
+.ace_editor.ace-tm .ace_constant.ace_other {
+  color: #666969;
+}
+.ace_editor.ace-tm .ace_invalid {
+  color: #FFFFFF;
+  background-color: #c82829;
+}
+.ace_editor.ace-tm .ace_invalid.ace_deprecated {
+  color: #FFFFFF;
+  background-color: #8959a8;
+}
+.ace_editor.ace-tm .ace_fold {
+  background-color: #4271AE;
+  border-color: #4d4d4c;
+}
+.ace_editor.ace-tm .ace_entity.ace_name.ace_function,
+.ace_editor.ace-tm .ace_support.ace_function,
+.ace_editor.ace-tm .ace_variable {
+  color: #4271ae;
+}
+.ace_editor.ace-tm .ace_support.ace_class,
+.ace_editor.ace-tm .ace_support.ace_type {
+  color: #c99e00;
+}
+.ace_editor.ace-tm .ace_heading,
+.ace_editor.ace-tm .ace_string {
+  color: #718c00;
+}
+.ace_editor.ace-tm .ace_entity.ace_name.ace_tag,
+.ace_editor.ace-tm .ace_entity.ace_other.ace_attribute-name,
+.ace_editor.ace-tm .ace_meta.ace_tag,
+.ace_editor.ace-tm .ace_string.ace_regexp,
+.ace_editor.ace-tm .ace_variable {
+  color: #c82829;
+}
+.ace_editor.ace-tm .ace_comment {
+  color: #8e908c;
+}
+.ace_editor.ace-tm .ace_indent-guide {
+  background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAACCAYAAACZgbYnAAAAE0lEQVQImWP4////f4bdu3f/BwAlfgctduB85QAAAABJRU5ErkJggg==) right repeat-y;
+}
+.ace_editor.ace-tm .ace_search {
+  border-color: #cbcbcb;
+  background: #e5e5e5;
+}

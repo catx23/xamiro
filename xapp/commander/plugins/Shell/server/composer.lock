@@ -1,0 +1,163 @@
+{
+    "_readme": [
+        "This file locks the dependencies of your project to a known state",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
+        "This file is @generated automatically"
+    ],
+    "hash": "97d648640840319d24ddf98401572c18",
+    "content-hash": "030190268998ea5b23067fcc482c3c12",
+    "packages": [
+        {
+            "name": "fieryprophet/php-sandbox",
+            "version": "v1.3.11",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/fieryprophet/php-sandbox.git",
+                "reference": "6d2a6fa85e057256c686bcd76e963fda616e2ea6"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/fieryprophet/php-sandbox/zipball/6d2a6fa85e057256c686bcd76e963fda616e2ea6",
+                "reference": "6d2a6fa85e057256c686bcd76e963fda616e2ea6",
+                "shasum": ""
+            },
+            "require": {
+                "jeremeamia/functionparser": "~1.0.0",
+                "nikic/php-parser": "~0.9.5",
+                "php": ">=5.3.2"
+            },
+            "require-dev": {
+                "phpdocumentor/phpdocumentor": "v2.3.2",
+                "phpunit/phpunit": "3.7.*"
+            },
+            "type": "library",
+            "autoload": {
+                "files": [
+                    "src/functions.php"
+                ],
+                "psr-4": {
+                    "PHPSandbox\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Elijah Horton"
+                }
+            ],
+            "description": "A PHP library that can be used to run PHP code in a sandboxed environment",
+            "homepage": "http://www.fieryprophet.com/phpsandbox",
+            "keywords": [
+                "blacklist",
+                "parser",
+                "php",
+                "sandbox",
+                "whitelist"
+            ],
+            "time": "2015-08-04 04:03:57"
+        },
+        {
+            "name": "jeremeamia/FunctionParser",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/jeremeamia/FunctionParser.git",
+                "reference": "035b52000b88ea8d72a6647dd4cd39f080cf7ada"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/jeremeamia/FunctionParser/zipball/035b52000b88ea8d72a6647dd4cd39f080cf7ada",
+                "reference": "035b52000b88ea8d72a6647dd4cd39f080cf7ada",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.2"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "FunctionParser\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Jeremy Lindblom"
+                }
+            ],
+            "description": "Function parser for PHP functions, methods, and closures",
+            "homepage": "https://github.com/jeremeamia/FunctionParser",
+            "keywords": [
+                "closure",
+                "function",
+                "parser",
+                "tokenizer"
+            ],
+            "time": "2015-02-02 17:30:47"
+        },
+        {
+            "name": "nikic/php-parser",
+            "version": "v0.9.5",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/nikic/PHP-Parser.git",
+                "reference": "ef70767475434bdb3615b43c327e2cae17ef12eb"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/nikic/PHP-Parser/zipball/ef70767475434bdb3615b43c327e2cae17ef12eb",
+                "reference": "ef70767475434bdb3615b43c327e2cae17ef12eb",
+                "shasum": ""
+            },
+            "require": {
+                "ext-tokenizer": "*",
+                "php": ">=5.2"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "0.9-dev"
+                }
+            },
+            "autoload": {
+                "psr-0": {
+                    "PHPParser": "lib/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Nikita Popov"
+                }
+            ],
+            "description": "A PHP parser written in PHP",
+            "keywords": [
+                "parser",
+                "php"
+            ],
+            "time": "2014-07-23 18:24:17"
+        }
+    ],
+    "packages-dev": [],
+    "aliases": [],
+    "minimum-stability": "stable",
+    "stability-flags": [],
+    "prefer-stable": false,
+    "prefer-lowest": false,
+    "platform": [],
+    "platform-dev": []
+}
