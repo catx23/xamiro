@@ -5,6 +5,10 @@ Latest beta:
 
 **see [Home - Page](http://xamiro.com)**
 
+
+#### Attention: Original version has been moved into the [1.0-Original branch](https://github.com/gbaumgart/xamiro/tree/1.0-Original).
+
+
 ### Dependencies / Requirements
 - PHP 5.3+ and modern browser
 - see [here](http://xamiro.com/requirements/) for more
