@@ -21,7 +21,7 @@ Latest beta:
 
 - Download old 1.x version (master): [this zip ](https://github.com/gbaumgart/xamiro/archive/1.0-Original.zip) 
 
-- Download 2.x beta - version [master branch](https://github.com/gbaumgart/xamiro/archive/master.zip)) and extract it to somewhere, then open via web-browser your server-url (http://localhost/xamiro), thats it. 
+- Download 2.x beta - version [master branch](https://github.com/gbaumgart/xamiro/archive/master.zip) and extract it to somewhere, then open via web-browser your server-url (http://localhost/xamiro), thats it. 
 
 [More Instructions & Documenation for old the master branch](http://xamiro.com/documentation/). Recommended: wget & unzip.
 
