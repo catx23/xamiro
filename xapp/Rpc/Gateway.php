@@ -577,12 +577,14 @@ class Xapp_Rpc_Gateway implements Xapp_Singleton_Interface
             throw new Xapp_Rpc_Gateway_Exception(_("passed hashing algorithm is not recognized"), 1401301);
         }
 
-/*
+
+        /*
         $_data = json_encode($data);
         $_data = str_replace('[]','{}',$_data);
         $_data = str_replace('\\/', '/',$_data);
         error_log($_data);
         */
+
 
 /*
  *
