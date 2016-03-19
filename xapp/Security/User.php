@@ -49,12 +49,29 @@ class XApp_Security_User extends XApp_Entity
 	/** @var XApp_Security_IAuthorizator */
 	private $authorizator;
 
+	private $userData;
 
-	public function __construct(XApp_Security_IUserStorage $storage, XApp_Security_IAuthenticator $authenticator = NULL, XApp_Security_IAuthorizator $authorizator = NULL)
+	public function getUserData(){
+		return $this->userData;
+	}
+
+
+	public function getFields(){
+
+		$userData = $this->getUserData();
+		if($userData){
+			return $userData->getFields();
+		}
+
+		return parent::getFields();
+	}
+
+	public function __construct(XApp_Security_IUserStorage $storage, XApp_Security_IAuthenticator $authenticator = NULL, XApp_Security_IAuthorizator $authorizator = NULL,XApp_User $user=null)
 	{
 		$this->storage = $storage;
 		$this->authenticator = $authenticator;
 		$this->authorizator = $authorizator;
+		$this->userData = $user;
 	}
 
 
@@ -70,10 +87,19 @@ class XApp_Security_User extends XApp_Entity
 	/********************* Authentication ****************d*g**/
 
     public function onLoggedIn(){
-       // error_log('on logged in');
+
+	    $userData = $this->getUserData();
+	    $identity = $this->getIdentity();
+	    if($userData){
+		    $identity->setRoles($userData->getRoles());
+	    }
     }
+
+	/**
+	 *
+	 */
     public function onLoggedOut(){
-       // error_log('on logged out');
+
     }
 
 	/**
@@ -102,6 +128,7 @@ class XApp_Security_User extends XApp_Entity
 	 */
 	public function logout($clearIdentity = FALSE)
 	{
+
 		if ($this->isLoggedIn()) {
 			$this->onLoggedOut($this);
 			$this->storage->setAuthenticated(FALSE);

@@ -11,8 +11,7 @@ xapp_import('xapp.File.Utils');
 /***
  * Class XApp_Directory_Service lists files
  */
-class XApp_Directory_Service extends XApp_Service
-{
+class XApp_Directory_Service extends XApp_Service{
 
     /***
      * Do auto rename for upload & uncompress
@@ -407,7 +406,16 @@ class XApp_Directory_Service extends XApp_Service
      * method set will write content into a file
      */
     public function set($mount,$path,$content=""){
-        $vfs = $this->getFileSystem($mount);
+
+	    if($mount==='__direct__'){
+		    $pathAbs = XApp_Path_Utils::securePath(XApp_Path_Utils::normalizePath($path,true,false));
+		    if(file_exists($pathAbs)){
+			    return XApp_File_Utils::set($pathAbs,$content);
+		    }else{
+			    return false;
+		    }
+	    }
+	    $vfs = $this->getFileSystem($mount);
 
         if(strlen($content)<1){$content=' ';}//
         $vfs->set(XApp_Path_Utils::normalizePath($mount),XApp_Path_Utils::securePath(XApp_Path_Utils::normalizePath($path,true,false)),$content);
@@ -485,13 +493,23 @@ class XApp_Directory_Service extends XApp_Service
 	    } else {
 		    echo '$data is NOT valid';
 	    }
-
 	    $path = urldecode ($path);
-
 	    $mount = XApp_Path_Utils::getMount($path);
+	    if($mount==='__direct__'){
+		    $pathAbs = XApp_Path_Utils::securePath(XApp_Path_Utils::normalizePath(XApp_Path_Utils::getRelativePart($path),true,false));
+		    if(file_exists($pathAbs)){
+			    return XApp_File_Utils::get('',$pathAbs,array(
+					    XApp_File_Utils::OPTION_SEND=>$send,
+					    XApp_File_Utils::OPTION_RESIZE_TO=>$width,
+					    XApp_File_Utils::OPTION_PREVENT_CACHE=>isset($time)
+			    ));
+		    }else{
+			    return false;
+		    }
+
+	    }
 	    $path = XApp_Path_Utils::getRelativePart($path);
 	    $vfs = $this->getFileSystem($mount);
-
         $content = $vfs->get(
             XApp_Path_Utils::normalizePath($mount),
             XApp_Path_Utils::securePath(XApp_Path_Utils::normalizePath($path,true,false)),

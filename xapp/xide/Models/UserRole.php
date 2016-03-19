@@ -10,6 +10,8 @@ class XApp_UserRole extends XApp_Entity {
 
     const USER_ROLE_NAME = "Name";
     const USER_ROLE_PERMISSIONS = "Permissions";
+    const USER_ROLE_RESOURCES = "Resources";
+    const USER_ROLE_PARENTS = "Parents";
 
 
     static $entity_default_fields = Array(
@@ -22,6 +24,18 @@ class XApp_UserRole extends XApp_Entity {
         Array(
             self::ENTITY_FIELD_NAME => self::USER_ROLE_PERMISSIONS,
             self::ENTITY_FIELD_DESCRIPTION => "Role permissions",
+            self::ENTITY_FIELD_TYPE => XAPP_TYPE_ARRAY,
+            self::ENTITY_FIELD_DEFAULT => Array()
+        ),
+        Array(
+            self::ENTITY_FIELD_NAME => self::USER_ROLE_PARENTS,
+            self::ENTITY_FIELD_DESCRIPTION => "Role Parents",
+            self::ENTITY_FIELD_TYPE => XAPP_TYPE_ARRAY,
+            self::ENTITY_FIELD_DEFAULT => Array()
+        ),
+        Array(
+            self::ENTITY_FIELD_NAME => self::USER_ROLE_RESOURCES,
+            self::ENTITY_FIELD_DESCRIPTION => "Role resources",
             self::ENTITY_FIELD_TYPE => XAPP_TYPE_ARRAY,
             self::ENTITY_FIELD_DEFAULT => Array()
         )

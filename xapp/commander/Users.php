@@ -43,7 +43,7 @@
 					"title": "",
 					"type": "STRING",
 					"uid": -1,
-					"value": "asdasd",
+					"value": "admin",
 					"visible": true
 				},
 				{

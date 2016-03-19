@@ -11,12 +11,15 @@
  */
 
 xapp_import('xapp.Reflection.ClassType');
+
+xapp_import('xapp.Xapp.DateTime');
+
 /**
  * Session section.
  *
  * @author     David Grudl
  */
-class XApp_Http_SessionSection implements IteratorAggregate, ArrayAccess
+class XApp_Http_SessionSection extends XApp_Object implements \IteratorAggregate, \ArrayAccess
 {
 	/** @var Session */
 	private $session;
@@ -86,9 +89,6 @@ class XApp_Http_SessionSection implements IteratorAggregate, ArrayAccess
 	{
 		$this->start();
 		$this->data[$name] = $value;
-		if (is_object($value)) {
-			$this->meta[$name]['V'] = XApp_Reflection_ClassType::from($value)->getAnnotation('serializationVersion');
-		}
 	}
 
 
@@ -181,7 +181,7 @@ class XApp_Http_SessionSection implements IteratorAggregate, ArrayAccess
 
 	/**
 	 * Sets the expiration of the section or specific variables.
-	 * @param  string|int|DateTime  time, value 0 means "until the browser is closed"
+	 * @param  string|int|\DateTime  time, value 0 means "until the browser is closed"
 	 * @param  mixed   optional list of variables / single variable to expire
 	 * @return self
 	 */
@@ -192,27 +192,17 @@ class XApp_Http_SessionSection implements IteratorAggregate, ArrayAccess
 			$time = NULL;
 			$whenBrowserIsClosed = TRUE;
 		} else {
-			$time = Nette\DateTime::from($time)->format('U');
-			$max = ini_get('session.gc_maxlifetime');
-			if ($time - time() > $max + 3) { // bulgarian constant
+			$time = Xapp_DateTime::from($time)->format('U');
+			$max = (int) ini_get('session.gc_maxlifetime');
+			if ($max !== 0 && ($time - time() > $max + 3)) { // 0 - unlimited in memcache handler, 3 - bulgarian constant
 				trigger_error("The expiration time is greater than the session expiration $max seconds", E_USER_NOTICE);
 			}
 			$whenBrowserIsClosed = FALSE;
 		}
 
-		if ($variables === NULL) { // to entire section
-			$this->meta['']['T'] = $time;
-			$this->meta['']['B'] = $whenBrowserIsClosed;
-
-		} elseif (is_array($variables)) { // to variables
-			foreach ($variables as $variable) {
-				$this->meta[$variable]['T'] = $time;
-				$this->meta[$variable]['B'] = $whenBrowserIsClosed;
-			}
-
-		} else { // to variable
-			$this->meta[$variables]['T'] = $time;
-			$this->meta[$variables]['B'] = $whenBrowserIsClosed;
+		foreach (is_array($variables) ? $variables : array($variables) as $variable) {
+			$this->meta[$variable]['T'] = $time;
+			$this->meta[$variable]['B'] = $whenBrowserIsClosed;
 		}
 		return $this;
 	}
@@ -226,17 +216,8 @@ class XApp_Http_SessionSection implements IteratorAggregate, ArrayAccess
 	public function removeExpiration($variables = NULL)
 	{
 		$this->start();
-		if ($variables === NULL) {
-			// from entire section
+		foreach (is_array($variables) ? $variables : array($variables) as $variable) {
 			unset($this->meta['']['T'], $this->meta['']['B']);
-
-		} elseif (is_array($variables)) {
-			// from variables
-			foreach ($variables as $variable) {
-				unset($this->meta[$variable]['T'], $this->meta[$variable]['B']);
-			}
-		} else {
-			unset($this->meta[$variables]['T'], $this->meta[$variables]['B']);
 		}
 	}
 

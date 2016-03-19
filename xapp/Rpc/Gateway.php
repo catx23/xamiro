@@ -160,6 +160,12 @@ class Xapp_Rpc_Gateway implements Xapp_Singleton_Interface
     const SIGNED_REQUEST_SIGN_PARAM     = 'RPC_GATEWAY_SIGNED_REQUEST_SIGN_PARAM';
 
     /**
+     *
+     * @const SIGNED_REQUEST_SIGN_PARAM
+     */
+    const SALT_KEY     = 'RPC_GATEWAY_SALT';
+
+    /**
      * define you own callback to validate signed request by receiving data and api/gateway
      * key. the callback function must return boolean value. the callback function will receive
      * 3 parameters = 1) request object, 2) the get/post parameter merged 3) the api key if set in gateway instance, if not
@@ -239,7 +245,7 @@ class Xapp_Rpc_Gateway implements Xapp_Singleton_Interface
         self::SIGNED_REQUEST_SIGN_PARAM => XAPP_TYPE_STRING,
         self::SIGNED_REQUEST_CALLBACK   => XAPP_TYPE_CALLABLE,
 	    self::VALIDATE                  => XAPP_TYPE_BOOL,
-	    self::VALIDATE                  => 0
+        self::SALT_KEY                  => XAPP_TYPE_STRING
     );
 
     /**
@@ -266,7 +272,9 @@ class Xapp_Rpc_Gateway implements Xapp_Singleton_Interface
         self::SIGNED_REQUEST_EXCLUDES   => 0,
         self::SIGNED_REQUEST_USER_PARAM => 1,
         self::SIGNED_REQUEST_SIGN_PARAM => 1,
-        self::SIGNED_REQUEST_CALLBACK   => 0
+        self::SIGNED_REQUEST_CALLBACK   => 0,
+        self::VALIDATE                  => 0,
+        self::SALT_KEY                  => 0
     );
 
     /**
@@ -322,7 +330,7 @@ class Xapp_Rpc_Gateway implements Xapp_Singleton_Interface
 	 * @param $salt
 	 */
 	public static function setSalt($salt){
-		self::$_salt = $salt;
+        self::$_salt = $salt;
 	}
 
 	/**
@@ -568,11 +576,41 @@ class Xapp_Rpc_Gateway implements Xapp_Singleton_Interface
         {
             throw new Xapp_Rpc_Gateway_Exception(_("passed hashing algorithm is not recognized"), 1401301);
         }
+
+
+        /*
+        $_data = json_encode($data);
+        $_data = str_replace('[]','{}',$_data);
+        $_data = str_replace('\\/', '/',$_data);
+        error_log($_data);
+        */
+
+
+/*
+ *
+        $_data = json_encode($data);
+        xapp_clog('sign ' . $_data .  ' with ' . $key . '  to ' . hash_hmac((string)$algo, $_data, (string)$key));
+        //$_data = str_replace('\"params\":[]', '\"params\":{}',$_data);
+        $_data = str_replace('[]','{}',$_data);
+        //error_log('sign ' . $_data .  ' with ' . $key . '  to ' . hash_hmac((string)$algo, $_data, (string)$key));
+        xapp_clog('sign2 ' . $_data .  ' with ' . $key . '  to ' . hash_hmac((string)$algo, $_data, (string)$key));
+        $_data = str_replace('\\/', '/',$_data);
+        */
+
+
+        //fecking PHP
+        if(isset($data['params'])){
+            if(is_array($data['params']) && Count($data['params'])==0){
+                $data['params'] = new stdClass();
+            }
+        }
+
         if(!function_exists('xapp_rpc_sign'))
         {
             function xapp_rpc_sign($data, $key, $algo = 'sha1')
             {
                 $data = json_encode($data);
+                $data = str_replace('\\/', '/',$data);
                 if($data !== false)
                 {
                     return hash_hmac((string)$algo, $data, (string)$key);
@@ -774,12 +812,15 @@ class Xapp_Rpc_Gateway implements Xapp_Singleton_Interface
                     Xapp_Rpc_Fault::t("referer denied from service", array(1401509, -32009));
                 }
                 break;
+
             case self::SIGNED_REQUEST:
+
                 if((bool)$value)
                 {
                     $tmp = array();
                     if(xapp_is_option(self::SIGNED_REQUEST_EXCLUDES, $this))
                     {
+
                         foreach($this->server()->getServices() as $service)
                         {
                             if(!preg_match(Xapp_Rpc::regex(xapp_get_option(self::SIGNED_REQUEST_EXCLUDES, $this)), $service))
@@ -788,9 +829,14 @@ class Xapp_Rpc_Gateway implements Xapp_Singleton_Interface
                             }
                         }
                     }
-                    if(sizeof($tmp) > 0)
+
+                    $do = true;
+                    if(sizeof($tmp) > 0 || $do)
                     {
                         $sign = $this->request()->getParam(xapp_get_option(self::SIGNED_REQUEST_SIGN_PARAM, $this), false);
+                        if($sign==null){
+                            $sign  = $this->request()->getFrom(xapp_get_option(self::SIGNED_REQUEST_SIGN_PARAM, $this),Xapp_Rpc_Request::GET);
+                        }
                         $method = strtolower(xapp_get_option(self::SIGNED_REQUEST_METHOD, $this));
                         switch($method)
                         {
@@ -802,10 +848,14 @@ class Xapp_Rpc_Gateway implements Xapp_Singleton_Interface
                                 break;
                             case 'user':
                                 $user = $this->request()->getParam(xapp_get_option(self::SIGNED_REQUEST_USER_PARAM, $this), false);
+                                if($user==null){
+                                    $user  = $this->request()->getFrom(xapp_get_option(self::SIGNED_REQUEST_USER_PARAM, $this),Xapp_Rpc_Request::GET);
+                                }
                                 break;
                             default:
                                 throw new Xapp_Rpc_Gateway_Exception(_("unsupported signed request user identification method"), 1401514);
                         }
+
                         if($user === false || $user === null)
                         {
                             Xapp_Rpc_Fault::t(vsprintf("signed request value for: %s not found in request", array(xapp_get_option(self::SIGNED_REQUEST_USER_PARAM, $this))), array(1401512, -32011));
@@ -814,9 +864,13 @@ class Xapp_Rpc_Gateway implements Xapp_Singleton_Interface
                         {
                             Xapp_Rpc_Fault::t(vsprintf("signed request value for: %s not found in request", array(xapp_get_option(self::SIGNED_REQUEST_SIGN_PARAM, $this))), array(1401513, -32011));
                         }
+
                         $key = $this->getKey($user, null);
+
+                        //xapp_clog('key ' . $key . ' user ' . $user);
                         $params = $this->request()->getParams();
-	                    if(array_key_exists('xdmTarget',$params)){
+
+                        if(array_key_exists('xdmTarget',$params)){
 		                    unset($params['xdmTarget']);
 	                    }
 
@@ -841,6 +895,21 @@ class Xapp_Rpc_Gateway implements Xapp_Singleton_Interface
 	                    if(array_key_exists('xdm_p',$params)){
 		                    unset($params['xdm_p']);
 	                    }
+                        if(array_key_exists('theme',$params)){
+                            unset($params['theme']);
+                        }
+                        if(array_key_exists('debug',$params)){
+                            unset($params['debug']);
+                        }
+                        if(array_key_exists('width',$params)){
+                            unset($params['width']);
+                        }
+                        if(array_key_exists('send',$params)){
+                            unset($params['send']);
+                        }
+                        if(array_key_exists('attachment',$params)){
+                            unset($params['attachment']);
+                        }
 
                         if(xapp_is_option(self::SIGNED_REQUEST_CALLBACK, $this))
                         {
@@ -849,6 +918,7 @@ class Xapp_Rpc_Gateway implements Xapp_Singleton_Interface
                                 Xapp_Rpc_Fault::t("verifying signed request failed", array(1401510, -32010));
                             }
                         }else{
+
                             if($key !== null)
                             {
                                 if(isset($params[xapp_get_option(self::SIGNED_REQUEST_SIGN_PARAM, $this)]))
@@ -866,7 +936,9 @@ class Xapp_Rpc_Gateway implements Xapp_Singleton_Interface
                     }
                 }
                 break;
+
             default:
+
         }
     }
 

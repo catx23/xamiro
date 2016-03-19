@@ -32,8 +32,7 @@ xapp_import("xapp.Bootstrap");
 /***
  * Class xide_Bootstrap extends the standard bootstrap
  */
-class XIDE_Bootstrap extends XApp_Bootstrap
-{
+class XIDE_Bootstrap extends XApp_Bootstrap{
 
     /***
      * Factory which creates a bootstrap config but also an instance of this upon the
@@ -71,21 +70,8 @@ class XIDE_Bootstrap extends XApp_Bootstrap
                 $clientDirectory
             );
         }
-
     }
 
-    /***
-     * Function which does everything
-     */
-    public function handleRequest(){
-
-        if(self::isRPC()){
-
-        }else{
-            $this->render();
-        }
-
-    }
 
     /***
      * Private factory to create a bootstrap instance for RPC requests
@@ -315,19 +301,5 @@ class XIDE_Bootstrap extends XApp_Bootstrap
             self::$_instance = new self($options);
         }
         return self::$_instance;
-    }
-
-    /***
-     *
-     */
-    public static function loadMin(){
-
-        xapp_import('xapp.Option.Utils');
-        /***
-         * Load utils
-         */
-        if(!class_exists('XApp_Service_Entry_Utils')){
-            include_once(XAPP_BASEDIR . 'XApp_Service_Entry_Utils.php');
-        }
     }
 }

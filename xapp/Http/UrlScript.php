@@ -32,8 +32,7 @@ xapp_import('xapp.Http.Url');
 class XApp_Http_UrlScript extends XApp_Http_Url
 {
 	/** @var string */
-	public $scriptPath = '/';
-
+	private $scriptPath = '/';
 
 
 	/**
@@ -65,7 +64,7 @@ class XApp_Http_UrlScript extends XApp_Http_Url
 	public function getBasePath()
 	{
 		$pos = strrpos($this->scriptPath, '/');
-		return $pos === FALSE ? '' : substr($this->path, 0, $pos + 1);
+		return $pos === FALSE ? '' : substr($this->getPath(), 0, $pos + 1);
 	}
 
 
@@ -75,7 +74,7 @@ class XApp_Http_UrlScript extends XApp_Http_Url
 	 */
 	public function getPathInfo()
 	{
-		return (string) substr($this->path, strlen($this->scriptPath));
+		return (string) substr($this->getPath(), strlen($this->scriptPath));
 	}
 
 }

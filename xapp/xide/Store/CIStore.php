@@ -53,6 +53,7 @@ class XIDE_CIStore_Delegate extends XApp_Store_Base implements Xapp_Store_Interf
 
                 $success=true;
             }else{
+                //xapp_clog($value,'cant find ci ' . ' ' . ' ');
                 return false;
             }
         }

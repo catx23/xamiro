@@ -101,11 +101,36 @@ define('XAPP_LOG_SHARED_LOGGER_PLUGINS', 25032);
 define('XAPP_LOG_SHARED_LOGGER_SERVICES', 25033);
 
 /***
+ * Check we have at least the minimals
+ */
+if (!defined('XAPP')) {
+	include_once(XAPP_BASEDIR . '/Core/core.php');
+	require_once(XAPP_BASEDIR . '/Xapp/Xapp.php');
+	require_once(XAPP_BASEDIR . '/Xapp/Autoloader.php');
+	require_once(XAPP_BASEDIR . '/Xapp/Cli.php');
+	require_once(XAPP_BASEDIR . '/Xapp/Console.php');
+	require_once(XAPP_BASEDIR . '/Xapp/Debug.php');
+	require_once(XAPP_BASEDIR . '/Xapp/Error.php');
+	require_once(XAPP_BASEDIR . '/Xapp/Event.php');
+	require_once(XAPP_BASEDIR . '/Xapp/Option.php');
+	require_once(XAPP_BASEDIR . '/Xapp/Reflection.php');
+}
+
+/***
  * Class XApp_Bootstrap
  * Utility class to do the initial work.
  */
 class XApp_Bootstrap
 {
+	/***
+	 * File name of the resource config
+	 */
+	const XAPP_RESOURCE_CONFIG= "XAPP_RESOURCE_CONFIG";
+
+	/***
+	 * File name of the resource config
+	 */
+	const OVERRIDE = "XAPP_BOOTSTRAP_OVERRIDE";
 
 	/***
 	 * Flags to use whilst the bootstrapping
@@ -287,14 +312,17 @@ class XApp_Bootstrap
 	 */
 	const USER_CONF = "XAPP_BOOTSTRAP_USER_CONFIGURATION";
 
+	/***
+	 * Google - Analytics
+	 */
+	const GOOGLE_ANALYTICS_ID = "XAPP_GA_ID";
 
 	/**
 	 * options dictionary for this class containing all data type values
 	 *
 	 * @var array
 	 */
-	public static $optionsDict = array
-	(
+	public static $optionsDict = array(
 		self::BASEDIR => XAPP_TYPE_STRING,
 		self::SERVER_APPLICATION_CLASS => XAPP_TYPE_STRING,
 		self::APPDIR => XAPP_TYPE_STRING,
@@ -330,7 +358,8 @@ class XApp_Bootstrap
 		self::GATEWAY => XAPP_TYPE_OBJECT,
 		self::SERIVCE_CONF => XAPP_TYPE_ARRAY,
 		self::USER_CONF => array(XAPP_TYPE_ARRAY, XAPP_TYPE_STRING, XAPP_TYPE_OBJECT),
-		self::RESOURCE_CONFIG_PREFIX => XAPP_TYPE_STRING
+		self::RESOURCE_CONFIG_PREFIX => XAPP_TYPE_STRING,
+		self::OVERRIDE => XAPP_TYPE_ARRAY
 	);
 
 	/**
@@ -338,8 +367,7 @@ class XApp_Bootstrap
 	 *
 	 * @var array
 	 */
-	public static $optionsRule = array
-	(
+	public static $optionsRule = array(
 		self::BASEDIR => 1,
 		self::SERVER_APPLICATION_CLASS => 0,
 		self::APPDIR => 0,
@@ -375,7 +403,8 @@ class XApp_Bootstrap
 		self::GATEWAY => 0,
 		self::SERIVCE_CONF => 0,
 		self::USER_CONF => 0,
-		self::RESOURCE_CONFIG_PREFIX => 0
+		self::RESOURCE_CONFIG_PREFIX => 0,
+		self::OVERRIDE => 0
 	);
 	/**
 	 * contains the singleton instance for this class
@@ -388,8 +417,7 @@ class XApp_Bootstrap
 	 *
 	 * @var array
 	 */
-	public $options = array
-	(
+	public $options = array(
 		self::BASEDIR => null,
 		self::SERVER_APPLICATION_CLASS => null,
 		self::APPDIR => null,
@@ -425,7 +453,8 @@ class XApp_Bootstrap
 		self::GATEWAY => null,
 		self::SERIVCE_CONF => null,
 		self::USER_CONF => 0,
-		self::RESOURCE_CONFIG_PREFIX => ''
+		self::RESOURCE_CONFIG_PREFIX => '',
+		self::OVERRIDE => array()
 	);
 	/***
 	 * @var null|XApp_App_Renderer
@@ -446,6 +475,39 @@ class XApp_Bootstrap
 		xapp_set_options($options, $this);
 	}
 
+
+	/**
+	 * Main entry used by an index.php file
+	 * @param string $dataRoot
+	 */
+	public function handleRequest($dataRoot=''){
+
+		if (self::isRPC()) {
+			$this->initRpc();
+			$this->runRpc();
+		} else {
+			//Restore user from session before client rendering.
+			$um = $this->getUserManager();
+			if ($um) {
+				$user = $um->getUser();
+				if ($user !== null) {
+					$um->login($user->getName(), $user->getPassword());
+				}else{
+
+				}
+			}
+			$this->render(true,$dataRoot);
+		}
+	}
+
+	/**
+	 *
+	 * @return XIDE_Resource_Renderer
+	 */
+	public function getResourceRenderer(){
+		return $this->resourceRenderer;
+	}
+
 	public static function loadRPC()
 	{
 		if (!class_exists('XApp_Service_Entry_Utils')) {
@@ -455,9 +517,9 @@ class XApp_Bootstrap
 
 	}
 
-	public static function loadMin()
-	{
+	public static function loadMin(){
 
+		xapp_import('xapp.Option.Utils');
 
 		if (!class_exists('XApp_Service_Entry_Utils')) {
 			require_once(XAPP_BASEDIR . '/XApp_Service_Entry_Utils.php');
@@ -472,6 +534,26 @@ class XApp_Bootstrap
 		require_once(XAPP_BASEDIR . '/Log/Writer/File.php');
 	}
 
+	/**
+	 *
+	 */
+	private static function loadXFilePluginDependencies(){
+		//pull in xapp plugin manager
+		include_once(XAPP_BASEDIR . '/commander/PluginManager.php');
+
+		//pull in xapp commander plugin base class
+		include_once(XAPP_BASEDIR . '/commander/Plugin.php');
+		//pull in xapp commander plugin base class
+		include_once(XAPP_BASEDIR . '/commander/defines.php');
+
+		//pull in RPC interface
+		if (!class_exists('Xapp_Rpc_Interface_Callable')) {
+			//pull in xapp commander plugin base class
+			include_once(XAPP_BASEDIR . '/Rpc/Interface/Callable.php');
+		}
+
+	}
+
 	/***
 	 *
 	 */
@@ -483,13 +565,13 @@ class XApp_Bootstrap
 		}
 
 		$_REQUEST_TYPE = XApp_Service_Entry_Utils::getServiceType();
-
 		return
 			$_REQUEST_TYPE == XApp_Service_Entry_Utils::SMD_CALL ||
 			$_REQUEST_TYPE == XApp_Service_Entry_Utils::SMD_GET ||
 			$_REQUEST_TYPE == XApp_Service_Entry_Utils::UPLOAD ||
-			$_REQUEST_TYPE == XApp_Service_Entry_Utils::CBTREE ||
+			$_REQUEST_TYPE == XApp_Service_Entry_Utils::LOGIN ||
 			$_REQUEST_TYPE == XApp_Service_Entry_Utils::DOWNLOAD;
+
 
 	}
 
@@ -499,11 +581,21 @@ class XApp_Bootstrap
 	 */
 	public static function getUrl()
 	{
+		//complete script uri
+		$scriptParts = pathinfo($_SERVER['SCRIPT_FILENAME']);
+		if (strpos($_SERVER['REQUEST_URI'], $scriptParts['basename']) == false) {
+			$newRequestUri = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
+			$newRequestUri .= $scriptParts['basename'];
+			$newRequestUri .= '?' . parse_url($_SERVER['REQUEST_URI'], PHP_URL_QUERY);
+			$_SERVER['REQUEST_URI'] = $newRequestUri;
+		}
+
 		$pageURL = 'http';
 		if (array_key_exists("HTTPS", $_SERVER) && $_SERVER["HTTPS"] == "on") {
 			$pageURL .= "s";
 		}
 		$pageURL .= "://";
+
 		if ($_SERVER["SERVER_PORT"] != "80") {
 			$pageURL .= $_SERVER["SERVER_NAME"] . ":" . $_SERVER["SERVER_PORT"] . $_SERVER["REQUEST_URI"];
 		} else {
@@ -520,6 +612,17 @@ class XApp_Bootstrap
 	{
 
 		xapp_import('xapp.Utils.Debugging');
+	}
+
+	/***
+	 * Imports needed for both type of of requests : client & RPC
+	 */
+	public static function loadCommons()
+	{
+
+		self::loadMin();
+		xapp_import("xapp.xide.Models.User");
+		xapp_import('xapp.xide.Controller.UserManager');
 	}
 
 	public static function getConsoleType()
@@ -560,6 +663,8 @@ class XApp_Bootstrap
 	}
 
 
+
+
 	/***
 	 *
 	 */
@@ -577,10 +682,21 @@ class XApp_Bootstrap
 		echo('DOC ROOT : ' . xapp_get_option(self::DOC_ROOT, $this) . '<br/><br/>');
 	}
 
+	/**
+	 * @param $plugins
+	 * @param $runtTimeConfiguration
+	 * @param $resourceConfig
+	 * @return array
+	 */
 	public function getPluginResources($plugins, $runtTimeConfiguration,$resourceConfig)
 	{
 		$result = array();
 		foreach ($plugins as $plugin) {
+
+			if ($resourceConfig && $plugin->resources && property_exists($plugin->resources,$resourceConfig)) {
+				$result[] = $plugin->resources->{$resourceConfig}->items;
+			}
+
 			if ($plugin->resources && $plugin->resources->{$runtTimeConfiguration}) {
 				$result[] = $plugin->resources->{$runtTimeConfiguration}->items;
 			}
@@ -589,8 +705,19 @@ class XApp_Bootstrap
 		return $result;
 	}
 
-	public function init()
+	protected static function isWindows()
 	{
+		$os = PHP_OS;
+		switch ($os) {
+			case "WINNT": {
+				return true;
+			}
+		}
+
+		return false;
+	}
+
+	public function initRpc(){
 
 		$flags = xapp_get_option(self::FLAGS, $this);
 		self::$_instance = $this;
@@ -671,9 +798,7 @@ class XApp_Bootstrap
 			$this->setupXApp(xapp_has_option(self::XAPP_CONF, $this) ? xapp_get_option(self::XAPP_CONF, $this) : null);
 		}
 
-		/***
-		 * Setup RPC Server
-		 */
+		//Setup RPC Server
 		if (in_array(XAPP_BOOTSTRAP_SETUP_RPC, $flags)) {
 			$this->setupRPC();
 		}
@@ -928,26 +1053,7 @@ class XApp_Bootstrap
 		/***
 		 * Setup file service
 		 */
-		if (in_array(XAPP_BOOTSTRAP_SETUP_XFILE, $flags) &&
 
-			xapp_get_option(self::RPC_SERVER, $this) &&
-			xapp_has_option(self::XFILE_CONF, $this)
-		) {
-			$opt = xapp_get_option(self::XFILE_CONF, $this);
-
-			$xappFileService = new Xapp_FileService($opt);
-			$xappFileService::$rootDirectory = xapp_get_option(
-				Xapp_FileService::REPOSITORY_ROOT,
-				xapp_get_option(self::XFILE_CONF)
-			);
-			xapp_get_option(self::RPC_SERVER)->register($xappFileService);
-		}
-
-		if ($xappFileService !== null && count($pluginInstances)) {
-			foreach ($pluginInstances as $plugin) {
-				$plugin->xfile = $xappFileService;
-			}
-		}
 
 
 		/***
@@ -1005,11 +1111,10 @@ class XApp_Bootstrap
 				 * Raise security and demand that the client did sign its request
 				 */
 				$signServiceTypes = xapp_get_option(self::SIGNED_SERVICE_TYPES, $this);
+
 				if (in_array(XApp_Service_Entry_Utils::getServiceType(), $signServiceTypes)) {
 
 					$needsSigning = true;
-
-
 					//set signed
 					$opt[Xapp_Rpc_Gateway::SIGNED_REQUEST] = true;
 
@@ -1022,6 +1127,10 @@ class XApp_Bootstrap
 					if (!array_key_exists(Xapp_Rpc_Gateway::SIGNED_REQUEST_USER_PARAM, $opt)) {
 						$opt[Xapp_Rpc_Gateway::SIGNED_REQUEST_USER_PARAM] = 'user';
 					}
+
+					if (!array_key_exists(Xapp_Rpc_Gateway::SIGNED_REQUEST_SIGN_PARAM, $opt)) {
+						$opt[Xapp_Rpc_Gateway::SIGNED_REQUEST_SIGN_PARAM] = 'sig';
+					}
 					//complete configuration
 				}
 
@@ -1030,23 +1139,61 @@ class XApp_Bootstrap
 				$this->setGatewayOptionArray(Xapp_Rpc_Gateway::ALLOW_HOST, $opt);
 				$this->setGatewayOptionArray(Xapp_Rpc_Gateway::DENY_HOST, $opt);
 
+
+				//RPC_GATEWAY_SIGNED_REQUEST_USER_PARAM
+				//RPC_GATEWAY_SIGNED_REQUEST_USER_PARAM
+				//{RPC_GATEWAY_OMIT_ERROR: true, RPC_GATEWAY_SIGNED_REQUEST: true, RPC_GATEWAY_SIGNED_REQUEST_METHOD: "user", RPC_GATEWAY_SIGNED_REQUEST_USER_PARAM: "user"}
+
+				//xapp_clog($opt);
+
 				/***
 				 * Create the gateway
 				 */
 				$gateway = Xapp_Rpc_Gateway::instance(xapp_get_option(self::RPC_SERVER, $this), $opt);
 
+				$OVERRIDE       = xo_get(self::OVERRIDE);
+				xapp_setup_language_standalone();
+				if(!$OVERRIDE){
+					$OVERRIDE = array(
+							'SALT'=>'k?Ur$0aE#9j1+7ui'
+					);
+				}
+
+				$SALT = $OVERRIDE['SALT'];
+				//$SALT           = xo_get(Xapp_Rpc_Gateway::SALT_KEY,$opt);
+
+
+				$signToken      = md5($SALT);
+
+				//Xapp_Rpc_Gateway::setSalt($OVERRIDE['SALT']);
+
+				xo_set(self::SIGNING_TOKEN,$signToken);
+				$userManger = $this->getUserManager();
+				if($userManger){
+					$user = $userManger->getUser();
+					if($user) {
+						xo_set(self::SIGNING_KEY,md5($user->getName()));
+					}
+
+				}
+				//21232f297a57a5a743894a0e4a801fc3 ||
+				//xapp_clog(' add user key: '.xapp_get_option(self::SIGNING_KEY, $this) . ' token :' . xapp_get_option(self::SIGNING_TOKEN, $this));
+				//21232f297a57a5a743894a0e4a801fc3
+				//76c20e97915806b16c4c2e127f54fc3e9ba8095d
+				//http://127.0.0.1/projects/x4mm/Code/test2.php?view=smdCall&theme=transparent&debug=true&user=&sig=
+
 				/***
 				 * Set the API key for signed requests
 				 */
 				if ($needsSigning) {
+
+					//xapp_clog('add key : '.xapp_get_option(self::SIGNING_KEY, $this) . ' | ' . xapp_get_option(self::SIGNING_TOKEN, $this));
 					$gateway->addKey(
 						xapp_get_option(self::SIGNING_KEY, $this),
 						xapp_get_option(self::SIGNING_TOKEN, $this)
 					);
 				}
-				//$gateway->run();
 				xapp_set_option(self::GATEWAY, $gateway, $this);
-
 			} catch (Exception $e) {
 				Xapp_Rpc_Server_Json::dump($e);
 			}
@@ -1059,8 +1206,7 @@ class XApp_Bootstrap
 	 * Pulls in xapp-php dependencies
 	 * @param $flags
 	 */
-	private function loadDependencies($flags)
-	{
+	private function loadDependencies($flags){
 
 		/***
 		 * The very basic paths
@@ -1182,8 +1328,7 @@ class XApp_Bootstrap
 	/***
 	 * Setup logger
 	 */
-	private function setupLogger($loggingConf)
-	{
+	private function setupLogger($loggingConf){
 
 		$logginConf[Xapp_Log::WRITER] = array(new Xapp_Log_Writer_File(xapp_get_option(Xapp_Log::PATH, $loggingConf)));
 
@@ -1246,8 +1391,7 @@ class XApp_Bootstrap
 	/***
 	 * Setup a JSON-RPC server, creates a JSON or JSONP server
 	 */
-	private function setupRPC()
-	{
+	private function setupRPC(){
 
 		/***
 		 * We support JSONP for all services
@@ -1289,14 +1433,19 @@ class XApp_Bootstrap
 			'searchTest'
 		);
 
+		$ignoredMethodsOption = xo_get(self::IGNORED_RPC_METHODS);
+
 		if (xapp_get_option(self::IGNORED_RPC_METHODS, $this)) {
+
 			$ignoredRPCMethods = array_merge(xapp_get_option(self::IGNORED_RPC_METHODS, $this), $ignoredRPCMethods);
 		} elseif (xapp_has_option(self::AUTH_DELEGATE, $this)) {
+
 			/***
 			 * Additional security here, mark each service method which has not been authorized by the
 			 * auth delegate as ignored!
 			 */
 			$authDelegate = xapp_get_option(self::AUTH_DELEGATE, $this);
+
 			if (method_exists($authDelegate, 'authorize')) {
 				$xCommanderFunctionTable = XApp_Service_Entry_Utils::getXCommanderFuncTable();
 				foreach ($xCommanderFunctionTable as $key => $value) {
@@ -1308,7 +1457,12 @@ class XApp_Bootstrap
 		}
 
 		$server = null;
+
+
+
+
 		if ($hasJSONP && $isJSONP) {
+
 
 			//Options for SMD based JSONP-RPC classes
 			$opt = array
@@ -1482,8 +1636,7 @@ class XApp_Bootstrap
 		}
 	}
 
-	public function run()
-	{
+	public function runRpc(){
 		/***
 		 * Setup gateway
 		 */
@@ -1496,19 +1649,26 @@ class XApp_Bootstrap
 		return in_array($what, $where) && !in_array(-$what, $where);
 	}
 
+	protected $userManager = null;
+
 	/**
 	 * @return null|XApp_UserManager
 	 */
 	public function getUserManager()
 	{
+		if($this->userManager){
+			return $this->userManager;
+		}
+
 		$flags = xapp_get_option(self::FLAGS);
 
 		if ($this->testFlag(XAPP_BOOTSTRAP_NEEDS_AUTHENTICATION,$flags) && xo_get(self::USER_CONF))
 		{
+
 			self::loadJSONTools();
 			self::loadXAppJSONStoreClasses();
 			xapp_import('xapp.Store.Json.Json');
-
+			xapp_import('xapp.Service.Utils');
 			$userMgr = new XApp_UserManager(
 				Array(
 					XApp_UserManager::STORE_CONF => array(
@@ -1516,10 +1676,9 @@ class XApp_Bootstrap
 					)
 				)
 			);
-
 			$userMgr->init();
-
-			$userMgr->initSessionStorage();
+			$userMgr->initSessionStorage(null);
+			$this->userManager = $userMgr;
 
 			return $userMgr;
 		}
@@ -1563,6 +1722,7 @@ class XApp_Bootstrap
 		}
 	}
 
+
 	/**
 	 * Logs user into session
 	 * @param $user
@@ -1572,31 +1732,17 @@ class XApp_Bootstrap
 	public function login($user, $pw)
 	{
 		$flags = xapp_get_option(self::FLAGS);
-
 		if ($this->testFlag(XAPP_BOOTSTRAP_NEEDS_AUTHENTICATION,$flags) && xo_get(self::USER_CONF)){
 
-			self::loadJSONTools();
-			self::loadXAppJSONStoreClasses();
-			xapp_import('xapp.Store.Json.Json');
-
-			$userMgr = new XApp_UserManager(
-				Array(
-					XApp_UserManager::STORE_CONF => array(
-						XApp_Store_JSON::CONF_FILE => xapp_get_option(self::USER_CONF, $this)
-					)
-				)
-			);
-
-			$userMgr->init();
-			$userMgr->initSessionStorage();
+			$userMgr = $this->getUserManager();
 			$errors = array();
 			$result = $userMgr->login($user, $pw, $errors);
-
-
 			return $result;
 		}
 		return true;
 	}
+
+
 
 	////////////////////////////////////////////////////////////////////////////
 	//
@@ -1608,11 +1754,17 @@ class XApp_Bootstrap
 	{
 		$flags = xapp_get_option(self::FLAGS);
 
+
+
 		if ($this->testFlag(XAPP_BOOTSTRAP_NEEDS_AUTHENTICATION,$flags) &&  xapp_get_option(self::USER_CONF, $this)){
 
+			$userMgr = $this->getUserManager();
+
+			/*
 			self::loadJSONTools();
 			self::loadXAppJSONStoreClasses();
 			xapp_import('xapp.Store.Json.Json');
+			xapp_import('xapp.Service.Utils');
 
 			$userMgr = new XApp_UserManager(
 				Array(
@@ -1623,7 +1775,8 @@ class XApp_Bootstrap
 			);
 
 			$userMgr->init();
-			$userMgr->initSessionStorage();
+			$userMgr->initSessionStorage(XApp_Service_Utils::getUrl());
+			*/
 			$result = $userMgr->isLoggedIn();
 			return $result;
 		}
@@ -1635,11 +1788,14 @@ class XApp_Bootstrap
 		$dojoPackagesStr = '[';
 		$pIdx = 0;
 		foreach ($packages as $package) {
+
 			if ($pIdx > 0) {
 				$dojoPackagesStr .= ",";
 			}
-			$dojoPackagesStr .= "{name:" . "'" . $package['name'] . "',";
-			$dojoPackagesStr .= "location:" . "'" . $prefix . $package['location'] . "'}";
+			if($package) {
+				$dojoPackagesStr .= "{name:" . "'" . $package['name'] . "',";
+				$dojoPackagesStr .= "location:" . "'" . $prefix . $package['location'] . "'}";
+			}
 			$pIdx++;
 
 		}
@@ -1740,6 +1896,42 @@ class XApp_Bootstrap
 			return self::_sanitize_key($_GET[$key]);
 		}
 		return $default;
+	}
+
+	/**
+	 * @return string
+	 */
+	public static function getRpcViewUrl(){
+		xapp_import('xapp.Utils.Strings');
+		$index = XApp_Service_Utils::getIndex();
+		$urlParams = array();
+
+		if (isset($_SERVER["QUERY_STRING"])) {
+			XApp_Utils_Strings::parse_str($_SERVER["QUERY_STRING"], $urlParams);
+			if (isset($urlParams['view'])) {
+				unset($urlParams['view']);
+			}
+		}
+		$extraParams = count($urlParams) ? '&' . http_build_query($urlParams) : '';
+		return dirname(XApp_Service_Entry_Utils::getUrl()) . '/' . $index . '?view=rpc' . $extraParams;
+	}
+
+	/**
+	 * @return string
+	 */
+	public static function getRpcCallUrl(){
+		xapp_import('xapp.Utils.Strings');
+		$index = XApp_Service_Utils::getIndex();
+		$urlParams = array();
+
+		if (isset($_SERVER["QUERY_STRING"])) {
+			XApp_Utils_Strings::parse_str($_SERVER["QUERY_STRING"], $urlParams);
+			if (isset($urlParams['view'])) {
+				unset($urlParams['view']);
+			}
+		}
+		$extraParams = count($urlParams) ? '&' . http_build_query($urlParams) : '';
+		return dirname(XApp_Service_Entry_Utils::getUrl()) . '/' . $index . '?view=smdCall' . $extraParams;
 	}
 
 }

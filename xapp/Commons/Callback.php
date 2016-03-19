@@ -19,6 +19,39 @@ class XApp_Callback extends XApp_Object
 	/** @var callable */
 	private $cb;
 
+	/**
+	 * Invokes internal PHP function with own error handler.
+	 * @param  string
+	 * @return mixed
+	 */
+	public static function invokeSafe($function, array $args, $onError)
+	{
+		$prev = set_error_handler(function ($severity, $message, $file, $line, $context = NULL, $stack = NULL) use ($onError, & $prev, $function) {
+			if ($file === '' && defined('HHVM_VERSION')) { // https://github.com/facebook/hhvm/issues/4625
+				$file = $stack[1]['file'];
+			}
+			if ($file === __FILE__) {
+				$msg = preg_replace("#^$function\(.*?\): #", '', $message);
+				if ($onError($msg, $severity) !== FALSE) {
+					return;
+				}
+			}
+			return $prev ? call_user_func_array($prev, func_get_args()) : FALSE;
+		});
+
+		try {
+			$res = call_user_func_array($function, $args);
+			restore_error_handler();
+			return $res;
+
+		} catch (\Throwable $e) {
+			restore_error_handler();
+			throw $e;
+		} catch (\Exception $e) {
+			restore_error_handler();
+			throw $e;
+		}
+	}
 
 	/**
 	 * Factory. Workaround for missing (new Callback)->invoke() in PHP 5.3.

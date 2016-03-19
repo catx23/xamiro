@@ -226,13 +226,15 @@ class XIDE_BeanManager extends XIDE_Manager
     //
     ////////////////////////////////////////////////////////////////////////////////////////
 
-    /***
-     * Secure scope based path resolving.
-     * @param $scope
+
+    /**
+     * @param $scopeName
      * @param $path
      * @param string $rootVariable
-     * @param bool $secure
-     * @return mixed|null|string
+     * @param bool|true $secure
+     * @param bool|true $merge
+     * @return mixed|string
+     * @throws ErrorException
      */
     public function resolvePath($scopeName,$path,$rootVariable='__ROOT__',$secure=true,$merge=true){
 
@@ -287,6 +289,7 @@ class XIDE_BeanManager extends XIDE_Manager
 	        XApp_Store::CONF_PASSWORD           =>'');
 
         $store = new XApp_Store($storeOptions);
+
         $data = $store->set('',$dataPath,$dataQuery,$newValue);
 
         return $data;

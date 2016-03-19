@@ -213,7 +213,7 @@ class XApp_UserManager implements XApp_Security_IAuthenticator {
     /**
      * @var XApp_Security_User
      */
-    protected $sessionStorage = null;
+    protected $loggedInUser = null;
     /***
      * @var XApp_Http_Session
      */
@@ -250,8 +250,10 @@ class XApp_UserManager implements XApp_Security_IAuthenticator {
      */
     public function initWithData($allUserData)
     {
+        if(json_encode($allUserData) ==='{}'){
+            error_log('have no user data ');
+        }
 
-        //error_log('init with data ' . json_encode($allUserData));
         if (isset($allUserData->Users))
         {
             $this->_initSet($this->_users,xo_get(self::USER_CLASS),$allUserData->Users);
@@ -271,14 +273,18 @@ class XApp_UserManager implements XApp_Security_IAuthenticator {
         {
             $this->_initSet($this->_resources,xo_get(self::RESOURCE_CLASS),$allUserData->Resources);
         }
+
     }
     /***
      * Initializes the store and loads the data
      */
     public function init(){
-        if($this->initStore()){
-            $this->initWithData( (object) $this->_store->read() );
-        }
+        /*if(!$this->_users) {*/
+            if ($this->initStore()) {
+                $data = (object)$this->_store->read();
+                $this->initWithData($data);
+            }
+        /*}*/
     }
 
     /**
@@ -333,6 +339,8 @@ class XApp_UserManager implements XApp_Security_IAuthenticator {
 
     }
 
+    private $userStorage = null;
+
     /////////////////////////////////////////////////////////////////////////////////////////
     //
     //  HTTP session authentication
@@ -340,35 +348,112 @@ class XApp_UserManager implements XApp_Security_IAuthenticator {
     ////////////////////////////////////////////////////////////////////////////////////////
 
     /**
-     * Init session storage
-     *
+     * @param null $ns
      */
-    public function initSessionStorage() {
+    public function initSessionStorage($url=null) {
 
         xapp_import('xapp.Security.SimpleAuthorizator');
         xapp_import('xapp.Security.IIdentity');
 
-        $session = XApp_Http_Session::factory();
+        if(!$url){
+            xapp_import('xapp.Service.Utils');
+            $url = XApp_Service_Utils::getUrl();
+        }
+
+        $sessionOptions = array(
+            // security
+            'referer_check' => '',    // must be disabled because PHP implementation is invalid
+            'use_cookies' => 1,       // must be enabled to prevent Session Hijacking and Fixation
+            'use_only_cookies' => 1,  // must be enabled to prevent Session Fixation
+            'use_trans_sid' => 0,     // must be disabled to prevent Session Hijacking and Fixation
+
+            // cookies
+            'cookie_lifetime' => 0,   // until the browser is closed
+            'cookie_path' => '/',     // cookie is available within the entire domain
+            'cookie_domain' => '',    // cookie is available on current subdomain only
+            'cookie_secure' => FALSE, // cookie is available on HTTP & HTTPS
+            'cookie_httponly' => TRUE,// must be enabled to prevent Session Hijacking
+
+            // other
+            'gc_maxlifetime' => XApp_Http_Session::DEFAULT_FILE_LIFETIME,// 3 hours
+            'cache_limiter' => NULL,  // (default "nocache", special value "\0")
+            'cache_expire' => NULL,   // (default "180")
+            'hash_function' => NULL,  // (default "0", means MD5)
+            'hash_bits_per_character' => NULL // (default "4")
+
+        );
+
+        //'name' => preg_replace('/\d+/u', '', md5(parse_url($url, PHP_URL_PATH)))
+
+        //xapp_clog('session name : ' .parse_url($url, PHP_URL_PATH));
+
+        //$session = XApp_Http_Session::factory($sessionOptions);
+        $session = XApp_Http_Session::factory(null);
+
+        $session->setExpiration(10000);
 
         $this->session = $session;
-
-        //seems to store user stuff in a session
         $userStorage = new XApp_Http_UserStorage($session);
+        if($url) {
+            //$userStorage->setNamespace(parse_url($url, PHP_URL_PATH));
+        }
+
+
+
 
         $authorizator = new XApp_Security_SimpleAuthorizator();
+        $user = $this->getUser();
+        $section = $session->getSection('user');
+        /*
+        if($section){
+            //error_log('have section');
+            $user2 = $section->user;
+            if($user2){
+                //error_log('have user2');
+            }
+        }else{
+            //error_log('have no section');
+        }
+
+        error_log('init session storage');
+
+        */
 
         //now construct the user, needs a storage, and an Authenticator(could be from CMS)
-        $this->sessionStorage = new XApp_Security_User($userStorage,$this,$authorizator);
+        $this->loggedInUser = new XApp_Security_User($userStorage,$this,$authorizator,$user);
+        $this->loggedInUser->setExpiration(10000,false);
+        if($user){
 
-        //xapp_dump($this);
+            $id = $user->get('Name');
+            $pass = $user->get('Password');
 
+            try {
+
+                $this->loggedInUser->login($id, $pass);
+
+            }catch(Exception $e){
+                //$this->loggedInUser->logout(true);
+                xapp_clog('error creating session : ' . $e->getMessage() . ' logging out');
+                //error_log('error creating session : ' . $e->getMessage() . ' logging out');
+            }
+
+            if($this->loggedInUser->isLoggedIn()){
+                $this->initAcl();
+            }
+        }else{
+            xapp_clog('error creating logged on user = user is not in session!');
+           // error_log('error creating logged on user = user is not in session!');
+        }
+
+        //error_log('session id ' . session_id());
     }
 
     /**
      *  Re-init session storage (if set)
      */
     public function refreshSessionStorage() {
-        if ( $this->sessionStorage != null )
+        //error_log('refreshSessionStorage');
+        if ( $this->loggedInUser != null )
         {
             $this->initSessionStorage();
         }
@@ -382,16 +467,19 @@ class XApp_UserManager implements XApp_Security_IAuthenticator {
      * @param $errors   :  array of errors
      * @return bool     :  true if login is successful
      */
+
     public function login($userName,$password,&$errors=array()) {
-        if ($this->sessionStorage == null)
+
+        if ($this->loggedInUser == null) {
             $this->initSessionStorage();
+        }
 
-        $this->sessionStorage->logout();
-
+        $this->loggedInUser->logout();
+        xapp_setup_language_standalone();
         $result =false;
         try {
             // we try to log the user in
-            $result = $this->sessionStorage->login($userName, $password);
+            $result = $this->loggedInUser->login($userName, $password);
 
             // Trigger HOOK_LOGIN
             Xapp_Hook::trigger(self::HOOK_LOGIN,array(
@@ -401,16 +489,27 @@ class XApp_UserManager implements XApp_Security_IAuthenticator {
 
         } catch (XApp_Security_AuthenticationException $e) {
             $errors[] =  XAPP_TEXT_FORMATTED('LOGIN_ERROR',array($userName , $e->getMessage() ));
+            xapp_clog('crash : '.$e->getMessage());
 
         }
 
         if($result===true){
+
             $user = $this->getUser($userName);
             $section = $this->getSession()->getSection('user');
+
             $section->user = $user;
+            $loggedInUser = $this->getLoggedInUser();
+            $loggedInUser->setFields($user->getFields());
+
+            //$this->initAcl();
+            $section->setExpiration(10000);
+
         }else{
             //flush session variable
             $section = $this->getSession()->getSection('user');
+            xapp_clog('flush session');
+            error_log('flush');
             $section->user = null;
         }
         return $result;
@@ -424,9 +523,10 @@ class XApp_UserManager implements XApp_Security_IAuthenticator {
      * @return mixed
      */
     public function logout() {
+
         // Trigger HOOK_LOGOUT
         Xapp_Hook::trigger(self::HOOK_LOGOUT,array('instance'=>$this));
-        return $this->sessionStorage->logout();
+        return $this->loggedInUser->logout();
     }
 
     /**
@@ -434,7 +534,7 @@ class XApp_UserManager implements XApp_Security_IAuthenticator {
      * @return bool
      */
     public function isLoggedIn() {
-        return $this->sessionStorage->isLoggedIn();
+        return $this->loggedInUser->isLoggedIn();
     }
 
     /**
@@ -443,14 +543,21 @@ class XApp_UserManager implements XApp_Security_IAuthenticator {
      * @return bool|string  :   user name if success, false if not
      */
     public function loggedUserName() {
-        if ($this->sessionStorage->isLoggedIn())
+        if ($this->loggedInUser->isLoggedIn())
         {
-            return $this->sessionStorage->getId();
+            return $this->loggedInUser->getId();
         }
         else
         {
             return false;
         }
+    }
+
+    /**
+     * @return XApp_Security_User
+     */
+    public function getLoggedInUser(){
+        return $this->loggedInUser;
     }
 
     /////////////////////////////////////////////////////////////////////////////////////////
@@ -472,7 +579,6 @@ class XApp_UserManager implements XApp_Security_IAuthenticator {
         $resource = xo_as_instance(self::RESOURCE_CLASS,$this,null,null);// XApp_Resource();
         $resource->setName($name);
         $resource->setParent($parent);
-        //xapp_dump($resource);
 
         foreach($fields as $field)
         {
@@ -687,19 +793,29 @@ class XApp_UserManager implements XApp_Security_IAuthenticator {
      */
     public function getUser($userName=null) {
 
-        if(empty($userName)){
-            $section = $this->getSession()->getSection('user');
-            return $section->user;
+        $session = $this->session;
+
+        if(!$session){
+            error_log('have no session');
+            return false;
         }
+
+        if(empty($userName)){
+
+            $section = $session->getSection('user');
+            $user = $section->user;
+            return $user;
+        }
+
         if (isset($this->_users->{$userName}))
         {
             return $this->_users->{$userName};
         }
         else
         {
+            error_log('have no users');
             return false;
         }
-
     }
 
     /**
@@ -837,13 +953,9 @@ class XApp_UserManager implements XApp_Security_IAuthenticator {
             $this->save();
         }
     }
-
-
-
     /*****************
      *   wraps for Role Model functions, with permanent storage save
      */
-
 
     /**
      *
@@ -887,9 +999,11 @@ class XApp_UserManager implements XApp_Security_IAuthenticator {
             return $this->_roles->{$roleName}->isAllowed($permission);
         }
     }
-
-    /***
+    /**
      * XApp_Security_IAuthenticator impl.
+     * @param array $credentials
+     * @return XApp_Security_Identity
+     * @throws XApp_Security_AuthenticationException
      */
     function authenticate(array $credentials){
         xapp_import('xapp.Security.SimpleAuthorizator');
@@ -908,6 +1022,7 @@ class XApp_UserManager implements XApp_Security_IAuthenticator {
 
         //walk over users and do password match
         list($username, $password) = $credentials;
+
         foreach ($userList as $name => $pass) {
             if (strcasecmp($name, $username) === 0) {
 
@@ -973,8 +1088,19 @@ class XApp_UserManager implements XApp_Security_IAuthenticator {
     public function getPermissions(){
         return $this->_permissions;
     }
+    public function getResources(){
+        return $this->_resources;
+    }
     public function getRoles(){
         return $this->_roles;
+    }
+    public function getRole($name){
+
+        $roles = $this->_roles;
+        if($roles->{$name}){
+            return $roles->{$name};
+        }
+        return null;
     }
     /**
      * @return XApp_Security_Permission
@@ -989,13 +1115,13 @@ class XApp_UserManager implements XApp_Security_IAuthenticator {
      * @return XApp_Security_User
      */
     public function getSessionStorage(){
-        return $this->sessionStorage;
+        return $this->loggedInUser;
     }
     /***
      * @return XApp_Http_Session
      */
     public function getSession(){
-        return $this->session ?:XApp_Http_Session::factory();
+        return $this->session ?:XApp_Http_Session::factory(null);
     }
 
     ///////////////////////////////////////////////////////////////////////////
@@ -1018,7 +1144,6 @@ class XApp_UserManager implements XApp_Security_IAuthenticator {
 
         //Try with store data first
         if(xo_has(self::STORE_DATA) && is_object(xo_get(self::STORE_DATA))){
-            error_log('store data');
             $this->initWithData(xo_get(self::STORE_DATA));
             return true;
         }
@@ -1042,15 +1167,139 @@ class XApp_UserManager implements XApp_Security_IAuthenticator {
         return false;
     }
 
-    public function initAcl(){
+    /**
+     * @param $name
+     * @param $role
+     * @param $roles
+     * @param $acl
+     */
+    protected function registerRole($name,$role,$roles,$acl){
 
-        $acl = $this->getAcl();
+        $parents = $role->getParents();
+        if($parents){
+            //walk over parents and ensure them
+            foreach($parents as $parent){
+
+                if($acl->hasRole($parent)){
+                    //already registered
+                }else{
+                    if(isset($roles->{$parent})){
+                        $this->registerRole($parent,$roles->{$parent},$roles,$acl);
+                    }else{
+                        unset($parents,$roles->{$parent});
+                    }
+                }
+            }
+            if(!$acl->hasRole($name)) {
+                $acl->addRole($name, $parents);
+            }
+        }else{
+            if(!$acl->hasRole($name)) {
+                $acl->addRole($name, null);
+            }
+        }
+    }
+
+    /**
+     * Return logged on's user permission from acl
+     * @param null $resources
+     * @param null $user
+     * @param null $acl
+     * @return array
+     */
+    public function getUserPermissions($resources=null,$user=null,$acl=null){
+
+        $result = array();
 
 
+        if(!$user){
+            $user = $this->getUser();
+        }
+
+        if(!$user){
+            return $result;
+        }
+
+        if(!$acl){
+            $acl = $this->getAcl();
+        }
+
+        if(!$resources){
+            $resources = $this->getResources();
+        }
+        $userRoles = $user->getRole();
+
+        foreach ($resources as $resource) {
+
+            //collect all
+            $permissions = $resource->getPermissions();
+            $name = $resource->getName();
+            $result[$name] = new stdClass();
+
+            if ($permissions) {
+                //set all true
+                foreach ($permissions as $permission) {
+                    $result[$name]->{$permission} = true;
+                }
+
+                //now to false or true
+                foreach ($permissions as $permission) {
+                    foreach($userRoles as $role) {
+                        $result[$name]->{$permission} = $acl->isAllowed($role,$name,$permission);
+                    }
+                }
+            }
+        }
+        return $result;
 
     }
 
+    /**
+     * @throws Exception
+     */
+    public function initAcl(){
+
+        $acl = $this->getAcl();
+        $loggedInUser = $this->getLoggedInUser();
+        if($loggedInUser){
+
+            $roles = $this->getRoles();
+            $resources = $this->getResources();
+
+            //transfer global roles(currently raw!) - data to ACL Roles
+            foreach ($roles as $roleName => $roleData) {
+                $this->registerRole($roleName,$roleData,$roles,$acl);
+            }
+
+            //transfer resource - data (currently raw!)
+            foreach ($resources as $resourceName => $resourceData) {
+                if(!$acl->hasResource($resourceName)) {
+                    $acl->addResource($resourceName);
+                }
+            }
+
+            foreach ($roles as $roleName => $roleData) {
+                $roleResources = $roleData->getResources();
+                if ($roleResources) {
+                    foreach ($roleResources as $roleResourceName => $roleResourceData) {
+                        $allow = $roleResourceData['allow'];
+                        $deny = isset($roleResourceData['deny']) ? $roleResourceData['deny'] : null;
+                        $resourceName = $roleResourceData['name'];
+                        if (isset($resources->{$resourceName})) {
+                            if ($deny) {
+                                foreach ($allow as $roleResourcePermissionIndex => $roleResourcePermission) {
+                                    $acl->deny($roleName, $resourceName, $allow);
+                                }
+                            }
+                            if ($allow) {
+                                foreach ($allow as $roleResourcePermissionIndex => $roleResourcePermission) {
+                                    $acl->allow($roleName, $resourceName, $allow);
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
 }
-
-
-?>

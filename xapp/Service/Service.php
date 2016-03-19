@@ -18,6 +18,13 @@ xapp_import('xapp.Service.Logger');
 class XApp_Service extends XApp_Service_Logger implements Xapp_Rpc_Interface_Callable
 {
 
+    /**
+     * Return a resource name for the ACL system
+     * @return string
+     */
+    public static function getResourceName(){
+        return "";
+    }
 
     /***
      * The name of the class as string or an instance. An instance does not need options of course.

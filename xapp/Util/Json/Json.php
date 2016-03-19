@@ -56,6 +56,7 @@ class Xapp_Util_Json
      */
     public static function decode($json, $assoc = false, $depth = 512, $options = 0)
     {
+
         if(function_exists('json_decode'))
         {
             if(version_compare(PHP_VERSION, '5.4.0', '>='))

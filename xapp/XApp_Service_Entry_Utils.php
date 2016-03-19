@@ -1067,6 +1067,19 @@ class XApp_Service_Entry_Utils
 	 * Little helper to determine debug config
 	 * @return null
 	 */
+	public static function isReleaseDebug()
+	{
+		$pageURL = self::getUrl();
+		if (strpos($pageURL, 'release-debug=true') !== false) {
+			return true;
+		}
+		return false;
+	}
+
+	/***
+	 * Little helper to determine debug config
+	 * @return null
+	 */
 	public static function isDesktopApp()
 	{
 		$pageURL = self::getUrl();
@@ -1111,6 +1124,9 @@ class XApp_Service_Entry_Utils
 	 */
 	public static function getRunTimeConfiguration()
 	{
+		if(self::isReleaseDebug()){
+			//return 'release-debug';
+		}
 
 		return self::isDebug() ? 'debug' : 'release';
 	}

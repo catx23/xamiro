@@ -52,8 +52,8 @@ interface XApp_Http_IRequest
 
 	/**
 	 * Returns uploaded file.
-	 * @param  string key (or more keys)
-	 * @return FileUpload
+	 * @param  string key
+	 * @return FileUpload|NULL
 	 */
 	function getFile($key);
 
@@ -121,14 +121,20 @@ interface XApp_Http_IRequest
 
 	/**
 	 * Returns the IP address of the remote client.
-	 * @return string
+	 * @return string|NULL
 	 */
 	function getRemoteAddress();
 
 	/**
 	 * Returns the host of the remote client.
-	 * @return string
+	 * @return string|NULL
 	 */
 	function getRemoteHost();
+
+	/**
+	 * Returns raw content of HTTP request body.
+	 * @return string|NULL
+	 */
+	function getRawBody();
 
 }

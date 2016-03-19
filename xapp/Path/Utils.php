@@ -308,22 +308,29 @@ class XApp_Path_Utils{
 	 */
 	public static function getMount($path){
 
+		if(!XApp_Utils_Strings::startsWith($path,'/')){
+			$path = '/' . $path;
+		}
+
+
 		$parsed = parse_url($path);
 		if(isset($parsed['scheme'])){
-			return $parsed['scheme'];
+			return str_replace("/","",$parsed['scheme']);
 		}
 
 		if(strpos($path,'://')!==false){
 			$path_parts_0 = explode('://', $path);
 			if(count($path_parts_0)){
-				return $path_parts_0[0];
+				return str_replace("/","",$path_parts_0[0]);
 			}
 		}
 		$path = self::sanitizeEx(self::normalizePath($path,false,false));
 		$parsed = parse_url($path);
 		$path = $parsed['path'];
 		$path_parts = explode('/', $path);
-		return str_replace(":","",$path_parts[1]);
+		$result = str_replace(":","",$path_parts[1]);
+		$result = str_replace("/","",$result);
+		return $result;
 	}
 
 	/**

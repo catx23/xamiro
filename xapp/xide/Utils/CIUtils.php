@@ -225,7 +225,25 @@ class XApp_CIUtils {
     public static function getBy($CI_Array,$field,$value) {
         foreach($CI_Array as $CI_Obj)
         {
-            if ($CI_Obj->{$field} == $value) return $CI_Obj;
+            if ($CI_Obj->{$field} === $value) return $CI_Obj;
+        }
+        return false;
+    }
+
+    public static function getBy2($CI_Array,$field,$value) {
+
+
+        $CI_Array = (array)$CI_Array;
+
+        foreach($CI_Array as $CI_Obj){
+
+            if(is_object($CI_Obj)){
+                if ($CI_Obj->{$field} === $value) return $CI_Obj;
+            }else if(is_array($CI_Obj)){
+                if ($CI_Obj[$field] === $value){
+                    return $CI_Obj;
+                }
+            }
         }
         return false;
     }

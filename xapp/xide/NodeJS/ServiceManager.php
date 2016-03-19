@@ -328,6 +328,8 @@ class XIDE_NodeJS_Service_Manager extends XIDE_Manager
 
 		$this->prepareResources();
 
+
+
 		$type = xo_get(self::RESOURCES_TYPE, $this);
 		$services = $this->getVariableDelegate()->getResourcesByType($type);
 		$emits = xo_get(self::EMITS, $this) === true;
@@ -490,8 +492,10 @@ class XIDE_NodeJS_Service_Manager extends XIDE_Manager
 
 				$args = array();
 				$cmd = "node " . $nodeapp;
+				if(property_exists($serviceResource,'isNode') && $serviceResource->{'isNode'}===false){
+					$cmd = $nodeapp;
+				}
 				$args[] = $helpArg;
-
 
 				$result = XApp_Shell_Utils::run(
 					$cmd,
@@ -963,6 +967,10 @@ class XIDE_NodeJS_Service_Manager extends XIDE_Manager
 	public function resolveResource(&$resource){
 
 		if($resource!==null && is_object($resource)){
+
+			if( xapp_property_exists($resource,'main')){
+				$resource->{'main'}=$this->resolveAbsolute(xapp_property_get($resource,'main'));
+			}
 
 			if( xapp_property_exists($resource,XAPP_RESOURCE_NAME)&&
 				xapp_property_exists($resource,XAPP_RESOURCE_PATH)){

@@ -20,8 +20,9 @@ xapp_import('xapp.Http.IResponse');
  * @property-read bool $sent
  * @property-read array $headers
  */
-class XApp_Http_Response implements XApp_Http_IResponse
+class XApp_Http_Response extends XApp_Object implements XApp_Http_IResponse
 {
+
 	/** @var bool  Send invisible garbage for IE 6? */
 	private static $fixIE = TRUE;
 
@@ -37,6 +38,9 @@ class XApp_Http_Response implements XApp_Http_IResponse
 	/** @var string Whether the cookie is hidden from client-side */
 	public $cookieHttpOnly = TRUE;
 
+	/** @var bool Whether warn on possible problem with data in output buffer */
+	public $warnOnBuffer = TRUE;
+
 	/** @var int HTTP response code */
 	private $code = self::S200_OK;
 
@@ -44,12 +48,14 @@ class XApp_Http_Response implements XApp_Http_IResponse
 	public function __construct()
 	{
 		if (PHP_VERSION_ID >= 50400) {
-			if (is_int(http_response_code())) {
-				$this->code = http_response_code();
+			if (is_int($code = http_response_code())) {
+				$this->code = $code;
 			}
-            if(isset($this->removeDuplicateCookies)){
-			    header_register_callback($this->removeDuplicateCookies);
-            }
+		}
+
+		if (PHP_VERSION_ID >= 50401) { // PHP bug #61106
+			$rm = new \ReflectionMethod('XApp_Http_Helpers::removeDuplicateCookies');
+			header_register_callback($rm->getClosure()); // requires closure due PHP bug #66375
 		}
 	}
 
@@ -58,8 +64,8 @@ class XApp_Http_Response implements XApp_Http_IResponse
 	 * Sets HTTP response code.
 	 * @param  int
 	 * @return self
-	 * @throws XApp_InvalidArgumentException  if code is invalid
-	 * @throws XApp_InvalidArgumentException  if HTTP headers have been sent
+	 * @throws Nette\InvalidArgumentException  if code is invalid
+	 * @throws Nette\InvalidStateException  if HTTP headers have been sent
 	 */
 	public function setCode($code)
 	{
@@ -90,12 +96,12 @@ class XApp_Http_Response implements XApp_Http_IResponse
 	 * @param  string  header name
 	 * @param  string  header value
 	 * @return self
-	 * @throws XApp_InvalidStateException  if HTTP headers have been sent
+	 * @throws Nette\InvalidStateException  if HTTP headers have been sent
 	 */
 	public function setHeader($name, $value)
 	{
 		self::checkHeaders();
-		if ($value === NULL && function_exists('header_remove')) {
+		if ($value === NULL) {
 			header_remove($name);
 		} elseif (strcasecmp($name, 'Content-Length') === 0 && ini_get('zlib.output_compression')) {
 			// ignore, PHP bug #44164
@@ -111,7 +117,7 @@ class XApp_Http_Response implements XApp_Http_IResponse
 	 * @param  string  header name
 	 * @param  string  header value
 	 * @return self
-	 * @throws XApp_InvalidStateException  if HTTP headers have been sent
+	 * @throws Nette\InvalidStateException  if HTTP headers have been sent
 	 */
 	public function addHeader($name, $value)
 	{
@@ -126,7 +132,7 @@ class XApp_Http_Response implements XApp_Http_IResponse
 	 * @param  string  mime-type
 	 * @param  string  charset
 	 * @return self
-	 * @throws XApp_InvalidStateException  if HTTP headers have been sent
+	 * @throws Nette\InvalidStateException  if HTTP headers have been sent
 	 */
 	public function setContentType($type, $charset = NULL)
 	{
@@ -140,21 +146,24 @@ class XApp_Http_Response implements XApp_Http_IResponse
 	 * @param  string  URL
 	 * @param  int     HTTP code
 	 * @return void
-	 * @throws XApp_InvalidStateException  if HTTP headers have been sent
+	 * @throws Nette\InvalidStateException  if HTTP headers have been sent
 	 */
 	public function redirect($url, $code = self::S302_FOUND)
 	{
 		$this->setCode($code);
 		$this->setHeader('Location', $url);
-		echo "<h1>Redirect</h1>\n\n<p><a href=\"" . htmlSpecialChars($url, ENT_IGNORE | ENT_QUOTES) . "\">Please click here to continue</a>.</p>";
+		if (preg_match('#^https?:|^\s*+[a-z0-9+.-]*+[^:]#i', $url)) {
+			$escapedUrl = htmlSpecialChars($url, ENT_IGNORE | ENT_QUOTES, 'UTF-8');
+			echo "<h1>Redirect</h1>\n\n<p><a href=\"$escapedUrl\">Please click here to continue</a>.</p>";
+		}
 	}
 
 
 	/**
 	 * Sets the number of seconds before a page cached on a browser expires.
-	 * @param  string|int|DateTime  time, value 0 means "until the browser is closed"
+	 * @param  string|int|\DateTime  time, value 0 means "until the browser is closed"
 	 * @return self
-	 * @throws XApp_InvalidStateException  if HTTP headers have been sent
+	 * @throws Nette\InvalidStateException  if HTTP headers have been sent
 	 */
 	public function setExpiration($time)
 	{
@@ -164,9 +173,9 @@ class XApp_Http_Response implements XApp_Http_IResponse
 			return $this;
 		}
 
-		$time = Xapp_DateTime::from($time);
+		$time = DateTime::from($time);
 		$this->setHeader('Cache-Control', 'max-age=' . ($time->format('U') - time()));
-		$this->setHeader('Expires', self::date($time));
+		$this->setHeader('Expires', Helpers::formatDate($time));
 		return $this;
 	}
 
@@ -182,7 +191,7 @@ class XApp_Http_Response implements XApp_Http_IResponse
 
 
 	/**
-	 * Return the value of the HTTP header.
+	 * Returns value of an HTTP header.
 	 * @param  string
 	 * @param  mixed
 	 * @return mixed
@@ -202,7 +211,7 @@ class XApp_Http_Response implements XApp_Http_IResponse
 
 	/**
 	 * Returns a list of headers to sent.
-	 * @return array
+	 * @return array (name => value)
 	 */
 	public function getHeaders()
 	{
@@ -216,15 +225,11 @@ class XApp_Http_Response implements XApp_Http_IResponse
 
 
 	/**
-	 * Returns HTTP valid date format.
-	 * @param  string|int|DateTime
-	 * @return string
+	 * @deprecated
 	 */
 	public static function date($time = NULL)
 	{
-		$time = Nette\DateTime::from($time);
-		$time->setTimezone(new \DateTimeZone('GMT'));
-		return $time->format('D, d M Y H:i:s \G\M\T');
+		return Helpers::formatDate($time);
 	}
 
 
@@ -234,10 +239,10 @@ class XApp_Http_Response implements XApp_Http_IResponse
 	public function __destruct()
 	{
 		if (self::$fixIE && isset($_SERVER['HTTP_USER_AGENT']) && strpos($_SERVER['HTTP_USER_AGENT'], 'MSIE ') !== FALSE
-			&& in_array($this->code, array(400, 403, 404, 405, 406, 408, 409, 410, 500, 501, 505), TRUE)
-			&& preg_match('#^text/html(?:;|$)#', $this->getHeader('Content-Type', 'text/html'))
+				&& in_array($this->code, array(400, 403, 404, 405, 406, 408, 409, 410, 500, 501, 505), TRUE)
+				&& preg_match('#^text/html(?:;|$)#', $this->getHeader('Content-Type', 'text/html'))
 		) {
-			echo Nette\Utils\Strings::random(2e3, " \t\r\n"); // sends invisible garbage for IE
+			echo Nette\Utils\Random::generate(2e3, " \t\r\n"); // sends invisible garbage for IE
 			self::$fixIE = FALSE;
 		}
 	}
@@ -247,27 +252,27 @@ class XApp_Http_Response implements XApp_Http_IResponse
 	 * Sends a cookie.
 	 * @param  string name of the cookie
 	 * @param  string value
-	 * @param  string|int|DateTime  expiration time, value 0 means "until the browser is closed"
+	 * @param  string|int|\DateTime  expiration time, value 0 means "until the browser is closed"
 	 * @param  string
 	 * @param  string
 	 * @param  bool
 	 * @param  bool
 	 * @return self
-	 * @throws XApp_InvalidStateException  if HTTP headers have been sent
+	 * @throws Nette\InvalidStateException  if HTTP headers have been sent
 	 */
 	public function setCookie($name, $value, $time, $path = NULL, $domain = NULL, $secure = NULL, $httpOnly = NULL)
 	{
 		self::checkHeaders();
 		setcookie(
-			$name,
-			$value,
-			$time ? Nette\DateTime::from($time)->format('U') : 0,
-			$path === NULL ? $this->cookiePath : (string) $path,
-			$domain === NULL ? $this->cookieDomain : (string) $domain,
-			$secure === NULL ? $this->cookieSecure : (bool) $secure,
-			$httpOnly === NULL ? $this->cookieHttpOnly : (bool) $httpOnly
+				$name,
+				$value,
+				$time ? Xapp_DateTime::from($time)->format('U') : 0,
+				$path === NULL ? $this->cookiePath : (string) $path,
+				$domain === NULL ? $this->cookieDomain : (string) $domain,
+				$secure === NULL ? $this->cookieSecure : (bool) $secure,
+				$httpOnly === NULL ? $this->cookieHttpOnly : (bool) $httpOnly
 		);
-		$this->removeDuplicateCookies();
+		XApp_Http_Helpers::removeDuplicateCookies();
 		return $this;
 	}
 
@@ -279,7 +284,7 @@ class XApp_Http_Response implements XApp_Http_IResponse
 	 * @param  string
 	 * @param  bool
 	 * @return void
-	 * @throws XApp_InvalidStateException  if HTTP headers have been sent
+	 * @throws Nette\InvalidStateException  if HTTP headers have been sent
 	 */
 	public function deleteCookie($name, $path = NULL, $domain = NULL, $secure = NULL)
 	{
@@ -287,36 +292,20 @@ class XApp_Http_Response implements XApp_Http_IResponse
 	}
 
 
-	/**
-	 * Removes duplicate cookies from response.
-	 * @return void
-	 */
+	/** @internal @deprecated */
 	public function removeDuplicateCookies()
 	{
-		if (headers_sent($file, $line) || ini_get('suhosin.cookie.encrypt')) {
-			return;
-		}
-
-		$flatten = array();
-		foreach (headers_list() as $header) {
-			if (preg_match('#^Set-Cookie: .+?=#', $header, $m)) {
-				$flatten[$m[0]] = $header;
-				header_remove('Set-Cookie');
-			}
-		}
-		foreach (array_values($flatten) as $key => $header) {
-			header($header, $key === 0);
-		}
+		//trigger_error('Use Nette\Http\Helpers::removeDuplicateCookies()', E_USER_WARNING);
 	}
 
 
 	private function checkHeaders()
 	{
 		if (headers_sent($file, $line)) {
-			throw new XApp_InvalidStateException('Cannot send header after HTTP headers have been sent' . ($file ? " (output started at $file:$line)." : '.'));
-		} elseif (ob_get_length() && !array_filter(ob_get_status(TRUE), function($i) { return !$i['chunk_size']; })) {
-			trigger_error('Possible problem: you are sending a HTTP header while already having some data in output buffer. Try OutputDebugger or start session earlier.', E_USER_NOTICE);
+			throw new Nette\InvalidStateException('Cannot send header after HTTP headers have been sent' . ($file ? " (output started at $file:$line)." : '.'));
+
+		} elseif ($this->warnOnBuffer && ob_get_length() && !array_filter(ob_get_status(TRUE), function ($i) { return !$i['chunk_size']; })) {
+			trigger_error('Possible problem: you are sending a HTTP header while already having some data in output buffer. Try Tracy\OutputDebugger or start session earlier.', E_USER_NOTICE);
 		}
 	}
-
 }

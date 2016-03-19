@@ -164,6 +164,37 @@ class XIDE_Resource_Renderer extends XApp_Resource_Renderer
 		}
 		return $javaScriptHeader;
 	}
+	/**
+	 * @param bool $print
+	 * @return string|void
+	 */
+	public function renderJavascriptBodyTags($print=false){
+
+		$scriptItems = $this->getResourcesByType(XAPP_RESOURCE_TYPE_JS_INCLUDE_BODY,true);
+		if($scriptItems!=null && count($scriptItems)){
+			$scriptTags = '';
+			foreach($scriptItems as $resourceItem){
+
+				if(!is_object($resourceItem)){
+					continue;
+				}
+				if(!xapp_property_exists($resourceItem,XAPP_RESOURCE_URL_RESOLVED)){
+					$resourceItem = $this->resolveResource($resourceItem);
+				}
+				if(xapp_property_exists($resourceItem,XAPP_RESOURCE_URL_RESOLVED)){
+					$url = xapp_property_get($resourceItem,XAPP_RESOURCE_URL_RESOLVED);
+					$scriptTag = "<script type='text/javascript' src='" . $url . "'></script>\n";
+					$scriptTags.=$scriptTag;
+				}
+			}
+
+			if($print){
+				echo ($scriptTags);
+			}
+			return $scriptTags;
+		}
+		return '';
+	}
 
 	public function getJavascriptPlugins(){
 		$plugins = array();

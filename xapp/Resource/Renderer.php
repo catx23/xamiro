@@ -23,6 +23,11 @@ define('XAPP_RESOURCE_TYPE_LOGIN', 'LOGIN');
  */
 define('XAPP_RESOURCE_TYPE_JS_INCLUDE', 'JS-HEADER-INCLUDE');
 /**
+ * Defines the resource type Javascript. This will be used to include an uri to a Javascript file into the HTML head section
+ * @const XAPP_RESOURCE_TYPE_JS_INCLUDE
+ */
+define('XAPP_RESOURCE_TYPE_JS_INCLUDE_BODY', 'JS-BODY-INCLUDE');
+/**
  * Defines the resource type Javascript header tag. This will be used to include the content of a Javascript file into the HTML head section
  * @const XAPP_RESOURCE_TYPE_JS_HEADER_SCRIPT_TAG
  */
@@ -524,6 +529,7 @@ class XApp_Resource_Renderer implements Xapp_Singleton_Interface
     public function getPluginResources(){}
     public function addJSIncludes(){}
     public function renderJavascriptHeaderTags(){}
+    public function renderJavascriptBodyTags(){}
     public function renderCSS(){}
 
 	public static function isSecure(){

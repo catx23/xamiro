@@ -19,10 +19,10 @@ class XIDE_Directory_Service extends XApp_Directory_Service
 	/**
 	 * Directory listing
 	 * @link http://localhost/xide/code/php/xide-php/server/xide/service.php?service=XApp_Directory_Service.ls&callback=asdF&path=/ws/&recursive=true
+	 * @param string $mount
 	 * @param string $path
-	 * @param bool $recursive
 	 * @param null $options
-	 * @return array
+	 * @return mixed
 	 */
     public function ls($mount='ws',$path='/',$options=null){
 
@@ -71,8 +71,12 @@ class XIDE_Directory_Service extends XApp_Directory_Service
      * Xapp_Rpc_Interface_Callable Impl. Before the actual call is being invoked.
      *
      */
+	/**
+	 * @param Xapp_Rpc_Server $server
+	 * @param array $params
+	 */
     public function onBeforeCall(Xapp_Rpc_Server $server, Array $params){
-        parent::init();
+	    parent::init();
         Xapp_Hook::connect(XApp_VFS_Base::EVENT_ON_NODE_META_CREATED,$this,"_onItem");
     }
     /***

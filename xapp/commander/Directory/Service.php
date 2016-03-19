@@ -19,6 +19,10 @@ class XCOM_Directory_Service extends XIDE_Directory_Service
 {
 	protected $_currentItems = array();
 
+	public static function getResourceName(){
+		return "xfile";
+	}
+
 	/**
 	 * @param $mount
 	 * @param $searchConf
@@ -461,8 +465,8 @@ class XCOM_Directory_Service extends XIDE_Directory_Service
 			$dst = '/';
 		}
 		$options = (array)$options;
-		$inclusion = $options['include'];
-		$exclusion = $options['exclude'];
+		$inclusion = isset($options['include'])? $options['include'] : array();
+		$exclusion = isset($options['exclude'])? $options['exclude'] : array();
 		$mode = $options['mode'];
 		$hints = xapp_array_get($options,'hints');
 		if (!$inclusion) {
@@ -486,6 +490,7 @@ class XCOM_Directory_Service extends XIDE_Directory_Service
 		 * Local/Remote to Local/Remote
 		 */
 		if ($this->isRemoteOperation($selection[0], $dst)) {
+
 
 			$remoteMount = $this->isRemote(
 				XApp_Path_Utils::getMount($selection[0]),
@@ -591,6 +596,7 @@ class XCOM_Directory_Service extends XIDE_Directory_Service
 			$error= [XAPP_TEXT_FORMATTED('DIRECTORY_DOES_NOT_EXISTS', array($basePath . '://'))];
 			return self::toRPCError(1, $error);
 		}
+
 
 		//defaults
 		if (!$options) {
@@ -774,10 +780,13 @@ class XCOM_Directory_Service extends XIDE_Directory_Service
 
 	/***
 	 * Xapp_Rpc_Interface_Callable Impl. Before the actual call is being invoked.
+	 * @param Xapp_Rpc_Server $server
+	 * @param array $params
 	 */
 	public function onBeforeCall(Xapp_Rpc_Server $server, Array $params)
 	{
 		parent::init();
+		//parent::onBeforeCall($server,$params);
 	}
 
 

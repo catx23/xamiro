@@ -28,16 +28,13 @@ xapp_import('xapp.Http.IRequest');
  * @property-read string $remoteAddress
  * @property-read string $remoteHost
  */
-class XApp_Http_Request implements XApp_Http_IRequest
+class XApp_Http_Request extends XApp_Object implements XApp_Http_IRequest
 {
 	/** @var string */
 	private $method;
 
 	/** @var UrlScript */
 	private $url;
-
-	/** @var array */
-	private $query;
 
 	/** @var array */
 	private $post;
@@ -51,29 +48,32 @@ class XApp_Http_Request implements XApp_Http_IRequest
 	/** @var array */
 	private $headers;
 
-	/** @var string */
+	/** @var string|NULL */
 	private $remoteAddress;
 
-	/** @var string */
+	/** @var string|NULL */
 	private $remoteHost;
+
+	/** @var callable|NULL */
+	private $rawBodyCallback;
 
 
 	public function __construct(XApp_Http_UrlScript $url, $query = NULL, $post = NULL, $files = NULL, $cookies = NULL,
-		$headers = NULL, $method = NULL, $remoteAddress = NULL, $remoteHost = NULL)
+			$headers = NULL, $method = NULL, $remoteAddress = NULL, $remoteHost = NULL, $rawBodyCallback = NULL)
 	{
 		$this->url = $url;
-		if ($query === NULL) {
-			parse_str($url->query, $this->query);
-		} else {
-			$this->query = (array) $query;
+		if ($query !== NULL) {
+			trigger_error('Nette\Http\Request::__construct(): parameter $query is deprecated.', E_USER_DEPRECATED);
+			$url->setQuery($query);
 		}
 		$this->post = (array) $post;
 		$this->files = (array) $files;
 		$this->cookies = (array) $cookies;
-		$this->headers = (array) $headers;
-		$this->method = $method;
+		$this->headers = array_change_key_case((array) $headers, CASE_LOWER);
+		$this->method = $method ?: 'GET';
 		$this->remoteAddress = $remoteAddress;
 		$this->remoteHost = $remoteHost;
+		$this->rawBodyCallback = $rawBodyCallback;
 	}
 
 
@@ -83,7 +83,7 @@ class XApp_Http_Request implements XApp_Http_IRequest
 	 */
 	public function getUrl()
 	{
-		return $this->url;
+		return clone $this->url;
 	}
 
 
@@ -100,13 +100,9 @@ class XApp_Http_Request implements XApp_Http_IRequest
 	public function getQuery($key = NULL, $default = NULL)
 	{
 		if (func_num_args() === 0) {
-			return $this->query;
-
-		} elseif (isset($this->query[$key])) {
-			return $this->query[$key];
-
+			return $this->url->getQueryParameters();
 		} else {
-			return $default;
+			return $this->url->getQueryParameter($key, $default);
 		}
 	}
 
@@ -134,12 +130,17 @@ class XApp_Http_Request implements XApp_Http_IRequest
 
 	/**
 	 * Returns uploaded file.
-	 * @param  string key (or more keys)
-	 * @return FileUpload
+	 * @param  string key
+	 * @return FileUpload|NULL
 	 */
 	public function getFile($key)
 	{
-		return Nette\Utils\Arrays::get($this->files, func_get_args(), NULL);
+		if (func_num_args() > 1) {
+			trigger_error('Calling getFile() with multiple keys is deprecated.', E_USER_DEPRECATED);
+			return Nette\Utils\Arrays::get($this->files, func_get_args(), NULL);
+		}
+
+		return isset($this->files[$key]) ? $this->files[$key] : NULL;
 	}
 
 
@@ -161,15 +162,7 @@ class XApp_Http_Request implements XApp_Http_IRequest
 	 */
 	public function getCookie($key, $default = NULL)
 	{
-		if (func_num_args() === 0) {
-			return $this->cookies;
-
-		} elseif (isset($this->cookies[$key])) {
-			return $this->cookies[$key];
-
-		} else {
-			return $default;
-		}
+		return isset($this->cookies[$key]) ? $this->cookies[$key] : $default;
 	}
 
 
@@ -208,8 +201,7 @@ class XApp_Http_Request implements XApp_Http_IRequest
 
 
 	/**
-	 * Checks if the request method is POST.
-	 * @return bool
+	 * @deprecated
 	 */
 	public function isPost()
 	{
@@ -227,11 +219,7 @@ class XApp_Http_Request implements XApp_Http_IRequest
 	public function getHeader($header, $default = NULL)
 	{
 		$header = strtolower($header);
-		if (isset($this->headers[$header])) {
-			return $this->headers[$header];
-		} else {
-			return $default;
-		}
+		return isset($this->headers[$header]) ? $this->headers[$header] : $default;
 	}
 
 
@@ -261,7 +249,7 @@ class XApp_Http_Request implements XApp_Http_IRequest
 	 */
 	public function isSecured()
 	{
-		return $this->url->scheme === 'https';
+		return $this->url->getScheme() === 'https';
 	}
 
 
@@ -277,7 +265,7 @@ class XApp_Http_Request implements XApp_Http_IRequest
 
 	/**
 	 * Returns the IP address of the remote client.
-	 * @return string
+	 * @return string|NULL
 	 */
 	public function getRemoteAddress()
 	{
@@ -287,21 +275,31 @@ class XApp_Http_Request implements XApp_Http_IRequest
 
 	/**
 	 * Returns the host of the remote client.
-	 * @return string
+	 * @return string|NULL
 	 */
 	public function getRemoteHost()
 	{
-		if (!$this->remoteHost) {
-			$this->remoteHost = $this->remoteAddress ? getHostByAddr($this->remoteAddress) : NULL;
+		if ($this->remoteHost === NULL && $this->remoteAddress !== NULL) {
+			$this->remoteHost = getHostByAddr($this->remoteAddress);
 		}
 		return $this->remoteHost;
 	}
 
 
 	/**
-	 * Parse Accept-Language header and returns prefered language.
-	 * @param  array   Supported languages
-	 * @return string
+	 * Returns raw content of HTTP request body.
+	 * @return string|NULL
+	 */
+	public function getRawBody()
+	{
+		return $this->rawBodyCallback ? call_user_func($this->rawBodyCallback) : NULL;
+	}
+
+
+	/**
+	 * Parse Accept-Language header and returns preferred language.
+	 * @param  string[] supported languages
+	 * @return string|NULL
 	 */
 	public function detectLanguage(array $langs)
 	{
@@ -324,7 +322,8 @@ class XApp_Http_Request implements XApp_Http_IRequest
 		foreach ($matches[1] as $key => $value) {
 			$q = $matches[2][$key] === '' ? 1.0 : (float) $matches[2][$key];
 			if ($q > $max) {
-				$max = $q; $lang = $value;
+				$max = $q;
+				$lang = $value;
 			}
 		}
 
