@@ -100,8 +100,7 @@ class XApp_Shell_Utils
         $command = $cmd . " " . implode(" ", $args);
 	    $os = PHP_OS;
 	    $isWindows = false;
-
-        switch($os)
+	    switch($os)
 	    {
 		    case "WINNT": {
 			    $isWindows=true;

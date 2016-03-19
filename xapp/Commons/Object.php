@@ -50,8 +50,6 @@
  *
  * @property-read Nette\Reflection\ClassType $reflection
  */
-xapp_import("xapp.Commons.ObjectMixin");
-
 abstract class XApp_Object
 {
 
@@ -74,7 +72,6 @@ abstract class XApp_Object
 	 */
 	public function __call($name, $args)
 	{
-		error_log('name' . $name);
 		return XApp_ObjectMixin::call($this, $name, $args);
 	}
 

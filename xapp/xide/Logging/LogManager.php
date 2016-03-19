@@ -75,14 +75,14 @@ class XIDE_Log_Manager extends XIDE_Manager{
 	    }
 
         if(!file_exists($path)){
-            //$this->log('log file path : ' . xo_get(self::LOG_PATH,$this)  .' doesnt exists');
+            $this->log('log file path : ' . xo_get(self::LOG_PATH,$this)  .' doesnt exists');
             return '{}';
         }
         $result = array();
         if(file_exists($path) && @is_writeable($path)){
             file_put_contents($path,"");
         }else{
-            //$this->log('log file path : ' . $path  .' doesnt exists or is not writable for clear');
+            $this->log('log file path : ' . $path  .' doesnt exists or is not writable for clear');
             return '{}';
         }
         return $result;
@@ -100,7 +100,7 @@ class XIDE_Log_Manager extends XIDE_Manager{
 		    $path = str_replace('all.log',$which,$path);
 	    }
 	    if(!file_exists($path)){
-		    //$this->log('log file path : ' . $path  .' doesnt exists');
+		    $this->log('log file path : ' . $path  .' doesnt exists');
 		    return '{}';
 	    }
 	    $result = array();

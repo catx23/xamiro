@@ -1,9 +1,13 @@
 <?php
 /**
  * @author     Guenter Baumgart
+ * @author     David Grudl
+ * @copyright 2004 David Grudl (http://davidgrudl.com)
  * @license : GPL v2. http://www.gnu.org/licenses/gpl-2.0.html
  * @license : http://opensource.org/licenses/BSD-3-Clause
  * @package XApp\xide\Models
+ *
+ * @original header : This file is part of the Nette Framework (http://nette.org)
  */
 xapp_import('xapp.Commons.Entity');
 xapp_import('xapp.Security.IResource');
@@ -18,7 +22,6 @@ class XApp_Resource extends XApp_Entity implements XApp_Security_IResource {
 
     const RESOURCE_NAME = "Name";
     const RESOURCE_PARENT = "Parent";
-    const RESOURCE_PERMISSIONS = "Permissions";
 
     static $entity_default_fields = Array(
         Array(
@@ -29,11 +32,6 @@ class XApp_Resource extends XApp_Entity implements XApp_Security_IResource {
         Array(
             self::ENTITY_FIELD_NAME => self::RESOURCE_PARENT,
             self::ENTITY_FIELD_DESCRIPTION => "Resource Parent",
-            self::ENTITY_FIELD_TYPE => XAPP_TYPE_STRING
-        ),
-        Array(
-            self::ENTITY_FIELD_NAME => self::RESOURCE_PERMISSIONS,
-            self::ENTITY_FIELD_DESCRIPTION => "Resource Permissions",
             self::ENTITY_FIELD_TYPE => XAPP_TYPE_STRING
         )
     );
@@ -55,3 +53,5 @@ class XApp_Resource extends XApp_Entity implements XApp_Security_IResource {
         return $this->getName();
     }
 }
+
+?>

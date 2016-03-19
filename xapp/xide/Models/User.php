@@ -1,11 +1,12 @@
 <?php
+
 xapp_import('xapp.Commons.Entity');
 xapp_import('xapp.Security.IIdentity');
 xapp_import('xapp.Security.User');
 /**
  * Class XApp_User
  */
-class XApp_User extends XApp_Entity /*extends XApp_Security_User implements XApp_Security_IIdentity*/ {
+class XApp_User extends XApp_Security_User implements XApp_Security_IIdentity {
 
     /**
      *  Default fields: Name, Password, Role, Permissions
@@ -174,4 +175,14 @@ class XApp_User extends XApp_Entity /*extends XApp_Security_User implements XApp
         }
         $this->setPermissions( $permissions );
     }
+
+
+
+
+
+
+
+
 }
+
+?>

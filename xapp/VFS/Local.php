@@ -670,7 +670,7 @@ class XApp_VFS_Local extends XApp_VFS_Base implements Xapp_VFS_Interface_Access
 		$mapping = new stdClass();
 
 
-		//xapp_clog($this->toRealPath($dstDirectory));
+		xapp_clog($this->toRealPath($dstDirectory));
 
 
 		/**
@@ -694,7 +694,7 @@ class XApp_VFS_Local extends XApp_VFS_Base implements Xapp_VFS_Interface_Access
 		 *  4. single file to a non-existing file
 		 *
 		 */
-/*
+
 		xapp_clog('Copy to','group','group');
 
 			xapp_clog($selection,'selection');
@@ -704,6 +704,42 @@ class XApp_VFS_Local extends XApp_VFS_Base implements Xapp_VFS_Interface_Access
 			xapp_clog($copyToEmptyFile,'copy to file');
 			xapp_clog($options,'options');
 
+
+
+
+		/*
+		xapp_clog($dst,'group','group');
+		xapp_clog($selection,'label');
+		xapp_clog($dst,'dst');
+		xapp_clog($dst,'groupend','groupEnd');
+		*/
+
+
+		/*
+		xapp_clog(null,'label','group');
+		xapp_clog($selection,'label','trace');
+		xapp_clog(null,'label2','groupEnd');
+		*/
+/*
+		error_log('Copy ' . count($selection) . ' items to '.$dstDirectory);
+		error_log('isSingleFile:' .$isSingleFile);
+		error_log('dst - path               =' . $dstDirectory);
+		error_log("                 relative= " .$dst);
+		error_log("realpath (first item)    = " .$firstItemPathAbs . "\n");
+		error_log("                 relative= " .$selection[0]);
+*/
+
+		//return false;
+
+
+
+
+
+		/*
+		if (file_exists($dstDirectory) && !is_writable($dstDirectory)) {
+			$error[] = XAPP_TEXT_FORMATTED('DIRECTORY_NOT_WRITEABLE', array($dstDirectory), 55100);
+			return $error;
+		}
 		*/
 
 		foreach ($selection as $selectedFile) {
@@ -727,6 +763,8 @@ class XApp_VFS_Local extends XApp_VFS_Base implements Xapp_VFS_Interface_Access
 					$success
 				);
 			} else {
+
+				//error_log('copy ! \n dst='.$dst . ' \n dstDirectory='.$dstDirectory );
 
 				if (is_file($itemPath)) {
 					$destFile = $dstDirectory . DIRECTORY_SEPARATOR . basename($itemPath);
@@ -785,13 +823,7 @@ class XApp_VFS_Local extends XApp_VFS_Base implements Xapp_VFS_Interface_Access
 
 					try {
 						xapp_clog('','copy  '. $itemPath . ' to ' . $destFile);
-						if($copyToEmptyFile){
-							if(!file_exists(dirname($destFile))){
-								$error[] = XAPP_TEXT_FORMATTED('DIRECTORY_DOES_NOT_EXISTS', array(basename(dirname($destFile))));
-								continue;
-							}
-						}
-						@copy($itemPath, $destFile);
+						copy($itemPath, $destFile);
 						// Like `cp`, preserve executable permission bits
 						@chmod($destFile, fileperms($destFile) | (fileperms($itemPath) & 0111));
 
@@ -809,7 +841,6 @@ class XApp_VFS_Local extends XApp_VFS_Base implements Xapp_VFS_Interface_Access
 		xapp_clog($mapping,'Result Mapping');
 		xapp_clog($error,'error');
 		xapp_clog('Copy to','groupEnd','ungroup');
-
 		return $error;
 	}
 

@@ -51,11 +51,11 @@ class XApp_Http_Url
 {
 	/** @var array */
 	public static $defaultPorts = array(
-			'http' => 80,
-			'https' => 443,
-			'ftp' => 21,
-			'news' => 119,
-			'nntp' => 119,
+		'http' => 80,
+		'https' => 443,
+		'ftp' => 21,
+		'news' => 119,
+		'nntp' => 119,
 	);
 
 	/** @var string */
@@ -65,44 +65,47 @@ class XApp_Http_Url
 	private $user = '';
 
 	/** @var string */
-	private $password = '';
+	private $pass = '';
 
 	/** @var string */
 	private $host = '';
 
 	/** @var int */
-	private $port;
+	private $port = NULL;
 
 	/** @var string */
 	private $path = '';
 
-	/** @var array */
-	private $query = array();
+	/** @var string */
+	private $query = '';
 
 	/** @var string */
 	private $fragment = '';
 
 
 	/**
-	 * @param  string|self
-	 * @throws Nette\InvalidArgumentException if URL is malformed
+	 * @param  string  URL
+	 * @throws Nette\InvalidArgumentException
 	 */
 	public function __construct($url = NULL)
 	{
 		if (is_string($url)) {
-			$p = @parse_url($url); // @ - is escalated to exception
-			if ($p === FALSE) {
+			$parts = @parse_url($url); // @ - is escalated to exception
+			if ($parts === FALSE) {
 				throw new XApp_InvalidArgumentException("Malformed or unsupported URI '$url'.");
 			}
 
-			$this->scheme = isset($p['scheme']) ? $p['scheme'] : '';
-			$this->port = isset($p['port']) ? $p['port'] : NULL;
-			$this->host = isset($p['host']) ? rawurldecode($p['host']) : '';
-			$this->user = isset($p['user']) ? rawurldecode($p['user']) : '';
-			$this->password = isset($p['pass']) ? rawurldecode($p['pass']) : '';
-			$this->setPath(isset($p['path']) ? $p['path'] : '');
-			$this->setQuery(isset($p['query']) ? $p['query'] : array());
-			$this->fragment = isset($p['fragment']) ? rawurldecode($p['fragment']) : '';
+			foreach ($parts as $key => $val) {
+				$this->$key = $val;
+			}
+
+			if (!$this->port && isset(self::$defaultPorts[$this->scheme])) {
+				$this->port = self::$defaultPorts[$this->scheme];
+			}
+
+			if ($this->path === '' && ($this->scheme === 'http' || $this->scheme === 'https')) {
+				$this->path = '/';
+			}
 
 		} elseif ($url instanceof self) {
 			foreach ($this as $key => $val) {
@@ -163,7 +166,7 @@ class XApp_Http_Url
 	 */
 	public function setPassword($value)
 	{
-		$this->password = (string) $value;
+		$this->pass = (string) $value;
 		return $this;
 	}
 
@@ -174,7 +177,7 @@ class XApp_Http_Url
 	 */
 	public function getPassword()
 	{
-		return $this->password;
+		return $this->pass;
 	}
 
 
@@ -186,7 +189,6 @@ class XApp_Http_Url
 	public function setHost($value)
 	{
 		$this->host = (string) $value;
-		$this->setPath($this->path);
 		return $this;
 	}
 
@@ -203,7 +205,7 @@ class XApp_Http_Url
 
 	/**
 	 * Sets the port part of URI.
-	 * @param  int
+	 * @param  string
 	 * @return self
 	 */
 	public function setPort($value)
@@ -215,13 +217,11 @@ class XApp_Http_Url
 
 	/**
 	 * Returns the port part of URI.
-	 * @return int
+	 * @return string
 	 */
 	public function getPort()
 	{
-		return $this->port
-				? $this->port
-				: (isset(self::$defaultPorts[$this->scheme]) ? self::$defaultPorts[$this->scheme] : NULL);
+		return $this->port;
 	}
 
 
@@ -233,9 +233,6 @@ class XApp_Http_Url
 	public function setPath($value)
 	{
 		$this->path = (string) $value;
-		if ($this->host && substr($this->path, 0, 1) !== '/') {
-			$this->path = '/' . $this->path;
-		}
 		return $this;
 	}
 
@@ -257,7 +254,7 @@ class XApp_Http_Url
 	 */
 	public function setQuery($value)
 	{
-		$this->query = is_array($value) ? $value : self::parseQuery($value);
+		$this->query = (string) (is_array($value) ? http_build_query($value, '', '&') : $value);
 		return $this;
 	}
 
@@ -265,13 +262,12 @@ class XApp_Http_Url
 	/**
 	 * Appends the query part of URI.
 	 * @param  string|array
-	 * @return self
+	 * @return Url
 	 */
 	public function appendQuery($value)
 	{
-		$this->query = is_array($value)
-				? $value + $this->query
-				: self::parseQuery($this->getQuery() . '&' . $value);
+		$value = (string) (is_array($value) ? http_build_query($value, '', '&') : $value);
+		$this->query .= ($this->query === '' || $value === '') ? $value : '&' . $value;
 		return $this;
 	}
 
@@ -281,18 +277,6 @@ class XApp_Http_Url
 	 * @return string
 	 */
 	public function getQuery()
-	{
-		if (PHP_VERSION_ID < 50400) {
-			return str_replace('+', '%20', http_build_query($this->query, '', '&'));
-		}
-		return http_build_query($this->query, '', '&', PHP_QUERY_RFC3986);
-	}
-
-
-	/**
-	 * @return array
-	 */
-	public function getQueryParameters()
 	{
 		return $this->query;
 	}
@@ -305,7 +289,8 @@ class XApp_Http_Url
 	 */
 	public function getQueryParameter($name, $default = NULL)
 	{
-		return isset($this->query[$name]) ? $this->query[$name] : $default;
+		parse_str($this->query, $params);
+		return isset($params[$name]) ? $params[$name] : $default;
 	}
 
 
@@ -316,7 +301,13 @@ class XApp_Http_Url
 	 */
 	public function setQueryParameter($name, $value)
 	{
-		$this->query[$name] = $value;
+		parse_str($this->query, $params);
+		if ($value === NULL) {
+			unset($params[$name]);
+		} else {
+			$params[$name] = $value;
+		}
+		$this->setQuery($params);
 		return $this;
 	}
 
@@ -350,8 +341,8 @@ class XApp_Http_Url
 	public function getAbsoluteUrl()
 	{
 		return $this->getHostUrl() . $this->path
-		. (($tmp = $this->getQuery()) ? '?' . $tmp : '')
-		. ($this->fragment === '' ? '' : '#' . $this->fragment);
+			. ($this->query === '' ? '' : '?' . $this->query)
+			. ($this->fragment === '' ? '' : '#' . $this->fragment);
 	}
 
 
@@ -361,15 +352,16 @@ class XApp_Http_Url
 	 */
 	public function getAuthority()
 	{
-		return $this->host === ''
-				? ''
-				: ($this->user !== '' && $this->scheme !== 'http' && $this->scheme !== 'https'
-						? rawurlencode($this->user) . ($this->password === '' ? '' : ':' . rawurlencode($this->password)) . '@'
-						: '')
-				. $this->host
-				. ($this->port && (!isset(self::$defaultPorts[$this->scheme]) || $this->port !== self::$defaultPorts[$this->scheme])
-						? ':' . $this->port
-						: '');
+		$authority = $this->host;
+		if ($this->port && (!isset(self::$defaultPorts[$this->scheme]) || $this->port !== self::$defaultPorts[$this->scheme])) {
+			$authority .= ':' . $this->port;
+		}
+
+		if ($this->user !== '' && $this->scheme !== 'http' && $this->scheme !== 'https') {
+			$authority = $this->user . ($this->pass === '' ? '' : ':' . $this->pass) . '@' . $authority;
+		}
+
+		return $authority;
 	}
 
 
@@ -415,41 +407,48 @@ class XApp_Http_Url
 
 
 	/**
-	 * URL comparison.
-	 * @param  string|self
+	 * URI comparsion (this object must be in canonical form).
+	 * @param  string
 	 * @return bool
 	 */
 	public function isEqual($url)
 	{
-		$url = new self($url);
-		$query = $url->query;
-		ksort($query);
-		$query2 = $this->query;
-		ksort($query2);
-		$http = in_array($this->scheme, array('http', 'https'), TRUE);
-		return $url->scheme === $this->scheme
-		&& !strcasecmp($url->host, $this->host)
-		&& $url->getPort() === $this->getPort()
-		&& ($http || $url->user === $this->user)
-		&& ($http || $url->password === $this->password)
-		&& self::unescape($url->path, '%/') === self::unescape($this->path, '%/')
-		&& $query === $query2
-		&& $url->fragment === $this->fragment;
+		// compare host + path
+		$part = self::unescape(strtok($url, '?#'), '%/');
+		if (strncmp($part, '//', 2) === 0) { // absolute URI without scheme
+			if ($part !== '//' . $this->getAuthority() . $this->path) {
+				return FALSE;
+			}
+
+		} elseif (strncmp($part, '/', 1) === 0) { // absolute path
+			if ($part !== $this->path) {
+				return FALSE;
+			}
+
+		} else {
+			if ($part !== $this->getHostUrl() . $this->path) {
+				return FALSE;
+			}
+		}
+
+		// compare query strings
+		$part = preg_split('#[&;]#', self::unescape(strtr((string) strtok('?#'), '+', ' '), '%&;=+'));
+		sort($part);
+		$query = preg_split('#[&;]#', $this->query);
+		sort($query);
+		return $part === $query;
 	}
 
 
 	/**
-	 * Transforms URL to canonical form.
-	 * @return self
+	 * Transform to canonical form.
+	 * @return Url
 	 */
 	public function canonicalize()
 	{
-		$this->path = preg_replace_callback(
-				'#[^!$&\'()*+,/:;=@%]+#',
-				function ($m) { return rawurlencode($m[0]); },
-				self::unescape($this->path, '%/')
-		);
-		$this->host = strtolower($this->host);
+		$this->path = $this->path === '' ? '/' : self::unescape($this->path, '%/');
+		$this->host = strtolower(rawurldecode($this->host));
+		$this->query = self::unescape(strtr($this->query, '+', ' '), '%&;=+');
 		return $this;
 	}
 
@@ -464,7 +463,7 @@ class XApp_Http_Url
 
 
 	/**
-	 * Similar to rawurldecode, but preserves reserved chars encoded.
+	 * Similar to rawurldecode, but preserve reserved chars encoded.
 	 * @param  string to decode
 	 * @param  string reserved characters
 	 * @return string
@@ -474,28 +473,14 @@ class XApp_Http_Url
 		// reserved (@see RFC 2396) = ";" | "/" | "?" | ":" | "@" | "&" | "=" | "+" | "$" | ","
 		// within a path segment, the characters "/", ";", "=", "?" are reserved
 		// within a query component, the characters ";", "/", "?", ":", "@", "&", "=", "+", ",", "$" are reserved.
-		if ($reserved !== '') {
-			$s = preg_replace_callback(
-					'#%(' . substr(chunk_split(bin2hex($reserved), 2, '|'), 0, -1) . ')#i',
-					function ($m) { return '%25' . strtoupper($m[1]); },
-					$s
-			);
+		preg_match_all('#(?<=%)[a-f0-9][a-f0-9]#i', $s, $matches, PREG_OFFSET_CAPTURE | PREG_SET_ORDER);
+		foreach (array_reverse($matches) as $match) {
+			$ch = chr(hexdec($match[0][0]));
+			if (strpos($reserved, $ch) === FALSE) {
+				$s = substr_replace($s, $ch, $match[0][1] - 1, 3);
+			}
 		}
-		return rawurldecode($s);
-	}
-
-
-	/**
-	 * Parses query string.
-	 * @return array
-	 */
-	public static function parseQuery($s)
-	{
-		parse_str($s, $res);
-		if (get_magic_quotes_gpc()) { // for PHP 5.3
-			$res = XApp_Http_Helpers::stripSlashes($res);
-		}
-		return $res;
+		return $s;
 	}
 
 }

@@ -162,15 +162,4 @@ class XApp_App_Renderer
     public function renderHead(){
         return $this->renderResources();
     }
-    /***
-     * Renders resources, uses system specific renderer
-     * @return bool
-     */
-    public function renderBodyIncludes(){
-        $resourceRenderer = xapp_get_option(self::RESOURCE_RENDERER,$this);
-        if($resourceRenderer){
-            return $resourceRenderer->renderJavascriptBodyTags();
-        }
-        return '';
-    }
 }

@@ -274,11 +274,14 @@ class XApp_Security_Permission extends XApp_Entity implements XApp_Security_IAut
 		$this->checkResource($resource, FALSE);
 		return isset($this->resources[$resource]);
 	}
+
+
 	/**
 	 * Checks whether Resource is valid and exists in the list.
-	 * @param $resource
-	 * @param bool|true $need
-	 * @throws Exception {XApp_InvalidStateException}
+	 * @param  string
+	 * @param  bool
+	 * @throws XApp_InvalidStateException
+	 * @return void
 	 */
 	private function checkResource($resource, $need = TRUE)
 	{
@@ -289,6 +292,7 @@ class XApp_Security_Permission extends XApp_Entity implements XApp_Security_IAut
 			throw new Exception("Resource '$resource' does not exist.");
 		}
 	}
+
 
 	/**
 	 * Returns all Resources.

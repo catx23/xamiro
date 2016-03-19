@@ -264,10 +264,10 @@ class XApp_Commander_PluginManager implements Xapp_Singleton_Interface {
                 return $res;
 
             }else{
-                //error_log('have no plugins at ' . $searchPath );
+                error_log('have no plugins at ' . $searchPath );
             }
         }else{
-
+            error_log('couldnt find any plugins!');
         }
         return $result;
     }
@@ -303,14 +303,14 @@ class XApp_Commander_PluginManager implements Xapp_Singleton_Interface {
                         include $pluginPath;
                         array_push($result,$pluginConfig);
                     }else{
-                        error_log($pluginPath. ' : doesnt exists');
+                        //error_log($pluginPath. ' : doesnt exists');
                     }
                 }
             }else{
-                //error_log('have no plugins at ' . $searchPath );
+                error_log('have no plugins at ' . $searchPath );
             }
         }else{
-            //error_log('couldnt find any plugins!');
+            error_log('couldnt find any plugins!');
         }
         return $result;
     }

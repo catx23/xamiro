@@ -5,6 +5,7 @@
  * @author https://github.com/mc007
  * @license : GPL v2. http://www.gnu.org/licenses/gpl-2.0.html
  */
+
 /**
  * @param $dict
  * @param $opt
@@ -79,6 +80,7 @@ function mergeOverrideToConfig($dict,&$opt,$override,$_key){
  * @param $RELATIVE_VARIABLES
  * @return array
  */
+
 function xapp_commander_render_app(
 	$XAPP_BASE_DIRECTORY,
 	$XAPP_APP_NAME,
@@ -733,7 +735,9 @@ function createApp(
 
 	$XAPP_XFILE_CONFIG_ARRAY = array();
 	$XAPP_XFILE_CONFIG_ARRAY['XAPP_FILE_START_PATH'] = '';
+
 	$XAPP_XFILE_CONFIG_ARRAY['XAPP_FILE_ROOT'] = $REPOSITORY_ROOT;
+
 	require_once(XAPP_BASEDIR . 'lib/standalone/StoreDelegate.php');
 
 	$extraParams = count($urlParams) ? '&' . http_build_query($urlParams) : '';

@@ -163,10 +163,7 @@ class XApp_Entity extends  XApp_Object {
      */
     public function get($field) {
         $CI_Obj = XApp_CIUtils::getByName($this->Fields,$field);
-        if($CI_Obj) {
-            return $CI_Obj->{XApp_CIUtils::CI_FIELD_VALUE};
-        }
-        return null;
+        return $CI_Obj->{XApp_CIUtils::CI_FIELD_VALUE};
     }
 
     /**

@@ -186,19 +186,15 @@ class XApp_Utils_JSONUtils{
             return null;
     }
 
-
     /**
      * @param $storage
      * @param $data
      * @param string $type
-     * @param bool|false $pretty
-     * @param null $pass
-     * @param bool|true $noPHP
+     * @param bool $pretty
      * @return null
      * @throws Xapp_Util_Exception_Storage
-     * @throws Xapp_Util_Json_Exception
      */
-    public static function write_json($storage,$data,$type = 'json',$pretty=false,$pass=null,$noPHP=true){
+    public static function write_json($storage,$data,$type = 'json',$pretty=false,$pass=null){
 
         $return = null;
 
@@ -207,7 +203,7 @@ class XApp_Utils_JSONUtils{
             case 'json':{
                 $_dataStr = is_string($data) ? $data : Xapp_Util_Json::encode($data);
 
-	            if(strpos($storage,'.php')!=-1 && $noPHP!==true){
+	            if(strpos($storage,'.php')!=-1){
 					$_dataStr = '<?php ' . PHP_EOL . $_dataStr;
 				}
 

@@ -46,7 +46,7 @@ class XApp_Http_UserStorage implements XApp_Security_IUserStorage
 		$section->authenticated = (bool) $state;
 
 		// Session Fixation defence
-		//$this->sessionHandler->regenerateId();
+		$this->sessionHandler->regenerateId();
 
 		if ($state) {
 			$section->reason = NULL;
@@ -120,7 +120,7 @@ class XApp_Http_UserStorage implements XApp_Security_IUserStorage
 
 	/**
 	 * Enables log out after inactivity.
-	 * @param  string|int|\DateTime Number of seconds or timestamp
+	 * @param  string|int|DateTime Number of seconds or timestamp
 	 * @param  int Log out when the browser is closed | Clear the identity from persistent storage?
 	 * @return self
 	 */
@@ -147,7 +147,7 @@ class XApp_Http_UserStorage implements XApp_Security_IUserStorage
 
 	/**
 	 * Why was user logged out?
-	 * @return int|NULL
+	 * @return int
 	 */
 	public function getLogoutReason()
 	{
@@ -202,4 +202,5 @@ class XApp_Http_UserStorage implements XApp_Security_IUserStorage
 
 		return $this->sessionSection;
 	}
+
 }
