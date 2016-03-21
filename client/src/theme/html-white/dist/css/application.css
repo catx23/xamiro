@@ -13410,9 +13410,6 @@ textarea + .help-block,
 }
 /* line 938, ../../src/sass/_override-bootstrap.scss */
 .panel .panel-heading a[data-toggle="collapse"].collapsed:before {
-  -moz-transform: rotate(90deg);
-  -ms-transform: rotate(90deg);
-  -webkit-transform: rotate(90deg);
   transform: rotate(90deg);
 }
 
@@ -16420,70 +16417,78 @@ ul.messenger-theme-air .messenger-spinner {
 }
 
 /* line 22, ../../src/sass/_override-custom-libs.scss */
-svg text {
+svg text,
+.nvd3 text {
   font: 400 12px "Helvetica", sans-serif;
   fill: #555;
 }
-/* line 26, ../../src/sass/_override-custom-libs.scss */
-.widget svg text {
+/* line 27, ../../src/sass/_override-custom-libs.scss */
+.widget svg text, .widget
+.nvd3 text {
   fill: #666;
 }
 
-/* line 31, ../../src/sass/_override-custom-libs.scss */
+/* line 32, ../../src/sass/_override-custom-libs.scss */
 svg .title {
   font: 700 13px "Helvetica", sans-serif;
 }
 
-/* line 35, ../../src/sass/_override-custom-libs.scss */
+/* line 36, ../../src/sass/_override-custom-libs.scss */
 .nvd3.nv-noData {
   font-size: 16.25px;
   font-weight: 700;
 }
 
-/* line 40, ../../src/sass/_override-custom-libs.scss */
+/* line 41, ../../src/sass/_override-custom-libs.scss */
 .nvd3 .nv-axis path.domain {
   stroke-opacity: 0;
 }
 
-/* line 45, ../../src/sass/_override-custom-libs.scss */
+/* line 46, ../../src/sass/_override-custom-libs.scss */
 .nv-controlsWrap .nv-legend-symbol {
   fill: #666 !important;
   stroke: #666 !important;
 }
 
-/* line 51, ../../src/sass/_override-custom-libs.scss */
+/* line 52, ../../src/sass/_override-custom-libs.scss */
+.nvd3 .nv-legend .disabled circle {
+  fill-opacity: 0;
+}
+
+/* line 56, ../../src/sass/_override-custom-libs.scss */
 .nvd3 .nv-axis line {
   stroke: #000;
   stroke-opacity: .1;
 }
 
-/* line 56, ../../src/sass/_override-custom-libs.scss */
+/* line 61, ../../src/sass/_override-custom-libs.scss */
 .nvtooltip h3 {
   background-color: transparent;
   border: none;
+  color: inherit;
 }
 
-/* line 61, ../../src/sass/_override-custom-libs.scss */
+/* line 67, ../../src/sass/_override-custom-libs.scss */
 .stat-widget header .nvd3.nv-multibar .nv-group {
   fill-opacity: 1 !important;
 }
 
-/* line 65, ../../src/sass/_override-custom-libs.scss */
+/* line 71, ../../src/sass/_override-custom-libs.scss */
 .nvd3.nv-stackedarea path.nv-area {
   fill-opacity: .8;
 }
 
-/* line 69, ../../src/sass/_override-custom-libs.scss */
+/* line 75, ../../src/sass/_override-custom-libs.scss */
 .nvd3.nv-stackedarea path.nv-area.hover {
   fill-opacity: .95;
 }
 
-/* line 73, ../../src/sass/_override-custom-libs.scss */
+/* line 79, ../../src/sass/_override-custom-libs.scss */
 .nvd3 .nv-axis path.domain {
   display: none;
 }
 
-/* line 77, ../../src/sass/_override-custom-libs.scss */
+/* line 83, ../../src/sass/_override-custom-libs.scss */
 .nvtooltip {
   padding: 5px;
   position: absolute;
@@ -16502,7 +16507,7 @@ svg .title {
   -webkit-transition: none;
 }
 
-/* line 100, ../../src/sass/_override-custom-libs.scss */
+/* line 106, ../../src/sass/_override-custom-libs.scss */
 .nvtooltip h3, .nvtooltip h4 {
   margin: 0;
   padding: 0;
@@ -16510,7 +16515,7 @@ svg .title {
   text-align: center;
 }
 
-/* line 108, ../../src/sass/_override-custom-libs.scss */
+/* line 114, ../../src/sass/_override-custom-libs.scss */
 .nvd3 .nv-axis line.zero {
   display: none;
 }
@@ -16518,7 +16523,7 @@ svg .title {
 /*!
  * Bootstrap-select
  */
-/* line 115, ../../src/sass/_override-custom-libs.scss */
+/* line 121, ../../src/sass/_override-custom-libs.scss */
 .bootstrap-select .btn:focus {
   outline: 0 !important;
 }
@@ -16529,14 +16534,14 @@ svg .title {
 /*
  * override .form-control:focus shadow
  */
-/* line 125, ../../src/sass/_override-custom-libs.scss */
+/* line 131, ../../src/sass/_override-custom-libs.scss */
 .select2-container-active .select2-choice,
 .select2-container-multi.select2-container-active .select2-choices {
   -webkit-box-shadow: none;
   box-shadow: none;
 }
 
-/* line 130, ../../src/sass/_override-custom-libs.scss */
+/* line 136, ../../src/sass/_override-custom-libs.scss */
 .select2-container-multi .select2-choices .select2-search-choice {
   -moz-border-radius: 3px;
   -webkit-border-radius: 3px;
@@ -16546,25 +16551,25 @@ svg .title {
 /**
  * setting correct urls
  */
-/* line 137, ../../src/sass/_override-custom-libs.scss */
+/* line 143, ../../src/sass/_override-custom-libs.scss */
 .select2-search input, .select2-search-choice-close, .select2-container .select2-choice abbr, .select2-container .select2-choice .select2-arrow b {
   background-image: url("../lib/select2/select2.png");
 }
 @media (min--moz-device-pixel-ratio: 1.3), (-o-min-device-pixel-ratio: 2.6 / 2), (-webkit-min-device-pixel-ratio: 1.3), (min-device-pixel-ratio: 1.3), (min-resolution: 1.3dppx) {
-  /* line 137, ../../src/sass/_override-custom-libs.scss */
+  /* line 143, ../../src/sass/_override-custom-libs.scss */
   .select2-search input, .select2-search-choice-close, .select2-container .select2-choice abbr, .select2-container .select2-choice .select2-arrow b {
     background-image: url("../lib/select2/select2x2.png") !important;
   }
 }
 
-/* line 144, ../../src/sass/_override-custom-libs.scss */
+/* line 150, ../../src/sass/_override-custom-libs.scss */
 .select2-search input.select2-active,
 .select2-more-results.select2-active,
 .select2-container-multi .select2-choices .select2-search-field input.select2-active {
   background-image: url("../lib/select2/select2-spinner.gif");
 }
 
-/* line 150, ../../src/sass/_override-custom-libs.scss */
+/* line 156, ../../src/sass/_override-custom-libs.scss */
 .select2-container .select2-choice .select2-arrow,
 .select2-container .select2-choice div {
   border-left: none;
@@ -16573,7 +16578,7 @@ svg .title {
 /**
  * Make Multi Select2's choices match Bootstrap 3's default button styles.
  */
-/* line 159, ../../src/sass/_override-custom-libs.scss */
+/* line 165, ../../src/sass/_override-custom-libs.scss */
 .select2-container-multi .select2-choices .select2-search-choice {
   background: #f8f8f8;
 }
@@ -16581,7 +16586,7 @@ svg .title {
 /**
  * Switchery
  */
-/* line 167, ../../src/sass/_override-custom-libs.scss */
+/* line 173, ../../src/sass/_override-custom-libs.scss */
 .switchery {
   background-color: transparent !important;
 }
@@ -16589,70 +16594,70 @@ svg .title {
 /**
  * Datetimepicker for Bootstrap v3
  */
-/* line 174, ../../src/sass/_override-custom-libs.scss */
+/* line 180, ../../src/sass/_override-custom-libs.scss */
 .bootstrap-datetimepicker-widget {
   border-radius: 3px;
   color: #666;
 }
-/* line 178, ../../src/sass/_override-custom-libs.scss */
+/* line 184, ../../src/sass/_override-custom-libs.scss */
 .bootstrap-datetimepicker-widget td,
 .bootstrap-datetimepicker-widget th {
   border-radius: 3px;
 }
-/* line 186, ../../src/sass/_override-custom-libs.scss */
+/* line 192, ../../src/sass/_override-custom-libs.scss */
 .bootstrap-datetimepicker-widget td.day:hover, .bootstrap-datetimepicker-widget td.hour:hover, .bootstrap-datetimepicker-widget td.minute:hover, .bootstrap-datetimepicker-widget td.second:hover {
   background: #eeeeee;
 }
-/* line 194, ../../src/sass/_override-custom-libs.scss */
+/* line 200, ../../src/sass/_override-custom-libs.scss */
 .bootstrap-datetimepicker-widget td.old, .bootstrap-datetimepicker-widget td.new {
   color: #999999;
 }
-/* line 200, ../../src/sass/_override-custom-libs.scss */
+/* line 206, ../../src/sass/_override-custom-libs.scss */
 .bootstrap-datetimepicker-widget td.active, .bootstrap-datetimepicker-widget td.active:hover {
   background-color: #618fb0;
   text-shadow: none;
 }
-/* line 207, ../../src/sass/_override-custom-libs.scss */
+/* line 213, ../../src/sass/_override-custom-libs.scss */
 .bootstrap-datetimepicker-widget td.disabled, .bootstrap-datetimepicker-widget td.disabled:hover {
   color: #999999;
 }
-/* line 213, ../../src/sass/_override-custom-libs.scss */
+/* line 219, ../../src/sass/_override-custom-libs.scss */
 .bootstrap-datetimepicker-widget td span {
   border-radius: 3px;
 }
-/* line 217, ../../src/sass/_override-custom-libs.scss */
+/* line 223, ../../src/sass/_override-custom-libs.scss */
 .bootstrap-datetimepicker-widget td span:hover {
   background: #eeeeee;
 }
-/* line 222, ../../src/sass/_override-custom-libs.scss */
+/* line 228, ../../src/sass/_override-custom-libs.scss */
 .bootstrap-datetimepicker-widget td span.active {
   background-color: #618fb0;
 }
-/* line 227, ../../src/sass/_override-custom-libs.scss */
+/* line 233, ../../src/sass/_override-custom-libs.scss */
 .bootstrap-datetimepicker-widget td span.old {
   color: #999999;
 }
-/* line 232, ../../src/sass/_override-custom-libs.scss */
+/* line 238, ../../src/sass/_override-custom-libs.scss */
 .bootstrap-datetimepicker-widget td span.disabled, .bootstrap-datetimepicker-widget td span.disabled:hover {
   color: #999999;
 }
-/* line 241, ../../src/sass/_override-custom-libs.scss */
+/* line 247, ../../src/sass/_override-custom-libs.scss */
 .bootstrap-datetimepicker-widget th.next, .bootstrap-datetimepicker-widget th.prev {
   font-size: 19.5px;
 }
-/* line 246, ../../src/sass/_override-custom-libs.scss */
+/* line 252, ../../src/sass/_override-custom-libs.scss */
 .bootstrap-datetimepicker-widget th.disabled, .bootstrap-datetimepicker-widget th.disabled:hover {
   color: #999999;
 }
-/* line 254, ../../src/sass/_override-custom-libs.scss */
+/* line 260, ../../src/sass/_override-custom-libs.scss */
 .bootstrap-datetimepicker-widget thead tr:first-child th:hover {
   background: #eeeeee;
 }
-/* line 260, ../../src/sass/_override-custom-libs.scss */
+/* line 266, ../../src/sass/_override-custom-libs.scss */
 .bootstrap-datetimepicker-widget .btn:not(.btn-primary) {
   color: #23699b;
 }
-/* line 263, ../../src/sass/_override-custom-libs.scss */
+/* line 269, ../../src/sass/_override-custom-libs.scss */
 .bootstrap-datetimepicker-widget .btn:not(.btn-primary):hover {
   -webkit-box-shadow: none;
   box-shadow: none;
@@ -16662,28 +16667,28 @@ svg .title {
  * Bootstrap Colorpicker
  * setting correct urls
  */
-/* line 274, ../../src/sass/_override-custom-libs.scss */
+/* line 280, ../../src/sass/_override-custom-libs.scss */
 .colorpicker-saturation {
   background-image: url("../lib/mjolnic-bootstrap-colorpicker/dist/img/bootstrap-colorpicker/saturation.png");
 }
 
-/* line 278, ../../src/sass/_override-custom-libs.scss */
+/* line 284, ../../src/sass/_override-custom-libs.scss */
 .colorpicker-hue {
   background-image: url("../lib/mjolnic-bootstrap-colorpicker/dist/img/bootstrap-colorpicker/hue.png");
 }
 
-/* line 282, ../../src/sass/_override-custom-libs.scss */
+/* line 288, ../../src/sass/_override-custom-libs.scss */
 .colorpicker-alpha,
 .colorpicker-color {
   background-image: url("../lib/mjolnic-bootstrap-colorpicker/dist/img/bootstrap-colorpicker/alpha.png");
 }
 
-/* line 287, ../../src/sass/_override-custom-libs.scss */
+/* line 293, ../../src/sass/_override-custom-libs.scss */
 .colorpicker.colorpicker-horizontal .colorpicker-hue {
   background-image: url("../lib/mjolnic-bootstrap-colorpicker/dist/img/bootstrap-colorpicker/hue-horizontal.png");
 }
 
-/* line 291, ../../src/sass/_override-custom-libs.scss */
+/* line 297, ../../src/sass/_override-custom-libs.scss */
 .colorpicker.colorpicker-horizontal .colorpicker-alpha {
   background-image: url("../lib/mjolnic-bootstrap-colorpicker/dist/img/bootstrap-colorpicker/alpha-horizontal.png");
 }
@@ -16691,18 +16696,18 @@ svg .title {
 /**
  * Bootstrap slider. converted from less files
  */
-/* line 303, ../../src/sass/_override-custom-libs.scss */
+/* line 309, ../../src/sass/_override-custom-libs.scss */
 .slider {
   display: inline-block;
   vertical-align: middle;
   position: relative;
 }
-/* line 307, ../../src/sass/_override-custom-libs.scss */
+/* line 313, ../../src/sass/_override-custom-libs.scss */
 .slider.slider-horizontal {
   width: 210px;
   height: 8px;
 }
-/* line 310, ../../src/sass/_override-custom-libs.scss */
+/* line 316, ../../src/sass/_override-custom-libs.scss */
 .slider.slider-horizontal .slider-track {
   height: 4px;
   width: 100%;
@@ -16710,18 +16715,18 @@ svg .title {
   top: 50%;
   left: 0;
 }
-/* line 317, ../../src/sass/_override-custom-libs.scss */
+/* line 323, ../../src/sass/_override-custom-libs.scss */
 .slider.slider-horizontal .slider-selection {
   height: 100%;
   top: 0;
   bottom: 0;
 }
-/* line 322, ../../src/sass/_override-custom-libs.scss */
+/* line 328, ../../src/sass/_override-custom-libs.scss */
 .slider.slider-horizontal .slider-handle {
   margin-left: -13px;
   margin-top: -9.75px;
 }
-/* line 325, ../../src/sass/_override-custom-libs.scss */
+/* line 331, ../../src/sass/_override-custom-libs.scss */
 .slider.slider-horizontal .slider-handle.triangle {
   border-width: 0 4px 4px 4px;
   width: 0;
@@ -16729,16 +16734,16 @@ svg .title {
   border-bottom-color: #0480be;
   margin-top: 0;
 }
-/* line 334, ../../src/sass/_override-custom-libs.scss */
+/* line 340, ../../src/sass/_override-custom-libs.scss */
 .slider.slider-horizontal .tooltip.top {
   top: -30px;
 }
-/* line 338, ../../src/sass/_override-custom-libs.scss */
+/* line 344, ../../src/sass/_override-custom-libs.scss */
 .slider.slider-vertical {
   height: 210px;
   width: 8px;
 }
-/* line 341, ../../src/sass/_override-custom-libs.scss */
+/* line 347, ../../src/sass/_override-custom-libs.scss */
 .slider.slider-vertical .slider-track {
   width: 4px;
   height: 100%;
@@ -16746,19 +16751,19 @@ svg .title {
   left: 50%;
   top: 0;
 }
-/* line 348, ../../src/sass/_override-custom-libs.scss */
+/* line 354, ../../src/sass/_override-custom-libs.scss */
 .slider.slider-vertical .slider-selection {
   width: 100%;
   left: 0;
   top: 0;
   bottom: 0;
 }
-/* line 354, ../../src/sass/_override-custom-libs.scss */
+/* line 360, ../../src/sass/_override-custom-libs.scss */
 .slider.slider-vertical .slider-handle {
   margin-left: -9.75px;
   margin-top: -13px;
 }
-/* line 357, ../../src/sass/_override-custom-libs.scss */
+/* line 363, ../../src/sass/_override-custom-libs.scss */
 .slider.slider-vertical .slider-handle.triangle {
   border-width: 4px 0 4px 4px;
   width: 1px;
@@ -16766,7 +16771,7 @@ svg .title {
   border-left-color: #0480be;
   margin-left: 0;
 }
-/* line 367, ../../src/sass/_override-custom-libs.scss */
+/* line 373, ../../src/sass/_override-custom-libs.scss */
 .slider.slider-disabled .slider-handle {
   background-image: -webkit-linear-gradient(top, #dfdfdf 0%, #bebebe 100%);
   background-image: -o-linear-gradient(top, #dfdfdf 0%, #bebebe 100%);
@@ -16774,7 +16779,7 @@ svg .title {
   background-repeat: repeat-x;
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#FFDFDFDF', endColorstr='#FFBEBEBE', GradientType=0);
 }
-/* line 370, ../../src/sass/_override-custom-libs.scss */
+/* line 376, ../../src/sass/_override-custom-libs.scss */
 .slider.slider-disabled .slider-track {
   background-image: -webkit-linear-gradient(top, #e5e5e5 0%, #e9e9e9 100%);
   background-image: -o-linear-gradient(top, #e5e5e5 0%, #e9e9e9 100%);
@@ -16783,16 +16788,16 @@ svg .title {
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#FFE5E5E5', endColorstr='#FFE9E9E9', GradientType=0);
   cursor: not-allowed;
 }
-/* line 375, ../../src/sass/_override-custom-libs.scss */
+/* line 381, ../../src/sass/_override-custom-libs.scss */
 .slider input {
   display: none;
 }
-/* line 378, ../../src/sass/_override-custom-libs.scss */
+/* line 384, ../../src/sass/_override-custom-libs.scss */
 .slider .tooltip-inner {
   white-space: nowrap;
 }
 
-/* line 382, ../../src/sass/_override-custom-libs.scss */
+/* line 388, ../../src/sass/_override-custom-libs.scss */
 .slider-track {
   position: absolute;
   cursor: pointer;
@@ -16806,7 +16811,7 @@ svg .title {
   border-radius: 3px;
 }
 
-/* line 390, ../../src/sass/_override-custom-libs.scss */
+/* line 396, ../../src/sass/_override-custom-libs.scss */
 .slider-selection {
   position: absolute;
   background-color: #618fb0;
@@ -16817,28 +16822,28 @@ svg .title {
   box-sizing: border-box;
   border-radius: 3px;
 }
-/* line 397, ../../src/sass/_override-custom-libs.scss */
+/* line 403, ../../src/sass/_override-custom-libs.scss */
 .slider-danger .slider-selection {
   background-color: #e5603b;
 }
-/* line 400, ../../src/sass/_override-custom-libs.scss */
+/* line 406, ../../src/sass/_override-custom-libs.scss */
 .slider-success .slider-selection {
   background-color: #56bc76;
 }
-/* line 403, ../../src/sass/_override-custom-libs.scss */
+/* line 409, ../../src/sass/_override-custom-libs.scss */
 .slider-warning .slider-selection {
   background-color: #eac85e;
 }
-/* line 406, ../../src/sass/_override-custom-libs.scss */
+/* line 412, ../../src/sass/_override-custom-libs.scss */
 .slider-info .slider-selection {
   background-color: #4ab0ce;
 }
-/* line 409, ../../src/sass/_override-custom-libs.scss */
+/* line 415, ../../src/sass/_override-custom-libs.scss */
 .slider-inverse .slider-selection {
   background-color: #666;
 }
 
-/* line 413, ../../src/sass/_override-custom-libs.scss */
+/* line 419, ../../src/sass/_override-custom-libs.scss */
 .slider-handle {
   position: absolute;
   width: 26px;
@@ -16848,15 +16853,15 @@ svg .title {
   box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 3px rgba(0, 0, 0, 0.5);
   border: 0px solid transparent;
 }
-/* line 421, ../../src/sass/_override-custom-libs.scss */
+/* line 427, ../../src/sass/_override-custom-libs.scss */
 .slider-handle:focus {
   outline: 0;
 }
-/* line 425, ../../src/sass/_override-custom-libs.scss */
+/* line 431, ../../src/sass/_override-custom-libs.scss */
 .slider-handle.round {
   border-radius: 50%;
 }
-/* line 428, ../../src/sass/_override-custom-libs.scss */
+/* line 434, ../../src/sass/_override-custom-libs.scss */
 .slider-handle.triangle {
   background: transparent none;
 }
@@ -16864,7 +16869,7 @@ svg .title {
 /**
  * Rickshaw
  */
-/* line 437, ../../src/sass/_override-custom-libs.scss */
+/* line 443, ../../src/sass/_override-custom-libs.scss */
 .rickshaw_graph .detail .x_label {
   color: #666;
 }
@@ -16872,12 +16877,12 @@ svg .title {
 /***********************/
 /*    Full Calendar    */
 /***********************/
-/* line 445, ../../src/sass/_override-custom-libs.scss */
+/* line 451, ../../src/sass/_override-custom-libs.scss */
 .fc-grid th {
   text-transform: uppercase;
 }
 
-/* line 449, ../../src/sass/_override-custom-libs.scss */
+/* line 455, ../../src/sass/_override-custom-libs.scss */
 .fc-event {
   padding: 2px 3px;
   border: none;
@@ -16886,23 +16891,23 @@ svg .title {
   color: #555;
 }
 
-/* line 457, ../../src/sass/_override-custom-libs.scss */
+/* line 463, ../../src/sass/_override-custom-libs.scss */
 .fc-unthemed .fc-today {
   background-color: rgba(255, 241, 184, 0.35);
 }
 
-/* line 461, ../../src/sass/_override-custom-libs.scss */
+/* line 467, ../../src/sass/_override-custom-libs.scss */
 a.fc-event {
   height: auto;
   line-height: 20px;
 }
 
-/* line 466, ../../src/sass/_override-custom-libs.scss */
+/* line 472, ../../src/sass/_override-custom-libs.scss */
 .fc-event, .fc-event:hover, .ui-widget .fc-event {
   color: #666;
 }
 
-/* line 470, ../../src/sass/_override-custom-libs.scss */
+/* line 476, ../../src/sass/_override-custom-libs.scss */
 .fc-unthemed th,
 .fc-unthemed td,
 .fc-unthemed hr,
@@ -16916,12 +16921,12 @@ a.fc-event {
 /***********************************/
 /**           Backgrid            **/
 /***********************************/
-/* line 486, ../../src/sass/_override-custom-libs.scss */
+/* line 492, ../../src/sass/_override-custom-libs.scss */
 .table-editable th > a {
   color: #555;
   cursor: pointer;
 }
-/* line 491, ../../src/sass/_override-custom-libs.scss */
+/* line 497, ../../src/sass/_override-custom-libs.scss */
 .table-editable .sort-caret {
   display: inline-block;
   width: 15px;
@@ -16931,15 +16936,15 @@ a.fc-event {
   content: "";
   font: 15px FontAwesome;
 }
-/* line 502, ../../src/sass/_override-custom-libs.scss */
+/* line 508, ../../src/sass/_override-custom-libs.scss */
 .table-editable .ascending .sort-caret:before {
   content: "\f0d8";
 }
-/* line 508, ../../src/sass/_override-custom-libs.scss */
+/* line 514, ../../src/sass/_override-custom-libs.scss */
 .table-editable .descending .sort-caret:before {
   content: "\f0d7";
 }
-/* line 513, ../../src/sass/_override-custom-libs.scss */
+/* line 519, ../../src/sass/_override-custom-libs.scss */
 .table-editable + .backgrid-paginator > ul {
   font-weight: 400;
   display: inline-block;
@@ -16947,11 +16952,11 @@ a.fc-event {
   margin: 18px 0;
   border-radius: 3px;
 }
-/* line 520, ../../src/sass/_override-custom-libs.scss */
+/* line 526, ../../src/sass/_override-custom-libs.scss */
 .table-editable + .backgrid-paginator > ul > li {
   display: inline;
 }
-/* line 522, ../../src/sass/_override-custom-libs.scss */
+/* line 528, ../../src/sass/_override-custom-libs.scss */
 .table-editable + .backgrid-paginator > ul > li > a,
 .table-editable + .backgrid-paginator > ul > li > span {
   position: relative;
@@ -16964,18 +16969,18 @@ a.fc-event {
   border-radius: 3px;
   margin: 0 2px;
 }
-/* line 534, ../../src/sass/_override-custom-libs.scss */
+/* line 540, ../../src/sass/_override-custom-libs.scss */
 .table-editable + .backgrid-paginator > ul > li > a > .fa-lg,
 .table-editable + .backgrid-paginator > ul > li > span > .fa-lg {
   position: relative;
   top: -1px;
 }
-/* line 540, ../../src/sass/_override-custom-libs.scss */
+/* line 546, ../../src/sass/_override-custom-libs.scss */
 .table-editable + .backgrid-paginator > ul > li:first-child > a,
 .table-editable + .backgrid-paginator > ul > li:first-child > span {
   margin-left: 0;
 }
-/* line 549, ../../src/sass/_override-custom-libs.scss */
+/* line 555, ../../src/sass/_override-custom-libs.scss */
 .table-editable + .backgrid-paginator > ul > li > a:hover, .table-editable + .backgrid-paginator > ul > li > a:focus,
 .table-editable + .backgrid-paginator > ul > li > span:hover,
 .table-editable + .backgrid-paginator > ul > li > span:focus {
@@ -16983,7 +16988,7 @@ a.fc-event {
   background-color: #eeeeee;
   border-color: transparent;
 }
-/* line 559, ../../src/sass/_override-custom-libs.scss */
+/* line 565, ../../src/sass/_override-custom-libs.scss */
 .table-editable + .backgrid-paginator > ul > .active > a, .table-editable + .backgrid-paginator > ul > .active > a:hover, .table-editable + .backgrid-paginator > ul > .active > a:focus,
 .table-editable + .backgrid-paginator > ul > .active > span,
 .table-editable + .backgrid-paginator > ul > .active > span:hover,
@@ -16994,7 +16999,7 @@ a.fc-event {
   border-color: transparent;
   cursor: default;
 }
-/* line 571, ../../src/sass/_override-custom-libs.scss */
+/* line 577, ../../src/sass/_override-custom-libs.scss */
 .table-editable + .backgrid-paginator > ul > .disabled > span,
 .table-editable + .backgrid-paginator > ul > .disabled > span:hover,
 .table-editable + .backgrid-paginator > ul > .disabled > span:focus,
@@ -17028,32 +17033,32 @@ a.fc-event {
 /***********************************/
 /**          Datatables           **/
 /***********************************/
-/* line 592, ../../src/sass/_override-custom-libs.scss */
+/* line 598, ../../src/sass/_override-custom-libs.scss */
 table.dataTable thead .sorting {
   background: url("../lib/datatables/media/images/sort_both.png") no-repeat center right;
 }
 
-/* line 595, ../../src/sass/_override-custom-libs.scss */
+/* line 601, ../../src/sass/_override-custom-libs.scss */
 table.dataTable thead .sorting_asc {
   background: url("../lib/datatables/media/images/sort_asc.png") no-repeat center right;
 }
 
-/* line 598, ../../src/sass/_override-custom-libs.scss */
+/* line 604, ../../src/sass/_override-custom-libs.scss */
 table.dataTable thead .sorting_desc {
   background: url("../lib/datatables/media/images/sort_desc.png") no-repeat center right;
 }
 
-/* line 601, ../../src/sass/_override-custom-libs.scss */
+/* line 607, ../../src/sass/_override-custom-libs.scss */
 table.dataTable thead .sorting_asc_disabled {
   background: url("../lib/datatables/media/images/sort_asc_disabled.png") no-repeat center right;
 }
 
-/* line 604, ../../src/sass/_override-custom-libs.scss */
+/* line 610, ../../src/sass/_override-custom-libs.scss */
 table.dataTable thead .sorting_desc_disabled {
   background: url("../lib/datatables/media/images/sort_desc_disabled.png") no-repeat center right;
 }
 
-/* line 608, ../../src/sass/_override-custom-libs.scss */
+/* line 614, ../../src/sass/_override-custom-libs.scss */
 .dataTables_wrapper .dataTables_paginate {
   text-align: right;
 }
@@ -17061,7 +17066,7 @@ table.dataTable thead .sorting_desc_disabled {
 /***********************************/
 /**           Rickshaw            **/
 /***********************************/
-/* line 617, ../../src/sass/_override-custom-libs.scss */
+/* line 623, ../../src/sass/_override-custom-libs.scss */
 .rickshaw_legend {
   background-color: #ffffff;
   color: #666;
@@ -17168,6 +17173,13 @@ a {
   -webkit-transition: background-color 0.2s;
   -o-transition: background-color 0.2s;
   transition: background-color 0.2s;
+}
+
+/* line 115, ../../src/sass/_general.scss */
+svg {
+  height: 100%;
+  width: 100%;
+  display: block;
 }
 
 /***********************************/
@@ -21371,15 +21383,17 @@ table.table thead .sorting_desc_disabled {
 
 /* line 879, ../../src/sass/_widgets.scss */
 .visits-info {
-  margin: 12px 0 0;
+  margin: 0px 0px 0px;
+  padding-top: 18px;
+  padding-bottom: 3px;
+  border: none;
   text-align: center;
-  padding-bottom: 0;
 }
-/* line 884, ../../src/sass/_widgets.scss */
+/* line 886, ../../src/sass/_widgets.scss */
 .visits-info .key {
   color: #666;
 }
-/* line 888, ../../src/sass/_widgets.scss */
+/* line 890, ../../src/sass/_widgets.scss */
 .visits-info .value {
   margin-top: 16px;
   margin-bottom: 16px;
@@ -21387,7 +21401,7 @@ table.table thead .sorting_desc_disabled {
 }
 
 /* disable bootstrap 3 border-box for tooltips */
-/* line 897, ../../src/sass/_widgets.scss */
+/* line 899, ../../src/sass/_widgets.scss */
 .jqstooltip, .jqstooltip * {
   -webkit-box-sizing: content-box;
   -moz-box-sizing: content-box;
@@ -21400,18 +21414,18 @@ table.table thead .sorting_desc_disabled {
 /**
  * Legacy .users-list. Will be removed in next release.
  */
-/* line 912, ../../src/sass/_widgets.scss */
+/* line 914, ../../src/sass/_widgets.scss */
 .news-list.news-list-no-hover li:hover,
 .users-list.news-list-no-hover li:hover {
   background: none;
   cursor: default;
 }
-/* line 917, ../../src/sass/_widgets.scss */
+/* line 919, ../../src/sass/_widgets.scss */
 .news-list.stretchable > li,
 .users-list.stretchable > li {
   height: auto;
 }
-/* line 921, ../../src/sass/_widgets.scss */
+/* line 923, ../../src/sass/_widgets.scss */
 .news-list li,
 .users-list li {
   -webkit-box-sizing: content-box;
@@ -21426,17 +21440,17 @@ table.table thead .sorting_desc_disabled {
   -o-transition: background-color 0.2s ease-out;
   transition: background-color 0.2s ease-out;
 }
-/* line 930, ../../src/sass/_widgets.scss */
+/* line 932, ../../src/sass/_widgets.scss */
 .news-list li:hover,
 .users-list li:hover {
   background: #eeeeee;
 }
-/* line 934, ../../src/sass/_widgets.scss */
+/* line 936, ../../src/sass/_widgets.scss */
 .news-list li:last-child,
 .users-list li:last-child {
   margin-bottom: 0px;
 }
-/* line 939, ../../src/sass/_widgets.scss */
+/* line 941, ../../src/sass/_widgets.scss */
 .news-list img,
 .news-list .icon,
 .users-list img,
@@ -21445,7 +21459,7 @@ table.table thead .sorting_desc_disabled {
   height: 50px;
   width: 50px;
 }
-/* line 946, ../../src/sass/_widgets.scss */
+/* line 948, ../../src/sass/_widgets.scss */
 .news-list .icon,
 .users-list .icon {
   line-height: 50px;
@@ -21453,59 +21467,59 @@ table.table thead .sorting_desc_disabled {
   text-align: center;
   font-size: 32px;
 }
-/* line 953, ../../src/sass/_widgets.scss */
+/* line 955, ../../src/sass/_widgets.scss */
 .news-list .news-item-info,
 .users-list .news-item-info {
   margin-left: 62px;
   /*50 + 12px padding*/
 }
-/* line 957, ../../src/sass/_widgets.scss */
+/* line 959, ../../src/sass/_widgets.scss */
 .news-list .name, .news-list .time, .news-list .position,
 .users-list .name,
 .users-list .time,
 .users-list .position {
   line-height: 16px;
 }
-/* line 961, ../../src/sass/_widgets.scss */
+/* line 963, ../../src/sass/_widgets.scss */
 .news-list h4.name,
 .users-list h4.name {
   text-transform: none;
 }
-/* line 965, ../../src/sass/_widgets.scss */
+/* line 967, ../../src/sass/_widgets.scss */
 .news-list .name,
 .users-list .name {
   margin: 0;
   text-transform: uppercase;
 }
-/* line 969, ../../src/sass/_widgets.scss */
+/* line 971, ../../src/sass/_widgets.scss */
 .news-list .name a,
 .users-list .name a {
   text-decoration: none;
 }
-/* line 971, ../../src/sass/_widgets.scss */
+/* line 973, ../../src/sass/_widgets.scss */
 .news-list .name a:hover,
 .users-list .name a:hover {
   color: #4D9DD7;
 }
-/* line 977, ../../src/sass/_widgets.scss */
+/* line 979, ../../src/sass/_widgets.scss */
 .news-list p,
 .users-list p {
   margin-top: 5px;
   font-size: 90%;
   line-height: 1.4;
 }
-/* line 983, ../../src/sass/_widgets.scss */
+/* line 985, ../../src/sass/_widgets.scss */
 .news-list .time,
 .users-list .time {
   font-size: 12px;
   color: #808080;
 }
-/* line 988, ../../src/sass/_widgets.scss */
+/* line 990, ../../src/sass/_widgets.scss */
 .news-list .options,
 .users-list .options {
   margin-top: 5px;
 }
-/* line 992, ../../src/sass/_widgets.scss */
+/* line 994, ../../src/sass/_widgets.scss */
 .news-list .comment,
 .users-list .comment {
   font-size: 12px;
@@ -21513,14 +21527,14 @@ table.table thead .sorting_desc_disabled {
   line-height: 1.3em;
 }
 
-/* line 1000, ../../src/sass/_widgets.scss */
+/* line 1002, ../../src/sass/_widgets.scss */
 .users-list-group img {
   width: 40px;
   height: 40px;
   float: left;
   margin-right: 10px;
 }
-/* line 1007, ../../src/sass/_widgets.scss */
+/* line 1009, ../../src/sass/_widgets.scss */
 .users-list-group .fa-circle {
   margin-top: 14px;
 }
@@ -21528,7 +21542,7 @@ table.table thead .sorting_desc_disabled {
 /***********************************/
 /**          LOGIN                **/
 /**********************************/
-/* line 1017, ../../src/sass/_widgets.scss */
+/* line 1019, ../../src/sass/_widgets.scss */
 .single-widget-container {
   left: 0;
   top: 50%;
@@ -21536,39 +21550,39 @@ table.table thead .sorting_desc_disabled {
   position: absolute;
   width: 100%;
 }
-/* line 1024, ../../src/sass/_widgets.scss */
+/* line 1026, ../../src/sass/_widgets.scss */
 .single-widget-container .widget {
   margin: 0 auto;
 }
 
-/* line 1029, ../../src/sass/_widgets.scss */
+/* line 1031, ../../src/sass/_widgets.scss */
 .login-widget, .registration-widget {
   width: 350px;
   padding-bottom: 0;
 }
-/* line 1033, ../../src/sass/_widgets.scss */
+/* line 1035, ../../src/sass/_widgets.scss */
 .login-widget header, .registration-widget header {
   margin: 15px 0 25px 0;
 }
-/* line 1037, ../../src/sass/_widgets.scss */
+/* line 1039, ../../src/sass/_widgets.scss */
 .login-widget .form-control, .registration-widget .form-control {
   font-size: 13px;
 }
-/* line 1041, ../../src/sass/_widgets.scss */
+/* line 1043, ../../src/sass/_widgets.scss */
 .login-widget .input-group-addon, .registration-widget .input-group-addon {
   padding: 8px 7px;
 }
-/* line 1044, ../../src/sass/_widgets.scss */
+/* line 1046, ../../src/sass/_widgets.scss */
 .login-widget .input-group-addon i, .login-widget .input-group-addon i:before, .login-widget .input-group-addon i:after, .registration-widget .input-group-addon i, .registration-widget .input-group-addon i:before, .registration-widget .input-group-addon i:after {
   width: 20px;
   margin: 0;
 }
-/* line 1051, ../../src/sass/_widgets.scss */
+/* line 1053, ../../src/sass/_widgets.scss */
 .login-widget .form-actions, .registration-widget .form-actions {
   margin: 0 0px;
   padding: 20px 15px 0 15px;
 }
-/* line 1055, ../../src/sass/_widgets.scss */
+/* line 1057, ../../src/sass/_widgets.scss */
 .login-widget .form-actions .small-circle, .registration-widget .form-actions .small-circle {
   display: inline-block;
   width: 20px;
@@ -21577,19 +21591,19 @@ table.table thead .sorting_desc_disabled {
   border-radius: 50%;
   background: rgba(0, 0, 0, 0.2);
 }
-/* line 1063, ../../src/sass/_widgets.scss */
+/* line 1065, ../../src/sass/_widgets.scss */
 .login-widget .form-actions .small-circle i, .registration-widget .form-actions .small-circle i {
   position: relative;
   left: 1px;
 }
-/* line 1068, ../../src/sass/_widgets.scss */
+/* line 1070, ../../src/sass/_widgets.scss */
 .login-widget .form-actions .forgot, .registration-widget .form-actions .forgot {
   display: block;
   text-align: center;
   color: #666;
   padding: 15px 0;
 }
-/* line 1076, ../../src/sass/_widgets.scss */
+/* line 1078, ../../src/sass/_widgets.scss */
 .login-widget footer, .registration-widget footer {
   margin: 0 0px;
   border-bottom-left-radius: 3px;
@@ -21597,7 +21611,7 @@ table.table thead .sorting_desc_disabled {
   overflow: hidden;
   position: static;
 }
-/* line 1084, ../../src/sass/_widgets.scss */
+/* line 1086, ../../src/sass/_widgets.scss */
 .login-widget .facebook-login, .registration-widget .facebook-login {
   -webkit-box-sizing: content-box;
   -moz-box-sizing: content-box;
@@ -21607,7 +21621,7 @@ table.table thead .sorting_desc_disabled {
   text-align: center;
   padding-top: 10px;
 }
-/* line 1091, ../../src/sass/_widgets.scss */
+/* line 1093, ../../src/sass/_widgets.scss */
 .login-widget .facebook-login a, .registration-widget .facebook-login a {
   color: #ffffff;
   display: block;
@@ -21618,12 +21632,12 @@ table.table thead .sorting_desc_disabled {
 /***********************************/
 /**          CHAT                 **/
 /**********************************/
-/* line 1105, ../../src/sass/_widgets.scss */
+/* line 1107, ../../src/sass/_widgets.scss */
 .chat-messages {
   padding-right: 15px;
 }
 
-/* line 1109, ../../src/sass/_widgets.scss */
+/* line 1111, ../../src/sass/_widgets.scss */
 .chat-footer {
   height: 40px;
   -webkit-box-sizing: border-box;
@@ -21631,7 +21645,7 @@ table.table thead .sorting_desc_disabled {
   box-sizing: border-box;
   padding-top: 10px;
 }
-/* line 1113, ../../src/sass/_widgets.scss */
+/* line 1115, ../../src/sass/_widgets.scss */
 .chat-footer input {
   margin-bottom: 0;
 }
@@ -21645,7 +21659,7 @@ table.table thead .sorting_desc_disabled {
 .chat-message:after {
   clear: both;
 }
-/* line 1120, ../../src/sass/_widgets.scss */
+/* line 1122, ../../src/sass/_widgets.scss */
 .chat-message .icon {
   position: relative;
   z-index: 1;
@@ -21658,14 +21672,14 @@ table.table thead .sorting_desc_disabled {
   -webkit-border-radius: 53px;
   border-radius: 53px;
 }
-/* line 1130, ../../src/sass/_widgets.scss */
+/* line 1132, ../../src/sass/_widgets.scss */
 .chat-message .icon img {
   position: relative;
   top: -2px;
   width: 50px;
   height: 50px;
 }
-/* line 1138, ../../src/sass/_widgets.scss */
+/* line 1140, ../../src/sass/_widgets.scss */
 .chat-message .time {
   font-size: 12px;
   line-height: 1.5em;
@@ -21673,12 +21687,12 @@ table.table thead .sorting_desc_disabled {
   color: #808080;
 }
 
-/* line 1146, ../../src/sass/_widgets.scss */
+/* line 1148, ../../src/sass/_widgets.scss */
 .chat-message + .chat-message {
   margin-top: 10px;
 }
 
-/* line 1150, ../../src/sass/_widgets.scss */
+/* line 1152, ../../src/sass/_widgets.scss */
 .chat-message-body {
   margin-left: 63px;
   padding: 8px 10px;
@@ -21689,25 +21703,25 @@ table.table thead .sorting_desc_disabled {
   -webkit-border-radius: 3px;
   border-radius: 3px;
 }
-/* line 1159, ../../src/sass/_widgets.scss */
+/* line 1161, ../../src/sass/_widgets.scss */
 .chat-message-body.on-left {
   margin-left: 0;
   margin-right: 63px;
   border-left: none;
   border-right: 2px solid #5d5d5d;
 }
-/* line 1165, ../../src/sass/_widgets.scss */
+/* line 1167, ../../src/sass/_widgets.scss */
 .chat-message-body.on-left .arrow {
   left: auto;
   right: -7px;
   border-right: none;
   border-left: 5px solid #5d5d5d;
 }
-/* line 1173, ../../src/sass/_widgets.scss */
+/* line 1175, ../../src/sass/_widgets.scss */
 .chat-message-body.on-left .sender, .chat-message-body.on-left .text {
   text-align: right;
 }
-/* line 1178, ../../src/sass/_widgets.scss */
+/* line 1180, ../../src/sass/_widgets.scss */
 .chat-message-body .arrow {
   display: block;
   position: absolute;
@@ -21723,38 +21737,38 @@ table.table thead .sorting_desc_disabled {
 /***********************************/
 /**          STATS-ACTIVITY       **/
 /**********************************/
-/* line 1198, ../../src/sass/_widgets.scss */
+/* line 1200, ../../src/sass/_widgets.scss */
 .overall-stats li {
   margin-top: 12px;
 }
-/* line 1202, ../../src/sass/_widgets.scss */
+/* line 1204, ../../src/sass/_widgets.scss */
 .overall-stats .key {
   line-height: 18px;
   margin-left: 5px;
 }
-/* line 1207, ../../src/sass/_widgets.scss */
+/* line 1209, ../../src/sass/_widgets.scss */
 .overall-stats .icon {
   text-align: center;
 }
-/* line 1211, ../../src/sass/_widgets.scss */
+/* line 1213, ../../src/sass/_widgets.scss */
 .overall-stats .value {
   text-align: right;
 }
 
-/* line 1217, ../../src/sass/_widgets.scss */
+/* line 1219, ../../src/sass/_widgets.scss */
 .server-stats {
   margin-top: -3px;
   margin-bottom: 2px;
 }
-/* line 1220, ../../src/sass/_widgets.scss */
+/* line 1222, ../../src/sass/_widgets.scss */
 .server-stats li {
   margin-bottom: 10px;
 }
-/* line 1222, ../../src/sass/_widgets.scss */
+/* line 1224, ../../src/sass/_widgets.scss */
 .server-stats li:last-child {
   margin-bottom: 0;
 }
-/* line 1227, ../../src/sass/_widgets.scss */
+/* line 1229, ../../src/sass/_widgets.scss */
 .server-stats .progress {
   margin-bottom: 0;
 }
@@ -21762,38 +21776,38 @@ table.table thead .sorting_desc_disabled {
 /***********************************/
 /**           ICON LIST           **/
 /***********************************/
-/* line 1236, ../../src/sass/_widgets.scss */
+/* line 1238, ../../src/sass/_widgets.scss */
 .icon-list {
   margin-top: 18px;
 }
 
-/* line 1240, ../../src/sass/_widgets.scss */
+/* line 1242, ../../src/sass/_widgets.scss */
 .icon-list-item {
   height: 32px;
   font-size: 14px;
   line-height: 32px;
 }
-/* line 1244, ../../src/sass/_widgets.scss */
+/* line 1246, ../../src/sass/_widgets.scss */
 .icon-list-item > a {
   color: #666;
   text-decoration: none;
 }
-/* line 1250, ../../src/sass/_widgets.scss */
+/* line 1252, ../../src/sass/_widgets.scss */
 .icon-list-item .glyphicon,
 .icon-list-item .fa {
   width: 32px;
   margin-right: 10px;
 }
-/* line 1257, ../../src/sass/_widgets.scss */
+/* line 1259, ../../src/sass/_widgets.scss */
 .icon-list-item:hover .glyphicon,
 .icon-list-item:hover .fa {
   font-size: 28px;
 }
-/* line 1262, ../../src/sass/_widgets.scss */
+/* line 1264, ../../src/sass/_widgets.scss */
 .icon-list-item:hover .fa {
   vertical-align: -5px;
 }
-/* line 1266, ../../src/sass/_widgets.scss */
+/* line 1268, ../../src/sass/_widgets.scss */
 .icon-list-item:hover .glyphicon {
   vertical-align: -6px;
 }
@@ -21801,21 +21815,21 @@ table.table thead .sorting_desc_disabled {
 /***********************************/
 /**      LIST GROUP SORTABLE      **/
 /***********************************/
-/* line 1277, ../../src/sass/_widgets.scss */
+/* line 1279, ../../src/sass/_widgets.scss */
 .list-group-sortable > .list-group-item {
   margin-bottom: 0;
   border-radius: 3px;
 }
-/* line 1281, ../../src/sass/_widgets.scss */
+/* line 1283, ../../src/sass/_widgets.scss */
 .list-group-sortable > .list-group-item + .list-group-item {
   margin-top: 9px;
 }
-/* line 1286, ../../src/sass/_widgets.scss */
+/* line 1288, ../../src/sass/_widgets.scss */
 .list-group-sortable > .list-group-item-placeholder {
   border: 1px dashed #999999;
   background-color: rgba(255, 255, 255, 0.25);
 }
-/* line 1291, ../../src/sass/_widgets.scss */
+/* line 1293, ../../src/sass/_widgets.scss */
 .list-group-sortable:last-of-type > .list-group-item:last-child {
   border-bottom: 1px solid transparent;
 }
@@ -21823,7 +21837,7 @@ table.table thead .sorting_desc_disabled {
 /**
  * Nestable
  */
-/* line 1300, ../../src/sass/_widgets.scss */
+/* line 1302, ../../src/sass/_widgets.scss */
 .dd {
   position: relative;
   display: block;
@@ -21835,7 +21849,7 @@ table.table thead .sorting_desc_disabled {
   line-height: 20px;
 }
 
-/* line 1311, ../../src/sass/_widgets.scss */
+/* line 1313, ../../src/sass/_widgets.scss */
 .dd-list {
   display: block;
   position: relative;
@@ -21844,17 +21858,17 @@ table.table thead .sorting_desc_disabled {
   list-style: none;
 }
 
-/* line 1319, ../../src/sass/_widgets.scss */
+/* line 1321, ../../src/sass/_widgets.scss */
 .dd-list .dd-list {
   padding-left: 30px;
 }
 
-/* line 1323, ../../src/sass/_widgets.scss */
+/* line 1325, ../../src/sass/_widgets.scss */
 .dd-collapsed .dd-list {
   display: none;
 }
 
-/* line 1327, ../../src/sass/_widgets.scss */
+/* line 1329, ../../src/sass/_widgets.scss */
 .dd-item,
 .dd-empty,
 .dd-placeholder {
@@ -21867,7 +21881,7 @@ table.table thead .sorting_desc_disabled {
   line-height: 20px;
 }
 
-/* line 1339, ../../src/sass/_widgets.scss */
+/* line 1341, ../../src/sass/_widgets.scss */
 .dd-handle {
   display: block;
   height: 30px;
@@ -21882,7 +21896,7 @@ table.table thead .sorting_desc_disabled {
   box-sizing: border-box;
 }
 
-/* line 1352, ../../src/sass/_widgets.scss */
+/* line 1354, ../../src/sass/_widgets.scss */
 .dd-item > button {
   display: block;
   position: relative;
@@ -21904,7 +21918,7 @@ table.table thead .sorting_desc_disabled {
   color: #666;
 }
 
-/* line 1373, ../../src/sass/_widgets.scss */
+/* line 1375, ../../src/sass/_widgets.scss */
 .dd-item > button:before {
   content: '+';
   display: block;
@@ -21914,12 +21928,12 @@ table.table thead .sorting_desc_disabled {
   text-indent: 0;
 }
 
-/* line 1382, ../../src/sass/_widgets.scss */
+/* line 1384, ../../src/sass/_widgets.scss */
 .dd-item > button[data-action="collapse"]:before {
   content: '-';
 }
 
-/* line 1386, ../../src/sass/_widgets.scss */
+/* line 1388, ../../src/sass/_widgets.scss */
 .dd-placeholder,
 .dd-empty {
   margin: 5px 0;
@@ -21931,7 +21945,7 @@ table.table thead .sorting_desc_disabled {
   -moz-box-sizing: border-box;
 }
 
-/* line 1397, ../../src/sass/_widgets.scss */
+/* line 1399, ../../src/sass/_widgets.scss */
 .dd-empty {
   border: 1px dashed rgba(255, 255, 255, 0.6);
   border-radius: 3px;
@@ -21942,19 +21956,19 @@ table.table thead .sorting_desc_disabled {
   background-image: linear-gradient(45deg, rgba(255, 255, 255, 0.75) 25%, rgba(0, 0, 0, 0) 25%, rgba(0, 0, 0, 0) 75%, rgba(255, 255, 255, 0.75) 75%, rgba(255, 255, 255, 0.75)), linear-gradient(45deg, rgba(255, 255, 255, 0.75) 25%, rgba(0, 0, 0, 0) 25%, rgba(0, 0, 0, 0) 75%, rgba(255, 255, 255, 0.75) 75%, rgba(255, 255, 255, 0.75));
 }
 
-/* line 1407, ../../src/sass/_widgets.scss */
+/* line 1409, ../../src/sass/_widgets.scss */
 .dd-dragel {
   position: absolute;
   pointer-events: none;
   z-index: 9999;
 }
 
-/* line 1413, ../../src/sass/_widgets.scss */
+/* line 1415, ../../src/sass/_widgets.scss */
 .dd-dragel > .dd-item .dd-handle {
   margin-top: 0;
 }
 
-/* line 1417, ../../src/sass/_widgets.scss */
+/* line 1419, ../../src/sass/_widgets.scss */
 .dd-dragel .dd-handle {
   -webkit-box-shadow: 2px 4px 6px 0 rgba(0, 0, 0, 0.1);
   box-shadow: 2px 4px 6px 0 rgba(0, 0, 0, 0.1);
@@ -21963,7 +21977,7 @@ table.table thead .sorting_desc_disabled {
 /**
  * Nestable Extras
  */
-/* line 1426, ../../src/sass/_widgets.scss */
+/* line 1428, ../../src/sass/_widgets.scss */
 .nestable-lists {
   display: block;
   clear: both;
@@ -21975,12 +21989,12 @@ table.table thead .sorting_desc_disabled {
 }
 
 @media only screen and (min-width: 700px) {
-  /* line 1437, ../../src/sass/_widgets.scss */
+  /* line 1439, ../../src/sass/_widgets.scss */
   .dd + .dd {
     margin-left: 2%;
   }
 }
-/* line 1443, ../../src/sass/_widgets.scss */
+/* line 1445, ../../src/sass/_widgets.scss */
 .dd-hover > .dd-handle {
   background: #2ea8e5 !important;
 }
@@ -21988,7 +22002,7 @@ table.table thead .sorting_desc_disabled {
 /**
  * Nestable Draggable Handles
  */
-/* line 1451, ../../src/sass/_widgets.scss */
+/* line 1453, ../../src/sass/_widgets.scss */
 .dd3-content {
   display: block;
   height: 30px;
@@ -22008,23 +22022,23 @@ table.table thead .sorting_desc_disabled {
   -moz-box-sizing: border-box;
 }
 
-/* line 1470, ../../src/sass/_widgets.scss */
+/* line 1472, ../../src/sass/_widgets.scss */
 .dd3-content:hover {
   color: #2ea8e5;
   background: #fff;
 }
 
-/* line 1475, ../../src/sass/_widgets.scss */
+/* line 1477, ../../src/sass/_widgets.scss */
 .dd-dragel > .dd3-item > .dd3-content {
   margin: 0;
 }
 
-/* line 1479, ../../src/sass/_widgets.scss */
+/* line 1481, ../../src/sass/_widgets.scss */
 .dd3-item > button {
   margin-left: 30px;
 }
 
-/* line 1483, ../../src/sass/_widgets.scss */
+/* line 1485, ../../src/sass/_widgets.scss */
 .dd3-handle {
   position: absolute;
   margin: 0;
@@ -22044,7 +22058,7 @@ table.table thead .sorting_desc_disabled {
   border-bottom-right-radius: 0;
 }
 
-/* line 1502, ../../src/sass/_widgets.scss */
+/* line 1504, ../../src/sass/_widgets.scss */
 .dd3-handle:before {
   content: '≡';
   display: block;
@@ -22059,7 +22073,7 @@ table.table thead .sorting_desc_disabled {
   font-weight: normal;
 }
 
-/* line 1516, ../../src/sass/_widgets.scss */
+/* line 1518, ../../src/sass/_widgets.scss */
 .dd3-handle:hover {
   background: #ddd;
 }
