@@ -1,0 +1,79 @@
+ {
+     "name": "XHTMLEditor",
+     "type": "XCOM",
+     "description": "Proxy",
+     "class":"jsontype.ComposerPackage",
+     "keywords": [],
+     "homepage": "http://xapp.com",
+     "showSMD" : false,
+     "location":"HTMLEditor/server/",
+     "license": "GPL",
+     "authors": [
+         {
+             "name": "mc007",
+             "email": "support@xapp-studio.com"
+         }
+     ],
+     "require": {
+         "xapp/Core": "1.0.x-dev",
+         "xapp/Log": "1.0.x-dev",
+         "xapp/Rpc": "1.0.x-dev",
+         "xapp/Xapp": "1.0.x-dev"
+     },
+     "repositories": [
+         {
+             "packagist": false,
+             "type": "composer",
+             "url": "http://www.xapp-php.com/packages/packages.json"
+         }
+     ],
+     "minimum-stability": "dev",
+     "resources":{
+         "class": "jsontype.ComposerResources",
+         "debug":{
+             "class": "cmx.types.Resources",
+             "includes": [
+             ],
+             "items": [
+                 {
+                     "class": "cmx.types.Resource",
+                     "enabled": false,
+                     "name": "HTMLEditor",
+                     "path": "HTMLEditor/xfile/main",
+                     "type": "JS-PLUGIN",
+                     "url": "",
+                     "urlOri": ""
+                 },
+                 {
+                     "class": "cmx.types.Resource",
+                     "enabled": false,
+                     "type": "CSS",
+                     "url": "%XCOM_PLUGINS_WEB_URL%/HTMLEditor/client/xfile/css/HTMLEditor.css"
+                 }
+             ]
+         },
+         "release":{
+             "class": "cmx.types.Resources",
+             "includes": [
+             ],
+             "items": [
+                 {
+                     "class": "cmx.types.Resource",
+                     "enabled": false,
+                     "name": "HTMLEditor",
+                     "path": "HTMLEditor/xfile/main",
+                     "type": "JS-PLUGIN",
+                     "url": "",
+                     "urlOri": ""
+                 },
+                 {
+                     "class": "cmx.types.Resource",
+                     "enabled": false,
+                     "type": "CSS",
+                     "url": "%XCOM_PLUGINS_WEB_URL%/HTMLEditor/client/xfile/css/HTMLEditor.css"
+                 }
+             ]
+         }
+     }
+ }
+

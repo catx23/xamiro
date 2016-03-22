@@ -1,0 +1,31 @@
+#
+# mm: the PHP media library
+#
+# Copyright (c) 2007-2014 David Persson
+#
+# Distributed under the terms of the MIT License.
+# Redistributions of files must retain the above copyright notice.
+#
+language: php
+
+php:
+  - 5.4
+  - 5.5
+  - 5.6
+
+before_install:
+  - sudo apt-get -qq update
+  - sudo apt-get -qq install ghostscript
+  - sudo apt-get -qq install imagemagick
+  - sudo apt-get -qq install ffmpeg
+  - sudo apt-get -qq install sox
+  - pear config-set preferred_state beta
+  - printf "\n" | pecl install imagick
+
+before_script:
+  - uname -a
+  - convert --version
+  - gs --version
+  - ffmpeg -version
+  - sox --version
+  - php -m

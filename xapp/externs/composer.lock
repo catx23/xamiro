@@ -1,0 +1,77 @@
+{
+    "_readme": [
+        "This file locks the dependencies of your project to a known state",
+        "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
+        "This file is @generated automatically"
+    ],
+    "hash": "7506a739f6e69491d599ba72a7a2f3be",
+    "packages": [
+        {
+            "name": "davidpersson/mm",
+            "version": "v2.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/davidpersson/mm.git",
+                "reference": "ffe263f8920f9963e850c9a5a0bd6591e4eb57dd"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/davidpersson/mm/zipball/ffe263f8920f9963e850c9a5a0bd6591e4eb57dd",
+                "reference": "ffe263f8920f9963e850c9a5a0bd6591e4eb57dd",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.5.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": ">=4.0.0"
+            },
+            "suggest": {
+                "FFmpeg 1.*": "Enables transcoding and processing of videos.",
+                "SoX": "Enables transcoding and processing of audio data.",
+                "ext-fileinfo": "Enables the recommended fileinfo MIME-type magic adapter.",
+                "ext-gd": "Enabled media process/info GD adapter, good when imagick is not an option.",
+                "ext-imagick >= 3.0.0": "Enables the high quality media process/info Imagick adapter.",
+                "ghostscript": "Enables converting documents to images."
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "mm\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "David Persson",
+                    "email": "davidpersson@gmx.de"
+                }
+            ],
+            "description": "The PHP media library: media processing and MIME-Type/extension guessing.",
+            "keywords": [
+                "ffmpeg",
+                "fileinfo",
+                "freedesktop",
+                "glob",
+                "imagick",
+                "media",
+                "mime",
+                "pdf",
+                "sox",
+                "xdg"
+            ],
+            "time": "2015-09-28 16:10:32"
+        }
+    ],
+    "packages-dev": [],
+    "aliases": [],
+    "minimum-stability": "stable",
+    "stability-flags": [],
+    "prefer-stable": false,
+    "prefer-lowest": false,
+    "platform": [],
+    "platform-dev": []
+}

@@ -1,0 +1,23 @@
+{
+    "name": "xapp/Core",
+    "type": "xapp-module",
+    "keywords": ["xapp", "core"],
+    "homepage": "http://xapp-php.com",
+    "license": "GPL",
+    "support":{
+        "issues": "https://bugs.xapp-php.com:8888",
+        "wiki": "http://www.xapp-php.com/docs/html/"
+    },
+    "config": {
+        "vendor-dir": "lib/vendor"
+    },
+    "require": {
+        "php": ">=5.2.6"
+    },
+    "repositories": [{
+        "packagist": false,
+        "type": "composer",
+        "url": "http://www.xapp-php.com/packages/packages.json"
+    }],
+    "minimum-stability": "dev"
+}

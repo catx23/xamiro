@@ -1,0 +1,64 @@
+ {
+     "name": "XZoho",
+     "type": "XCOM",
+     "description": "Proxy",
+     "class":"jsontype.ComposerPackage",
+     "keywords": [],
+     "homepage": "http://xapp.com",
+     "showSMD" : true,
+     "location":"Zoho/server/",
+     "license": "GPL",
+     "authors": [
+         {
+             "name": "mc007",
+             "email": "support@xapp-studio.com"
+         }
+     ],
+     "require": {
+
+     },
+     "repositories": [
+         {
+             "packagist": false,
+             "type": "composer",
+             "url": "http://www.xapp-php.com/packages/packages.json"
+         }
+     ],
+     "minimum-stability": "dev",
+     "resources":{
+         "class": "jsontype.ComposerResources",
+         "debug":{
+             "class": "cmx.types.Resources",
+             "includes": [
+             ],
+             "items": [
+                 {
+                     "class": "cmx.types.Resource",
+                     "enabled": false,
+                     "name": "Zoho",
+                     "path": "Zoho/xfile/main",
+                     "type": "JS-PLUGIN",
+                     "url": "",
+                     "urlOri": ""
+                 }
+             ]
+         },
+         "release":{
+             "class": "cmx.types.Resources",
+             "includes": [
+             ],
+             "items": [
+                 {
+                     "class": "cmx.types.Resource",
+                     "enabled": false,
+                     "name": "Zoho",
+                     "path": "Zoho/xfile/main",
+                     "type": "JS-PLUGIN",
+                     "url": "",
+                     "urlOri": ""
+                 }
+             ]
+         }
+     }
+ }
+

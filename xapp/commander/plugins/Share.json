@@ -1,0 +1,114 @@
+ {
+     "name": "XShare",
+     "type": "XCOM",
+     "description": "Proxy",
+     "class":"jsontype.ComposerPackage",
+     "keywords": [],
+     "homepage": "http://xapp.com",
+     "showSMD" : true,
+     "location":"Share/server/",
+     "license": "GPL",
+     "authors": [
+         {
+             "name": "mc007",
+             "email": "support@xapp-studio.com"
+         }
+     ],
+     "require": {
+         "xapp/Core": "1.0.x-dev",
+         "xapp/Log": "1.0.x-dev",
+         "xapp/Rpc": "1.0.x-dev",
+         "xapp/Xapp": "1.0.x-dev"
+     },
+     "repositories": [
+         {
+             "packagist": false,
+             "type": "composer",
+             "url": "http://www.xapp-php.com/packages/packages.json"
+         }
+     ],
+     "minimum-stability": "dev",
+     "resources":{
+         "class": "jsontype.ComposerResources",
+         "debug":{
+             "class": "cmx.types.Resources",
+             "includes": [
+             ],
+             "items": [
+                 {
+                     "class": "cmx.types.Resource",
+                     "enabled": false,
+                     "name": "Share",
+                     "path": "Share/xfile/main",
+                     "type": "JS-PLUGIN",
+                     "url": "",
+                     "urlOri": "",
+                     "packageSuffix":"",
+                     "_packageLocation":"%CDN_URL%/xapp/commander/plugins/ImageEdit/client/"
+                 },
+                 {
+                     "class": "cmx.types.Resource",
+                     "enabled": false,
+                     "type": "JS-HEADER-INCLUDE",
+                     "url": "%XCOM_PLUGINS_WEB_URL%/Share/client/social-share-kit/dist/js/social-share-kit.min.js"
+                 },
+                 {
+                     "class": "cmx.types.Resource",
+                     "enabled":false,
+                     "type": "CSS",
+                     "url": "%XCOM_PLUGINS_WEB_URL%/Share/client/social-share-kit/dist/css/social-share-kit.css"
+                 }
+             ]
+         },
+         "release":{
+             "class": "cmx.types.Resources",
+             "includes": [
+             ],
+             "items": [
+                 {
+                     "class": "cmx.types.Resource",
+                     "enabled": false,
+                     "name": "Share",
+                     "path": "Share/xfile/main",
+                     "type": "JS-PLUGIN",
+                     "url": "",
+                     "urlOri": "",
+                     "packageSuffix":""
+                 },
+                 {
+                     "class": "cmx.types.Resource",
+                     "enabled": false,
+                     "type": "JS-HEADER-INCLUDE",
+                     "url": "%XCOM_PLUGINS_WEB_URL%/Share/client/social-share-kit/dist/js/social-share-kit.min.js"
+                 },
+                 {
+                     "class": "cmx.types.Resource",
+                     "enabled": false,
+                     "type": "CSS",
+                     "url": "%XCOM_PLUGINS_WEB_URL%/Share/client/social-share-kit/dist/css/social-share-kit.css"
+                 }
+
+             ]
+         },
+         "resources-release-cdn":{
+             "class": "cmx.types.Resources",
+             "includes": [
+             ],
+             "items": [
+                 {
+                     "class": "cmx.types.Resource",
+                     "enabled": true,
+                     "name": "Share",
+                     "path": "Share/xfile/main",
+                     "type": "JS-PLUGIN",
+                     "url": "",
+                     "urlOri": "",
+                     "packageSuffix":"",
+                     "packageLocation":"%CDN_URL%/xapp/commander/plugins/ImageEdit/client/"
+                 }
+
+             ]
+         }
+     }
+ }
+
