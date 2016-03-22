@@ -58,103 +58,90 @@
 
         };
     </script>
-    <script type="text/javascript" src="%APP_URL%/xfile/dojo/xbox.js"></script>
-    <script type="text/javascript">
-        require([
-            "dojo/ready",
-            "dijit/dijit",
-            "xide/manager/ServerActionBase"
-        ],function(ready, dijit,ServerActionBase){
 
-            var service = null;
-            var serviceClass='XApp_XIDE_Controller_UserService';
-
-            var btn = null;
-            $( document ).ready( function(){
-                btn = $('#loginBtn');
-                btn.click(function(){
-                    login();
-                });
-            } );
-
-
-
-
-            function initService(){
-                if(!service){
-                    service = new xide.manager.ServerActionBase({
-                        serviceClass:serviceClass,
-                        serviceUrl:'%RPC_TARGET%',
-                        sync:true
-                    });
-                    service.init();
-                }
-            }
-
-            function login(){
-
-                initService();
-
-                dojo.empty('error-holder');
-
-                var user = $('#username').val();
-                var password = $('#password').val();
-
-                if(!user || !password){
-                    location.reload();
-                    return;
-                }
-
-
-                var error = $('#error-holder');
-
-                var icon = $('#loginBtnIcon');
-                icon.removeClass('fa-caret-right');
-                icon.addClass('fa-spinner fa-spin');
-
-                error.empty();
-
-
-                service.serviceObject[serviceClass]['login'](user,password).then(
-                        function(result){
-
-                            icon.removeClass('fa-spinner fa-spin');
-                            if (result=="OK"){
-                                icon.removeClass('fa-caret-right');
-                                icon.addClass('fa-spinner fa-spin');
-                                location.reload();
-
-                            }else{
-
-                                error.html('Invalid userid or password');
-                                error.addClass('text-warning');
-                            }
-                        });
-
-            }
-            window['login']=login;
-
-            dojo.addOnLoad(function (){
-
-                initService();
-                if(!(dojo.isFF >= 4 || dojo.isChrome >= 5 || dojo.isSafari >= 5.1)){
-
-                    dojo.create("div", {innerHTML: "Firefox 4, Chrome 5, Safari 5.1 or greater is required", "class": "sniff"}, "loginpane", "first");
-                }
-
-                var loadDiv = dojo.byId('loadingWrapper');
-                if(loadDiv){
-                    dojo.destroy(loadDiv);
-                }
-            });
-        });
-
-    </script>
 
 </head>
 
 <body class="claro xTheme-default xTheme-%THEME%">
+<script type="text/javascript" src="%APP_URL%/xfile/dojo/xbox.js"></script>
+<script type="text/javascript">
+    require([
+        "dojo/ready",
+        "xide/manager/ServerActionBase"
+    ],function(ready,ServerActionBase){
 
+        var service = null;
+        var serviceClass='XApp_XIDE_Controller_UserService';
+
+        var btn = null;
+        $( document ).ready( function(){
+            btn = $('#loginBtn');
+            btn.click(function(){
+                login();
+            });
+        } );
+
+        function initService(){
+            if(!service){
+                service = new xide.manager.ServerActionBase({
+                    serviceClass:serviceClass,
+                    serviceUrl:'%RPC_TARGET%',
+                    sync:true
+                });
+                service.init();
+            }
+        }
+
+        function login(){
+            initService();
+            dojo.empty('error-holder');
+            var user = $('#username').val();
+            var password = $('#password').val();
+
+            if(!user || !password){
+                location.reload();
+                return;
+            }
+            var error = $('#error-holder');
+            var icon = $('#loginBtnIcon');
+            icon.removeClass('fa-caret-right');
+            icon.addClass('fa-spinner fa-spin');
+            error.empty();
+            service.serviceObject[serviceClass]['login'](user,password).then(
+                    function(result){
+
+                        icon.removeClass('fa-spinner fa-spin');
+                        if (result=="OK"){
+                            icon.removeClass('fa-caret-right');
+                            icon.addClass('fa-spinner fa-spin');
+                            location.reload();
+
+                        }else{
+
+                            error.html('Invalid userid or password');
+                            error.addClass('text-warning');
+                        }
+                    });
+
+        }
+        window['login']=login;
+
+        dojo.addOnLoad(function (){
+
+            initService();
+            if(!(dojo.isFF >= 4 || dojo.isChrome >= 5 || dojo.isSafari >= 5.1)){
+
+                dojo.create("div", {innerHTML: "Firefox 4, Chrome 5, Safari 5.1 or greater is required", "class": "sniff"}, "loginpane", "first");
+            }
+
+            var loadDiv = dojo.byId('loadingWrapper');
+            if(loadDiv){
+                dojo.destroy(loadDiv);
+            }
+        });
+    });
+
+</script>
 <div class="loadingWrapper" id="loadingWrapper">
     <div class="loading">
         <div class="outer"></div>
