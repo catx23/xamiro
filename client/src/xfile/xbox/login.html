@@ -67,8 +67,9 @@
 <script type="text/javascript">
     require([
         "dojo/ready",
+        'xbox/XBoxCommons',
         "xide/manager/ServerActionBase"
-    ],function(ready,ServerActionBase){
+    ],function(ready,XBoxCommons,ServerActionBase){
 
         var service = null;
         var serviceClass='XApp_XIDE_Controller_UserService';
@@ -83,7 +84,7 @@
 
         function initService(){
             if(!service){
-                service = new xide.manager.ServerActionBase({
+                service = new ServerActionBase({
                     serviceClass:serviceClass,
                     serviceUrl:'%RPC_TARGET%',
                     sync:true
@@ -130,7 +131,6 @@
 
             initService();
             if(!(dojo.isFF >= 4 || dojo.isChrome >= 5 || dojo.isSafari >= 5.1)){
-
                 dojo.create("div", {innerHTML: "Firefox 4, Chrome 5, Safari 5.1 or greater is required", "class": "sniff"}, "loginpane", "first");
             }
 
