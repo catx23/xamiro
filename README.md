@@ -10,7 +10,7 @@ Latest beta:
 
 
 ### Dependencies / Requirements
-- PHP 5.3+ and modern browser
+- PHP 5.4+ and modern browser
 - see [here](http://xamiro.com/requirements/) for more
 
 ### Features
