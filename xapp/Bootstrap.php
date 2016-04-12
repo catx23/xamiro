@@ -583,6 +583,12 @@ class XApp_Bootstrap
 	{
 		//complete script uri
 		$scriptParts = pathinfo($_SERVER['SCRIPT_FILENAME']);
+
+		$SERVER_NAME = $_SERVER["SERVER_NAME"];
+		if(!$SERVER_NAME && $_SERVER["REMOTE_ADDR"]){
+			$SERVER_NAME = $_SERVER["REMOTE_ADDR"];
+		}
+
 		if (strpos($_SERVER['REQUEST_URI'], $scriptParts['basename']) == false) {
 			$newRequestUri = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
 			$newRequestUri .= $scriptParts['basename'];
@@ -597,9 +603,9 @@ class XApp_Bootstrap
 		$pageURL .= "://";
 
 		if ($_SERVER["SERVER_PORT"] != "80") {
-			$pageURL .= $_SERVER["SERVER_NAME"] . ":" . $_SERVER["SERVER_PORT"] . $_SERVER["REQUEST_URI"];
+			$pageURL .= $SERVER_NAME . ":" . $_SERVER["SERVER_PORT"] . $_SERVER["REQUEST_URI"];
 		} else {
-			$pageURL .= $_SERVER["SERVER_NAME"] . $_SERVER["REQUEST_URI"];
+			$pageURL .= $SERVER_NAME . $_SERVER["REQUEST_URI"];
 		}
 
 		return $pageURL;
@@ -1903,7 +1909,9 @@ class XApp_Bootstrap
 	 */
 	public static function getRpcViewUrl(){
 		xapp_import('xapp.Utils.Strings');
+
 		$index = XApp_Service_Utils::getIndex();
+
 		$urlParams = array();
 
 		if (isset($_SERVER["QUERY_STRING"])) {

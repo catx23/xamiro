@@ -291,13 +291,18 @@ class XIDE_NodeJS_Service_Manager extends XIDE_Manager
 
 		$pageURL .= "://";
 
+		$SERVER_NAME = $_SERVER["SERVER_NAME"];
+		if(!$SERVER_NAME && $_SERVER["REMOTE_ADDR"]){
+			$SERVER_NAME = $_SERVER["REMOTE_ADDR"];
+		}
+
 		if ($_SERVER["SERVER_PORT"] != "80") {
 
 			if(isset($_SERVER["HTTP_X_FORWARDED_HOST"])){
 				$pageURL .=$_SERVER["HTTP_X_FORWARDED_HOST"];
 				$pageURL .=$_SERVER["REQUEST_URI"];
 			}else{
-				$pageURL .= $_SERVER["SERVER_NAME"] . ":" . $_SERVER["SERVER_PORT"];
+				$pageURL .= $SERVER_NAME . ":" . $_SERVER["SERVER_PORT"];
 				$pageURL .=$_SERVER["REQUEST_URI"];
 			}
 		} else {
@@ -309,7 +314,7 @@ class XIDE_NodeJS_Service_Manager extends XIDE_Manager
 				$pageURL .=$_SERVER["HTTP_X_FORWARDED_HOST"];
 				$pageURL .=$_SERVER["REQUEST_URI"];
 			}else{
-				$pageURL .= $_SERVER["SERVER_NAME"];// . $_SERVER["REQUEST_URI"];
+				$pageURL .= $SERVER_NAME;// . $_SERVER["REQUEST_URI"];
 				$pageURL .=$_SERVER["REQUEST_URI"];
 			}
 		}
