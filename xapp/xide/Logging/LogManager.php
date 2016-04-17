@@ -96,14 +96,16 @@ class XIDE_Log_Manager extends XIDE_Manager{
     public function ls($which=null){
 
 	    $path       = realpath(xo_get(self::LOG_PATH,$this));
-	    if($which){
+        if($which){
 		    $path = str_replace('all.log',$which,$path);
 	    }
+
 	    if(!file_exists($path)){
 		    //$this->log('log file path : ' . $path  .' doesnt exists');
 		    return '{}';
 	    }
 	    $result = array();
+
         if(file_exists($path) && is_readable($path)){
             $handle = fopen($path, "r");
             if ($handle) {
@@ -120,6 +122,7 @@ class XIDE_Log_Manager extends XIDE_Manager{
             }
             fclose($handle);
         }else{
+            xapp_clog('file doesnt exists '.$path);
             return '{}';
         }
 	    return $result;

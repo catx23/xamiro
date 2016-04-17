@@ -35,12 +35,25 @@ xapp_import("xapp.Bootstrap");
 class XIDE_Bootstrap extends XApp_Bootstrap{
 
     /***
+     *
+     * $serverApplicationClassName,
+     * $clientApplicationName,
+     * $clientDirectory
+     *
      * Factory which creates a bootstrap config but also an instance of this upon the
      * the request type : RPC or Client app
      * @param $serverApplicationClassName
      * @param $clientApplicationName
      * @param $clientDirectory
-     * @return void|XIDE_Bootstrap
+     * @param $libOffset
+     * @param $logDirectory
+     * @param $xcvDataRoot
+     * @param $xcvRoot
+     * @param $serviceEntryPoint
+     * @param $clientOffset
+     * @param string $rootUrlOffset
+     * @param $confDirectory
+     * @return void|XCF_Bootstrap
      */
     public static function createInstance(
 
@@ -53,10 +66,9 @@ class XIDE_Bootstrap extends XApp_Bootstrap{
         $xcvRoot,
         $serviceEntryPoint,
         $clientOffset,
-        $rootUrlOffset='')
-    {
-
-
+        $rootUrlOffset = '',
+        $confDirectory
+    ) {
         if(self::isRPC()){
             return self::createServerInstance(
                 $serverApplicationClassName,
@@ -166,10 +178,12 @@ class XIDE_Bootstrap extends XApp_Bootstrap{
 
     }
 
-    /***
-     * Render client ux
+    /**
+     * @param bool|true $print
+     * @param $xcvDataRoot
+     * @return mixed
      */
-    public function render(){
+    public function render($print = true,$xcvDataRoot){
 
         $this->setup();
 
