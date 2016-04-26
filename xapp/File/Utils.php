@@ -99,9 +99,9 @@ class XApp_File_Utils
 	public static function defaultExclusionPatterns()
 	{
 		return array(
-			'.svn',
-			'.git',
-			'.idea'
+				'.svn',
+				'.git',
+				'.idea'
 		);
 	}
 
@@ -113,8 +113,8 @@ class XApp_File_Utils
 	public static function defaultInclusionPatterns()
 	{
 		return array(
-			'*',
-			'.*'    // if not, grep skips hidden files
+				'*',
+				'.*'    // if not, grep skips hidden files
 		);
 	}
 
@@ -140,13 +140,13 @@ class XApp_File_Utils
 	 * @param $success : track all copied items here
 	 */
 	public static function copyDirectoryEx(
-		$srcDir,
-		$dstDirectory,
-		$options = Array(),
-		$inclusionMask = Array(),
-		$exclusionMask = Array(),
-		&$error,
-		&$success
+			$srcDir,
+			$dstDirectory,
+			$options = Array(),
+			$inclusionMask = Array(),
+			$exclusionMask = Array(),
+			&$error,
+			&$success
 	) {
 
 		if (!self::$_tmpSrcRootPath) {
@@ -173,7 +173,6 @@ class XApp_File_Utils
 			$exclusionMask = array();
 		}
 
-
 		//$exclusionMask =[];
 		$scanlist = XApp_Directory_Utils::getFilteredDirList( realpath($srcDir) .DIRECTORY_SEPARATOR , $inclusionMask, $exclusionMask);
 
@@ -191,8 +190,8 @@ class XApp_File_Utils
 				} else {
 					if (!self::changeModeDirectory($dstDirectory, $options[self::OPTION_NEW_CHMOD])) {
 						$error[] = XAPP_TEXT_FORMATTED(
-							'COULD_NOT_CHANGE_DIRECTORY_MODE',
-							array($options[self::OPTION_NEW_CHMOD], $dstDirectory)
+								'COULD_NOT_CHANGE_DIRECTORY_MODE',
+								array($options[self::OPTION_NEW_CHMOD], $dstDirectory)
 						);
 					}
 				}
@@ -207,35 +206,35 @@ class XApp_File_Utils
 				if (is_dir($direntry)) {
 					if ($options[self::OPTION_RECURSIVE]) {
 						self::copyDirectoryEx(
-							$direntry,
-							$targetFile,
-							$options,
-							$inclusionMask,
-							$exclusionMask,
-							$error,
-							$success
+								$direntry,
+								$targetFile,
+								$options,
+								$inclusionMask,
+								$exclusionMask,
+								$error,
+								$success
 						);
 					}
 				} else {
 					// File found
 					if (self::singleFileCopy(
-						$direntry,
-						$targetFile,
-						$options[self::OPTION_CONFLICT_MODUS],
-						$success,
-						$error
+							$direntry,
+							$targetFile,
+							$options[self::OPTION_CONFLICT_MODUS],
+							$success,
+							$error
 					)
 					) {
 
 						$success[] = XAPP_TEXT_FORMATTED('THE_FILE') . XAPP_TEXT_FORMATTED(
-								'COPIED_OK',
-								Array($srcDir, $dstDirectory)
-							);
+										'COPIED_OK',
+										Array($srcDir, $dstDirectory)
+								);
 
 						if (!self::changeModeFile($targetFile, $options[self::OPTION_NEW_CHMOD])) {
 							$error[] = XAPP_TEXT_FORMATTED(
-								'COULD_NOT_CHANGE_FILE_MODE',
-								array($options[self::OPTION_NEW_CHMOD], $dstDirectory)
+									'COULD_NOT_CHANGE_FILE_MODE',
+									array($options[self::OPTION_NEW_CHMOD], $dstDirectory)
 							);
 						}
 
@@ -243,9 +242,9 @@ class XApp_File_Utils
 				}
 			}
 			$success[] = XAPP_TEXT_FORMATTED('DIRECTORY') . XAPP_TEXT_FORMATTED(
-					'COPIED_OK',
-					Array($srcDir, $dstDirectory)
-				);
+							'COPIED_OK',
+							Array($srcDir, $dstDirectory)
+					);
 		}
 
 		if ($options[self::OPTION_LOGGING_STRIP_BASE_PATH]) {
@@ -270,13 +269,13 @@ class XApp_File_Utils
 	 */
 
 	public static function copyDirectory(
-		$srcDir,
-		$dstDirectory,
-		$options = Array(),
-		$inclusionMask = Array(),
-		$exclusionMask = Array(),
-		&$error,
-		&$success
+			$srcDir,
+			$dstDirectory,
+			$options = Array(),
+			$inclusionMask = Array(),
+			$exclusionMask = Array(),
+			&$error,
+			&$success
 	) {
 
 		// defaults
@@ -313,13 +312,13 @@ class XApp_File_Utils
 	 * @param $success : track all moved items here
 	 */
 	public static function moveDirectoryEx(
-		$srcDir,
-		$dstDirectory,
-		$options = Array(),
-		$inclusionMask = Array(),
-		$exclusionMask = Array(),
-		&$error,
-		&$success
+			$srcDir,
+			$dstDirectory,
+			$options = Array(),
+			$inclusionMask = Array(),
+			$exclusionMask = Array(),
+			&$error,
+			&$success
 	) {
 		if (!self::$_tmpSrcRootPath) {
 			self::$_tmpSrcRootPath = realpath($srcDir . DIRECTORY_SEPARATOR . '..');
@@ -372,12 +371,12 @@ class XApp_File_Utils
 	 * @param $success : track all copied items here
 	 */
 	public static function deleteDirectoryEx(
-		$path,
-		$options = Array(),
-		$inclusionMask = Array(),
-		$exclusionMask = Array(),
-		&$error,
-		&$success
+			$path,
+			$options = Array(),
+			$inclusionMask = Array(),
+			$exclusionMask = Array(),
+			&$error,
+			&$success
 	) {
 		if (!self::$_tmpSrcRootPath) {
 			self::$_tmpSrcRootPath = realpath($path . DIRECTORY_SEPARATOR . '..');
@@ -417,17 +416,17 @@ class XApp_File_Utils
 					if (!$options[self::OPTION_DRYRUN]) {
 						if (!@unlink($direntry)) {
 							$error[] = XAPP_TEXT_FORMATTED('THE_FILE') . " " . $direntry . " " . XAPP_TEXT_FORMATTED(
-									'HAS_NOT_BEEN_DELETE'
-								);
+											'HAS_NOT_BEEN_DELETE'
+									);
 						} else {
 							$success[] = XAPP_TEXT_FORMATTED('THE_FILE') . " " . $direntry . " " . XAPP_TEXT_FORMATTED(
-									'HAS_BEEN_DELETED'
-								);
+											'HAS_BEEN_DELETED'
+									);
 						}
 					} else {
 						$success[] = XAPP_TEXT_FORMATTED('SIMULATED') . " " . XAPP_TEXT_FORMATTED(
-								'THE_FILE'
-							) . " " . $direntry . " " . XAPP_TEXT_FORMATTED('HAS_BEEN_DELETED');
+										'THE_FILE'
+								) . " " . $direntry . " " . XAPP_TEXT_FORMATTED('HAS_BEEN_DELETED');
 					}
 				}
 			}
@@ -436,17 +435,17 @@ class XApp_File_Utils
 			if (!$options[self::OPTION_DRYRUN]) {
 				if (!@rmdir($path)) {
 					$error[] = XAPP_TEXT_FORMATTED('THE_FOLDER') . " " . $path . " " . XAPP_TEXT_FORMATTED(
-							'HAS_NOT_BEEN_DELETE'
-						);
+									'HAS_NOT_BEEN_DELETE'
+							);
 				} else {
 					$success[] = XAPP_TEXT_FORMATTED('THE_FOLDER') . " " . $path . " " . XAPP_TEXT_FORMATTED(
-							'HAS_BEEN_DELETED'
-						);
+									'HAS_BEEN_DELETED'
+							);
 				}
 			} else {
 				$success[] = XAPP_TEXT_FORMATTED('SIMULATED') . " " . XAPP_TEXT_FORMATTED(
-						'THE_FOLDER'
-					) . " " . $path . " " . XAPP_TEXT_FORMATTED('HAS_BEEN_DELETED');
+								'THE_FOLDER'
+						) . " " . $path . " " . XAPP_TEXT_FORMATTED('HAS_BEEN_DELETED');
 			}
 
 		}
@@ -477,12 +476,12 @@ class XApp_File_Utils
 		if (file_exists($path)) {
 			if (!@unlink($path)) {
 				$error[] = XAPP_TEXT_FORMATTED('THE_FILE') . " " . $path . " " . XAPP_TEXT_FORMATTED(
-						'HAS_NOT_BEEN_DELETE'
-					);
+								'HAS_NOT_BEEN_DELETE'
+						);
 			} else {
 				$success[] = XAPP_TEXT_FORMATTED('THE_FILE') . " " . $path . " " . XAPP_TEXT_FORMATTED(
-						'HAS_BEEN_DELETED'
-					);
+								'HAS_BEEN_DELETED'
+						);
 			}
 		} else {
 
@@ -515,7 +514,7 @@ class XApp_File_Utils
 
 				if (!is_writeable($realPath)) {
 					throw new Xapp_Util_Exception_Storage(
-						vsprintf('File: %s is not writable', array(basename($realPath))), 1640102
+							vsprintf('File: %s is not writable', array(basename($realPath))), 1640102
 					);
 				} else {
 
@@ -541,18 +540,18 @@ class XApp_File_Utils
 					//tell plugins
 					if($from) {
 						xcom_event( XC_OPERATION_WRITE_STR,'',
-						array(
-							XAPP_EVENT_KEY_PATH     => $realPath,
-							XAPP_EVENT_KEY_REL_PATH => $path,
-							XAPP_EVENT_KEY_CONTENT  => &$content
-						),$from );
+								array(
+										XAPP_EVENT_KEY_PATH     => $realPath,
+										XAPP_EVENT_KEY_REL_PATH => $path,
+										XAPP_EVENT_KEY_CONTENT  => &$content
+								),$from );
 					}
 
 				}
 
 			} else {
 				throw new Xapp_Util_Exception_Storage(
-					'unable to write storage to file  :  ' . $path . ' at : ' . $realPath, 1640104
+						'unable to write storage to file  :  ' . $path . ' at : ' . $realPath, 1640104
 				);
 			}
 		} else {
@@ -608,12 +607,12 @@ class XApp_File_Utils
 
 				$tempFile = tempnam( $options[ self::OPTION_TEMP_PATH ], 'getZIP' );
 				XApp_Directory_Utils::zipDir(
-					$basePath . $relativePath,
-					$tempFile,
-					self::defaultInclusionPatterns(),
-					$exclusionMask,
-					$error,
-					$success
+						$basePath . $relativePath,
+						$tempFile,
+						self::defaultInclusionPatterns(),
+						$exclusionMask,
+						$error,
+						$success
 				);
 				$target_file = $tempFile;
 				$mime        = "application/zip";
@@ -626,9 +625,9 @@ class XApp_File_Utils
 				if ( ! $options[ self::OPTION_TEST ] ) {
 
 					self::sendHeader(
-						$mime,
-						( $options[ self::OPTION_AS_ATTACHMENT ] ? $target_file : '' ),
-						basename( $target_file )
+							$mime,
+							( $options[ self::OPTION_AS_ATTACHMENT ] ? $target_file : '' ),
+							basename( $target_file )
 					);
 					if ( strpos( $mime, "text" ) !== false ) {
 						if ( substr_count( $_SERVER['HTTP_ACCEPT_ENCODING'], 'gzip' ) ) {
@@ -666,10 +665,10 @@ class XApp_File_Utils
 					//set start and end based on range (if set), else set defaults
 					//also check for invalid ranges.
 					$seek_end   = ( empty( $seek_end ) ) ? ( $file_size - 1 ) : min( abs( intval( $seek_end ) ),
-						( $file_size - 1 ) );
+							( $file_size - 1 ) );
 					$seek_start = ( empty( $seek_start ) || $seek_end < abs( intval( $seek_start ) ) ) ? 0 : max(
-						abs( intval( $seek_start ) ),
-						0
+							abs( intval( $seek_start ) ),
+							0
 					);
 
 					//Only send partial content header if downloading a piece of the file (IE workaround)
@@ -712,8 +711,8 @@ class XApp_File_Utils
 
 						// chunk file
 						$chunk_size = intval(
-							              $options[ self::OPTION_CHUNK_SIZE ]
-						              ) * 1024 * 1024; // Convert chunk size to bytes
+										$options[ self::OPTION_CHUNK_SIZE ]
+								) * 1024 * 1024; // Convert chunk size to bytes
 						$handle     = fopen( $target_file, 'rb' );
 						while ( ! feof( $handle ) ) {
 							$buffer = fread( $handle, $chunk_size );
@@ -729,9 +728,9 @@ class XApp_File_Utils
 						 * send direct as attachment
 						 */
 						self::sendHeader(
-							$mime,
-							( $options[ self::OPTION_AS_ATTACHMENT ] ? $target_file : '' ),
-							basename( $target_file )
+								$mime,
+								( $options[ self::OPTION_AS_ATTACHMENT ] ? $target_file : '' ),
+								basename( $target_file )
 						);
 						$content = file_get_contents( $target_file );
 						echo $content;
@@ -747,12 +746,12 @@ class XApp_File_Utils
 				 */
 				if ( isset( $options[ self::OPTION_RESIZE_TO ] ) &&
 
-				     //check we have some image tools
-				     (
-					     ( extension_loaded( 'gd' ) && function_exists( 'gd_info' ) ) || //GD is fine , otherwise try imagick
-					     extension_loaded( 'imagick' )
-				     )
-				     && strpos( $target_file, '.gif' ) == false //skip gifs
+						//check we have some image tools
+						(
+								( extension_loaded( 'gd' ) && function_exists( 'gd_info' ) ) || //GD is fine , otherwise try imagick
+								extension_loaded( 'imagick' )
+						)
+						&& strpos( $target_file, '.gif' ) == false //skip gifs
 				) {
 					xapp_import( 'xapp.Image.Utils' );
 					xapp_import( 'xapp.Directory.Utils' );
@@ -761,8 +760,8 @@ class XApp_File_Utils
 					$cacheImage = false;
 
 					$options = array(
-						XApp_Image_Utils::OPTION_WIDTH         => $options[ self::OPTION_RESIZE_TO ],
-						XApp_Image_Utils::OPTION_PREVENT_CACHE => self::OPTION_PREVENT_CACHE
+							XApp_Image_Utils::OPTION_WIDTH         => $options[ self::OPTION_RESIZE_TO ],
+							XApp_Image_Utils::OPTION_PREVENT_CACHE => self::OPTION_PREVENT_CACHE
 					);
 
 					//enable caching if possible
@@ -774,8 +773,8 @@ class XApp_File_Utils
 					}
 
 					$job = array(
-						XApp_Image_Utils::IMAGE_OPERATION   => XApp_Image_Utils::OPERATION_RESIZE,
-						XApp_Image_Utils::OPERATION_OPTIONS => $options
+							XApp_Image_Utils::IMAGE_OPERATION   => XApp_Image_Utils::OPERATION_RESIZE,
+							XApp_Image_Utils::OPERATION_OPTIONS => $options
 					);
 
 					$jobs   = array();
@@ -784,12 +783,12 @@ class XApp_File_Utils
 
 					$errors = array();
 					XApp_Image_Utils::execute( $target_file,
-						null,
-						json_encode( $jobs ),
-						$errors,
-						false,
-						$cacheImage,
-						true );
+							null,
+							json_encode( $jobs ),
+							$errors,
+							false,
+							$cacheImage,
+							true );
 					exit;
 				}
 
@@ -841,10 +840,10 @@ class XApp_File_Utils
 	public static function mimeFromString($data)
 	{
 		if (extension_loaded('fileinfo') && preg_match(
-				'#^(\S+/[^\s;]+)#',
-				finfo_buffer(finfo_open(FILEINFO_MIME), $data),
-				$m
-			)
+						'#^(\S+/[^\s;]+)#',
+						finfo_buffer(finfo_open(FILEINFO_MIME), $data),
+						$m
+				)
 		) {
 			return $m[1];
 
@@ -964,8 +963,8 @@ class XApp_File_Utils
 			$attachment_name = str_replace('+', '%20', $attachment_name);
 
 			if (strpos($_SERVER['HTTP_USER_AGENT'], 'Chrome') !== false ||
-				preg_match('/ MSIE /',$_SERVER['HTTP_USER_AGENT'])  ||
-				preg_match('/ WebKit /',$_SERVER['HTTP_USER_AGENT'])) {
+					preg_match('/ MSIE /',$_SERVER['HTTP_USER_AGENT'])  ||
+					preg_match('/ WebKit /',$_SERVER['HTTP_USER_AGENT'])) {
 				header("Content-Disposition: attachment; filename=" . $attachment_name);
 			}else{
 				header("Content-Disposition: attachment; filename*=UTF-8'" . $attachment_name . ";");
@@ -1068,12 +1067,12 @@ class XApp_File_Utils
 			$Type = new $TypeClz();
 
 			$Type::config('glob', array(
-				'adapter' => 'Freedesktop',
-				'file' => realpath(XAPP_BASEDIR . '/externs/vendor/davidpersson/mm/data/glob.db')
+					'adapter' => 'Freedesktop',
+					'file' => realpath(XAPP_BASEDIR . '/externs/vendor/davidpersson/mm/data/glob.db')
 			));
 
 			$Type::config('magic', array(
-				'adapter' => 'Fileinfo'
+					'adapter' => 'Fileinfo'
 			));
 
 
@@ -1082,21 +1081,21 @@ class XApp_File_Utils
 
 			if(extension_loaded( 'imagick')) {
 				$Media::config(
-					array(
-						'image' => array('ImageBasic', 'Imagick')
-					)
+						array(
+								'image' => array('ImageBasic', 'Imagick')
+						)
 				);
 			}else{
 				$Media::config(
-					array(
-						'image' => array('ImageBasic')
-					)
+						array(
+								'image' => array('ImageBasic')
+						)
 				);
 			}
 
 			$mmType = array(
-				'type'=>$Type,
-				'media' => $Media
+					'type'=>$Type,
+					'media' => $Media
 			);
 
 		}
@@ -1150,7 +1149,7 @@ class XApp_File_Utils
 
 			$media = $mm['media'];
 
-			$info = $media::factory(['source' => $path]);
+			$info = $media::factory(array('source' => $path));
 
 			if($info){
 				$width      = $info->width();
@@ -1303,103 +1302,103 @@ class XApp_File_Utils
 	{
 		return array(
 			// Image formats.
-			'jpg|jpeg|jpe' => 'image/jpeg',
-			'gif' => 'image/gif',
-			'download' => 'application/rar',
-			'png' => 'image/png',
-			'bmp' => 'image/bmp',
-			'tif|tiff' => 'image/tiff',
-			'ico' => 'image/x-icon',
+				'jpg|jpeg|jpe' => 'image/jpeg',
+				'gif' => 'image/gif',
+				'download' => 'application/rar',
+				'png' => 'image/png',
+				'bmp' => 'image/bmp',
+				'tif|tiff' => 'image/tiff',
+				'ico' => 'image/x-icon',
 			// Video formats.
-			'asf|asx' => 'video/x-ms-asf',
-			'wmv' => 'video/x-ms-wmv',
-			'wmx' => 'video/x-ms-wmx',
-			'wm' => 'video/x-ms-wm',
-			'avi' => 'video/avi',
-			'divx' => 'video/divx',
-			'flv' => 'video/x-flv',
-			'mov|qt' => 'video/quicktime',
-			'mpeg|mpg|mpe' => 'video/mpeg',
-			'mp4|m4v' => 'video/mp4',
-			'ogv' => 'video/ogg',
-			'webm' => 'video/webm',
-			'mkv' => 'video/x-matroska',
-			'3gp|3gpp' => 'video/3gpp', // Can also be audio
-			'3g2|3gp2' => 'video/3gpp2', // Can also be audio
+				'asf|asx' => 'video/x-ms-asf',
+				'wmv' => 'video/x-ms-wmv',
+				'wmx' => 'video/x-ms-wmx',
+				'wm' => 'video/x-ms-wm',
+				'avi' => 'video/avi',
+				'divx' => 'video/divx',
+				'flv' => 'video/x-flv',
+				'mov|qt' => 'video/quicktime',
+				'mpeg|mpg|mpe' => 'video/mpeg',
+				'mp4|m4v' => 'video/mp4',
+				'ogv' => 'video/ogg',
+				'webm' => 'video/webm',
+				'mkv' => 'video/x-matroska',
+				'3gp|3gpp' => 'video/3gpp', // Can also be audio
+				'3g2|3gp2' => 'video/3gpp2', // Can also be audio
 			// Text formats.
-			'txt|asc|c|cc|h|srt' => 'text/plain',
-			'csv' => 'text/csv',
-			'tsv' => 'text/tab-separated-values',
-			'ics' => 'text/calendar',
-			'rtx' => 'text/richtext',
-			'css' => 'text/css',
-			'htm|html' => 'text/html',
-			'vtt' => 'text/vtt',
-			'dfxp' => 'application/ttaf+xml',
+				'txt|asc|c|cc|h|srt' => 'text/plain',
+				'csv' => 'text/csv',
+				'tsv' => 'text/tab-separated-values',
+				'ics' => 'text/calendar',
+				'rtx' => 'text/richtext',
+				'css' => 'text/css',
+				'htm|html' => 'text/html',
+				'vtt' => 'text/vtt',
+				'dfxp' => 'application/ttaf+xml',
 			// Audio formats.
-			'mp3|m4a|m4b' => 'audio/mpeg',
-			'ra|ram' => 'audio/x-realaudio',
-			'wav' => 'audio/wav',
-			'ogg|oga' => 'audio/ogg',
-			'mid|midi' => 'audio/midi',
-			'wma' => 'audio/x-ms-wma',
-			'wax' => 'audio/x-ms-wax',
-			'mka' => 'audio/x-matroska',
+				'mp3|m4a|m4b' => 'audio/mpeg',
+				'ra|ram' => 'audio/x-realaudio',
+				'wav' => 'audio/wav',
+				'ogg|oga' => 'audio/ogg',
+				'mid|midi' => 'audio/midi',
+				'wma' => 'audio/x-ms-wma',
+				'wax' => 'audio/x-ms-wax',
+				'mka' => 'audio/x-matroska',
 			// Misc application formats.
-			'rtf' => 'application/rtf',
-			'js' => 'application/javascript',
-			'pdf' => 'application/pdf',
-			'swf' => 'application/x-shockwave-flash',
-			'class' => 'application/java',
-			'tar' => 'application/x-tar',
-			'zip' => 'application/zip',
-			'gz|gzip' => 'application/x-gzip',
-			'rar' => 'application/rar',
-			'7z' => 'application/x-7z-compressed',
-			'exe' => 'application/x-msdownload',
+				'rtf' => 'application/rtf',
+				'js' => 'application/javascript',
+				'pdf' => 'application/pdf',
+				'swf' => 'application/x-shockwave-flash',
+				'class' => 'application/java',
+				'tar' => 'application/x-tar',
+				'zip' => 'application/zip',
+				'gz|gzip' => 'application/x-gzip',
+				'rar' => 'application/rar',
+				'7z' => 'application/x-7z-compressed',
+				'exe' => 'application/x-msdownload',
 			// MS Office formats.
-			'doc' => 'application/msword',
-			'pot|pps|ppt' => 'application/vnd.ms-powerpoint',
-			'wri' => 'application/vnd.ms-write',
-			'xla|xls|xlt|xlw' => 'application/vnd.ms-excel',
-			'mdb' => 'application/vnd.ms-access',
-			'mpp' => 'application/vnd.ms-project',
-			'docx' => 'application/vnd.openxmlformats-officedocument.wordprocessingml.document',
-			'docm' => 'application/vnd.ms-word.document.macroEnabled.12',
-			'dotx' => 'application/vnd.openxmlformats-officedocument.wordprocessingml.template',
-			'dotm' => 'application/vnd.ms-word.template.macroEnabled.12',
-			'xlsx' => 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
-			'xlsm' => 'application/vnd.ms-excel.sheet.macroEnabled.12',
-			'xlsb' => 'application/vnd.ms-excel.sheet.binary.macroEnabled.12',
-			'xltx' => 'application/vnd.openxmlformats-officedocument.spreadsheetml.template',
-			'xltm' => 'application/vnd.ms-excel.template.macroEnabled.12',
-			'xlam' => 'application/vnd.ms-excel.addin.macroEnabled.12',
-			'pptx' => 'application/vnd.openxmlformats-officedocument.presentationml.presentation',
-			'pptm' => 'application/vnd.ms-powerpoint.presentation.macroEnabled.12',
-			'ppsx' => 'application/vnd.openxmlformats-officedocument.presentationml.slideshow',
-			'ppsm' => 'application/vnd.ms-powerpoint.slideshow.macroEnabled.12',
-			'potx' => 'application/vnd.openxmlformats-officedocument.presentationml.template',
-			'potm' => 'application/vnd.ms-powerpoint.template.macroEnabled.12',
-			'ppam' => 'application/vnd.ms-powerpoint.addin.macroEnabled.12',
-			'sldx' => 'application/vnd.openxmlformats-officedocument.presentationml.slide',
-			'sldm' => 'application/vnd.ms-powerpoint.slide.macroEnabled.12',
-			'onetoc|onetoc2|onetmp|onepkg' => 'application/onenote',
-			'oxps' => 'application/oxps',
-			'xps' => 'application/vnd.ms-xpsdocument',
+				'doc' => 'application/msword',
+				'pot|pps|ppt' => 'application/vnd.ms-powerpoint',
+				'wri' => 'application/vnd.ms-write',
+				'xla|xls|xlt|xlw' => 'application/vnd.ms-excel',
+				'mdb' => 'application/vnd.ms-access',
+				'mpp' => 'application/vnd.ms-project',
+				'docx' => 'application/vnd.openxmlformats-officedocument.wordprocessingml.document',
+				'docm' => 'application/vnd.ms-word.document.macroEnabled.12',
+				'dotx' => 'application/vnd.openxmlformats-officedocument.wordprocessingml.template',
+				'dotm' => 'application/vnd.ms-word.template.macroEnabled.12',
+				'xlsx' => 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
+				'xlsm' => 'application/vnd.ms-excel.sheet.macroEnabled.12',
+				'xlsb' => 'application/vnd.ms-excel.sheet.binary.macroEnabled.12',
+				'xltx' => 'application/vnd.openxmlformats-officedocument.spreadsheetml.template',
+				'xltm' => 'application/vnd.ms-excel.template.macroEnabled.12',
+				'xlam' => 'application/vnd.ms-excel.addin.macroEnabled.12',
+				'pptx' => 'application/vnd.openxmlformats-officedocument.presentationml.presentation',
+				'pptm' => 'application/vnd.ms-powerpoint.presentation.macroEnabled.12',
+				'ppsx' => 'application/vnd.openxmlformats-officedocument.presentationml.slideshow',
+				'ppsm' => 'application/vnd.ms-powerpoint.slideshow.macroEnabled.12',
+				'potx' => 'application/vnd.openxmlformats-officedocument.presentationml.template',
+				'potm' => 'application/vnd.ms-powerpoint.template.macroEnabled.12',
+				'ppam' => 'application/vnd.ms-powerpoint.addin.macroEnabled.12',
+				'sldx' => 'application/vnd.openxmlformats-officedocument.presentationml.slide',
+				'sldm' => 'application/vnd.ms-powerpoint.slide.macroEnabled.12',
+				'onetoc|onetoc2|onetmp|onepkg' => 'application/onenote',
+				'oxps' => 'application/oxps',
+				'xps' => 'application/vnd.ms-xpsdocument',
 			// OpenOffice formats.
-			'odt' => 'application/vnd.oasis.opendocument.text',
-			'odp' => 'application/vnd.oasis.opendocument.presentation',
-			'ods' => 'application/vnd.oasis.opendocument.spreadsheet',
-			'odg' => 'application/vnd.oasis.opendocument.graphics',
-			'odc' => 'application/vnd.oasis.opendocument.chart',
-			'odb' => 'application/vnd.oasis.opendocument.database',
-			'odf' => 'application/vnd.oasis.opendocument.formula',
+				'odt' => 'application/vnd.oasis.opendocument.text',
+				'odp' => 'application/vnd.oasis.opendocument.presentation',
+				'ods' => 'application/vnd.oasis.opendocument.spreadsheet',
+				'odg' => 'application/vnd.oasis.opendocument.graphics',
+				'odc' => 'application/vnd.oasis.opendocument.chart',
+				'odb' => 'application/vnd.oasis.opendocument.database',
+				'odf' => 'application/vnd.oasis.opendocument.formula',
 			// WordPerfect formats.
-			'wp|wpd' => 'application/wordperfect',
+				'wp|wpd' => 'application/wordperfect',
 			// iWork formats.
-			'key' => 'application/vnd.apple.keynote',
-			'numbers' => 'application/vnd.apple.numbers',
-			'pages' => 'application/vnd.apple.pages',
+				'key' => 'application/vnd.apple.keynote',
+				'numbers' => 'application/vnd.apple.numbers',
+				'pages' => 'application/vnd.apple.pages',
 		);
 	}
 
@@ -1423,32 +1422,32 @@ class XApp_File_Utils
 
 		$filename_raw = $filename;
 		$special_chars = array(
-			"?",
-			"[",
-			"]",
-			"/",
-			"\\",
-			"=",
-			"<",
-			">",
-			":",
-			";",
-			",",
-			"'",
-			"\"",
-			"&",
-			"$",
-			"#",
-			"*",
-			"(",
-			")",
-			"|",
-			"~",
-			"`",
-			"!",
-			"{",
-			"}",
-			chr(0)
+				"?",
+				"[",
+				"]",
+				"/",
+				"\\",
+				"=",
+				"<",
+				">",
+				":",
+				";",
+				",",
+				"'",
+				"\"",
+				"&",
+				"$",
+				"#",
+				"*",
+				"(",
+				")",
+				"|",
+				"~",
+				"`",
+				"!",
+				"{",
+				"}",
+				chr(0)
 		);
 		/**
 		 * Filter the list of characters to remove from a filename.
@@ -1590,12 +1589,12 @@ class XApp_File_Utils
 		}
 
 		return new XApp_Error(
-			'md5_mismatch',
-			sprintf(
-				('The checksum of the file (%1$s) does not match the expected checksum value (%2$s).'),
-				bin2hex($file_md5),
-				bin2hex($expected_raw_md5)
-			)
+				'md5_mismatch',
+				sprintf(
+						('The checksum of the file (%1$s) does not match the expected checksum value (%2$s).'),
+						bin2hex($file_md5),
+						bin2hex($expected_raw_md5)
+				)
 		);
 	}
 }
