@@ -170,7 +170,7 @@ class XApp_File_Utils
 		}
 
 		if(is_object($exclusionMask)){
-			$exclusionMask = [];
+			$exclusionMask = array();
 		}
 
 		//$exclusionMask =[];
