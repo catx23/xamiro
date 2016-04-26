@@ -1149,7 +1149,7 @@ class XApp_File_Utils
 
 			$media = $mm['media'];
 
-			$info = $media::factory(['source' => $path]);
+			$info = $media::factory(array('source' => $path));
 
 			if($info){
 				$width      = $info->width();
