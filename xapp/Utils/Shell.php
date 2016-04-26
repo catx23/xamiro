@@ -21,7 +21,7 @@ class XApp_Shell_Utils
 	{
 		$command = "ps -f -C $cmd";
 
-		if (xo_has(self::OPTION_FILTER_PROCESSES, $options)) {
+		if (PHP_OS !=='WINNT' && xo_has(self::OPTION_FILTER_PROCESSES, $options)) {
 			$command .= " | grep -w " . xo_get(self::OPTION_FILTER_PROCESSES, $options);
 		}
 

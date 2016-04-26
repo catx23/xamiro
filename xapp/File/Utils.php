@@ -170,8 +170,9 @@ class XApp_File_Utils
 		}
 
 		if(is_object($exclusionMask)){
-			$exclusionMask = [];
+			$exclusionMask = array();
 		}
+
 
 		//$exclusionMask =[];
 		$scanlist = XApp_Directory_Utils::getFilteredDirList( realpath($srcDir) .DIRECTORY_SEPARATOR , $inclusionMask, $exclusionMask);
@@ -814,6 +815,7 @@ class XApp_File_Utils
 
 
 
+
 					if ( ! file_exists( $target_file ) ) {
 						xapp_clog( '' . $target_file . ' doesnt exists' );
 					}
@@ -1065,14 +1067,14 @@ class XApp_File_Utils
 			$TypeClz  = 'mm\\Mime\\Type';
 			$Type = new $TypeClz();
 
-			$Type::config('glob', [
+			$Type::config('glob', array(
 				'adapter' => 'Freedesktop',
 				'file' => realpath(XAPP_BASEDIR . '/externs/vendor/davidpersson/mm/data/glob.db')
-			]);
+			));
 
-			$Type::config('magic', [
+			$Type::config('magic', array(
 				'adapter' => 'Fileinfo'
-			]);
+			));
 
 
 			$MediaClz  = 'mm\\Media\\Info';
@@ -1080,15 +1082,15 @@ class XApp_File_Utils
 
 			if(extension_loaded( 'imagick')) {
 				$Media::config(
-					[
-						'image' => ['ImageBasic', 'Imagick']
-					]
+					array(
+						'image' => array('ImageBasic', 'Imagick')
+					)
 				);
 			}else{
 				$Media::config(
-					[
-						'image' => ['ImageBasic']
-					]
+					array(
+						'image' => array('ImageBasic')
+					)
 				);
 			}
 
@@ -1115,14 +1117,15 @@ class XApp_File_Utils
 			return 'folder';
 		}
 
-		$mm = self::getMMType();
+		if (version_compare(PHP_VERSION, '5.4.0', '>')) {
+			$mm = self::getMMType();
+			if ($mm) {
 
-		if($mm){
-
-			$type = $mm['type'];
-			$FileType = $type::guessName($path); // returns 'image'
-			if($FileType){
-				return $FileType;
+				$type = $mm['type'];
+				$FileType = $type::guessName($path); // returns 'image'
+				if ($FileType) {
+					return $FileType;
+				}
 			}
 		}
 		return 'unknown';

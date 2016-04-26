@@ -323,43 +323,43 @@ class XApp_Bootstrap
 	 * @var array
 	 */
 	public static $optionsDict = array(
-		self::BASEDIR => XAPP_TYPE_STRING,
-		self::SERVER_APPLICATION_CLASS => XAPP_TYPE_STRING,
-		self::APPDIR => XAPP_TYPE_STRING,
-		self::SERVICE => XAPP_TYPE_STRING,
-		self::APP_NAME => XAPP_TYPE_STRING,
-		self::APP_FOLDER => XAPP_TYPE_STRING,
-		self::RELATIVE_VARIABLES => XAPP_TYPE_ARRAY,
-		self::DOC_ROOT => XAPP_TYPE_STRING,
-		self::RESOURCE_CONFIG_SUFFIX => XAPP_TYPE_STRING,
-		self::RESOURCE_RENDERER_PREFIX => XAPP_TYPE_STRING,
-		self::RESOURCE_RENDERER_CLZ => XAPP_TYPE_STRING,
-		self::RENDER_DELEGATE => XAPP_TYPE_OBJECT,
-		self::RPC_SERVER => XAPP_TYPE_OBJECT,
-		self::PLUGIN_DIRECTORY => XAPP_TYPE_STRING,
-		self::PLUGIN_MASK => XAPP_TYPE_STRING,
-		self::ALLOW_PLUGINS => array(XAPP_TYPE_BOOL,XAPP_TYPE_INT),
-		self::FLAGS => XAPP_TYPE_ARRAY,
-		self::PROHIBITED_PLUGINS => XAPP_TYPE_STRING,
-		self::AUTH_DELEGATE => XAPP_TYPE_OBJECT,
-		self::RPC_TARGET => XAPP_TYPE_STRING,
-		self::XFILE_CONF => XAPP_TYPE_ARRAY,
-		self::XAPP_CONF => XAPP_TYPE_ARRAY,
-		self::LOGGING_CONF => XAPP_TYPE_ARRAY,
-		self::STORE_CONF => XAPP_TYPE_ARRAY,
-		self::IGNORED_RPC_METHODS => XAPP_TYPE_ARRAY,
-		self::GATEWAY_CONF => XAPP_TYPE_ARRAY,
-		self::SIGNED_SERVICE_TYPES => XAPP_TYPE_ARRAY,
-		self::SIGNING_TOKEN => XAPP_TYPE_STRING,
-		self::SIGNING_KEY => XAPP_TYPE_STRING,
-		self::LOGGING_FLAGS => XAPP_TYPE_ARRAY,
-		self::LOGGER => XAPP_TYPE_OBJECT,
-		self::STORE => XAPP_TYPE_OBJECT,
-		self::GATEWAY => XAPP_TYPE_OBJECT,
-		self::SERIVCE_CONF => XAPP_TYPE_ARRAY,
-		self::USER_CONF => array(XAPP_TYPE_ARRAY, XAPP_TYPE_STRING, XAPP_TYPE_OBJECT),
-		self::RESOURCE_CONFIG_PREFIX => XAPP_TYPE_STRING,
-		self::OVERRIDE => XAPP_TYPE_ARRAY
+			self::BASEDIR => XAPP_TYPE_STRING,
+			self::SERVER_APPLICATION_CLASS => XAPP_TYPE_STRING,
+			self::APPDIR => XAPP_TYPE_STRING,
+			self::SERVICE => XAPP_TYPE_STRING,
+			self::APP_NAME => XAPP_TYPE_STRING,
+			self::APP_FOLDER => XAPP_TYPE_STRING,
+			self::RELATIVE_VARIABLES => XAPP_TYPE_ARRAY,
+			self::DOC_ROOT => XAPP_TYPE_STRING,
+			self::RESOURCE_CONFIG_SUFFIX => XAPP_TYPE_STRING,
+			self::RESOURCE_RENDERER_PREFIX => XAPP_TYPE_STRING,
+			self::RESOURCE_RENDERER_CLZ => XAPP_TYPE_STRING,
+			self::RENDER_DELEGATE => XAPP_TYPE_OBJECT,
+			self::RPC_SERVER => XAPP_TYPE_OBJECT,
+			self::PLUGIN_DIRECTORY => XAPP_TYPE_STRING,
+			self::PLUGIN_MASK => XAPP_TYPE_STRING,
+			self::ALLOW_PLUGINS => array(XAPP_TYPE_BOOL,XAPP_TYPE_INT),
+			self::FLAGS => XAPP_TYPE_ARRAY,
+			self::PROHIBITED_PLUGINS => XAPP_TYPE_STRING,
+			self::AUTH_DELEGATE => XAPP_TYPE_OBJECT,
+			self::RPC_TARGET => XAPP_TYPE_STRING,
+			self::XFILE_CONF => XAPP_TYPE_ARRAY,
+			self::XAPP_CONF => XAPP_TYPE_ARRAY,
+			self::LOGGING_CONF => XAPP_TYPE_ARRAY,
+			self::STORE_CONF => XAPP_TYPE_ARRAY,
+			self::IGNORED_RPC_METHODS => XAPP_TYPE_ARRAY,
+			self::GATEWAY_CONF => XAPP_TYPE_ARRAY,
+			self::SIGNED_SERVICE_TYPES => XAPP_TYPE_ARRAY,
+			self::SIGNING_TOKEN => XAPP_TYPE_STRING,
+			self::SIGNING_KEY => XAPP_TYPE_STRING,
+			self::LOGGING_FLAGS => XAPP_TYPE_ARRAY,
+			self::LOGGER => XAPP_TYPE_OBJECT,
+			self::STORE => XAPP_TYPE_OBJECT,
+			self::GATEWAY => XAPP_TYPE_OBJECT,
+			self::SERIVCE_CONF => XAPP_TYPE_ARRAY,
+			self::USER_CONF => array(XAPP_TYPE_ARRAY, XAPP_TYPE_STRING, XAPP_TYPE_OBJECT),
+			self::RESOURCE_CONFIG_PREFIX => XAPP_TYPE_STRING,
+			self::OVERRIDE => XAPP_TYPE_ARRAY
 	);
 
 	/**
@@ -368,43 +368,43 @@ class XApp_Bootstrap
 	 * @var array
 	 */
 	public static $optionsRule = array(
-		self::BASEDIR => 1,
-		self::SERVER_APPLICATION_CLASS => 0,
-		self::APPDIR => 0,
-		self::SERVICE => 0,
-		self::APP_NAME => 1,
-		self::APP_FOLDER => 0,
-		self::RELATIVE_VARIABLES => 0,
-		self::DOC_ROOT => 0,
-		self::RENDER_DELEGATE => 0,
-		self::RESOURCE_CONFIG_SUFFIX => 0,
-		self::RESOURCE_RENDERER_PREFIX => 0,
-		self::RESOURCE_RENDERER_CLZ => 0,
-		self::PLUGIN_DIRECTORY => 0,
-		self::PLUGIN_MASK => 0,
-		self::ALLOW_PLUGINS => 0,
-		self::FLAGS => 0,
-		self::RPC_SERVER => 0,
-		self::PROHIBITED_PLUGINS => 0,
-		self::AUTH_DELEGATE => 0,
-		self::RPC_TARGET => 0,
-		self::IGNORED_RPC_METHODS => 0,
-		self::GATEWAY_CONF => 0,
-		self::LOGGING_CONF => 0,
-		self::SIGNED_SERVICE_TYPES => 0,
-		self::SIGNING_TOKEN => 0,
-		self::SIGNING_KEY => 0,
-		self::XFILE_CONF => 0,
-		self::XAPP_CONF => 0,
-		self::LOGGING_FLAGS => 0,
-		self::LOGGER => 0,
-		self::STORE_CONF => 0,
-		self::STORE => 0,
-		self::GATEWAY => 0,
-		self::SERIVCE_CONF => 0,
-		self::USER_CONF => 0,
-		self::RESOURCE_CONFIG_PREFIX => 0,
-		self::OVERRIDE => 0
+			self::BASEDIR => 1,
+			self::SERVER_APPLICATION_CLASS => 0,
+			self::APPDIR => 0,
+			self::SERVICE => 0,
+			self::APP_NAME => 1,
+			self::APP_FOLDER => 0,
+			self::RELATIVE_VARIABLES => 0,
+			self::DOC_ROOT => 0,
+			self::RENDER_DELEGATE => 0,
+			self::RESOURCE_CONFIG_SUFFIX => 0,
+			self::RESOURCE_RENDERER_PREFIX => 0,
+			self::RESOURCE_RENDERER_CLZ => 0,
+			self::PLUGIN_DIRECTORY => 0,
+			self::PLUGIN_MASK => 0,
+			self::ALLOW_PLUGINS => 0,
+			self::FLAGS => 0,
+			self::RPC_SERVER => 0,
+			self::PROHIBITED_PLUGINS => 0,
+			self::AUTH_DELEGATE => 0,
+			self::RPC_TARGET => 0,
+			self::IGNORED_RPC_METHODS => 0,
+			self::GATEWAY_CONF => 0,
+			self::LOGGING_CONF => 0,
+			self::SIGNED_SERVICE_TYPES => 0,
+			self::SIGNING_TOKEN => 0,
+			self::SIGNING_KEY => 0,
+			self::XFILE_CONF => 0,
+			self::XAPP_CONF => 0,
+			self::LOGGING_FLAGS => 0,
+			self::LOGGER => 0,
+			self::STORE_CONF => 0,
+			self::STORE => 0,
+			self::GATEWAY => 0,
+			self::SERIVCE_CONF => 0,
+			self::USER_CONF => 0,
+			self::RESOURCE_CONFIG_PREFIX => 0,
+			self::OVERRIDE => 0
 	);
 	/**
 	 * contains the singleton instance for this class
@@ -418,43 +418,43 @@ class XApp_Bootstrap
 	 * @var array
 	 */
 	public $options = array(
-		self::BASEDIR => null,
-		self::SERVER_APPLICATION_CLASS => null,
-		self::APPDIR => null,
-		self::SERVICE => null,
-		self::APP_NAME => null,
-		self::APP_FOLDER => null,
-		self::RELATIVE_VARIABLES => null,
-		self::DOC_ROOT => null,
-		self::RENDER_DELEGATE => null,
-		self::RESOURCE_CONFIG_SUFFIX => '',
-		self::RESOURCE_RENDERER_PREFIX => 'joomla',
-		self::RESOURCE_RENDERER_CLZ => 'XApp_Joomla_Resource_Renderer',
-		self::PLUGIN_DIRECTORY => null,
-		self::PLUGIN_MASK => null,
-		self::ALLOW_PLUGINS => true,
-		self::FLAGS => array(),
-		self::RPC_SERVER => null,
-		self::LOGGER => null,
-		self::LOGGING_FLAGS => array(),
-		self::PROHIBITED_PLUGINS => '',
-		self::AUTH_DELEGATE => null,
-		self::RPC_TARGET => null,
-		self::IGNORED_RPC_METHODS => null,
-		self::GATEWAY_CONF => null,
-		self::LOGGING_CONF => null,
-		self::SIGNED_SERVICE_TYPES => null, //sign all RPC calls
-		self::SIGNING_TOKEN => null,
-		self::SIGNING_KEY => null,
-		self::XFILE_CONF => null,
-		self::XAPP_CONF => null,
-		self::STORE_CONF => null,
-		self::STORE => null,
-		self::GATEWAY => null,
-		self::SERIVCE_CONF => null,
-		self::USER_CONF => 0,
-		self::RESOURCE_CONFIG_PREFIX => '',
-		self::OVERRIDE => array()
+			self::BASEDIR => null,
+			self::SERVER_APPLICATION_CLASS => null,
+			self::APPDIR => null,
+			self::SERVICE => null,
+			self::APP_NAME => null,
+			self::APP_FOLDER => null,
+			self::RELATIVE_VARIABLES => null,
+			self::DOC_ROOT => null,
+			self::RENDER_DELEGATE => null,
+			self::RESOURCE_CONFIG_SUFFIX => '',
+			self::RESOURCE_RENDERER_PREFIX => 'joomla',
+			self::RESOURCE_RENDERER_CLZ => 'XApp_Joomla_Resource_Renderer',
+			self::PLUGIN_DIRECTORY => null,
+			self::PLUGIN_MASK => null,
+			self::ALLOW_PLUGINS => true,
+			self::FLAGS => array(),
+			self::RPC_SERVER => null,
+			self::LOGGER => null,
+			self::LOGGING_FLAGS => array(),
+			self::PROHIBITED_PLUGINS => '',
+			self::AUTH_DELEGATE => null,
+			self::RPC_TARGET => null,
+			self::IGNORED_RPC_METHODS => null,
+			self::GATEWAY_CONF => null,
+			self::LOGGING_CONF => null,
+			self::SIGNED_SERVICE_TYPES => null, //sign all RPC calls
+			self::SIGNING_TOKEN => null,
+			self::SIGNING_KEY => null,
+			self::XFILE_CONF => null,
+			self::XAPP_CONF => null,
+			self::STORE_CONF => null,
+			self::STORE => null,
+			self::GATEWAY => null,
+			self::SERIVCE_CONF => null,
+			self::USER_CONF => 0,
+			self::RESOURCE_CONFIG_PREFIX => '',
+			self::OVERRIDE => array()
 	);
 	/***
 	 * @var null|XApp_App_Renderer
@@ -566,11 +566,11 @@ class XApp_Bootstrap
 
 		$_REQUEST_TYPE = XApp_Service_Entry_Utils::getServiceType();
 		return
-			$_REQUEST_TYPE == XApp_Service_Entry_Utils::SMD_CALL ||
-			$_REQUEST_TYPE == XApp_Service_Entry_Utils::SMD_GET ||
-			$_REQUEST_TYPE == XApp_Service_Entry_Utils::UPLOAD ||
-			$_REQUEST_TYPE == XApp_Service_Entry_Utils::LOGIN ||
-			$_REQUEST_TYPE == XApp_Service_Entry_Utils::DOWNLOAD;
+				$_REQUEST_TYPE == XApp_Service_Entry_Utils::SMD_CALL ||
+				$_REQUEST_TYPE == XApp_Service_Entry_Utils::SMD_GET ||
+				$_REQUEST_TYPE == XApp_Service_Entry_Utils::UPLOAD ||
+				$_REQUEST_TYPE == XApp_Service_Entry_Utils::LOGIN ||
+				$_REQUEST_TYPE == XApp_Service_Entry_Utils::DOWNLOAD;
 
 
 	}
@@ -769,8 +769,8 @@ class XApp_Bootstrap
 
 		$logger = null;
 		$loggingFlags = xapp_has_option(self::LOGGING_FLAGS, $this) ? xapp_get_option(
-			self::LOGGING_FLAGS,
-			$this
+				self::LOGGING_FLAGS,
+				$this
 		) : array();
 
 		/***
@@ -778,13 +778,17 @@ class XApp_Bootstrap
 		 */
 		if (in_array(XAPP_BOOTSTRAP_SETUP_LOGGER, $flags) && xapp_has_option(self::LOGGING_CONF, $this)) {
 			$logger = $this->setupLogger(xapp_get_option(self::LOGGING_CONF));
-			xapp_set_option(self::LOGGER, $logger, $this);
-			if (!function_exists('xp_log')) {
-				function xp_log($message)
-				{
-					$bootstrap = XApp_Bootstrap::instance();
-					$log = xapp_get_option(XApp_Bootstrap::LOGGER, $bootstrap);
-					$log->log($message);
+			if($logger) {
+				xapp_set_option(self::LOGGER, $logger, $this);
+
+
+				if (!function_exists('xp_log')) {
+					function xp_log($message)
+					{
+						$bootstrap = XApp_Bootstrap::instance();
+						$log = xapp_get_option(XApp_Bootstrap::LOGGER, $bootstrap);
+						$log->log($message);
+					}
 				}
 			}
 
@@ -829,24 +833,24 @@ class XApp_Bootstrap
 			$XAPP_RESOURCE_CONFIG_PATH = '' . xapp_get_option(self::APPDIR, $this) . DIRECTORY_SEPARATOR;
 			if ($XAPP_RUN_TIME_CONFIGURATION === 'debug') {
 				$XAPP_RESOURCE_CONFIG_PATH .= 'lib' . DIRECTORY_SEPARATOR . xapp_get_option(
-						self::APP_NAME,
-						$this
-					) . DIRECTORY_SEPARATOR . 'resources-' . $XAPP_RUN_TIME_CONFIGURATION . xapp_get_option(
-						self::RESOURCE_CONFIG_SUFFIX,
-						$this
-					) . '.json';
+								self::APP_NAME,
+								$this
+						) . DIRECTORY_SEPARATOR . 'resources-' . $XAPP_RUN_TIME_CONFIGURATION . xapp_get_option(
+								self::RESOURCE_CONFIG_SUFFIX,
+								$this
+						) . '.json';
 			} else {
 				if ($XAPP_RUN_TIME_CONFIGURATION === 'release') {
 					$XAPP_RESOURCE_CONFIG_PATH .= DIRECTORY_SEPARATOR . xapp_get_option(
-							self::APP_FOLDER,
-							$this
-						) . DIRECTORY_SEPARATOR . xapp_get_option(
-							self::APP_NAME,
-							$this
-						) . DIRECTORY_SEPARATOR . 'resources-' . $XAPP_RUN_TIME_CONFIGURATION . xapp_get_option(
-							self::RESOURCE_CONFIG_SUFFIX,
-							$this
-						) . '.json';
+									self::APP_FOLDER,
+									$this
+							) . DIRECTORY_SEPARATOR . xapp_get_option(
+									self::APP_NAME,
+									$this
+							) . DIRECTORY_SEPARATOR . 'resources-' . $XAPP_RUN_TIME_CONFIGURATION . xapp_get_option(
+									self::RESOURCE_CONFIG_SUFFIX,
+									$this
+							) . '.json';
 				}
 			}
 		}
@@ -855,24 +859,24 @@ class XApp_Bootstrap
 		 * Load plugin resources
 		 */
 		if (in_array(XAPP_BOOTSTRAP_LOAD_PLUGIN_RESOURCES, $flags) || in_array(
-				XAPP_BOOTSTRAP_REGISTER_SERVER_PLUGINS,
-				$flags
-			)
+						XAPP_BOOTSTRAP_REGISTER_SERVER_PLUGINS,
+						$flags
+				)
 		) {
 
 			if (xapp_get_option(self::ALLOW_PLUGINS, $this) && xapp_get_option(
-					self::PLUGIN_DIRECTORY,
-					$this
-				) && xapp_get_option(self::PLUGIN_DIRECTORY, $this)
+							self::PLUGIN_DIRECTORY,
+							$this
+					) && xapp_get_option(self::PLUGIN_DIRECTORY, $this)
 			) {
 
 				if (!$xComPluginManager) {
 					$xComPluginManager = new XApp_Commander_PluginManager();
 				}
 				$pluginResources = $xComPluginManager->getPluginResources(
-					xapp_get_option(self::PLUGIN_DIRECTORY, $this),
-					xapp_get_option(self::PLUGIN_DIRECTORY, $this),
-					xapp_get_option(self::PLUGIN_MASK, $this)
+						xapp_get_option(self::PLUGIN_DIRECTORY, $this),
+						xapp_get_option(self::PLUGIN_DIRECTORY, $this),
+						xapp_get_option(self::PLUGIN_MASK, $this)
 				);
 			}
 		}
@@ -882,8 +886,8 @@ class XApp_Bootstrap
 		 */
 		if (in_array(XAPP_BOOTSTRAP_REGISTER_SERVER_PLUGINS, $flags)) {
 			if (
-				xapp_get_option(self::ALLOW_PLUGINS, $this) &&
-				xapp_get_option(self::PLUGIN_DIRECTORY, $this) && xapp_get_option(self::PLUGIN_DIRECTORY, $this)
+					xapp_get_option(self::ALLOW_PLUGINS, $this) &&
+					xapp_get_option(self::PLUGIN_DIRECTORY, $this) && xapp_get_option(self::PLUGIN_DIRECTORY, $this)
 			) {
 
 				if (!$xComPluginManager) {
@@ -892,8 +896,8 @@ class XApp_Bootstrap
 
 
 				$plugins = $xComPluginManager->getPlugins(
-					xapp_get_option(self::PLUGIN_DIRECTORY, $this),
-					xapp_get_option(self::PLUGIN_MASK, $this)
+						xapp_get_option(self::PLUGIN_DIRECTORY, $this),
+						xapp_get_option(self::PLUGIN_MASK, $this)
 				);
 			} else {
 
@@ -908,11 +912,11 @@ class XApp_Bootstrap
 		 */
 		if ($xComPluginManager !== null &&
 
-			count($plugins) && //we have plugin descriptions
+				count($plugins) && //we have plugin descriptions
 
-			xapp_get_option(self::RPC_SERVER, $this) && //there must be RPC server
+				xapp_get_option(self::RPC_SERVER, $this) && //there must be RPC server
 
-			in_array(XAPP_BOOTSTRAP_REGISTER_SERVER_PLUGINS, $flags)
+				in_array(XAPP_BOOTSTRAP_REGISTER_SERVER_PLUGINS, $flags)
 		) //yes, we want plugins
 
 		{
@@ -966,9 +970,9 @@ class XApp_Bootstrap
 									if (!class_exists($pluginConfig->name)) {
 
 										$pluginPath = xapp_get_option(
-												self::PLUGIN_DIRECTORY,
-												$this
-											) . DIRECTORY_SEPARATOR . $pluginConfig->location . DIRECTORY_SEPARATOR . $pluginConfig->name . '.php';
+														self::PLUGIN_DIRECTORY,
+														$this
+												) . DIRECTORY_SEPARATOR . $pluginConfig->location . DIRECTORY_SEPARATOR . $pluginConfig->name . '.php';
 										if (in_array(XAPP_LOG_PLUGIN_CREATION, $loggingFlags)) {
 											$this->log('loading plugin ' . $pluginConfig->name . ' at ' . $pluginPath);
 										}
@@ -982,12 +986,12 @@ class XApp_Bootstrap
 									//create instance
 									if (class_exists($serviceClass)) {
 										$plugin = $xComPluginManager->createPluginInstance(
-											$pluginConfig->name, //class name,
-											true, //yes, call plugin->load()
-											array(), //no service configuration
-											array(), //no logging configuration
-											xapp_get_options(), //our own configuration,
-											$pluginConfig //the plugin info, including all client side resources
+												$pluginConfig->name, //class name,
+												true, //yes, call plugin->load()
+												array(), //no service configuration
+												array(), //no logging configuration
+												xapp_get_options(), //our own configuration,
+												$pluginConfig //the plugin info, including all client side resources
 										);
 
 										if ($plugin != null) {
@@ -1028,9 +1032,9 @@ class XApp_Bootstrap
 							if (!class_exists($pluginConfig->name)) {
 
 								$pluginPath = xapp_get_option(
-										self::PLUGIN_DIRECTORY,
-										$this
-									) . DIRECTORY_SEPARATOR . $pluginConfig->location . DIRECTORY_SEPARATOR . $pluginConfig->name . '.php';
+												self::PLUGIN_DIRECTORY,
+												$this
+										) . DIRECTORY_SEPARATOR . $pluginConfig->location . DIRECTORY_SEPARATOR . $pluginConfig->name . '.php';
 
 								if (in_array(XAPP_LOG_PLUGIN_CREATION, $loggingFlags)) {
 									$this->log('loading plugin ' . $pluginConfig->name . ' at ' . $pluginPath);
@@ -1075,8 +1079,8 @@ class XApp_Bootstrap
 		 */
 		if (in_array(XAPP_BOOTSTRAP_SETUP_SERVICES, $flags) &&
 
-			xapp_has_option(self::SERIVCE_CONF, $this) &&
-			xapp_get_option(self::RPC_SERVER, $this)
+				xapp_has_option(self::SERIVCE_CONF, $this) &&
+				xapp_get_option(self::RPC_SERVER, $this)
 		) {
 			//pull in registry of xapp core framework
 			XApp_Service_Entry_Utils::includeXAppRegistry();
@@ -1107,7 +1111,7 @@ class XApp_Bootstrap
 		 */
 		if (in_array(XAPP_BOOTSTRAP_SETUP_GATEWAY, $flags) &&
 
-			xapp_get_option(self::RPC_SERVER, $this)
+				xapp_get_option(self::RPC_SERVER, $this)
 		) {
 
 			try {
@@ -1195,8 +1199,8 @@ class XApp_Bootstrap
 
 					//xapp_clog('add key : '.xapp_get_option(self::SIGNING_KEY, $this) . ' | ' . xapp_get_option(self::SIGNING_TOKEN, $this));
 					$gateway->addKey(
-						xapp_get_option(self::SIGNING_KEY, $this),
-						xapp_get_option(self::SIGNING_TOKEN, $this)
+							xapp_get_option(self::SIGNING_KEY, $this),
+							xapp_get_option(self::SIGNING_TOKEN, $this)
 					);
 				}
 				xapp_set_option(self::GATEWAY, $gateway, $this);
@@ -1243,8 +1247,8 @@ class XApp_Bootstrap
 		 * Load JSON deps
 		 */
 		if (in_array(XAPP_BOOTSTRAP_LOAD_CLIENT_RESOURCES, $flags) ||
-			in_array(XAPP_BOOTSTRAP_SETUP_SERVICES, $flags) ||
-			in_array(XAPP_BOOTSTRAP_LOAD_PLUGIN_RESOURCES, $flags)
+				in_array(XAPP_BOOTSTRAP_SETUP_SERVICES, $flags) ||
+				in_array(XAPP_BOOTSTRAP_LOAD_PLUGIN_RESOURCES, $flags)
 		) {
 
 			//pull in parts of xapp json framework
@@ -1275,9 +1279,9 @@ class XApp_Bootstrap
 
 			//pull in cms related resource renderer
 			include_once(XAPP_LIB . DIRECTORY_SEPARATOR . xapp_get_option(
-					self::RESOURCE_RENDERER_PREFIX,
-					$this
-				) . DIRECTORY_SEPARATOR . 'ResourceRenderer.php');
+							self::RESOURCE_RENDERER_PREFIX,
+							$this
+					) . DIRECTORY_SEPARATOR . 'ResourceRenderer.php');
 		}
 
 
@@ -1285,9 +1289,9 @@ class XApp_Bootstrap
 		 * Load plugin manager
 		 */
 		if (in_array(XAPP_BOOTSTRAP_LOAD_PLUGIN_RESOURCES, $flags) || in_array(
-				XAPP_BOOTSTRAP_REGISTER_SERVER_PLUGINS,
-				$flags
-			)
+						XAPP_BOOTSTRAP_REGISTER_SERVER_PLUGINS,
+						$flags
+				)
 		) {
 
 			//pull in xapp plugin manager
@@ -1336,9 +1340,16 @@ class XApp_Bootstrap
 	 */
 	private function setupLogger($loggingConf){
 
-		$logginConf[Xapp_Log::WRITER] = array(new Xapp_Log_Writer_File(xapp_get_option(Xapp_Log::PATH, $loggingConf)));
-
-		return new Xapp_Log_Error($loggingConf);
+		$path = realpath(Xapp_Log::PATH);
+		if($path && is_writable($path)) {
+			$logginConf[Xapp_Log::WRITER] = array(
+					new Xapp_Log_Writer_File(
+							xapp_get_option(Xapp_Log::PATH, $loggingConf)
+					)
+			);
+			return new Xapp_Log_Error($loggingConf);
+		}
+		return null;
 	}
 
 	/**
@@ -1376,15 +1387,15 @@ class XApp_Bootstrap
 		if ($conf == null) {
 			$conf = array
 			(
-				XAPP_CONF_DEBUG_MODE => null,
-				XAPP_CONF_AUTOLOAD => false,
-				XAPP_CONF_DEV_MODE => XApp_Service_Entry_Utils::isDebug(),
-				XAPP_CONF_HANDLE_BUFFER => true,
-				XAPP_CONF_HANDLE_SHUTDOWN => false,
-				XAPP_CONF_HTTP_GZIP => true,
-				XAPP_CONF_CONSOLE => false,
-				XAPP_CONF_HANDLE_ERROR => true,
-				XAPP_CONF_HANDLE_EXCEPTION => true,
+					XAPP_CONF_DEBUG_MODE => null,
+					XAPP_CONF_AUTOLOAD => false,
+					XAPP_CONF_DEV_MODE => XApp_Service_Entry_Utils::isDebug(),
+					XAPP_CONF_HANDLE_BUFFER => true,
+					XAPP_CONF_HANDLE_SHUTDOWN => false,
+					XAPP_CONF_HTTP_GZIP => true,
+					XAPP_CONF_CONSOLE => false,
+					XAPP_CONF_HANDLE_ERROR => true,
+					XAPP_CONF_HANDLE_EXCEPTION => true,
 			);
 
 
@@ -1416,27 +1427,27 @@ class XApp_Bootstrap
 		 * Filtered methods
 		 */
 		$ignoredRPCMethods = array(
-			'load',
-			'getObject',
-			'init',
-			'setup',
-			'log',
-			'onBeforeCall',
-			'onAfterCall',
-			'dumpObject',
-			'applyFilter',
-			'getLastJSONError',
-			'cleanUrl',
-			'rootUrl',
-			'siteUrl',
-			'getXCOption',
-			'getIndexer',
-			'getIndexOptions',
-			'getIndexOptions',
-			'indexDocument',
-			'onBeforeSearch',
-			'toDSURL',
-			'searchTest'
+				'load',
+				'getObject',
+				'init',
+				'setup',
+				'log',
+				'onBeforeCall',
+				'onAfterCall',
+				'dumpObject',
+				'applyFilter',
+				'getLastJSONError',
+				'cleanUrl',
+				'rootUrl',
+				'siteUrl',
+				'getXCOption',
+				'getIndexer',
+				'getIndexOptions',
+				'getIndexOptions',
+				'indexDocument',
+				'onBeforeSearch',
+				'toDSURL',
+				'searchTest'
 		);
 
 		$ignoredMethodsOption = xo_get(self::IGNORED_RPC_METHODS);
@@ -1473,19 +1484,19 @@ class XApp_Bootstrap
 			//Options for SMD based JSONP-RPC classes
 			$opt = array
 			(
-				Xapp_Rpc_Smd::IGNORE_METHODS => $ignoredRPCMethods,
-				Xapp_Rpc_Smd::IGNORE_PREFIXES => array('_', '__')
+					Xapp_Rpc_Smd::IGNORE_METHODS => $ignoredRPCMethods,
+					Xapp_Rpc_Smd::IGNORE_PREFIXES => array('_', '__')
 			);
 			$smd = new Xapp_Rpc_Smd_Jsonp($opt);
 
 			//Options for RPC server
 			$opt = array
 			(
-				Xapp_Rpc_Server::ALLOW_FUNCTIONS => true,
-				Xapp_Rpc_Server::APPLICATION_ERROR => false,
-				Xapp_Rpc_Server::METHOD_AS_SERVICE => true,
-				Xapp_Rpc_Server::DEBUG => XApp_Service_Entry_Utils::isDebug(),
-				Xapp_Rpc_Server::SMD => $smd
+					Xapp_Rpc_Server::ALLOW_FUNCTIONS => true,
+					Xapp_Rpc_Server::APPLICATION_ERROR => false,
+					Xapp_Rpc_Server::METHOD_AS_SERVICE => true,
+					Xapp_Rpc_Server::DEBUG => XApp_Service_Entry_Utils::isDebug(),
+					Xapp_Rpc_Server::SMD => $smd
 			);
 			$server = Xapp_Rpc::server(XApp_Service_Entry_Utils::isRaw() ? 'raw' : 'jsonp', $opt);
 
@@ -1494,11 +1505,11 @@ class XApp_Bootstrap
 			//Options for SMD based RPC classes
 			$opt = array
 			(
-				Xapp_Rpc_Smd_Json::IGNORE_METHODS => $ignoredRPCMethods,
-				Xapp_Rpc_Smd_Json::IGNORE_PREFIXES => array('_', '__'),
-				Xapp_Rpc_Smd_Json::METHOD_TARGET => false,
-				Xapp_Rpc_Smd_Json::SERVICE_OVER_GET => true,
-				Xapp_Rpc_Smd_Json::TARGET => xapp_get_option(self::RPC_TARGET, $this)
+					Xapp_Rpc_Smd_Json::IGNORE_METHODS => $ignoredRPCMethods,
+					Xapp_Rpc_Smd_Json::IGNORE_PREFIXES => array('_', '__'),
+					Xapp_Rpc_Smd_Json::METHOD_TARGET => false,
+					Xapp_Rpc_Smd_Json::SERVICE_OVER_GET => true,
+					Xapp_Rpc_Smd_Json::TARGET => xapp_get_option(self::RPC_TARGET, $this)
 			);
 			$smd = new Xapp_Rpc_Smd_Json($opt);
 
@@ -1506,14 +1517,14 @@ class XApp_Bootstrap
 			//Options for RPC server
 			$opt = array
 			(
-				Xapp_Rpc_Server::ALLOW_FUNCTIONS => true,
-				Xapp_Rpc_Server::APPLICATION_ERROR => false,
-				Xapp_Rpc_Server::METHOD_AS_SERVICE => false,
-				Xapp_Rpc_Server::ALLOW_BATCHED_REQUESTS =>true,
-				Xapp_Rpc_Server::SERVICE_OVER_GET => true,
-				Xapp_Rpc_Server::DEBUG => XApp_Service_Entry_Utils::isDebug(),
-				Xapp_Rpc_Server::VALIDATE => !XApp_Service_Entry_Utils::isUpload(),
-				Xapp_Rpc_Server::SMD => $smd
+					Xapp_Rpc_Server::ALLOW_FUNCTIONS => true,
+					Xapp_Rpc_Server::APPLICATION_ERROR => false,
+					Xapp_Rpc_Server::METHOD_AS_SERVICE => false,
+					Xapp_Rpc_Server::ALLOW_BATCHED_REQUESTS =>true,
+					Xapp_Rpc_Server::SERVICE_OVER_GET => true,
+					Xapp_Rpc_Server::DEBUG => XApp_Service_Entry_Utils::isDebug(),
+					Xapp_Rpc_Server::VALIDATE => !XApp_Service_Entry_Utils::isUpload(),
+					Xapp_Rpc_Server::SMD => $smd
 			);
 			$server = Xapp_Rpc::server('json', $opt);
 		}
@@ -1676,11 +1687,11 @@ class XApp_Bootstrap
 			xapp_import('xapp.Store.Json.Json');
 			xapp_import('xapp.Service.Utils');
 			$userMgr = new XApp_UserManager(
-				Array(
-					XApp_UserManager::STORE_CONF => array(
-						XApp_Store_JSON::CONF_FILE => xapp_get_option(self::USER_CONF, $this)
+					Array(
+							XApp_UserManager::STORE_CONF => array(
+									XApp_Store_JSON::CONF_FILE => xapp_get_option(self::USER_CONF, $this)
+							)
 					)
-				)
 			);
 			$userMgr->init();
 			$userMgr->initSessionStorage(null);
@@ -1851,8 +1862,8 @@ class XApp_Bootstrap
 				foreach ($plugins as $plugin) {
 					if (is_object($plugin)) {
 						array_push(
-							$dojoPackages,
-							array('name' => $plugin->name, 'location' => $prefix . $plugin->name . '/client/')
+								$dojoPackages,
+								array('name' => $plugin->name, 'location' => $prefix . $plugin->name . '/client/')
 						);
 					}
 				}
@@ -1870,8 +1881,8 @@ class XApp_Bootstrap
 			$javaScriptHeaderStr .= '';
 
 			return array(
-				'plugins' => $javaScriptHeaderStr,
-				'packages' => $XAPP_DOJO_PACKAGES
+					'plugins' => $javaScriptHeaderStr,
+					'packages' => $XAPP_DOJO_PACKAGES
 			);
 		}
 
@@ -1903,6 +1914,7 @@ class XApp_Bootstrap
 		}
 		return $default;
 	}
+
 
 	/**
 	 * @return string

@@ -97,10 +97,10 @@ class XIDE_Log_Manager extends XIDE_Manager{
 
 	    $path       = realpath(xo_get(self::LOG_PATH,$this));
         if($which){
-		    $path = str_replace('all.log',$which,$path);
+		    $path = str_replace('all.log',$which,$path) . '.json';
 	    }
 
-	    if(!file_exists($path)){
+        if(!file_exists($path)){
 		    //$this->log('log file path : ' . $path  .' doesnt exists');
 		    return '{}';
 	    }

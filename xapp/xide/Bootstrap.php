@@ -294,7 +294,7 @@ class XIDE_Bootstrap extends XApp_Bootstrap{
             XApp_App_Renderer::RESOURCE_RENDERER   =>$xappResourceRenderer///components/com_xappcommander/index.php?option=com_xappcommander&view=rpc///components/com_xappcommander/index.php?option=com_xappcommander&view=rpc
         );
         $this->appRenderer      = new XApp_App_Renderer($opt);
-        $this->resourceRenderer =xo_get(XApp_App_Renderer::RESOURCE_RENDERER,$this->appRenderer);
+        $this->resourceRenderer = xo_get(XApp_App_Renderer::RESOURCE_RENDERER,$this->appRenderer);
     }
 
 

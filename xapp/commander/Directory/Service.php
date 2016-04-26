@@ -129,8 +129,8 @@ class XCOM_Directory_Service extends XIDE_Directory_Service
 			//basic sanitize
 			$userfile_name = $boxData["name"];
 			$userfile_name = XApp_Path_Utils::sanitizeEx(
-				XApp_SystemTextEncoding::fromPostedFileName($userfile_name),
-				XApp_Path_Utils::SANITIZE_HTML_STRICT
+					XApp_SystemTextEncoding::fromPostedFileName($userfile_name),
+					XApp_Path_Utils::SANITIZE_HTML_STRICT
 			);
 			$userfile_name = substr($userfile_name, 0, 128);
 
@@ -326,8 +326,8 @@ class XCOM_Directory_Service extends XIDE_Directory_Service
 			//basic sanitize
 			$userfile_name = $boxData["name"];
 			$userfile_name = XApp_Path_Utils::sanitizeEx(
-				XApp_SystemTextEncoding::fromPostedFileName($userfile_name),
-				XApp_Path_Utils::SANITIZE_HTML_STRICT
+					XApp_SystemTextEncoding::fromPostedFileName($userfile_name),
+					XApp_Path_Utils::SANITIZE_HTML_STRICT
 			);
 			$userfile_name = substr($userfile_name, 0, 128);
 
@@ -493,12 +493,12 @@ class XCOM_Directory_Service extends XIDE_Directory_Service
 
 
 			$remoteMount = $this->isRemote(
-				XApp_Path_Utils::getMount($selection[0]),
-				$this->getFSResources()
+					XApp_Path_Utils::getMount($selection[0]),
+					$this->getFSResources()
 			) ? XApp_Path_Utils::getMount($selection[0]) : XApp_Path_Utils::getMount($dst);
 			$localMount = $this->isLocal(
-				XApp_Path_Utils::getMount($selection[0]),
-				$this->getFSResources()
+					XApp_Path_Utils::getMount($selection[0]),
+					$this->getFSResources()
 			) ? XApp_Path_Utils::getMount($selection[0]) : XApp_Path_Utils::getMount($dst);
 
 			$incoming = $this->isLocal(XApp_Path_Utils::getMount($dst), $this->getFSResources()) ? true : false;
@@ -523,8 +523,8 @@ class XCOM_Directory_Service extends XIDE_Directory_Service
 			foreach ($selection as $selectedFile) {
 				$relativePart = XApp_Path_Utils::getRelativePart($selection[0]);
 				$mountManager->put(
-					$remoteMount . '://' . $relativePartDestination . '/' . basename($selectedFile),
-					$mountManager->read($localMount . '://' . $relativePart)
+						$remoteMount . '://' . $relativePartDestination . '/' . basename($selectedFile),
+						$mountManager->read($localMount . '://' . $relativePart)
 				);
 			}
 			return true;
@@ -551,8 +551,8 @@ class XCOM_Directory_Service extends XIDE_Directory_Service
 				foreach ($selection as $selectedFile) {
 					$relativePart = XApp_Path_Utils::getRelativePart($selection[0]);
 					$mountManager->put(
-						$remoteMountDst . '://' . $relativePartDestination . '/' . basename($selectedFile),
-						$mountManager->read($remoteMountSrc . '://' . $relativePart)
+							$remoteMountDst . '://' . $relativePartDestination . '/' . basename($selectedFile),
+							$mountManager->read($remoteMountSrc . '://' . $relativePart)
 					);
 				}
 				return true;
@@ -593,7 +593,7 @@ class XCOM_Directory_Service extends XIDE_Directory_Service
 		//make a little check for local VFS, if the absolute path doesn't exists, abort here
 		$rootResolved = $vfs->toAbsolutePath($basePath);
 		if(!$rootResolved && $vfs->remote==false){
-			$error= [XAPP_TEXT_FORMATTED('DIRECTORY_DOES_NOT_EXISTS', array($basePath . '://'))];
+			$error= array(XAPP_TEXT_FORMATTED('DIRECTORY_DOES_NOT_EXISTS', array($basePath . '://')));
 			return self::toRPCError(1, $error);
 		}
 
@@ -602,49 +602,49 @@ class XCOM_Directory_Service extends XIDE_Directory_Service
 		if (!$options) {
 
 			$options = Array(
-				XApp_File_Utils::OPTION_DIR_LIST_FIELDS =>
-					XAPP_XFILE_SHOW_SIZE |
-					XAPP_XFILE_SHOW_PERMISSIONS |
-					XAPP_XFILE_SHOW_ISREADONLY |
-					XAPP_XFILE_SHOW_ISDIR |
-					XAPP_XFILE_SHOW_OWNER |
-					XAPP_XFILE_SHOW_TIME |
-					XAPP_XFILE_SHOW_MIME
+					XApp_File_Utils::OPTION_DIR_LIST_FIELDS =>
+							XAPP_XFILE_SHOW_SIZE |
+							XAPP_XFILE_SHOW_PERMISSIONS |
+							XAPP_XFILE_SHOW_ISREADONLY |
+							XAPP_XFILE_SHOW_ISDIR |
+							XAPP_XFILE_SHOW_OWNER |
+							XAPP_XFILE_SHOW_TIME |
+							XAPP_XFILE_SHOW_MIME
 			);
 		}
 		//hook into meta data creation for custom completion
 		Xapp_Hook::connect(
-			XApp_VFS_Base::EVENT_ON_NODE_META_CREATED,
-			$this,
-			"_onItem",
-			'',
-			array( //user data, we need a parent and the base path
-				'parentPath' => $path,
-				'mount' => $basePath,
-				'remote' => $vfs->remote,
-				'options' => $options
-			)
+				XApp_VFS_Base::EVENT_ON_NODE_META_CREATED,
+				$this,
+				"_onItem",
+				'',
+				array( //user data, we need a parent and the base path
+						'parentPath' => $path,
+						'mount' => $basePath,
+						'remote' => $vfs->remote,
+						'options' => $options
+				)
 		);
 
 		//hook into 'node add' for custom node rejection
 		Xapp_Hook::connect(
-			XApp_VFS_Base::EVENT_ON_NODE_ADD,
-			$this,
-			"_addNode",
-			'',
-			array(
-				'mount' => $basePath,
-				'owner' => $this,
-				'options' => $options,
-				'remote' => $vfs->remote
-			)
+				XApp_VFS_Base::EVENT_ON_NODE_ADD,
+				$this,
+				"_addNode",
+				'',
+				array(
+						'mount' => $basePath,
+						'owner' => $this,
+						'options' => $options,
+						'remote' => $vfs->remote
+				)
 		);
 		$result = null;
 
-	    try{
+		try{
 			$vfs->ls(XApp_Path_Utils::normalizePath($scanPath, false), $recursive, $options);
 		}catch (Exception $e){
-		    return $this->toRPCError(1, $e->getMessage());
+			return $this->toRPCError(1, $e->getMessage());
 		}
 
 
@@ -662,13 +662,13 @@ class XCOM_Directory_Service extends XIDE_Directory_Service
 		}
 
 		$vfs->add_ls_file_information(
-			$vfs->toRealPath($basePath),
-			$rootObject,
-			XAPP_XFILE_SHOW_SIZE |
-			XAPP_XFILE_SHOW_PERMISSIONS |
-			XAPP_XFILE_SHOW_ISREADONLY |
-			XAPP_XFILE_SHOW_TIME |
-			XAPP_XFILE_SHOW_MIME
+				$vfs->toRealPath($basePath),
+				$rootObject,
+				XAPP_XFILE_SHOW_SIZE |
+				XAPP_XFILE_SHOW_PERMISSIONS |
+				XAPP_XFILE_SHOW_ISREADONLY |
+				XAPP_XFILE_SHOW_TIME |
+				XAPP_XFILE_SHOW_MIME
 		);
 
 
@@ -694,18 +694,18 @@ class XCOM_Directory_Service extends XIDE_Directory_Service
 
 		//prepare Dojo store root structure
 		$result = array(
-			'status' => 200,
-			'total' => 1,
-			'items' => array()
+				'status' => 200,
+				'total' => 1,
+				'items' => array()
 		);
 		$result['items'][] = array(
-			'children' => $this->_currentItems, //created in the hook
-			'_EX' => true,
-			'size' => 0,
-			'name' => $rootName,
-			'path' => $rootPath,
-			'mount' => $basePath,
-			'directory' => true
+				'children' => $this->_currentItems, //created in the hook
+				'_EX' => true,
+				'size' => 0,
+				'name' => $rootName,
+				'path' => $rootPath,
+				'mount' => $basePath,
+				'directory' => true
 		);
 		return $result;
 	}
@@ -719,21 +719,21 @@ class XCOM_Directory_Service extends XIDE_Directory_Service
 	{
 
 		if ($this->_vfs !== null && //need valid VFS
-			is_array($evt) && //must be an array
-			array_key_exists('item', $evt) && //need item
-			array_key_exists('userData', $evt) && //need user data
-			array_key_exists(
-				'options',
-				$evt['userData'] //need options
-			)
+				is_array($evt) && //must be an array
+				array_key_exists('item', $evt) && //need item
+				array_key_exists('userData', $evt) && //need user data
+				array_key_exists(
+						'options',
+						$evt['userData'] //need options
+				)
 		) {
 			$userData = $evt['userData'];
 			$options = $userData['options'];
 
 			//no filters? return
 			if (
-				!isset($options[self::INCLUDES_FILE_EXTENSIONS]) &&
-				!isset($options[self::EXCLUDED_FILE_EXTENSION])
+					!isset($options[self::INCLUDES_FILE_EXTENSIONS]) &&
+					!isset($options[self::EXCLUDED_FILE_EXTENSION])
 			) {
 				return true;
 			}
@@ -766,9 +766,9 @@ class XCOM_Directory_Service extends XIDE_Directory_Service
 				}
 
 				$isAllowed = XApp_Directory_Utils::isAllowed(
-					$item->{XAPP_NODE_FIELD_NAME},
-					$allowedFileExtensions,
-					$forbiddenFileExtensions
+						$item->{XAPP_NODE_FIELD_NAME},
+						$allowedFileExtensions,
+						$forbiddenFileExtensions
 				);
 				return $isAllowed === true;
 			}

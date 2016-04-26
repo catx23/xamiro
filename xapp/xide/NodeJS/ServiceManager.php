@@ -328,13 +328,9 @@ class XIDE_NodeJS_Service_Manager extends XIDE_Manager
 	 * the service's child processes
 	 * @return array|null
 	 */
-	public function ls($removePath = true)
-	{
+	public function ls($removePath = true){
 
 		$this->prepareResources();
-
-
-
 		$type = xo_get(self::RESOURCES_TYPE, $this);
 		$services = $this->getVariableDelegate()->getResourcesByType($type);
 		$emits = xo_get(self::EMITS, $this) === true;
@@ -343,15 +339,9 @@ class XIDE_NodeJS_Service_Manager extends XIDE_Manager
 
 		if ($services != null && count($services)) {
 			foreach ($services as $service) {
-
 				$this->completeServiceResource($service);
-
-
-
 				if (xo_get(self::REWRITE_HOST, $this)) {
-
 					if(property_exists($service, 'host')) {
-
 						$host = gethostname();
 						$resolved = gethostbyname($host);
 						if (xo_get(self::FORCE_HOST, $this) && strlen(xo_get(self::FORCE_HOST, $this)) > 0) {
@@ -360,7 +350,6 @@ class XIDE_NodeJS_Service_Manager extends XIDE_Manager
 						if ($resolved && strlen($resolved)) {
 							$service->host = $resolved;
 						}
-
 
 						if($service->host ==='127.0.0.1' || $service->host ==='0.0.0.'){
 							$requestUrl = self::getUrl();
@@ -557,10 +546,7 @@ class XIDE_NodeJS_Service_Manager extends XIDE_Manager
 	 * @param $resource
 	 * @param $fields : evaluate fields of interest
 	 */
-	private function completeServiceResource($resource, $fields = array())
-	{
-
-
+	private function completeServiceResource($resource, $fields = array()){
 		$emits = xo_get(self::EMITS, $this) === true;
 
 		// Defaults
@@ -574,7 +560,7 @@ class XIDE_NodeJS_Service_Manager extends XIDE_Manager
 			$fields[self::FIELD_CLIENTS] = true;
 		}
 		if (!isset($fields[self::FIELD_CHILD_PROCESSES])) {
-			$fields[self::FIELD_CHILD_PROCESSES] = true;
+			$fields[self::FIELD_CHILD_PROCESSES] = false;
 		}
 		if (!isset($fields[self::FIELD_OPTIONS])) {
 			$fields[self::FIELD_OPTIONS] = false;
@@ -590,12 +576,9 @@ class XIDE_NodeJS_Service_Manager extends XIDE_Manager
 			property_exists($resource, 'host')
 		) {
 			if (xo_get(self::REWRITE_HOST, $this)) {
-
 				if(property_exists($resource, 'host')) {
-
 					$host = gethostname();
 					$resolved = gethostbyname($host);
-
 					if (xo_get(self::FORCE_HOST, $this) && strlen(xo_get(self::FORCE_HOST, $this)) > 0) {
 						//error_log('force host : ' . xo_get(self::FORCE_HOST,$this));
 						$resolved = xo_get(self::FORCE_HOST, $this);
