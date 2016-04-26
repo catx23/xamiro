@@ -1082,13 +1082,13 @@ class XApp_File_Utils
 			if(extension_loaded( 'imagick')) {
 				$Media::config(
 						array(
-								'image' => ['ImageBasic', 'Imagick']
+								'image' => array('ImageBasic', 'Imagick')
 						)
 				);
 			}else{
 				$Media::config(
 						array(
-								'image' => ['ImageBasic']
+								'image' => array('ImageBasic')
 						)
 				);
 			}
