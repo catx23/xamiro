@@ -593,7 +593,7 @@ class XCOM_Directory_Service extends XIDE_Directory_Service
 		//make a little check for local VFS, if the absolute path doesn't exists, abort here
 		$rootResolved = $vfs->toAbsolutePath($basePath);
 		if(!$rootResolved && $vfs->remote==false){
-			$error= [XAPP_TEXT_FORMATTED('DIRECTORY_DOES_NOT_EXISTS', array($basePath . '://'))];
+			$error= array(XAPP_TEXT_FORMATTED('DIRECTORY_DOES_NOT_EXISTS', array($basePath . '://')));
 			return self::toRPCError(1, $error);
 		}
 
