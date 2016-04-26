@@ -778,13 +778,17 @@ class XApp_Bootstrap
 		 */
 		if (in_array(XAPP_BOOTSTRAP_SETUP_LOGGER, $flags) && xapp_has_option(self::LOGGING_CONF, $this)) {
 			$logger = $this->setupLogger(xapp_get_option(self::LOGGING_CONF));
-			xapp_set_option(self::LOGGER, $logger, $this);
-			if (!function_exists('xp_log')) {
-				function xp_log($message)
-				{
-					$bootstrap = XApp_Bootstrap::instance();
-					$log = xapp_get_option(XApp_Bootstrap::LOGGER, $bootstrap);
-					$log->log($message);
+			if($logger) {
+				xapp_set_option(self::LOGGER, $logger, $this);
+
+
+				if (!function_exists('xp_log')) {
+					function xp_log($message)
+					{
+						$bootstrap = XApp_Bootstrap::instance();
+						$log = xapp_get_option(XApp_Bootstrap::LOGGER, $bootstrap);
+						$log->log($message);
+					}
 				}
 			}
 
@@ -1336,9 +1340,16 @@ class XApp_Bootstrap
 	 */
 	private function setupLogger($loggingConf){
 
-		$logginConf[Xapp_Log::WRITER] = array(new Xapp_Log_Writer_File(xapp_get_option(Xapp_Log::PATH, $loggingConf)));
-
-		return new Xapp_Log_Error($loggingConf);
+		$path = realpath(Xapp_Log::PATH);
+		if($path && is_writable($path)) {
+			$logginConf[Xapp_Log::WRITER] = array(
+					new Xapp_Log_Writer_File(
+							xapp_get_option(Xapp_Log::PATH, $loggingConf)
+					)
+			);
+			return new Xapp_Log_Error($loggingConf);
+		}
+		return null;
 	}
 
 	/**
