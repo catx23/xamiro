@@ -43,23 +43,7 @@ class XIDE_VE_Manager extends XIDE_Manager
 		 *
 		 *
 		 */
-
-		//$templatePath;
-		//xapp_clog($this->getObject());
-
-
-		//$this->prepareResources();
-
-		//$this->printPaths();
-
-		//xapp_clog('test ' . $test);
 		$this->initVariables();
-
-
-
-		//$test = $this->resolveRelative('test %baseUrl%');
-
-
 		//require base url
 		$requireBaseUrl= $this->resolveRelative('%clientUrl%') . '/lib/ibm-js';
 		$this->registerRelative('requireBaseUrl',$requireBaseUrl);
@@ -72,6 +56,8 @@ class XIDE_VE_Manager extends XIDE_Manager
 		$jQueryUrl= $this->resolveRelative('%clientUrl%') . '/lib/external/jquery-1.9.1.min.js';
 		$this->registerRelative('jQueryUrl',$jQueryUrl);
 
+		$loadash= $this->resolveRelative('%lodashUrl%') . '/lib/external/lodash.min.js';
+		$this->registerRelative('lodashUrl',$loadash);
 
 		//extra resources
 		$this->registerRelative('themeCssFiles','');
@@ -80,23 +66,16 @@ class XIDE_VE_Manager extends XIDE_Manager
 		//file variables
 		$this->registerRelative('path',$fileStruct['path']);
 		$this->registerRelative('mount',$fileStruct['mount']);
-
-
-
 		/**
 		 * template
 		 */
 		$clientDirectory = xapp_get_option(self::CLIENT_DIRECTORY);
 		$templatePath = realpath($clientDirectory . '/lib/xideve/delite/view.template.html');
 		$templateContent = file_get_contents($templatePath);
-
 		$templateContent = $this->resolveRelative($templateContent);
-
 		//xapp_clog('test ' . $templateContent);
 		//$test = $this->resolveRelative('test %clientUrl%');
-
 		//xapp_clog('test ' . $templateContent);
-
 		$contentFinal = str_replace('<viewHeaderTemplate/>',$templateContent,$content);
 
 		return $contentFinal;
@@ -162,15 +141,9 @@ class XIDE_VE_Manager extends XIDE_Manager
 	 */
 	public static $optionsDict = array
 	(
-		self::DEBUG_TCP_PORT => XAPP_TYPE_INTEGER,
-		self::DEBUG_TCP_HOST => XAPP_TYPE_STRING,
-		self::DEBUG_PORT => XAPP_TYPE_INTEGER,
-		self::DEBUGGER_PATH => XAPP_TYPE_STRING,
-		self::WORKING_PATH => XAPP_TYPE_STRING,
 		self::EMITS => XAPP_TYPE_BOOL,
 		self::REWRITE_HOST => XAPP_TYPE_BOOL,
 		self::FORCE_HOST => XAPP_TYPE_STRING,
-
 		self::RESOURCES_TYPE                => XAPP_TYPE_STRING,
 		self::RESOURCES_DATA                => array(XAPP_TYPE_OBJECT,XAPP_TYPE_ARRAY,XAPP_TYPE_STRING),
 		self::RELATIVE_VARIABLES            => XAPP_TYPE_ARRAY,
@@ -189,11 +162,6 @@ class XIDE_VE_Manager extends XIDE_Manager
 	public static $optionsRule = array
 	(
 		self::EMITS => 0,
-		self::DEBUG_TCP_PORT => 0,
-		self::DEBUG_TCP_HOST => 0,
-		self::DEBUG_PORT => 0,
-		self::DEBUG_TCP_PORT => 0,
-		self::WORKING_PATH => 0,
 		self::REWRITE_HOST => 0,
 		self::FORCE_HOST => 0,
 		self::RESOURCES_DATA                => 1,
@@ -212,11 +180,6 @@ class XIDE_VE_Manager extends XIDE_Manager
 	 */
 	public $options = array
 	(
-		self::DEBUG_TCP_PORT => 9090,
-		self::DEBUG_TCP_HOST => '0.0.0.0',
-		self::DEBUG_PORT => 5858,
-		self::DEBUGGER_PATH => 'nxappmain/debugger.js',
-		self::WORKING_PATH => 'Utils/nodejs/',
 		self::EMITS => true,
 		self::REWRITE_HOST => true,
 		self::FORCE_HOST => null,
@@ -279,15 +242,6 @@ class XIDE_VE_Manager extends XIDE_Manager
 		$this->initVariables();
 		$this->resolveResources();
 	}
-
-	/////////////////////////////////////////////////////////////////////////////////////////
-	//
-	//  Utils
-	//  @TODO : find a better place to dance!
-	//
-	////////////////////////////////////////////////////////////////////////////////////////
-
-
 	/////////////////////////////////////////////////////////////////////////////////////////
 	//
 	//  Hooks
@@ -571,7 +525,6 @@ class XIDE_VE_Manager extends XIDE_Manager
 			$resourceItems = (array)xapp_object_find($resourceData,'.items',array('class='.'cmx.types.Resource'));
 			if($resourceItems!=null && count($resourceItems)){
 				foreach($resourceItems as $resourceItem){
-
 					if(
 						!xapp_property_exists($resourceItem,XAPP_RESOURCE_URL_RESOLVED)||
 						!xapp_property_exists($resourceItem,XAPP_RESOURCE_PATH_ABSOLUTE))
@@ -604,8 +557,7 @@ class XIDE_VE_Manager extends XIDE_Manager
 	}
 
 	/***
-	 *
-	 * @param string    $type
+	 * @param string    $name
 	 * @param bool      $enabledOnly
 	 * @return array|null
 	 */
