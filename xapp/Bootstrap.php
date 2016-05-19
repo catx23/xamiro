@@ -554,16 +554,11 @@ class XApp_Bootstrap
 
 	}
 
-	/***
-	 *
-	 */
 	public static function isRPC()
 	{
-
 		if (!class_exists('XApp_Service_Entry_Utils')) {
 			include_once(XAPP_BASEDIR . 'XApp_Service_Entry_Utils.php');
 		}
-
 		$_REQUEST_TYPE = XApp_Service_Entry_Utils::getServiceType();
 		return
 				$_REQUEST_TYPE == XApp_Service_Entry_Utils::SMD_CALL ||
@@ -571,8 +566,6 @@ class XApp_Bootstrap
 				$_REQUEST_TYPE == XApp_Service_Entry_Utils::UPLOAD ||
 				$_REQUEST_TYPE == XApp_Service_Entry_Utils::LOGIN ||
 				$_REQUEST_TYPE == XApp_Service_Entry_Utils::DOWNLOAD;
-
-
 	}
 
 	/***
@@ -581,34 +574,7 @@ class XApp_Bootstrap
 	 */
 	public static function getUrl()
 	{
-		//complete script uri
-		$scriptParts = pathinfo($_SERVER['SCRIPT_FILENAME']);
-
-		$SERVER_NAME = $_SERVER["SERVER_NAME"];
-		if(!$SERVER_NAME && $_SERVER["REMOTE_ADDR"]){
-			$SERVER_NAME = $_SERVER["REMOTE_ADDR"];
-		}
-
-		if (strpos($_SERVER['REQUEST_URI'], $scriptParts['basename']) == false) {
-			$newRequestUri = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
-			$newRequestUri .= $scriptParts['basename'];
-			$newRequestUri .= '?' . parse_url($_SERVER['REQUEST_URI'], PHP_URL_QUERY);
-			$_SERVER['REQUEST_URI'] = $newRequestUri;
-		}
-
-		$pageURL = 'http';
-		if (array_key_exists("HTTPS", $_SERVER) && $_SERVER["HTTPS"] == "on") {
-			$pageURL .= "s";
-		}
-		$pageURL .= "://";
-
-		if ($_SERVER["SERVER_PORT"] != "80") {
-			$pageURL .= $SERVER_NAME . ":" . $_SERVER["SERVER_PORT"] . $_SERVER["REQUEST_URI"];
-		} else {
-			$pageURL .= $SERVER_NAME . $_SERVER["REQUEST_URI"];
-		}
-
-		return $pageURL;
+		return XApp_Service_Entry_Utils::getUrl();
 	}
 
 	/***
@@ -616,7 +582,6 @@ class XApp_Bootstrap
 	 */
 	public static function loadDebuggingTools()
 	{
-
 		xapp_import('xapp.Utils.Debugging');
 	}
 
@@ -625,7 +590,6 @@ class XApp_Bootstrap
 	 */
 	public static function loadCommons()
 	{
-
 		self::loadMin();
 		xapp_import("xapp.xide.Models.User");
 		xapp_import('xapp.xide.Controller.UserManager');
@@ -633,7 +597,6 @@ class XApp_Bootstrap
 
 	public static function getConsoleType()
 	{
-
 		$agent = '';
 		if (isset($_SERVER['HTTP_USER_AGENT'])) {
 			$agent = $_SERVER['HTTP_USER_AGENT'];
@@ -643,7 +606,6 @@ class XApp_Bootstrap
 		} elseif ((strpos($_SERVER['HTTP_USER_AGENT'], 'Chrome') !== false)) {
 			return 'chromephp';
 		}
-
 		return false;
 	}
 
@@ -653,8 +615,6 @@ class XApp_Bootstrap
 	 * @return mixed
 	 */
 	public function getServiceConfiguration($serviceName){
-
-
 		$serviceList = xapp_get_option(self::SERIVCE_CONF, $this);
 		foreach ($serviceList as &$serviceConf) {
 

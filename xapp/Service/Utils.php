@@ -259,11 +259,38 @@ class XApp_Service_Utils
 		if (array_key_exists("HTTPS", $_SERVER) && $_SERVER["HTTPS"] == "on") {
 			$pageURL .= "s";
 		}
+
 		$pageURL .= "://";
+
+		$SERVER_NAME = $_SERVER["SERVER_NAME"];
+		$SERVER_ADDR = $_SERVER["SERVER_ADDR"];
+		$REMOTE_ADDRESS = $_SERVER["REMOTE_ADDR"];
+		$isApache = $SERVER_NAME ==='::1' || $REMOTE_ADDRESS==='::1' || $SERVER_ADDR ==='::1';
+		if(!$isApache) {
+			$HTTP_HOST = $_SERVER["HTTP_HOST"];
+			$PARTS = parse_url($HTTP_HOST);
+			$HOST = $PARTS['host'];
+			$SERVER_NAME = $HOST;
+		}
 		if ($_SERVER["SERVER_PORT"] != "80") {
-			$pageURL .= $_SERVER["SERVER_NAME"] . ":" . $_SERVER["SERVER_PORT"] . $_SERVER["REQUEST_URI"];
+
+			if(isset($_SERVER["HTTP_X_FORWARDED_HOST"])){
+				$pageURL .=$_SERVER["HTTP_X_FORWARDED_HOST"];
+				$pageURL .=$_SERVER["REQUEST_URI"];
+			}else{
+				$pageURL .= $SERVER_NAME . ":" . $_SERVER["SERVER_PORT"];
+				$pageURL .=$_SERVER["REQUEST_URI"];
+			}
 		} else {
-			$pageURL .= $_SERVER["SERVER_NAME"] . $_SERVER["REQUEST_URI"];
+
+
+			if(isset($_SERVER["HTTP_X_FORWARDED_HOST"])){
+				$pageURL .=$_SERVER["HTTP_X_FORWARDED_HOST"];
+				$pageURL .=$_SERVER["REQUEST_URI"];
+			}else{
+				$pageURL .= $SERVER_NAME;
+				$pageURL .=$_SERVER["REQUEST_URI"];
+			}
 		}
 		return $pageURL;
 	}
@@ -376,7 +403,7 @@ class XApp_Service_Utils
 	 * @return string Sanitized key
 	 */
 	public static function _sanitize_key( $key ) {
-		return preg_replace( '/[^A-Za-z0-9_\-]/', '', $key );
+		return preg_replace( '/[^A-Za-z0-9_.\/\-]/', '', $key );
 	}
 
 	/**

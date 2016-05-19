@@ -44,12 +44,23 @@ class XIDE_VE_Manager extends XIDE_Manager
 		 *
 		 */
 		$this->initVariables();
+
+		xapp_import('xapp.Service.Utils');
+
+		$IBM_ROOT  = 'xibm/ibm';
+		$OFF_SET = '../..';
+		$XIDEVE_CLIENT_BASE = '/lib/xideve/delite/';
 		//require base url
-		$requireBaseUrl= $this->resolveRelative('%clientUrl%') . '/lib/ibm-js';
+		$requireBaseUrl= $this->resolveRelative('%clientUrl%') . '/lib/'.$IBM_ROOT;
+		//xapp_dump($this);
+
 		$this->registerRelative('requireBaseUrl',$requireBaseUrl);
 
+		$this->registerRelative('ibmRoot','xibm/ibm');
+		$this->registerRelative('offset',$OFF_SET);
+
 		//lib root
-		$libRoot= $this->resolveRelative('%clientUrl%') . '/lib/';
+		$libRoot= $this->resolveRelative('%clientUrl%') . '/lib';
 		$this->registerRelative('libRoot',$libRoot);
 
 		//jquery
@@ -57,7 +68,7 @@ class XIDE_VE_Manager extends XIDE_Manager
 		$this->registerRelative('jQueryUrl',$jQueryUrl);
 
 		$loadash= $this->resolveRelative('%lodashUrl%') . '/lib/external/lodash.min.js';
-		$this->registerRelative('lodashUrl',$loadash);
+		$this->registerRelative('lodashUrl',$libRoot.'/external/lodash.min.js');
 
 		//extra resources
 		$this->registerRelative('themeCssFiles','');
@@ -66,16 +77,22 @@ class XIDE_VE_Manager extends XIDE_Manager
 		//file variables
 		$this->registerRelative('path',$fileStruct['path']);
 		$this->registerRelative('mount',$fileStruct['mount']);
-		/**
-		 * template
-		 */
+		$this->registerRelative('theme','bootstrap');
+
+
+		$this->registerRelative('data',$this->resolveRelative('%data%'));
 		$clientDirectory = xapp_get_option(self::CLIENT_DIRECTORY);
-		$templatePath = realpath($clientDirectory . '/lib/xideve/delite/view.template.html');
+
+
+		$css = XApp_Service_Utils::_getKey('css','app.css');
+		$this->registerRelative('css',$css);
+
+		$templateRoot = $clientDirectory . $XIDEVE_CLIENT_BASE;
+		$template = XApp_Service_Utils::_getKey('template','view.template.html');
+
+		$templatePath = realpath($templateRoot . $template);
 		$templateContent = file_get_contents($templatePath);
 		$templateContent = $this->resolveRelative($templateContent);
-		//xapp_clog('test ' . $templateContent);
-		//$test = $this->resolveRelative('test %clientUrl%');
-		//xapp_clog('test ' . $templateContent);
 		$contentFinal = str_replace('<viewHeaderTemplate/>',$templateContent,$content);
 
 		return $contentFinal;

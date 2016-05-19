@@ -479,13 +479,15 @@ class XApp_Directory_Service extends XApp_Service{
     }
 
     public function copyDirectory($srcDir,$dstDirectory,$options=Array(),$inclusionMask = Array(),$exclusionMask = Array(),&$error,&$success){}
-    /**
-     * @param $mount
-     * @param $path
-     * @link http://192.168.1.37:81/xapp-commander-standalone/docroot/index.php?debug=true&view=smdCall&service=XCOM_Directory_Service.get&mount=root&path=./index.php&callback=asd
-     * @param bool $attachment
-     * @return mixed
-     */
+	/**
+	 * @link @link http://192.168.1.37:81/xapp-commander-standalone/docroot/index.php?debug=true&view=smdCall&service=XCOM_Directory_Service.get&mount=root&path=./index.php&callback=asd
+	 * @param $path
+	 * @param bool|false $attachment
+	 * @param bool|true $send
+	 * @param null $width
+	 * @param null $time
+	 * @return bool|string
+	 */
     public function get($path,$attachment=false,$send=true,$width=null,$time=null){
 
 	    if ( base64_encode(base64_decode($path, true)) === $path){
@@ -510,7 +512,7 @@ class XApp_Directory_Service extends XApp_Service{
 	    }
 	    $path = XApp_Path_Utils::getRelativePart($path);
 	    $vfs = $this->getFileSystem($mount);
-        $content = $vfs->get(
+	    $content = $vfs->get(
             XApp_Path_Utils::normalizePath($mount),
             XApp_Path_Utils::securePath(XApp_Path_Utils::normalizePath($path,true,false)),
             $attachment,
@@ -540,14 +542,11 @@ class XApp_Directory_Service extends XApp_Service{
     }
 
 	public function createToken($what){
-
 		$authDelegate = xapp_has_option(self::AUTH_DELEGATE) ? xapp_get_option(self::AUTH_DELEGATE) : null;
 		$result = '';
 		if($authDelegate){
 			$result =  $authDelegate->createToken($what);
 		}
-
-
 		return $result;
 
 

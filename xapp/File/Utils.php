@@ -600,7 +600,6 @@ class XApp_File_Utils
 
 
 			$target_file = XApp_Directory_Utils::normalizePath( $basePath . $relativePath );
-
 			if ( is_dir( $target_file ) ) {  // ZIP dir contents
 				$error   = Array();
 				$success = Array();
@@ -707,12 +706,8 @@ class XApp_File_Utils
 					// send streamed or complete
 					$limit = intval( $options[ self::OPTION_SIZE_LIMIT ] ) * 1024 * 1024; // Convert limit to bytes
 					if ( filesize( $target_file ) > $limit ) {
-
-
 						// chunk file
-						$chunk_size = intval(
-										$options[ self::OPTION_CHUNK_SIZE ]
-								) * 1024 * 1024; // Convert chunk size to bytes
+						$chunk_size = intval($options[ self::OPTION_CHUNK_SIZE ]) * 1024 * 1024; // Convert chunk size to bytes
 						$handle     = fopen( $target_file, 'rb' );
 						while ( ! feof( $handle ) ) {
 							$buffer = fread( $handle, $chunk_size );
@@ -745,20 +740,17 @@ class XApp_File_Utils
 				 * deal with resize!
 				 */
 				if ( isset( $options[ self::OPTION_RESIZE_TO ] ) &&
-
 						//check we have some image tools
 						(
 								( extension_loaded( 'gd' ) && function_exists( 'gd_info' ) ) || //GD is fine , otherwise try imagick
 								extension_loaded( 'imagick' )
 						)
-						&& strpos( $target_file, '.gif' ) == false //skip gifs
+						&& strpos( $target_file, '.gif' ) == false  &&//skip gifs
+						strpos( $mime, 'image' ) !== false //must be image
 				) {
 					xapp_import( 'xapp.Image.Utils' );
 					xapp_import( 'xapp.Directory.Utils' );
-
-
 					$cacheImage = false;
-
 					$options = array(
 							XApp_Image_Utils::OPTION_WIDTH         => $options[ self::OPTION_RESIZE_TO ],
 							XApp_Image_Utils::OPTION_PREVENT_CACHE => self::OPTION_PREVENT_CACHE
@@ -811,10 +803,6 @@ class XApp_File_Utils
 					}
 					fclose( $handle );
 				} else {
-
-
-
-
 					if ( ! file_exists( $target_file ) ) {
 						xapp_clog( '' . $target_file . ' doesnt exists' );
 					}

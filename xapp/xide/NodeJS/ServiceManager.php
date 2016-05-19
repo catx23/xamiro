@@ -515,16 +515,20 @@ class XIDE_NodeJS_Service_Manager extends XIDE_Manager
 						}
 
 						if($dSerialized['host'] ==='http://127.0.0.1' || $dSerialized['host'] ==='http://0.0.0.0'){
-							$requestUrl = self::getUrl();
+							//$requestUrl = self::getUrl();
+							$requestUrl = XApp_Service_Entry_Utils::getUrl();
 							$urlParts = parse_url($requestUrl);
 							if($urlParts['host']!==$dSerialized['host']){
 								$dSerialized['host'] = 'http://' . $urlParts['host'];
 								$resolved = null;
 							}
+
 						}
 						if ($resolved && strlen($resolved)) {
 							$dSerialized['host'] = 'http://' . $resolved;
 						}
+
+						//error_log('set to ' .$result);
 					}
 					return $dSerialized;
 				} else {
@@ -580,7 +584,6 @@ class XIDE_NodeJS_Service_Manager extends XIDE_Manager
 					$host = gethostname();
 					$resolved = gethostbyname($host);
 					if (xo_get(self::FORCE_HOST, $this) && strlen(xo_get(self::FORCE_HOST, $this)) > 0) {
-						//error_log('force host : ' . xo_get(self::FORCE_HOST,$this));
 						$resolved = xo_get(self::FORCE_HOST, $this);
 					}
 
@@ -666,6 +669,7 @@ class XIDE_NodeJS_Service_Manager extends XIDE_Manager
 	private static function _isTCPListening($host, $port)
 	{
 		$fp = @fsockopen($host, $port, $errno, $errstr, 30);
+
 		if (!$fp) {
 			return false;
 		} else {

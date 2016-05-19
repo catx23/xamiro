@@ -795,7 +795,6 @@ class XApp_Service_Entry_Utils
 	{
 
 		$pageURL = 'http';
-
 		if (array_key_exists("HTTPS", $_SERVER) && $_SERVER["HTTPS"] == "on") {
 			$pageURL .= "s";
 		}
@@ -803,10 +802,18 @@ class XApp_Service_Entry_Utils
 		$pageURL .= "://";
 
 		$SERVER_NAME = $_SERVER["SERVER_NAME"];
-		if(!$SERVER_NAME && $_SERVER["REMOTE_ADDR"]){
-			$SERVER_NAME = $_SERVER["REMOTE_ADDR"];
+		$SERVER_ADDR = $_SERVER["SERVER_ADDR"];
+		$REMOTE_ADDRESS = $_SERVER["REMOTE_ADDR"];
+		$isApache = $SERVER_NAME ==='::1' || $REMOTE_ADDRESS==='::1' || $SERVER_ADDR ==='::1';
+		//error_log($SERVER_NAME . ' | '.$REMOTE_ADDRESS .'|'. $SERVER_ADDR );
+		if(!$isApache && isset($_SERVER["HTTP_HOST"])) {
+			$HTTP_HOST = $_SERVER["HTTP_HOST"];
+			$PARTS = parse_url($HTTP_HOST);
+			if(isset($PARTS['host'])) {
+				$HOST = $PARTS['host'];
+				$SERVER_NAME = $HOST;
+			}
 		}
-
 		if ($_SERVER["SERVER_PORT"] != "80") {
 
 			if(isset($_SERVER["HTTP_X_FORWARDED_HOST"])){
@@ -827,7 +834,6 @@ class XApp_Service_Entry_Utils
 				$pageURL .=$_SERVER["REQUEST_URI"];
 			}
 		}
-
 		return $pageURL;
 	}
 
