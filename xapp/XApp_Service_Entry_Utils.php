@@ -805,7 +805,6 @@ class XApp_Service_Entry_Utils
 		$SERVER_ADDR = $_SERVER["SERVER_ADDR"];
 		$REMOTE_ADDRESS = $_SERVER["REMOTE_ADDR"];
 		$isApache = $SERVER_NAME ==='::1' || $REMOTE_ADDRESS==='::1' || $SERVER_ADDR ==='::1';
-		//error_log($SERVER_NAME . ' | '.$REMOTE_ADDRESS .'|'. $SERVER_ADDR );
 		if(!$isApache && isset($_SERVER["HTTP_HOST"])) {
 			$HTTP_HOST = $_SERVER["HTTP_HOST"];
 			$PARTS = parse_url($HTTP_HOST);
