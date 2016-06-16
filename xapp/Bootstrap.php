@@ -774,12 +774,12 @@ class XApp_Bootstrap
 		}
 
 		$storeService = null;
+
 		/***
-		 * Setup storage
+		 * Setup user settings store
 		 */
 		if (in_array(XAPP_BOOTSTRAP_SETUP_STORE, $flags) && xapp_has_option(self::STORE_CONF, $this)) {
 			$storeService = $this->setupStore(xapp_get_option(self::STORE_CONF, $this));
-			//$this->testStore($storeService);
 			xapp_set_option(self::STORE, $storeService, $this);
 		}
 
@@ -1146,18 +1146,10 @@ class XApp_Bootstrap
 					}
 
 				}
-				//21232f297a57a5a743894a0e4a801fc3 ||
-				//xapp_clog(' add user key: '.xapp_get_option(self::SIGNING_KEY, $this) . ' token :' . xapp_get_option(self::SIGNING_TOKEN, $this));
-				//21232f297a57a5a743894a0e4a801fc3
-				//76c20e97915806b16c4c2e127f54fc3e9ba8095d
-				//http://127.0.0.1/projects/x4mm/Code/test2.php?view=smdCall&theme=transparent&debug=true&user=&sig=
-
 				/***
 				 * Set the API key for signed requests
 				 */
 				if ($needsSigning) {
-
-					//xapp_clog('add key : '.xapp_get_option(self::SIGNING_KEY, $this) . ' | ' . xapp_get_option(self::SIGNING_TOKEN, $this));
 					$gateway->addKey(
 							xapp_get_option(self::SIGNING_KEY, $this),
 							xapp_get_option(self::SIGNING_TOKEN, $this)
@@ -1168,7 +1160,6 @@ class XApp_Bootstrap
 				Xapp_Rpc_Server_Json::dump($e);
 			}
 		}
-
 		return $this;
 	}
 
@@ -1434,13 +1425,7 @@ class XApp_Bootstrap
 		}
 
 		$server = null;
-
-
-
-
 		if ($hasJSONP && $isJSONP) {
-
-
 			//Options for SMD based JSONP-RPC classes
 			$opt = array
 			(
@@ -1492,7 +1477,6 @@ class XApp_Bootstrap
 		if ($server) {
 			xapp_set_option(self::RPC_SERVER, $server, $this);
 		}
-
 	}
 
 
@@ -1568,13 +1552,7 @@ class XApp_Bootstrap
 				}
 
 				$instance = new $className($serviceConf[XApp_Service::XAPP_SERVICE_CONF]);
-
 				$serviceConf[XApp_Service::XAPP_SERVICE_INSTANCE] = $instance;
-
-				//xapp_clog('register service' . $className);
-				//xapp_clog($serviceList);
-
-
 			}
 
 			xapp_set_option(XApp_Service::BOOTSTRAP,$this,$instance);
@@ -1667,7 +1645,6 @@ class XApp_Bootstrap
 	//  Auth helpers
 	//
 	/////////////////////////////////////////////////////////////////////////////
-
 	public static function loadJSONTools()
 	{
 		if (!class_exists('XApp_Utils_JSONUtils')) {

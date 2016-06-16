@@ -41,18 +41,12 @@ class XIDE_Manager extends XIDE_Scoped
      * @return null
      */
     public function log($message,$prefix='',$stdError=true){
-
         if(function_exists('xp_log')){
             xp_log(__CLASS__ . ' : ' . $message);
         }
-
         if($stdError){
             error_log(__CLASS__ . ' : ' .$message);
         }
         return null;
     }
-
 }
-
-
-?>

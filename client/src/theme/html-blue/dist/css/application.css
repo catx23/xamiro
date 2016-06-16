@@ -848,7 +848,7 @@ samp {
 code {
   padding: 2px 4px;
   font-size: 90%;
-  color: #c7254e;
+  /*color: $code-color;*/
   background-color: #f9f2f4;
   border-radius: 3px;
 }
@@ -4877,6 +4877,160 @@ a.label:hover, a.label:focus {
 /* line 7, ../../../bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/mixins/_labels.scss */
 .label-danger[href]:hover, [href].label-important:hover, .label-danger[href]:focus, [href].label-important:focus {
   background-color: #cc3e0b;
+}
+
+/* line 7, ../../../bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/_badges.scss */
+.badge {
+  display: inline-block;
+  min-width: 10px;
+  padding: 3px 7px;
+  font-size: 12px;
+  font-weight: bold;
+  color: #fff;
+  line-height: 1;
+  vertical-align: baseline;
+  white-space: nowrap;
+  text-align: center;
+  background-color: #999999;
+  border-radius: 10px;
+}
+/* line 22, ../../../bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/_badges.scss */
+.badge:empty {
+  display: none;
+}
+/* line 27, ../../../bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/_badges.scss */
+.btn .badge {
+  position: relative;
+  top: -1px;
+}
+/* line 31, ../../../bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/_badges.scss */
+.btn-xs .badge, .btn-group-xs > .btn .badge {
+  top: 0;
+  padding: 1px 5px;
+}
+/* line 39, ../../../bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/_badges.scss */
+.list-group-item.active > .badge, .nav-pills > .active > a > .badge {
+  color: #9dd0ff;
+  background-color: #fff;
+}
+/* line 44, ../../../bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/_badges.scss */
+.list-group-item > .badge {
+  float: right;
+}
+/* line 47, ../../../bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/_badges.scss */
+.list-group-item > .badge + .badge {
+  margin-right: 5px;
+}
+/* line 50, ../../../bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/_badges.scss */
+.nav-pills > li > a > .badge {
+  margin-left: 3px;
+}
+
+/* line 57, ../../../bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/_badges.scss */
+a.badge:hover, a.badge:focus {
+  color: #fff;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+/* line 9, ../../../bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/_alerts.scss */
+.alert {
+  padding: 15px;
+  margin-bottom: 18px;
+  border: 1px solid transparent;
+  border-radius: 3px;
+}
+/* line 16, ../../../bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/_alerts.scss */
+.alert h4 {
+  margin-top: 0;
+  color: inherit;
+}
+/* line 22, ../../../bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/_alerts.scss */
+.alert .alert-link {
+  font-weight: bold;
+}
+/* line 27, ../../../bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/_alerts.scss */
+.alert > p,
+.alert > ul {
+  margin-bottom: 0;
+}
+/* line 31, ../../../bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/_alerts.scss */
+.alert > p + p {
+  margin-top: 5px;
+}
+
+/* line 40, ../../../bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/_alerts.scss */
+.alert-dismissable,
+.alert-dismissible {
+  padding-right: 35px;
+}
+/* line 45, ../../../bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/_alerts.scss */
+.alert-dismissable .close,
+.alert-dismissible .close {
+  position: relative;
+  top: -2px;
+  right: -21px;
+  color: inherit;
+}
+
+/* line 57, ../../../bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/_alerts.scss */
+.alert-success {
+  background-color: rgba(214, 233, 198, 0.28);
+  border-color: #D6E9C6;
+  color: #ffffff;
+}
+/* line 8, ../../../bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/mixins/_alerts.scss */
+.alert-success hr {
+  border-top-color: #c9e2b4;
+}
+/* line 11, ../../../bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/mixins/_alerts.scss */
+.alert-success .alert-link {
+  color: #e6e6e6;
+}
+
+/* line 60, ../../../bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/_alerts.scss */
+.alert-info {
+  background-color: rgba(74, 176, 206, 0.29);
+  border-color: #4ab0ce;
+  color: #ffffff;
+}
+/* line 8, ../../../bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/mixins/_alerts.scss */
+.alert-info hr {
+  border-top-color: #36a7c8;
+}
+/* line 11, ../../../bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/mixins/_alerts.scss */
+.alert-info .alert-link {
+  color: #e6e6e6;
+}
+
+/* line 63, ../../../bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/_alerts.scss */
+.alert-warning {
+  background-color: rgba(229, 190, 86, 0.28);
+  border-color: #E5BE56;
+  color: #ffffff;
+}
+/* line 8, ../../../bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/mixins/_alerts.scss */
+.alert-warning hr {
+  border-top-color: #e2b640;
+}
+/* line 11, ../../../bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/mixins/_alerts.scss */
+.alert-warning .alert-link {
+  color: #e6e6e6;
+}
+
+/* line 66, ../../../bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/_alerts.scss */
+.alert-danger {
+  background-color: rgba(242, 99, 73, 0.29);
+  border-color: rgba(242, 99, 73, 0.7);
+  color: #ffffff;
+}
+/* line 8, ../../../bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/mixins/_alerts.scss */
+.alert-danger hr {
+  border-top-color: rgba(240, 79, 49, 0.7);
+}
+/* line 11, ../../../bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/mixins/_alerts.scss */
+.alert-danger .alert-link {
+  color: #e6e6e6;
 }
 
 @-webkit-keyframes progress-bar-stripes {
@@ -12314,7 +12468,7 @@ ul, ol {
 
 /* line 17, ../../src/sass/_override-bootstrap.scss */
 hr {
-  border-top: none;
+  /*border-top: none;*/
 }
 
 /* line 23, ../../src/sass/_override-bootstrap.scss */

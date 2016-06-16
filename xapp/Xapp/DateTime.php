@@ -45,8 +45,7 @@ class Xapp_DateTime extends DateTime
 			if ($time <= self::YEAR) {
 				$time += time();
 			}
-			$tmp = new static('@' . $time);
-			return $tmp->setTimeZone(new DateTimeZone(date_default_timezone_get()));
+			return (new static('@' . $time))->setTimeZone(new \DateTimeZone(date_default_timezone_get()));
 
 		} else { // textual or NULL
 			return new static($time);

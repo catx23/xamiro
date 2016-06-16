@@ -16,12 +16,10 @@ class XApp_Store_Base
      *
      */
     const WRITER_CLASS                      = "XAPP_STORE_WRITER_CLASS";
-
     /***
      *
      */
     const PRIMARY_KEY                       = "XAPP_STORE_PRIMARY_KEY";
-
     /***
      *
      */
@@ -36,7 +34,6 @@ class XApp_Store_Base
      *  Data property
      */
     const DATA_PROPERTY                     = "XAPP_STORE_DATA_PROPERTY";
-
     /***
      *  File path
      */
@@ -45,7 +42,6 @@ class XApp_Store_Base
 	 *  File path
 	 */
 	const CONF_PASSWORD                     = "XAPP_STORE_CONF_PASSWORD";
-
     /**
      * options dictionary for this class containing all data type values
      *
@@ -95,14 +91,10 @@ class XApp_Store_Base
         self::CONF_FILE                        => '',
 	    self::CONF_PASSWORD                    => ''
     );
-
-
     /***
      *  The actual store object
      */
     protected $store=null;
-
-
     /**
      * Xapp_Singleton interface impl.
      *
@@ -139,16 +131,13 @@ class XApp_Store_Base
     {
         xapp_set_options($options, $this);
     }
-
-    /***
-     * @param $searchQuery : a query to find the item to be changed
-     * @param $operation : SettingsStorage::STORAGE_OP_REPLACE , or delete
-     * @param $newValue : only needed when we use "REPLACE"
-     *
-     *   * $store = Xapp_Util_Json_Store::create($object)
-    ->query('/firstElement', array("id=1000"))
-    ->query('.', array('title=foo'))
-    ->set(null, 1);
+    /**
+     *  $store = Xapp_Util_Json_Store::create($object)
+            ->query('/firstElement', array("id=1000"))
+            ->query('.', array('title=foo'))
+            ->set(null, 1);
+     * @param $inQuery  object  to find the item to be changed
+     * @return array
      */
     protected static function toStdQuery($inQuery){
         $res = array();
@@ -160,10 +149,12 @@ class XApp_Store_Base
         }
         return $res;
     }
-    /***
+
+    /**
      * Transfer new value to std::query result item
      * @param $dstElement
      * @param $newElement
+     * @return array
      */
     public function _merge(&$dstElement,$newElement){
         $dstElement=array_merge((array) $dstElement, (array) $newElement);
@@ -186,13 +177,21 @@ class XApp_Store_Base
         }
 
         $store = new Xapp_Util_Json_Store($userData);
-        $qRes  = $store->query($path, $query)->getResult();
-        return $qRes;
+        if($query) {
+	        $stdQuery=$this->toStdQuery(is_string($query) ? json_decode($query,true) : $query);
+	        $qRes  = $store->query($path, $stdQuery)->getResult();
+	        return $qRes;
+        }else{
+            //error_log('have no query');
+        }
+
+        return $userData;
     }
 
     public function update($section,$path='.',$searchQuery=null,$value=null,$decodeValue=true){
         return $this->set($section,$path,$searchQuery,$value,$decodeValue);
     }
+
     public function set($section,$path='.',$searchQuery=null,$value=null,$decodeValue=true){
         $dataAll = $this->read();
 
@@ -204,7 +203,6 @@ class XApp_Store_Base
             }
             $userData=$dataAll->{$primKey};
         }
-
 
         if(!property_exists($userData,$section)){
             $userData->{$section}=array();
@@ -220,16 +218,34 @@ class XApp_Store_Base
             return false;
         }
 
-
         $success=false;
         $stdQuery = null;
 	    if($searchQuery){
 
 		    $stdQuery=$this->toStdQuery(is_string($searchQuery) ? json_decode($searchQuery,true) : $searchQuery);
             $queryResult = $store->query($path,$stdQuery)->get();
-            if($queryResult!=null&& count($queryResult)==1){
-                $queryResult[0]->{xapp_get_option(self::DATA_PROPERTY,$this)}=$value;
-                $success=true;
+            $dataProp = xapp_get_option(self::DATA_PROPERTY,$this);
+
+            if(!$queryResult || !count($queryResult)){
+                $primKey = xapp_get_option(self::PRIMARY_KEY,$this);
+                $idProp = xapp_get_option(self::ID_PROPERTY,$this);
+                $itemKey = $searchQuery->{$idProp};
+                $object = $store->getObject();
+                if($itemKey){
+                    $object->{$section}[]=$searchQuery;
+                }
+                $queryResult = $store->query($path,$stdQuery)->get();
+            }
+
+            if($queryResult!=null && count($queryResult)==1){
+
+                if($dataProp && strlen($dataProp)) {
+                    $queryResult[0]->{xapp_get_option(self::DATA_PROPERTY, $this)} = $value;
+                    $success=true;
+                }else{
+                    $this->_merge($queryResult[0],$value);
+                    $success=true;
+                }
             }else{
                 return false;
             }
@@ -244,6 +260,7 @@ class XApp_Store_Base
                     }
                 }
 
+
 	            $value  = (object)$value;
 	            if(is_string($value->{$dataProp})){
 		            $value->{$dataProp}=json_decode($value->{$dataProp});
@@ -254,6 +271,7 @@ class XApp_Store_Base
                     $userData->{$section}[]=$value;//implicit
                 }
 	            $dataAll->{$primKey}= $userData;
+
                 $this->write(json_encode($dataAll));
 
             }

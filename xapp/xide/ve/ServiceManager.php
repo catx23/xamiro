@@ -85,6 +85,7 @@ class XIDE_VE_Manager extends XIDE_Manager
 
 
 		$css = XApp_Service_Utils::_getKey('css','app.css');
+
 		$this->registerRelative('css',$css);
 
 		$templateRoot = $clientDirectory . $XIDEVE_CLIENT_BASE;

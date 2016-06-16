@@ -352,7 +352,8 @@ class XIDE_NodeJS_Service_Manager extends XIDE_Manager
 						}
 
 						if($service->host ==='127.0.0.1' || $service->host ==='0.0.0.'){
-							$requestUrl = self::getUrl();
+							//$requestUrl = self::getUrl();
+							$requestUrl  = XApp_Service_Entry_Utils::getUrl();
 							$urlParts = parse_url($requestUrl);
 							if($urlParts['host']!==$service->host){
 								$service->host = $urlParts['host'];
@@ -483,7 +484,6 @@ class XIDE_NodeJS_Service_Manager extends XIDE_Manager
 		if (property_exists($serviceResource, 'main')) {
 			$nodeapp = $this->fixWindowsPath($serviceResource->main);
 			if ($nodeapp != '') {
-
 				$args = array();
 				$cmd = "node " . $nodeapp;
 				if(property_exists($serviceResource,'isNode') && $serviceResource->{'isNode'}===false){
@@ -515,7 +515,7 @@ class XIDE_NodeJS_Service_Manager extends XIDE_Manager
 						}
 
 						if($dSerialized['host'] ==='http://127.0.0.1' || $dSerialized['host'] ==='http://0.0.0.0'){
-							//$requestUrl = self::getUrl();
+
 							$requestUrl = XApp_Service_Entry_Utils::getUrl();
 							$urlParts = parse_url($requestUrl);
 							if($urlParts['host']!==$dSerialized['host']){
@@ -678,28 +678,6 @@ class XIDE_NodeJS_Service_Manager extends XIDE_Manager
 		}
 	}
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 	/////////////////////////////////////////////////////////////////////////////////////////
 	//
 	//  Hooks
@@ -749,9 +727,12 @@ class XIDE_NodeJS_Service_Manager extends XIDE_Manager
 	public function initVariables(){
 
 		$resourceData = xo_get(self::RESOURCES_DATA,$this);
+
 		if(is_string($resourceData)){
 			xo_set(self::RESOURCES_DATA,(object)XApp_Utils_JSONUtils::read_json($resourceData,'json',false,true),$this);
 		}
+
+
 
 		if(xapp_has_option(self::RELATIVE_VARIABLES)){
 			$rVariables = xapp_get_option(self::RELATIVE_VARIABLES,$this);
@@ -798,12 +779,11 @@ class XIDE_NodeJS_Service_Manager extends XIDE_Manager
 	public function getRegistry($namespace){
 		return Xapp_Registry::instance(array(Xapp_Registry::DEFAULT_NS =>  $namespace));
 	}
-
-	/***
+	/**
 	 * Register a resource variable in the relative namespace
 	 * @param $key
-	 * @param $relative
-	 * @param $absolute
+	 * @param $value
+	 * @return array
 	 */
 	public function registerRelative($key,$value){
 		$resourceNamespace = xapp_get_option(self::RELATIVE_REGISTRY_NAMESPACE,$this);
@@ -815,11 +795,10 @@ class XIDE_NodeJS_Service_Manager extends XIDE_Manager
 		return $res;
 
 	}
-	/***
+	/**
 	 * Register a resource variable in the absolute namespace
 	 * @param $key
-	 * @param $relative
-	 * @param $absolute
+	 * @param $value
 	 */
 	public function registerAbsolute($key,$value){
 		$resourceNamespace = xapp_get_option(self::ABSOLUTE_REGISTRY_NAMESPACE,$this);
@@ -860,11 +839,10 @@ class XIDE_NodeJS_Service_Manager extends XIDE_Manager
 	 */
 	public function registerResource($key,$relative,$absolute=null){
 	}
-	/***
-	 * Returns all registered resource variables in a given namespace
-	 * @param $key
-	 * @param $relative
-	 * @param $absolute
+	/**
+	 * @param $namespace
+	 * @return array
+	 * @throws Xapp_Error
 	 */
 	public  function registryToKeyValues($namespace){
 		$registry = $this->getRegistry($namespace);

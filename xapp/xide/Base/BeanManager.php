@@ -19,14 +19,11 @@ xapp_import('xapp.xide.commons.BeanException');
  */
 class XIDE_BeanManager extends XIDE_Manager
 {
-
-
     /////////////////////////////////////////////////////////////////////////////
     //
     //  Bean Manager Commons.
     //
     /////////////////////////////////////////////////////////////////////////////
-
     public function init(){
         xapp_import('xapp.Directory.Utils');
         xapp_import('xapp.VFS.Local');
@@ -37,10 +34,11 @@ class XIDE_BeanManager extends XIDE_Manager
     //  Bean impl.
     //
     /////////////////////////////////////////////////////////////////////////////
-
-    /***
-     * @param $scope String
-     * @param $path String
+    /**
+     * @param $scope
+     * @param $path
+     * @return array
+     * @throws ErrorException
      */
     public function removeGroup($scope,$path){
         xapp_import('xapp.Directory.Utils');
@@ -56,28 +54,27 @@ class XIDE_BeanManager extends XIDE_Manager
         return $errors;
     }
 
-    /***
+    /**
      * @param $scope
      * @param $path
+     * @return string
+     * @throws ErrorException
      */
     public function createGroup($scope,$path){
         xapp_import('xapp.Directory.Utils');
         xapp_import('xapp.Path.Utils');
         xapp_import('xapp.VFS.Local');
         xapp_import('xapp.Commons.Exceptions');
-
         $fullPath = $this->resolvePath($scope,$path,null,true,false);
-
-        xapp_clog('create driver group : ' . $fullPath. ' for scope '  . $scope . ' and path ' . $path);
-
-
         return XApp_File_Utils::mkDir(XApp_Path_Utils::securePath($fullPath));
-
     }
 
-    /***
-     * @param $scope String
-     * @param $path String
+
+    /**
+     * @param $scope
+     * @param $path
+     * @return null|string
+     * @throws XApp_File_Exception
      */
     public function getContent($scope,$path){
         xapp_import('xapp.Directory.Utils');
@@ -94,7 +91,6 @@ class XIDE_BeanManager extends XIDE_Manager
             throw new XApp_File_Exception(XAPP_TEXT_FORMATTED('CAN_NOT_READ_FILE',array(basename($fullPath)),55100));
         }
         if(file_exists($fullPath)){
-
             if(($content = file_get_contents($fullPath)) !== false){
                 return $content;
             }
@@ -104,9 +100,14 @@ class XIDE_BeanManager extends XIDE_Manager
 
         return null;
     }
-    /***
-     * @param $scope String
-     * @param $path String
+
+    /**
+     * @param $scopeName
+     * @param $path
+     * @param $content
+     * @return bool|null
+     * @throws ErrorException
+     * @throws Xapp_Util_Exception_Storage
      */
     public function setContent($scopeName,$path,$content){
         xapp_import('xapp.Directory.Utils');
@@ -243,7 +244,6 @@ class XIDE_BeanManager extends XIDE_Manager
         $rootVariable = $rootVariable ?: '__ROOT__';
         $path = XApp_Path_Utils::securePath($path);
         if($scope){
-
             $root = $scope->resolveAbsolute($rootVariable) .  DIRECTORY_SEPARATOR;
             if($secure===true){
                 if($merge==true){
@@ -279,7 +279,6 @@ class XIDE_BeanManager extends XIDE_Manager
     ){
         xapp_import('xapp.Store.*');
         xapp_import('xapp.xide.Store.*');
-
         $storeOptions = array(
             XApp_Store::READER_CLASS            =>'XIDE_CIStore_Delegate',
             XApp_Store::WRITER_CLASS            =>'XIDE_CIStore_Delegate',
@@ -289,9 +288,7 @@ class XIDE_BeanManager extends XIDE_Manager
 	        XApp_Store::CONF_PASSWORD           =>'');
 
         $store = new XApp_Store($storeOptions);
-
         $data = $store->set('',$dataPath,$dataQuery,$newValue);
-
         return $data;
     }
 
@@ -304,9 +301,7 @@ class XIDE_BeanManager extends XIDE_Manager
 
         $root = $scope->resolveAbsolute('__ROOT__') .  DIRECTORY_SEPARATOR;
         $filePath = $root . $path;
-
-	    //($storage, $type = 'php',$writable=false,$decode=true,$input = array(),$assoc=true,$pass=null){
-        $metaContent = XApp_Utils_JSONUtils::read_json( $filePath ,'json',false,true,null,true,null);
+	    $metaContent = XApp_Utils_JSONUtils::read_json( $filePath ,'json',false,true,null,true,null);
         if($metaContent){
             return array(
                 'path'=>$filePath,
@@ -316,4 +311,3 @@ class XIDE_BeanManager extends XIDE_Manager
         return null;
     }
 }
-?>

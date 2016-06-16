@@ -37,7 +37,7 @@
             "items": [
                 {
                     "class": "cmx.types.Resource",
-                    "enabled": true,
+                    "enabled": false,
                     "name": "JSONEditor",
                     "path": "JSONEditor/xfile/main",
                     "type": "JS-PLUGIN",
@@ -48,7 +48,7 @@
                 },
                 {
                     "class": "cmx.types.Resource",
-                    "enabled": true,
+                    "enabled": false,
                     "type": "CSS",
                     "url": "%XCOM_PLUGINS_WEB_URL%/JSONEditor/client/xfile/jsoneditor.css"
                 }
