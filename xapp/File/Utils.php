@@ -748,6 +748,7 @@ class XApp_File_Utils
 						&& strpos( $target_file, '.gif' ) == false  &&//skip gifs
 						strpos( $mime, 'image' ) !== false //must be image
 				) {
+
 					xapp_import( 'xapp.Image.Utils' );
 					xapp_import( 'xapp.Directory.Utils' );
 					$cacheImage = false;
@@ -781,6 +782,7 @@ class XApp_File_Utils
 							false,
 							$cacheImage,
 							true );
+
 					exit;
 				}
 

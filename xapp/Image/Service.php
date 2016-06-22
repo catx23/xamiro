@@ -97,9 +97,7 @@ class XApp_Image_Service extends XApp_Service implements Xapp_Singleton_Interfac
     ////////////////////////////////////////////////////////////////////////////////////////
     public function resize($src,$width=null,$save=true,$cache=true,$height=null,$preventCache=false,$icon=false,$forceHandler='') {
 
-	    error_log('resize : ' . $src);
 	    XApp_Image_Utils::$cacheDir = xo_get(self::IMAGE_CACHE_DIR,$this);
-
 	    $errors=Array();
         if ($icon)
         {

@@ -83,6 +83,7 @@ class XCOM_Directory_Service extends XIDE_Directory_Service
 		$mount = XApp_Path_Utils::getMount($mount);
 		$vfs = $this->getFileSystem($mount);
 
+		
 		if ($this->isLocal($mount, $this->getFSResources())) {
 
 			if (!@is_dir($vfs->toRealPath($mount . DIRECTORY_SEPARATOR . $filename_new))) {

@@ -199,7 +199,7 @@ class XApp_VFS_Local extends XApp_VFS_Base implements Xapp_VFS_Interface_Access
 			XApp_Path_Utils::SANITIZE_HTML_STRICT
 		);
 		$filename_new = substr($filename_new, 0, xapp_get_option(self::NODENAME_MAX_LENGTH, $this));
-		$old = $this->toRealPath($mount . DIRECTORY_SEPARATOR . $filePath);
+		$old = $this->toRealPath($mount . '/' . $filePath);
 
 		if (!is_writable($old)) {
 			$errors[] = XAPP_TEXT_FORMATTED('FILE_NOT_WRITEABLE', array($old), 55100);
@@ -208,7 +208,7 @@ class XApp_VFS_Local extends XApp_VFS_Base implements Xapp_VFS_Interface_Access
 		if ($dest == null) {
 			$new = dirname($old) . "/" . $filename_new;
 		} else {
-			$new = $this->toRealPath($mount . DIRECTORY_SEPARATOR . $dest);
+			$new = $this->toRealPath($mount . '/' . $dest);
 		}
 
 
