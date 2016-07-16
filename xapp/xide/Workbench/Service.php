@@ -161,21 +161,22 @@ class XApp_XIDE_Workbench_Service extends XApp_Service
     }
 
     /***
-     * Creates an instannce with all the static data
+     * Creates an instance with all the static data
      * @param $siteConfigPath
      * @return XApp_XIDE_Workbench
      */
     private function createWorkbench($siteConfigPath){
 
         $workbench = new XApp_XIDE_Workbench();
+
         //theme sets
-        $workbench->themeDefaultSet = XApp_Utils_JSONUtils::read_json($siteConfigPath . 'defaultThemeSet.json' ,'json',false,true);
+        //$workbench->themeDefaultSet = XApp_Utils_JSONUtils::read_json($siteConfigPath . 'defaultThemeSet.json' ,'json',false,true);
 
         //widget palette
-        $workbench->widgetPalette   = XApp_Utils_JSONUtils::read_json($siteConfigPath . 'widgetPalette.json' ,'json',false,true);
+        //$workbench->widgetPalette   = XApp_Utils_JSONUtils::read_json($siteConfigPath . 'widgetPalette.json' ,'json',false,true);
 
         //dojo Options
-        $workbench->dojoOptions     = XApp_Utils_JSONUtils::read_json($siteConfigPath . 'dojoOptions.json' ,'json',false,true);
+        //$workbench->dojoOptions     = XApp_Utils_JSONUtils::read_json($siteConfigPath . 'dojoOptions.json' ,'json',false,true);
 
         return $workbench;
     }

@@ -45,6 +45,8 @@ class XIDE_VE_Manager extends XIDE_Manager
 		 */
 		$this->initVariables();
 
+		
+
 		xapp_import('xapp.Service.Utils');
 
 		$IBM_ROOT  = 'xibm/ibm';

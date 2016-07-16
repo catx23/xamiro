@@ -480,7 +480,7 @@ class XApp_Bootstrap
 	 * Main entry used by an index.php file
 	 * @param string $dataRoot
 	 */
-	public function handleRequest($dataRoot=''){
+	public function handleRequest($dataRoot='',$userRoot=''){
 
 		if (self::isRPC()) {
 			$this->initRpc();
@@ -496,7 +496,7 @@ class XApp_Bootstrap
 
 				}
 			}
-			$this->render(true,$dataRoot);
+			$this->render(true,$dataRoot,$userRoot);
 		}
 	}
 
@@ -865,7 +865,6 @@ class XApp_Bootstrap
 		}
 
 		$pluginInstances = array();
-
 
 		/***
 		 * Register server plugins
@@ -1878,6 +1877,7 @@ class XApp_Bootstrap
 	 */
 	public static function getRpcCallUrl(){
 		xapp_import('xapp.Utils.Strings');
+		xapp_import('xapp.Service.Utils');
 		$index = XApp_Service_Utils::getIndex();
 		$urlParams = array();
 

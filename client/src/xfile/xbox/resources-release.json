@@ -43,6 +43,12 @@
         },
         {
             "class":"cmx.types.Resource",
+            "type":"JS-HEADER-INCLUDE",
+            "enabled": true,
+            "url":"%XASWEB%/xfile/ext/ace/ext-whitespace.js"
+        },
+        {
+            "class":"cmx.types.Resource",
             "type":"HTML",
             "url":"%XASWEB%/xfile/xbox/index.html",
             "enabled":true

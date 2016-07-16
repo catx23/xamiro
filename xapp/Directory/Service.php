@@ -486,15 +486,17 @@ class XApp_Directory_Service extends XApp_Service{
 	 * @param bool|true $send
 	 * @param null $width
 	 * @param null $time
+	 * @param string $mount
 	 * @return bool|string
 	 */
-    public function get($path,$attachment=false,$send=true,$width=null,$time=null){
+    public function get($path,$attachment=false,$send=true,$width=null,$time=null,$mount=""){
 
-	    if ( base64_encode(base64_decode($path, true)) === $path){
+		if ( base64_encode(base64_decode($path, true)) === $path){
 		    $path = base64_decode($path);
 	    } else {
 		    echo '$data is NOT valid';
 	    }
+
 	    $path = urldecode ($path);
 	    $mount = XApp_Path_Utils::getMount($path);
 	    if($mount==='__direct__'){
@@ -512,7 +514,8 @@ class XApp_Directory_Service extends XApp_Service{
 	    }
 	    $path = XApp_Path_Utils::getRelativePart($path);
 	    $vfs = $this->getFileSystem($mount);
-	    $content = $vfs->get(
+
+		$content = $vfs->get(
             XApp_Path_Utils::normalizePath($mount),
             XApp_Path_Utils::securePath(XApp_Path_Utils::normalizePath($path,true,false)),
             $attachment,
@@ -527,6 +530,41 @@ class XApp_Directory_Service extends XApp_Service{
         }
         return $content;
     }
+
+	public function get2($mount="",$path,$attachment=false,$send=true,$width=null,$time=null){
+
+
+		$path = urldecode ($path);
+		$mount =  $mount ? $mount : XApp_Path_Utils::getMount($path);
+		if($mount==='__direct__'){
+			$pathAbs = XApp_Path_Utils::securePath(XApp_Path_Utils::normalizePath(XApp_Path_Utils::getRelativePart($path),true,false));
+			if(file_exists($pathAbs)){
+				return XApp_File_Utils::get('',$pathAbs,array(
+					XApp_File_Utils::OPTION_SEND=>$send,
+					XApp_File_Utils::OPTION_RESIZE_TO=>$width,
+					XApp_File_Utils::OPTION_PREVENT_CACHE=>isset($time)
+				));
+			}else{
+				return false;
+			}
+
+		}
+		$vfs = $this->getFileSystem($mount);
+		$content = $vfs->get(
+			XApp_Path_Utils::normalizePath($mount),
+			XApp_Path_Utils::securePath(XApp_Path_Utils::normalizePath($path,true,false)),
+			$attachment,
+			array(
+				XApp_File_Utils::OPTION_SEND=>$send,
+				XApp_File_Utils::OPTION_RESIZE_TO=>$width,
+				XApp_File_Utils::OPTION_PREVENT_CACHE=>isset($time)
+			)
+		);
+		if($attachment===true){
+			exit;
+		}
+		return $content;
+	}
 
     public function deleteDirectory($path){
         $vfs = $this->_getFileSystem();

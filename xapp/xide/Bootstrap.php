@@ -48,6 +48,7 @@ class XIDE_Bootstrap extends XApp_Bootstrap{
      * @param $libOffset
      * @param $logDirectory
      * @param $xcvDataRoot
+     * @param $xcvUserRoot
      * @param $xcvRoot
      * @param $serviceEntryPoint
      * @param $clientOffset
@@ -63,6 +64,7 @@ class XIDE_Bootstrap extends XApp_Bootstrap{
         $libOffset,
         $logDirectory,
         $xcvDataRoot,
+        $xcvUserRoot,
         $xcvRoot,
         $serviceEntryPoint,
         $clientOffset,
@@ -183,7 +185,7 @@ class XIDE_Bootstrap extends XApp_Bootstrap{
      * @param $xcvDataRoot
      * @return mixed
      */
-    public function render($print = true,$xcvDataRoot){
+    public function render($print = true,$xcvDataRoot,$xcvDataRoot){
 
         $this->setup();
 

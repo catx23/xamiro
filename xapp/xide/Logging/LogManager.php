@@ -66,23 +66,33 @@ class XIDE_Log_Manager extends XIDE_Manager{
     (
        self::LOG_PATH              => 'logs/all.log'
     );
+    
     public function clear($which=null){
-
         $path       = realpath(xo_get(self::LOG_PATH,$this));
-
 	    if($which){
-		    $path = str_replace('all.log',$which,$path);
+		    $path = str_replace('all.log',$which . '.json',$path);
 	    }
 
         if(!file_exists($path)){
-            //$this->log('log file path : ' . xo_get(self::LOG_PATH,$this)  .' doesnt exists');
             return '{}';
         }
         $result = array();
         if(file_exists($path) && @is_writeable($path)){
             file_put_contents($path,"");
         }else{
-            //$this->log('log file path : ' . $path  .' doesnt exists or is not writable for clear');
+            return '{}';
+        }
+        return $result;
+    }
+
+    public function clearAbs($path=null){
+        if(!file_exists($path)){
+            return '{}';
+        }
+        $result = array();
+        if(file_exists($path) && @is_writeable($path)){
+            file_put_contents($path,"");
+        }else{
             return '{}';
         }
         return $result;
@@ -126,6 +136,42 @@ class XIDE_Log_Manager extends XIDE_Manager{
             return '{}';
         }
 	    return $result;
+    }
+
+    /**
+     * @param null $which
+     *
+     * @return array|string
+     */
+    public function lsAbs($path){
+
+        $_path = '' . $path;
+        $path       = realpath($path);
+        if(!file_exists($path)){
+            error_log('path ' .$_path  . ' doesnt exists');
+            return '{}';
+        }
+        $result = array();
+        if(file_exists($path) && is_readable($path)){
+            $handle = fopen($path, "r");
+            if ($handle) {
+                while (($line = fgets($handle)) !== false) {
+
+                    $lineData = json_decode($line);
+
+                    if($lineData) {
+                        $result[] = $lineData;
+                    }
+                }
+            } else {
+                // error opening the file.
+            }
+            fclose($handle);
+        }else{
+            xapp_clog('file doesnt exists '.$path);
+            return '{}';
+        }
+        return $result;
     }
 
 

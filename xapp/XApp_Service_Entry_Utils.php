@@ -1173,6 +1173,31 @@ class XApp_Service_Entry_Utils
 		}
 		return null;
 	}
+
+	/**
+	 * Sanitizes a string key.
+	 *
+	 * Keys are used as internal identifiers. Lowercase & uppercase alphanumeric characters, dashes, comma and underscores are allowed.
+	 *
+	 * @param string $key String key
+	 * @return string Sanitized key
+	 */
+	public static function _sanitize_key( $key ) {
+		return preg_replace( '/[^A-Za-z0-9_.\/\-:\\\\]/', '', $key );
+	}
+
+	/**
+	 * Return a _GET key but sanitized
+	 * @param $key
+	 * @param $default
+	 * @return string
+	 */
+	public static function _getKey($key,$default=''){
+		if(isset($_GET[$key])){
+			return self::_sanitize_key($_GET[$key]);
+		}
+		return $default;
+	}
 }
 
 if (!function_exists('xcom_event')) {
