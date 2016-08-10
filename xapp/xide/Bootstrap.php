@@ -108,24 +108,11 @@ class XIDE_Bootstrap extends XApp_Bootstrap{
      * @param $serverApplicationClassName
      * @param $clientApplicationName
      * @param $clientDirectory
-     * @return XIDE_Bootrap
+     * @return XIDE_Bootstrap
      */
-    private  static function createClientInstance(
-        $serverApplicationClassName,
-        $clientApplicationName,
-        $clientDirectory)
+    private  static function createClientInstance($serverApplicationClassName,$clientApplicationName,$clientDirectory)
     {
-        /*
-
-        //build the xapp import string
-        $applicationImport = 'xapp.'.$applicationClass.'.App';
-
-        //import the application
-        xapp_import($applicationImport);
-        */
-
         //instantiate the application class
-
         /***
          * Setup xapp commander bootstrap
          */

@@ -80,14 +80,9 @@ class XIDE_VE_Service extends XIDE_Service implements Xapp_Singleton_Interface, 
 		);
 		return $content;
 	}
-	/**
-	 * @param $path {string}
-	 * @param $options {mixed}
-	 */
-	public function view($path){
-
-		$content = $this->getContent($path,false,false);
-		return $this->getObject()->renderContent($content,$this->getFileStruct($path));
+	public function view($file){
+		$content = $this->getContent($file,false,false);
+		return $this->getObject()->renderContent($content,$this->getFileStruct($file),xo_get(self::BOOTSTRAP));
 
 	}
 

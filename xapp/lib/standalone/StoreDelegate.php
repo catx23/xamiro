@@ -43,7 +43,7 @@ class XApp_Store_Delegate extends XApp_Store_Base implements Xapp_Store_Interfac
         $path = xapp_get_option(self::CONF_FILE,$this);
         if(file_exists($path)){
             $result = null;
-            $pretty = false;
+            $pretty = true;
             if($pretty)
             {
                 $result = file_put_contents($path, Xapp_Util_Json::prettify($data), LOCK_EX);

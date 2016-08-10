@@ -12,6 +12,8 @@ xapp_import('xapp.Utils.Strings');
 xapp_import('xapp.Utils.Shell');
 xapp_import('xapp.xide.Base.Manager');
 
+xapp_import('xapp.Directory.Service');
+
 /***
  * Class XIDE_NodeJS_Service_Manager provides a useful set of NodeJS related functions like :
  * -start, stop, kill and also debug (uses and starts a 'node-inspector', needs Chrome on the clients side)!
@@ -20,7 +22,7 @@ xapp_import('xapp.xide.Base.Manager');
 class XIDE_VE_Manager extends XIDE_Manager
 {
 
-	public function renderContent($content,$fileStruct){
+	public function renderContent($content,$fileStruct,$bootstrap){
 		/**
 		 * 1. get content
 		 * 2. apply template
@@ -44,23 +46,24 @@ class XIDE_VE_Manager extends XIDE_Manager
 		 *
 		 */
 		$this->initVariables();
+		$vfsConfig = $bootstrap->getServiceConfiguration('XCOM_Directory_Service');
+		$serviceConf = $vfsConfig[XApp_Service::XAPP_SERVICE_CONF];
+		$vfsConfig = $serviceConf[XApp_Directory_Service::FILE_SYSTEM_CONF];
+		$vfsVars = $vfsConfig[XApp_VFS_Base::ABSOLUTE_VARIABLES];
+		$this->registerRelative('VFS_VARS',json_encode($vfsVars, true));
+		$this->registerRelative('USER_DIRECTORY',XCF_Bootstrap::$user_data);
 
-		
+		$this->registerRelative('VFS_GET_URL', $bootstrap->getVFSGetUrl());
 
 		xapp_import('xapp.Service.Utils');
-
 		$IBM_ROOT  = 'xibm/ibm';
 		$OFF_SET = '../..';
 		$XIDEVE_CLIENT_BASE = '/lib/xideve/delite/';
-		//require base url
 		$requireBaseUrl= $this->resolveRelative('%clientUrl%') . '/lib/'.$IBM_ROOT;
-		//xapp_dump($this);
-
+		
 		$this->registerRelative('requireBaseUrl',$requireBaseUrl);
-
 		$this->registerRelative('ibmRoot','xibm/ibm');
 		$this->registerRelative('offset',$OFF_SET);
-
 		//lib root
 		$libRoot= $this->resolveRelative('%clientUrl%') . '/lib';
 		$this->registerRelative('libRoot',$libRoot);
@@ -69,7 +72,7 @@ class XIDE_VE_Manager extends XIDE_Manager
 		$jQueryUrl= $this->resolveRelative('%clientUrl%') . '/lib/external/jquery-1.9.1.min.js';
 		$this->registerRelative('jQueryUrl',$jQueryUrl);
 
-		$loadash= $this->resolveRelative('%lodashUrl%') . '/lib/external/lodash.min.js';
+		$this->resolveRelative('%lodashUrl%') . '/lib/external/lodash.min.js';
 		$this->registerRelative('lodashUrl',$libRoot.'/external/lodash.min.js');
 
 		//extra resources
@@ -85,19 +88,17 @@ class XIDE_VE_Manager extends XIDE_Manager
 		$this->registerRelative('data',$this->resolveRelative('%data%'));
 		$clientDirectory = xapp_get_option(self::CLIENT_DIRECTORY);
 
-
 		$css = XApp_Service_Utils::_getKey('css','app.css');
-
-		$this->registerRelative('css',$css);
-
+		$this->registerRelative('css',base64_decode($css));
+		$this->registerRelative('user_drivers_path',$bootstrap->getVFSGetUrl('user_drivers'));
 		$templateRoot = $clientDirectory . $XIDEVE_CLIENT_BASE;
 		$template = XApp_Service_Utils::_getKey('template','view.template.html');
 
 		$templatePath = realpath($templateRoot . $template);
 		$templateContent = file_get_contents($templatePath);
+
 		$templateContent = $this->resolveRelative($templateContent);
 		$contentFinal = str_replace('<viewHeaderTemplate/>',$templateContent,$content);
-
 		return $contentFinal;
 
 

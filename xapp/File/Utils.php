@@ -1048,6 +1048,7 @@ class XApp_File_Utils
 	public static function getMMType(){
 
 		global $mmType;
+
 		if(!$mmType){
 
 			xapp_import('xapp/externs/vendor/autoload.php');
@@ -1061,9 +1062,11 @@ class XApp_File_Utils
 					'file' => realpath(XAPP_BASEDIR . '/externs/vendor/davidpersson/mm/data/glob.db')
 			));
 
-			$Type::config('magic', array(
+			if(extension_loaded('fileinfo')) {
+				$Type::config('magic', array(
 					'adapter' => 'Fileinfo'
-			));
+				));
+			}
 
 
 			$MediaClz  = 'mm\\Media\\Info';

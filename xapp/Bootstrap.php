@@ -617,19 +617,13 @@ class XApp_Bootstrap
 	public function getServiceConfiguration($serviceName){
 		$serviceList = xapp_get_option(self::SERIVCE_CONF, $this);
 		foreach ($serviceList as &$serviceConf) {
-
-			$instance  = $serviceConf[ XApp_Service::XAPP_SERVICE_INSTANCE ];
 			$className = $serviceConf[ XApp_Service::XAPP_SERVICE_CLASS ];
-			$classConf = $serviceConf[ XApp_Service::XAPP_SERVICE_CONF ];
-
 			if($className===$serviceName){
 				return $serviceConf;
 			}
 		}
+		return null;
 	}
-
-
-
 
 	/***
 	 *

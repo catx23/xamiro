@@ -91,6 +91,7 @@ class XApp_Shell_Utils
 	public static function run($cmd, Array $args = array(), $return = null, $options = Array())
 	{
 
+
 		self::_escapeArguments($args);
 
 		if (!xo_has(self::OPTION_BACKGROUND, $options)) {
@@ -125,6 +126,7 @@ class XApp_Shell_Utils
 			}
 		}
 
+		
 		if (xo_get(self::OPTION_BACKGROUND, $options)) {
 			if (xo_get(self::OPTION_PRE_DELAY, $options)) {
 				// Add 1 second delay

@@ -201,7 +201,6 @@ class XApp_Utils_JSONUtils{
     public static function write_json($storage,$data,$type = 'json',$pretty=false,$pass=null,$noPHP=true){
 
         $return = null;
-
         switch($type)
         {
             case 'json':{
@@ -216,6 +215,7 @@ class XApp_Utils_JSONUtils{
 	            }
 
                 if($pretty===true){
+
                     $return = file_put_contents($storage,  Xapp_Util_Json::prettify($_dataStr), LOCK_EX);
                 }else{
                     $return = file_put_contents($storage, $_dataStr , LOCK_EX);

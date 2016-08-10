@@ -42,6 +42,22 @@ if (!function_exists('xapp_fix_index')) {
 	}
 }
 
+if (!function_exists('xapp_get_script')) {
+
+	function xapp_get_script()
+	{
+		$scriptParts = pathinfo($_SERVER['SCRIPT_FILENAME']);
+
+		if (strpos($_SERVER['REQUEST_URI'], $scriptParts['basename']) == false) {
+			$newRequestUri = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
+			$newRequestUri .= $scriptParts['basename'];
+			$newRequestUri .= '?' . parse_url($_SERVER['REQUEST_URI'], PHP_URL_QUERY);
+			$_SERVER['REQUEST_URI'] = $newRequestUri;
+		}
+		return $scriptParts['basename'];
+	}
+}
+
 
 /***
  *

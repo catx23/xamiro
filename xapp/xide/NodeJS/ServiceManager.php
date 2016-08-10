@@ -457,6 +457,7 @@ class XIDE_NodeJS_Service_Manager extends XIDE_Manager
 				)
 			);
 
+
 			//try to decode
 			$dSerialized = json_decode($result, true);
 			if ($dSerialized !== false && is_array($dSerialized)) {
@@ -502,6 +503,8 @@ class XIDE_NodeJS_Service_Manager extends XIDE_Manager
 				);
 
 
+
+				//error_log('run ' .$cmd . ' in ' . $workingPath . ' ' . $result);
 				//try to decode
 				$dSerialized = json_decode($result, true);
 				if ($dSerialized !== false && is_array($dSerialized)) {

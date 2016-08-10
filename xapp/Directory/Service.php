@@ -534,7 +534,8 @@ class XApp_Directory_Service extends XApp_Service{
 	public function get2($mount="",$path,$attachment=false,$send=true,$width=null,$time=null){
 
 
-		$path = urldecode ($path);
+		$path = urldecode($path);
+
 		$mount =  $mount ? $mount : XApp_Path_Utils::getMount($path);
 		if($mount==='__direct__'){
 			$pathAbs = XApp_Path_Utils::securePath(XApp_Path_Utils::normalizePath(XApp_Path_Utils::getRelativePart($path),true,false));
