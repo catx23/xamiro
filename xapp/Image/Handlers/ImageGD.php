@@ -10,7 +10,8 @@
  */
 xapp_import("xapp.Image.Interface.ImageHandler");
 
-class XApp_ImageGD implements Xapp_ImageHandler {
+class XApp_ImageGD implements Xapp_ImageHandler
+{
 
     /**
      * Opens an Image file
@@ -19,30 +20,25 @@ class XApp_ImageGD implements Xapp_ImageHandler {
      * @param $errors
      * @return mixed
      */
-    public static function open($src,&$errors) {
+    public static function open($src, &$errors)
+    {
         $file_ext = XApp_Image_Utils::imageExtension($src);
 
-        if (!array_key_exists($file_ext,XApp_Image_Utils::$compatibleImageTypes))
-        {
-            $errors[] = XAPP_TEXT_FORMATTED("IMAGE_TYPE_NOT_SUPPORTED",$file_ext);
+        if (!array_key_exists($file_ext, XApp_Image_Utils::$compatibleImageTypes)) {
+            $errors[] = XAPP_TEXT_FORMATTED("IMAGE_TYPE_NOT_SUPPORTED", $file_ext);
             return false;
-        }
-        else
-        {
+        } else {
             $container = XApp_Image_Utils::$imageContainer;
             $container[XApp_Image_Utils::IMAGE_CONTAINER_SRC] = $src;
             $container[XApp_Image_Utils::IMAGE_CONTAINER_TYPE] = XApp_Image_Utils::$compatibleImageTypes[$file_ext];
-            $img_function = "imagecreatefrom".$container[XApp_Image_Utils::IMAGE_CONTAINER_TYPE];
+            $img_function = "imagecreatefrom" . $container[XApp_Image_Utils::IMAGE_CONTAINER_TYPE];
 
 
-           if (function_exists($img_function))
-            {
+            if (function_exists($img_function)) {
                 $container[XApp_Image_Utils::IMAGE_CONTAINER_DATA] = $img_function($src);
                 return $container;
-            }
-            else
-            {
-                $errors[] = XAPP_TEXT_FORMATTED("IMAGE_MANIPULATION_FUNCTION_NOT_FOUND",$img_function);
+            } else {
+                $errors[] = XAPP_TEXT_FORMATTED("IMAGE_MANIPULATION_FUNCTION_NOT_FOUND", $img_function);
                 return false;
             }
         }
@@ -57,17 +53,17 @@ class XApp_ImageGD implements Xapp_ImageHandler {
      * @param $errors
      * @return mixed
      */
-    public static function resize($container,$options,&$errors) {
+    public static function resize($container, $options, &$errors)
+    {
 
-        if ($container[XApp_Image_Utils::IMAGE_CONTAINER_SIZE] == null )
-        {
+        if ($container[XApp_Image_Utils::IMAGE_CONTAINER_SIZE] == null) {
             $container[XApp_Image_Utils::IMAGE_CONTAINER_SIZE] = self::getImageSize($container[XApp_Image_Utils::IMAGE_CONTAINER_SRC]);
         }
 
         $currentSize = $container[XApp_Image_Utils::IMAGE_CONTAINER_SIZE];
 
 
-        $newSize = XApp_Image_Utils::calcImageSize($currentSize,$options);
+        $newSize = XApp_Image_Utils::calcImageSize($currentSize, $options);
 
         $new_img_data = imagecreatetruecolor($newSize->width, $newSize->height);
 
@@ -84,62 +80,57 @@ class XApp_ImageGD implements Xapp_ImageHandler {
         return $container;
     }
 
-	/**
-	 * @param $container
-	 * @param $options
-	 * @param $errors
-	 * @return mixed
-	 */
-    public static function iconify($container,$options,&$errors) {
+    /**
+     * @param $container
+     * @param $options
+     * @param $errors
+     * @return mixed
+     */
+    public static function iconify($container, $options, &$errors)
+    {
         // check that both width and height are provided
         $width = intval($options[XApp_Image_Utils::OPTION_WIDTH]);
         $height = intval($options[XApp_Image_Utils::OPTION_HEIGHT]);
 
-        if ( $width==0 || $height==0 )
-        {
+        if ($width == 0 || $height == 0) {
             // if not, just resize
-            return self::resize($container,$options,$errors);
-        }
-        else {
+            return self::resize($container, $options, $errors);
+        } else {
             // first - resize by longer dimension
-            if ($container[XApp_Image_Utils::IMAGE_CONTAINER_SIZE] == null )
-            {
+            if ($container[XApp_Image_Utils::IMAGE_CONTAINER_SIZE] == null) {
                 $container[XApp_Image_Utils::IMAGE_CONTAINER_SIZE] = self::getImageSize($container[XApp_Image_Utils::IMAGE_CONTAINER_SRC]);
             }
             $currentSize = $container[XApp_Image_Utils::IMAGE_CONTAINER_SIZE];
 
 
-            $options_for_resize=Array();
+            $options_for_resize = Array();
             $offset_x = $offset_y = 0;
-            if ($currentSize->width > $currentSize->height)
-            {
+            if ($currentSize->width > $currentSize->height) {
                 $ratio = $width / $currentSize->width;
-                $offset_y = ceil( ( $height - $currentSize->height*$ratio ) /2);
+                $offset_y = ceil(($height - $currentSize->height * $ratio) / 2);
                 $options_for_resize[XApp_Image_Utils::OPTION_WIDTH] = $width;
-            }
-            else
-            {
-                $ratio =  $height / $currentSize->height;
-                $offset_x = ceil( ( $width - $currentSize->width*$ratio ) /2);
+            } else {
+                $ratio = $height / $currentSize->height;
+                $offset_x = ceil(($width - $currentSize->width * $ratio) / 2);
                 $options_for_resize[XApp_Image_Utils::OPTION_HEIGHT] = $height;
             }
-            $container = self::resize($container,$options_for_resize,$errors);
+            $container = self::resize($container, $options_for_resize, $errors);
             $newSize = $container[XApp_Image_Utils::IMAGE_CONTAINER_SIZE];
 
             // second - creates transparent image
-            $thumb = imagecreatetruecolor($width,$height);
+            $thumb = imagecreatetruecolor($width, $height);
             imageSaveAlpha($thumb, true);
             ImageAlphaBlending($thumb, false);
             $tlo = imagecolorallocatealpha($thumb, 220, 220, 220, 127);
             imagefill($thumb, 0, 0, $tlo);
 
             // last - put image into square
-            imagecopyresampled ($thumb, $container[XApp_Image_Utils::IMAGE_CONTAINER_DATA],
-                $offset_x , $offset_y ,
-                0 , 0 ,
+            imagecopyresampled($thumb, $container[XApp_Image_Utils::IMAGE_CONTAINER_DATA],
+                $offset_x, $offset_y,
+                0, 0,
 
-                $newSize->width ,  $newSize->height,
-                $width , $height );
+                $newSize->width, $newSize->height,
+                $width, $height);
 
 
             imagealphablending($thumb, false);
@@ -152,7 +143,6 @@ class XApp_ImageGD implements Xapp_ImageHandler {
         }
 
 
-
     }
 
     /**
@@ -162,12 +152,13 @@ class XApp_ImageGD implements Xapp_ImageHandler {
      * @param $src
      * @return mixed
      */
-    public static function getImageSize($src) {
+    public static function getImageSize($src)
+    {
         $file_info = getimagesize($src);
 
         $size = new stdClass();
-        $size -> width = $file_info[0];
-        $size -> height = $file_info[1];
+        $size->width = $file_info[0];
+        $size->height = $file_info[1];
         return $size;
     }
 
@@ -180,48 +171,39 @@ class XApp_ImageGD implements Xapp_ImageHandler {
      * @param $errors
      * @return mixed
      */
-    public static function save($container,$dst,&$errors) {
+    public static function save($container, $dst, &$errors)
+    {
         // imagejpeg, imagegif of imagepng
-        $save_function="image".$container[XApp_Image_Utils::IMAGE_CONTAINER_TYPE];
+        $save_function = "image" . $container[XApp_Image_Utils::IMAGE_CONTAINER_TYPE];
 
-        if (function_exists($save_function))
-        {
-            if (( @$save_function($container[XApp_Image_Utils::IMAGE_CONTAINER_DATA],$dst) ) === false )
-            {
-                $errors[] = XAPP_TEXT_FORMATTED("IMAGE_NOT SAVED",$dst);
+        if (function_exists($save_function)) {
+            if ((@$save_function($container[XApp_Image_Utils::IMAGE_CONTAINER_DATA], $dst)) === false) {
+                $errors[] = XAPP_TEXT_FORMATTED("IMAGE_NOT SAVED", $dst);
                 return false;
-            }
-            else
-            {
+            } else {
                 return true;
             }
-        }
-        else
-        {
-            $errors[] = XAPP_TEXT_FORMATTED("IMAGE_MANIPULATION_FUNCTION_NOT_FOUND",$save_function);
+        } else {
+            $errors[] = XAPP_TEXT_FORMATTED("IMAGE_MANIPULATION_FUNCTION_NOT_FOUND", $save_function);
             return false;
         }
 
     }
 
-    public static function output($container) {
+    public static function output($container)
+    {
         // imagejpeg, imagegif of imagepng
-        $save_function="image".$container[XApp_Image_Utils::IMAGE_CONTAINER_TYPE];
+        $save_function = "image" . $container[XApp_Image_Utils::IMAGE_CONTAINER_TYPE];
 
-        if (function_exists($save_function))
-        {
+        if (function_exists($save_function)) {
             ob_start();
             $save_function($container[XApp_Image_Utils::IMAGE_CONTAINER_DATA]);
             return ob_get_clean();
-        }
-        else
-        {
-            $errors[] = XAPP_TEXT_FORMATTED("IMAGE_MANIPULATION_FUNCTION_NOT_FOUND",$save_function);
+        } else {
+            $errors[] = XAPP_TEXT_FORMATTED("IMAGE_MANIPULATION_FUNCTION_NOT_FOUND", $save_function);
             return false;
         }
     }
-
-
 
 
 }

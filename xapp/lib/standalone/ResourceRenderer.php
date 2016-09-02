@@ -59,7 +59,7 @@ class XApp_Standalone_Resource_Renderer extends  XApp_Resource_Renderer
 	                }
 
                     $rel = 'stylesheet';
-                    $styleTag = "<link rel='" . $rel . "' id='" . md5($url) . " 'href='" .$url . "'  type='text/css' />\n";
+                    $styleTag = "<link rel='" . $rel . "' id='css_" . md5($url) . " 'href='" .$url . "'  type='text/css' />\n";
                     $styleTags.=$styleTag;
 
                 }else{

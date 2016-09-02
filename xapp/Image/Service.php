@@ -53,16 +53,10 @@ class XApp_Image_Service extends XApp_Service implements Xapp_Singleton_Interfac
     /***
      * Xapp_Rpc_Interface_Callable Impl. Before the actual call is being invoked
      */
-    public function onBeforeCall($function=null, $class=null, $params=null){
-
-        parent::onBeforeCall($function, $class, $params);
+    public function onBeforeCall(Xapp_Rpc_Server $server, Array $params){
+        parent::onBeforeCall($server,$params);
     }
 
-    /***
-     * Xapp_Rpc_Interface_Callable Impl. After the actual call is being invoked
-     */
-    public function onAfterCall($function=null, $class=null, $params=null) {
-    }
 
     /**
      * contains the singleton instance for this class

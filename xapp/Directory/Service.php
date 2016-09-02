@@ -144,7 +144,7 @@ class XApp_Directory_Service extends XApp_Service{
         self::DEFAULT_NODE_FIELDS       => null,
         self::AUTO_RENAME               => true,
 	    self::VFS_CONFIG_PASSWORD       => null,
-        self::UPLOAD_EXTENSIONS          => 'js,css,less,bmp,csv,doc,gif,ico,jpg,jpeg,odg,odp,ods,odt,pdf,png,ppt,swf,txt,xcf,xls,json,js,md,xblox',
+        self::UPLOAD_EXTENSIONS          => 'js,css,less,bmp,csv,doc,gif,ico,jpg,jpeg,odg,odp,ods,odt,pdf,png,ppt,swf,txt,xcf,xls,json,js,md,xblox,tar',
 	    self::AUTH_DELEGATE             => null
     );
 

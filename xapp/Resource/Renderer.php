@@ -425,10 +425,7 @@ class XApp_Resource_Renderer implements Xapp_Singleton_Interface
                 array_push($_keys,$variableDelimiter.$key.$variableDelimiter);
                 array_push($_values,$value);
             }
-            $result = str_replace(
-                $_keys,
-                $_values,
-                $result
+            $result = str_replace($_keys,$_values,$result
             );
         }
         return $result;

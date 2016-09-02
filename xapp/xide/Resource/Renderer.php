@@ -91,7 +91,7 @@ class XIDE_Resource_Renderer extends XApp_Resource_Renderer
 										if(self::isSecure()) {
 											$url = preg_replace("/^http:/i", "https:", $url);
 										}
-										$styleTag = "<link rel='" . $rel . "' id='" . md5($newCSSUrl) . "' href='" .$newCSSUrl . "'  type='text/css' />\n";
+										$styleTag = "<link rel='" . $rel . "' id='css_" . md5($newCSSUrl) . "' href='" .$newCSSUrl . "'  type='text/css' />\n";
 										$styleTags.=$styleTag;
 
 									}
@@ -107,7 +107,7 @@ class XIDE_Resource_Renderer extends XApp_Resource_Renderer
 						if(self::isSecure()) {
 							$url = preg_replace("/^http:/i", "https:", $url);
 						}
-						$styleTag = "<link rel='" . $rel . "' id='" . md5($url) . "' href='" .$url . "'  type='text/css' />\n";
+						$styleTag = "<link rel='" . $rel . "' id='css_" . md5($url) . "' href='" .$url . "'  type='text/css' />\n";
 						$styleTags.=$styleTag;
 					}
 

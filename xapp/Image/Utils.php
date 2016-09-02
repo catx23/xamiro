@@ -3,8 +3,6 @@
  * Class XApp_Image_Utils
  *
  * Provides image manipulation functions
- *
- *
  */
 xapp_import("xapp.Option.Utils");
 xapp_import("xapp.Image.Handlers.*");
@@ -279,8 +277,6 @@ class XApp_Image_Utils
      * @return Xapp_Cache_Driver_Image
      */
     private static function getCache($options) {
-
-
         if(is_writeable(self::$cacheDir)){
 	        $cache = Xapp_Cache_Driver_Image::instance(Array(
                 Xapp_Cache_Driver_Image::PATH => self::$cacheDir,
@@ -387,5 +383,3 @@ class XApp_Image_Utils
         return false;
     }
 }
-
-?>

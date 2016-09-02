@@ -51,7 +51,8 @@ class XIDE_VE_Manager extends XIDE_Manager
 		$vfsConfig = $serviceConf[XApp_Directory_Service::FILE_SYSTEM_CONF];
 		$vfsVars = $vfsConfig[XApp_VFS_Base::ABSOLUTE_VARIABLES];
 		$this->registerRelative('VFS_VARS',json_encode($vfsVars, true));
-		$this->registerRelative('USER_DIRECTORY',XCF_Bootstrap::$user_data);
+
+		$this->registerRelative('USER_DIRECTORY',str_replace('\\','\\\\',XCF_Bootstrap::$user_data));
 
 		$this->registerRelative('VFS_GET_URL', $bootstrap->getVFSGetUrl());
 
