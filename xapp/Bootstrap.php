@@ -525,7 +525,7 @@ class XApp_Bootstrap
 			require_once(XAPP_BASEDIR . '/XApp_Service_Entry_Utils.php');
 		}
 		XApp_Service_Entry_Utils::includeXAppCore();
-
+		xapp_setup_language_standalone('en');
 		/*require_once(XAPP_BASEDIR . '/connect/utils/Debugging.php');*/
 		require_once(XAPP_BASEDIR . '/Log/Exception/Exception.php');
 		require_once(XAPP_BASEDIR . '/Log/Interface/Interface.php');
@@ -1488,17 +1488,13 @@ class XApp_Bootstrap
 	 * @param bool $stdError
 	 * @return null
 	 */
-	public function log($message, $prefix = '', $stdError = true)
-	{
-
+	public function log($message, $prefix = '', $stdError = true){
 		if (function_exists('xp_log')) {
 			xp_log('XCom-Bootstrap : ' . $message);
 		}
-
 		if ($stdError) {
 			error_log('XCom-Bootstrap : ' . $message);
 		}
-
 		return null;
 	}
 

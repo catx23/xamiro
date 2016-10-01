@@ -56,6 +56,11 @@ class XIDE_VE_Manager extends XIDE_Manager
 
 		$this->registerRelative('VFS_GET_URL', $bootstrap->getVFSGetUrl());
 
+		$path = $fileStruct['path'];
+		$folder = dirname($path);
+		$mount = $fileStruct['mount'];
+		
+
 		xapp_import('xapp.Service.Utils');
 		$IBM_ROOT  = 'xibm/ibm';
 		$OFF_SET = '../..';
@@ -92,17 +97,53 @@ class XIDE_VE_Manager extends XIDE_Manager
 		$css = XApp_Service_Utils::_getKey('css','app.css');
 		$this->registerRelative('css',base64_decode($css));
 		$this->registerRelative('user_drivers_path',$bootstrap->getVFSGetUrl('user_drivers'));
+		$this->registerRelative('workspace_user',$bootstrap->getVFSGetUrl('workspace_user'));
 		$templateRoot = $clientDirectory . $XIDEVE_CLIENT_BASE;
 		$template = XApp_Service_Utils::_getKey('template','view.template.html');
 
 		$templatePath = realpath($templateRoot . $template);
 		$templateContent = file_get_contents($templatePath);
 
+
+		//error_log('rpc url ' .$this->resolveRelative('%rpcUrl%'));
 		$templateContent = $this->resolveRelative($templateContent);
+		$matches=array();
+		preg_match_all('~\bbackground(-image)?\s*:(.*?)\(\s*(\'|")?(?<image>.*?)\3?\s*\)~i',$content,$matches);
+		$images = $matches['image'];
+		foreach ($images as $i => $imageUrl) {
+			$parts = explode('://',$imageUrl);
+			$mount = $parts[0];
+			$path  = $parts[1];
+			$url = $bootstrap->getVFSGetUrl($mount) . $path;
+			$content = str_replace($imageUrl,$url,$content);
+
+		}
+
+		//update scripts
+		$domd = new DOMDocument();
+		libxml_use_internal_errors(true);
+		$domd->loadHTML($content);
+		libxml_use_internal_errors(false);
+		$items = $domd->getElementsByTagName('script');
+
+		foreach($items as $item) {
+
+			$src = $item->getAttribute('src');
+			if(!strpos($src,'http')) {
+				$url = $bootstrap->getVFSGetUrl($mount) . $folder . '/' . $src;
+				$content = str_replace($src, $url, $content);
+			}
+
+			/*
+			$data[] = array(
+				'src' => $item->getAttribute('src'),
+				'outerHTML' => $domd->saveHTML($item),
+				'innerHTML' => $domd->saveHTML($item->firstChild),
+			);
+			*/
+		}
 		$contentFinal = str_replace('<viewHeaderTemplate/>',$templateContent,$content);
 		return $contentFinal;
-
-
 	}
 
 	/////////////////////////////////////////////////////////////////////////////////////////

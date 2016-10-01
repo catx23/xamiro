@@ -9,6 +9,7 @@
 
 xapp_import('xapp.Commons.Mixins');
 xapp_import('xapp.Service.Logger');
+xapp_import('xapp.Rpc.Interface.Callable');
 
 
 /***

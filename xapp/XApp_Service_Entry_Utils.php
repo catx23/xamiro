@@ -1199,7 +1199,7 @@ class XApp_Service_Entry_Utils
 	 * @return string Sanitized key
 	 */
 	public static function _sanitize_key( $key ) {
-		return preg_replace( '/[^A-Za-z0-9_.\/\-:\\\\]/', '', $key );
+		return preg_replace( '/[^A-Za-z0-9_.\/\%-:\\\\]/', '', $key );
 	}
 
 	/**

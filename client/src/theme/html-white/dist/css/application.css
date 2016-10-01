@@ -6693,8 +6693,13 @@ button.close {
  * -------------------------- */
 @font-face {
   font-family: 'FontAwesome';
-  src: url("./fonts/font-awesome/fontawesome-webfont.eot?v=4.2.0");
-  src: url("./fonts/font-awesome/fontawesome-webfont.eot?#iefix&v=4.2.0") format("embedded-opentype"), url("./fonts/font-awesome/fontawesome-webfont.woff?v=4.2.0") format("woff"), url("./fonts/font-awesome/fontawesome-webfont.ttf?v=4.2.0") format("truetype"), url("./fonts/font-awesome/fontawesome-webfont.svg?v=4.2.0#fontawesomeregular") format("svg");
+  /*
+  src: url('./fonts/font-awesome/fontawesome-webfont.eot?v=4.2.0');
+  src: url('./fonts/font-awesome/fontawesome-webfont.eot?#iefix&v=4.2.0') format('embedded-opentype'),
+    url('./fonts/font-awesome/fontawesome-webfont.woff?v=4.2.0') format('woff'),
+    url('./fonts/font-awesome/fontawesome-webfont.ttf?v=4.2.0') format('truetype'),
+    url('./fonts/font-awesome/fontawesome-webfont.svg?v=4.2.0#fontawesomeregular') format('svg');
+  */
   font-weight: normal;
   font-style: normal;
 }
@@ -17232,7 +17237,7 @@ html {
 }
 
 /* line 38, ../../src/sass/_general.scss */
-body {
+body.xTheme-default {
   font-weight: 400;
   /*padding-bottom: 100px;*/
   background-color: rgba(74, 121, 147, 0.89);
@@ -17242,7 +17247,7 @@ body {
   background-attachment: fixed, fixed;
 }
 /* line 46, ../../src/sass/_general.scss */
-body.background-dark {
+body.xTheme-default.background-dark {
   background-color: rgba(102, 105, 104, 0.9);
   background-image: radial-gradient(farthest-side ellipse at 10% 0, rgba(102, 105, 104, 0.9), rgba(93, 112, 119, 0.89), rgba(160, 174, 150, 0.9));
   background-image: -webkit-radial-gradient(10% 0, farthest-side ellipse, rgba(102, 105, 104, 0.9), rgba(93, 112, 119, 0.89), rgba(160, 174, 150, 0.9));
