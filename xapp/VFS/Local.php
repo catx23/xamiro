@@ -430,10 +430,6 @@ class XApp_VFS_Local extends XApp_VFS_Base implements Xapp_VFS_Interface_Access
 			}
 			$ret_list[] = $item;
 		}
-/*
-		error_log('test',E_WARNING);
-		$error = XApp_ErrorHandler::stop();
-		xapp_clog($error);*/
 		return $ret_list;
 	}
 
@@ -445,8 +441,6 @@ class XApp_VFS_Local extends XApp_VFS_Base implements Xapp_VFS_Interface_Access
 		&$error,
 		&$success
 	) {
-
-
 		$log = array();
 		foreach ($selection as $selectedFile) {
 
@@ -668,11 +662,6 @@ class XApp_VFS_Local extends XApp_VFS_Base implements Xapp_VFS_Interface_Access
 
 		$overwrite = $options['mode'] == 1502;
 		$mapping = new stdClass();
-
-
-		//xapp_clog($this->toRealPath($dstDirectory));
-
-
 		/**
 		 * Modes:
 		 *
@@ -694,18 +683,6 @@ class XApp_VFS_Local extends XApp_VFS_Base implements Xapp_VFS_Interface_Access
 		 *  4. single file to a non-existing file
 		 *
 		 */
-/*
-		xapp_clog('Copy to','group','group');
-
-			xapp_clog($selection,'selection');
-			xapp_clog($dst,'dst');
-			xapp_clog($dstDirectory,'dstDirectory');
-			xapp_clog($isSingleFile,'single file');
-			xapp_clog($copyToEmptyFile,'copy to file');
-			xapp_clog($options,'options');
-
-		*/
-
 		foreach ($selection as $selectedFile) {
 
 			$itemPath = $this->toRealPath($selectedFile);
@@ -754,7 +731,6 @@ class XApp_VFS_Local extends XApp_VFS_Base implements Xapp_VFS_Interface_Access
 
 					// auto rename file
 					if (file_exists($destFile) && !$copyToEmptyFile ) {
-						xapp_clog(null,'autorename!','warn');
 						$base = basename($destFile);
 						$ext = '';
 						$dotPos = strrpos($base, ".");
@@ -784,7 +760,6 @@ class XApp_VFS_Local extends XApp_VFS_Base implements Xapp_VFS_Interface_Access
 					}
 
 					try {
-						xapp_clog('','copy  '. $itemPath . ' to ' . $destFile);
 						if($copyToEmptyFile){
 							if(!file_exists(dirname($destFile))){
 								$error[] = XAPP_TEXT_FORMATTED('DIRECTORY_DOES_NOT_EXISTS', array(basename(dirname($destFile))));
@@ -806,9 +781,7 @@ class XApp_VFS_Local extends XApp_VFS_Base implements Xapp_VFS_Interface_Access
 				}
 			}
 		}
-		xapp_clog($mapping,'Result Mapping');
-		xapp_clog($error,'error');
-		xapp_clog('Copy to','groupEnd','ungroup');
+
 
 		return $error;
 	}
@@ -1070,8 +1043,6 @@ class XApp_VFS_Local extends XApp_VFS_Base implements Xapp_VFS_Interface_Access
 		if ($resource) {
 			$resource = $this->resolveResource($resource);
 		} else {
-			error_log('couldnt resolve resource : ' . $name);
-			xapp_clog('couldnt resolve resource : ' . $name);
 			return null;
 		}
 
@@ -1175,7 +1146,7 @@ class XApp_VFS_Local extends XApp_VFS_Base implements Xapp_VFS_Interface_Access
 			}
 
 		}
-		xapp_clog('w ' . $result);
+
 
 		return $result;
 

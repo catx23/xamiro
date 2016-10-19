@@ -1859,7 +1859,9 @@ class XApp_Bootstrap
 			}
 		}
 		$extraParams = count($urlParams) ? '&' . http_build_query($urlParams) : '';
-		return dirname(XApp_Service_Entry_Utils::getUrl()) . '/' . $index . '?view=rpc' . $extraParams;
+		xapp_import('xapp.Http.Url');
+		$url  = new XApp_Http_Url(self::getUrl());
+		return dirname($url->getBaseUrl() .'/fo.php')  . '/' . $index . '?view=rpc' . $extraParams;
 	}
 
 	/**
@@ -1878,7 +1880,13 @@ class XApp_Bootstrap
 			}
 		}
 		$extraParams = count($urlParams) ? '&' . http_build_query($urlParams) : '';
-		return dirname(XApp_Service_Entry_Utils::getUrl()) . '/' . $index . '?view=smdCall' . $extraParams;
+
+		xapp_import('xapp.Http.Url');
+		$url  = new XApp_Http_Url(self::getUrl());
+		//$res = dirname(XApp_Service_Entry_Utils::getUrl()) . '/' . $index . '?view=smdCall' . $extraParams;
+		$res = dirname($url->getBaseUrl() .'/fo.php') . '/' . $index . '?view=smdCall' . $extraParams;
+
+		return $res;
 	}
 
 }

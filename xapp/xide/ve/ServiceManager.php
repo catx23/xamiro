@@ -105,7 +105,7 @@ class XIDE_VE_Manager extends XIDE_Manager
 		$templateContent = file_get_contents($templatePath);
 
 
-		//error_log('rpc url ' .$this->resolveRelative('%rpcUrl%'));
+		
 		$templateContent = $this->resolveRelative($templateContent);
 		$matches=array();
 		preg_match_all('~\bbackground(-image)?\s*:(.*?)\(\s*(\'|")?(?<image>.*?)\3?\s*\)~i',$content,$matches);
