@@ -66,13 +66,12 @@
 <script type="text/javascript" src="%APP_URL%/xfile/dojo/xbox.js"></script>
 <script type="text/javascript">
     require([
-        "dojo/ready",
         'xbox/XBoxCommons',
         "xide/manager/ServerActionBase",
         "dojo/_base/html",
+        "dojo/_base/kernel",
         "dojo/ready"
-    ],function(ready,XBoxCommons,ServerActionBase){
-
+    ],function(XBoxCommons,ServerActionBase,html,dojo){
         var service = null;
         var serviceClass='XApp_XIDE_Controller_UserService';
 
@@ -130,12 +129,7 @@
         window['login']=login;
 
         dojo.addOnLoad(function (){
-
             initService();
-            if(!(dojo.isFF >= 4 || dojo.isChrome >= 5 || dojo.isSafari >= 5.1)){
-                dojo.create("div", {innerHTML: "Firefox 4, Chrome 5, Safari 5.1 or greater is required", "class": "sniff"}, "loginpane", "first");
-            }
-
             var loadDiv = dojo.byId('loadingWrapper');
             if(loadDiv){
                 dojo.destroy(loadDiv);
@@ -167,13 +161,11 @@
                                     <span class="input-group-addon">
                                         <i class="fa fa-user"></i>
                                     </span>
-                        <input id="username" type="text" class="form-control input-lg input-transparent"
-                               placeholder="admin" value="admin">
+                        <input id="username" type="text" class="form-control input-lg input-transparent" placeholder="admin" value="admin">
                     </div>
                 </div>
                 <div class="form-group">
                     <label for="password" >Password</label>
-
                     <div class="input-group input-group-lg">
                                     <span class="input-group-addon">
                                         <i class="fa fa-lock"></i>
@@ -188,7 +180,6 @@
                 <button id="loginBtn" type="submit" class="btn btn-block btn-lg btn-danger">
                     <span id="loginBtnIcon" class="small-circle"><i class="fa fa-caret-right"></i></span>
                     <small style="margin: 8px">Sign In</small>
-
                 </button>
 
                 <div id="error-holder"></div>
