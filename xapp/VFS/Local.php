@@ -313,9 +313,6 @@ class XApp_VFS_Local extends XApp_VFS_Base implements Xapp_VFS_Interface_Access
 	 * item['size']=
 	 * item['permissions']=
 	 *
-	 * Look in src/server/xfile/File or src/server/stores/cbtree/cbTreeFileStoreStandalone.
-	 * There are many methods about owner,permissions,.... Copy them into File/Utils
-	 *
 	 * options['fields'] = isReadOnly|mime|owner,... specifies the fields we want in the output!
 	 * Define those fields as string constants in File/Utils.php for now.
 	 *
@@ -328,14 +325,12 @@ class XApp_VFS_Local extends XApp_VFS_Base implements Xapp_VFS_Interface_Access
 	 */
 	public function ls($path = '/', $recursive = false, $options = Array())
 	{
-
 		xapp_import('xapp.Xapp.Hook');
 		xapp_import('xapp.File.Utils');
 		xapp_import('xapp.Commons.ErrorHandler');
-
+		
 		$options = (array)$options;
-
-
+		
 		// Default options
 		if (!isset($options[XApp_File_Utils::OPTION_DIR_LIST_FIELDS])) {
 			$options[XApp_File_Utils::OPTION_DIR_LIST_FIELDS] = 0;
@@ -360,7 +355,6 @@ class XApp_VFS_Local extends XApp_VFS_Base implements Xapp_VFS_Interface_Access
 		//default include & exclude list
 		$inclusionMask = XApp_File_Utils::defaultInclusionPatterns();
 		$exclusionMask = XApp_File_Utils::defaultExclusionPatterns();
-
 
 		/*
 		//overwrite include from options
@@ -396,8 +390,7 @@ class XApp_VFS_Local extends XApp_VFS_Base implements Xapp_VFS_Interface_Access
 			$item = new stdClass();
 			$item->{XAPP_NODE_FIELD_NAME} = $item_name;
 			if ($path != "/") {
-
-
+				
 				self::add_ls_file_information(
 					$this->toRealPath($path . DIRECTORY_SEPARATOR . $item_name),
 					$item,
@@ -923,9 +916,10 @@ class XApp_VFS_Local extends XApp_VFS_Base implements Xapp_VFS_Interface_Access
 		// show folder size
 		if (($field_options & XAPP_XFILE_SHOW_FOLDER_SIZE) == XAPP_XFILE_SHOW_FOLDER_SIZE) {
 			if (is_dir($filepath)) {
-				$size = XApp_Directory_Utils::getDirectorySize($filepath);
-				$item->{XAPP_NODE_FIELD_SIZE} = XApp_File_Utils::formatSizeUnits($size);
-				$item->{XAPP_NODE_FIELD_SIZE_BYTES} = $size;
+			//	$size = XApp_Directory_Utils::getDirectorySize($filepath);
+			//	$item->{XAPP_NODE_FIELD_SIZE} = XApp_File_Utils::formatSizeUnits($size);
+			//	$item->{XAPP_NODE_FIELD_SIZE_BYTES} = $size;
+				$item->{XAPP_NODE_FIELD_SIZE_BYTES} = "Unknown";
 			}
 
 		}
@@ -963,7 +957,6 @@ class XApp_VFS_Local extends XApp_VFS_Base implements Xapp_VFS_Interface_Access
 	 */
 	public function getFilteredDirList($path, $inclusionMask = Array(), $exclusionMask = Array(), $options = Array())
 	{
-
 		if ($path == "/") {   // Return all mounted directories
 			$all_file_proxys = $this->getResourcesByType(XAPP_RESOURCE_TYPE_FILE_PROXY);
 			$retlist = Array();
@@ -972,19 +965,18 @@ class XApp_VFS_Local extends XApp_VFS_Base implements Xapp_VFS_Interface_Access
 				$retlist[] = ($clear_path ? "" : "/") . $f_proxy->name;
 			}
 			return $retlist;
-		} else {            // Call getFilteredDirList from XApp_Directory_Utils
+		} else {            
+			// Call getFilteredDirList from XApp_Directory_Utils
 			$pathResolved = $this->toRealPath($path);
-
 			if (!file_exists($pathResolved)) {
 				throw new Exception('path doesn exists');
 			}
-			$retlist = XApp_Directory_Utils::getFilteredDirList(
+			return XApp_Directory_Utils::getFilteredDirList(
 				$pathResolved,
 				$inclusionMask,
 				$exclusionMask,
 				$options
 			);
-			return $retlist;
 		}
 	}
 

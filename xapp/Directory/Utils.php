@@ -62,9 +62,7 @@ class XApp_Directory_Utils
 		if (!isset($options[self::OPTION_ONLY_FILES])) $options[self::OPTION_ONLY_FILES]=false;
 		if (!isset($options[self::OPTION_CLEAR_PATH])) $options[self::OPTION_CLEAR_PATH]=false;
 
-
 		$list=self::scanDirForList($path,$inclusionMask);
-
 		if ($list===FALSE)
 			return false;
 		else {
@@ -74,17 +72,23 @@ class XApp_Directory_Utils
 				if ($exclude_list!==FALSE) $list=array_diff($list,$exclude_list);
 			}
 			$to_remove=Array();
-			//error_log('list ' . $path . ' :' . json_encode($list) . ' ex ' .json_encode($inclusionMask) );
+
+			$did = false;
 			if (($options[self::OPTION_RECURSIVE]) || ($options[self::OPTION_ONLY_FILES]) || ($options[self::OPTION_ONLY_DIRS])) {
 				foreach($list as $n=>$direntry) {
 					if (is_dir($direntry)) {
-						if ($options[self::OPTION_ONLY_FILES])
-							$to_remove[]=$list[$n];
+
+						if ($options[self::OPTION_ONLY_FILES]) {
+							$to_remove[] = $list[$n];
+						}
+
 						if ($options[self::OPTION_RECURSIVE]) {
 							// Don't clean path for recursive calls
-							$options_to_passed=$options;
-							$options_to_passed[self::OPTION_CLEAR_PATH]=false;
-							$list=array_merge($list,self::getFilteredDirList($direntry,$inclusionMask,$exclusionMask,$options_to_passed));
+							if(!$did) {
+								$options_to_passed = $options;
+								$options_to_passed[self::OPTION_CLEAR_PATH] = false;
+								$list = array_merge($list, self::getFilteredDirList($direntry, $inclusionMask, $exclusionMask, $options_to_passed));
+							}
 						}
 					} else {
 						if ($options[self::OPTION_ONLY_DIRS])
@@ -92,8 +96,6 @@ class XApp_Directory_Utils
 					}
 				}
 			}
-
-
 
 			if (Count($to_remove)>0)
 				$list=array_diff($list,$to_remove);
