@@ -1,5 +1,8 @@
 ## **IDE like file - manager in PHP and Javascript with minimal dependencies**
 
+### Important
+
+- xamiro is currently being rewritten in Node.JS, please watch for changes.
 
 ### Dependencies / Requirements
 
@@ -11,7 +14,7 @@
 
 ### Installation
 
-- Download 2.x version [master branch](https://github.com/gbaumgart/xamiro/archive/master.zip) and extract it to somewhere, then open via web-browser your server-url (http://localhost/xamiro), thats it. 
+- Download [master branch](https://github.com/gbaumgart/xamiro/archive/master.zip) and extract it to somewhere, then open via web-browser your server-url (http://localhost/xamiro), thats it. 
 
 
 ### Keyboard & Mouse
