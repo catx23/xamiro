@@ -652,8 +652,8 @@ class XApp_Utils_Strings
 	 */
 	public static function parse_str( $string, &$array ) {
 		parse_str( $string, $array );
-		if ( get_magic_quotes_gpc() )
-			$array = self::stripslashes_deep( $array );
+		//if ( get_magic_quotes_gpc() )
+		//	$array = self::stripslashes_deep( $array );
 	}
 
 	/**
